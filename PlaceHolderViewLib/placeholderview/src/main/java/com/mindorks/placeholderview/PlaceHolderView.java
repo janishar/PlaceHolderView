@@ -49,22 +49,22 @@ public class PlaceHolderView extends RecyclerView {
         mViewAdapter.notifyDataSetChanged();
     }
 
-    public <T extends ViewResolver>PlaceHolderView addView(T viewResolver){
+    public <T extends ViewResolver>PlaceHolderView addView(T viewResolver)throws IndexOutOfBoundsException{
         mViewAdapter.addView(viewResolver);
         return this;
     }
 
-    public  <T extends ViewResolver>PlaceHolderView removeView(T viewResolver){
+    public  <T extends ViewResolver>PlaceHolderView removeView(T viewResolver)throws IndexOutOfBoundsException{
         mViewAdapter.removeView(viewResolver);
         return this;
     }
 
-    public <T extends ViewResolver>PlaceHolderView addView(int position, T viewResolver){
+    public <T extends ViewResolver>PlaceHolderView addView(int position, T viewResolver)throws IndexOutOfBoundsException{
         mViewAdapter.addView(position, viewResolver);
         return this;
     }
 
-    public PlaceHolderView removeView(int position){
+    public PlaceHolderView removeView(int position) throws IndexOutOfBoundsException{
         mViewAdapter.removeView(position);
         return this;
     }

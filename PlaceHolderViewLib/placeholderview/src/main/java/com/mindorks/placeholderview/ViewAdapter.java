@@ -41,17 +41,17 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         return mViewBinderList.size();
     }
 
-    protected void removeView(int position){
+    protected void removeView(int position)throws IndexOutOfBoundsException{
         mViewBinderList.remove(position);
         notifyItemRemoved(position);
     }
 
-    protected <T extends ViewResolver>void addView(T viewResolver){
+    protected <T extends ViewResolver>void addView(T viewResolver)throws IndexOutOfBoundsException{
         mViewBinderList.add(new ViewBinder<ViewResolver>(viewResolver));
         notifyItemInserted(mViewBinderList.size() - 1);
     }
 
-    protected  <T extends ViewResolver>void removeView(T viewResolver){
+    protected  <T extends ViewResolver>void removeView(T viewResolver)throws IndexOutOfBoundsException{
         int position = -1;
         for(ViewBinder viewBinder : mViewBinderList){
             if(viewBinder.getResolver() == viewResolver){
@@ -64,7 +64,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
-    protected <T extends ViewResolver>void addView(int position, T viewResolver){
+    protected <T extends ViewResolver>void addView(int position, T viewResolver)throws IndexOutOfBoundsException{
         mViewBinderList.add(position, new ViewBinder<ViewResolver>(viewResolver));
         notifyItemInserted(position);
     }
