@@ -17,58 +17,116 @@ public class PlaceHolderView extends RecyclerView {
     private PlaceHolderViewBuilder mBuilder;
     private Context mContext;
 
+    /**
+     *
+     * @param context
+     */
     public PlaceHolderView(Context context) {
         super(context);
         mContext = context;
         setupView(context);
     }
 
+    /**
+     *
+     * @param context
+     * @param attrs
+     */
     public PlaceHolderView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         setupView(context);
     }
 
+    /**
+     *
+     * @param context
+     * @param attrs
+     * @param defStyle
+     */
     public PlaceHolderView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
         setupView(context);
     }
 
+    /**
+     *
+     * @param context
+     */
     private void setupView(Context context){
         mViewAdapter = new ViewAdapter();
         mBuilder = new PlaceHolderViewBuilder(context, this);
         setAdapter(mViewAdapter);
     }
 
+    /**
+     *
+     * @return
+     */
     private PlaceHolderViewBuilder builder(){
         return mBuilder;
     }
 
+    /**
+     *
+     */
     public void refresh(){
         mViewAdapter.notifyDataSetChanged();
     }
 
+    /**
+     *
+     * @param viewResolver
+     * @param <T>
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
     public <T extends ViewResolver>PlaceHolderView addView(T viewResolver)throws IndexOutOfBoundsException{
         mViewAdapter.addView(viewResolver);
         return this;
     }
 
+    /**
+     *
+     * @param viewResolver
+     * @param <T>
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
     public  <T extends ViewResolver>PlaceHolderView removeView(T viewResolver)throws IndexOutOfBoundsException{
         mViewAdapter.removeView(viewResolver);
         return this;
     }
 
+    /**
+     *
+     * @param position
+     * @param viewResolver
+     * @param <T>
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
     public <T extends ViewResolver>PlaceHolderView addView(int position, T viewResolver)throws IndexOutOfBoundsException{
         mViewAdapter.addView(position, viewResolver);
         return this;
     }
 
+    /**
+     *
+     * @param position
+     * @return
+     * @throws IndexOutOfBoundsException
+     */
     public PlaceHolderView removeView(int position) throws IndexOutOfBoundsException{
         mViewAdapter.removeView(position);
         return this;
     }
 
+    /**
+     *
+     * @return
+     */
     public PlaceHolderViewBuilder getBuilder() {
         return mBuilder;
     }

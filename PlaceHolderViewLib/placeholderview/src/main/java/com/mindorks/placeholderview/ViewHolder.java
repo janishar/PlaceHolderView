@@ -8,6 +8,10 @@ import android.view.View;
  */
 public class ViewHolder extends RecyclerView.ViewHolder {
 
+    /**
+     *
+     * @param itemView
+     */
     public ViewHolder(View itemView) {
         super(itemView);
     }

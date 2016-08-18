@@ -20,16 +20,28 @@ public class ViewBinder<T extends ViewResolver> {
     private int mLayoutId;
     private T mResolver;
 
+    /**
+     *
+     * @param resolver
+     */
     protected ViewBinder(final T resolver){
         mResolver = resolver;
         bindLayout(resolver);
     }
 
+    /**
+     *
+     * @param promptsView
+     */
     protected void bindView(android.view.View promptsView){
         bindViews(mResolver, mResolver.getClass().getFields(), promptsView);
         bindClick(mResolver, mResolver.getClass().getMethods(), promptsView);
     }
 
+    /**
+     *
+     * @param resolver
+     */
     private void bindLayout(final T resolver){
         Annotation annotation = resolver.getClass().getAnnotation(Layout.class);
         if(annotation instanceof Layout) {
@@ -38,6 +50,12 @@ public class ViewBinder<T extends ViewResolver> {
         }
     }
 
+    /**
+     *
+     * @param resolver
+     * @param fields
+     * @param promptsView
+     */
     private void bindViews(final T resolver,final Field[] fields, android.view.View promptsView){
         for(final Field field : fields) {
             Annotation annotation = field.getAnnotation(View.class);
@@ -53,6 +71,12 @@ public class ViewBinder<T extends ViewResolver> {
         }
     }
 
+    /**
+     *
+     * @param resolver
+     * @param methods
+     * @param promptsView
+     */
     private void bindClick(final T resolver,final Method[] methods,final android.view.View promptsView){
         for(final Method method : methods){
             Annotation annotation = method.getAnnotation(Click.class);
@@ -75,10 +99,18 @@ public class ViewBinder<T extends ViewResolver> {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     protected int getLayoutId() {
         return mLayoutId;
     }
 
+    /**
+     *
+     * @return
+     */
     protected T getResolver() {
         return mResolver;
     }
