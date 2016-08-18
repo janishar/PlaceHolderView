@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by janisharali on 18/08/16.
  */
@@ -17,22 +20,25 @@ public class PlaceHolderView extends RecyclerView {
     public PlaceHolderView(Context context) {
         super(context);
         mContext = context;
-        mViewAdapter = new ViewAdapter(ViewBinder.getViewBinderList());
-        mBuilder = new PlaceHolderViewBuilder(context, this);
+        setupView(context);
     }
 
     public PlaceHolderView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-        mViewAdapter = new ViewAdapter(ViewBinder.getViewBinderList());
-        mBuilder = new PlaceHolderViewBuilder(context, this);
+        setupView(context);
     }
 
     public PlaceHolderView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
-        mViewAdapter = new ViewAdapter(ViewBinder.getViewBinderList());
+        setupView(context);
+    }
+
+    private void setupView(Context context){
+        mViewAdapter = new ViewAdapter();
         mBuilder = new PlaceHolderViewBuilder(context, this);
+        setAdapter(mViewAdapter);
     }
 
     private PlaceHolderViewBuilder builder(){
@@ -58,7 +64,7 @@ public class PlaceHolderView extends RecyclerView {
         return this;
     }
 
-    public PlaceHolderView removeViewAtPosition(int position){
+    public PlaceHolderView removeView(int position){
         mViewAdapter.removeView(position);
         return this;
     }

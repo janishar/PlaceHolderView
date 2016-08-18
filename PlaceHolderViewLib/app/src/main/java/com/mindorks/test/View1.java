@@ -1,6 +1,5 @@
 package com.mindorks.test;
 
-import android.content.Context;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -18,9 +17,8 @@ public class View1 extends ViewResolver{
     @View(R.id.txt)
     public TextView txt;
 
-    public View1(Context context) {
-        super(context);
-        super.bind(this);
+    @Override
+    public void onResolved() {
         txt.setText("ALI");
     }
 

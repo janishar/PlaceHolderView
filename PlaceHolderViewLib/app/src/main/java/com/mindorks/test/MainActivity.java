@@ -23,11 +23,11 @@ public class MainActivity extends AppCompatActivity {
                 .setItemViewCacheSize(5);
 
         placeHolderView
-                .addView(new View1(this))
-                .addView(new View2(this))
-                .addView(new View1(this))
-                .addView(new View1(this))
-                .addView(new View2(this));
+                .addView(new View1())
+                .addView(new View2())
+                .addView(new View1())
+                .addView(new View1())
+                .addView(new View2());
     }
 
     @Override
