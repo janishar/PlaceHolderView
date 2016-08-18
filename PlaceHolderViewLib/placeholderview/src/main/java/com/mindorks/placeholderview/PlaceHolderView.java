@@ -5,6 +5,9 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by janisharali on 18/08/16.
  */
@@ -17,22 +20,25 @@ public class PlaceHolderView extends RecyclerView {
     public PlaceHolderView(Context context) {
         super(context);
         mContext = context;
-        mViewAdapter = new ViewAdapter(ViewBinder.getViewBinderList());
-        mBuilder = new PlaceHolderViewBuilder(context, this);
+        setupView(context);
     }
 
     public PlaceHolderView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
-        mViewAdapter = new ViewAdapter(ViewBinder.getViewBinderList());
-        mBuilder = new PlaceHolderViewBuilder(context, this);
+        setupView(context);
     }
 
     public PlaceHolderView(Context context, @Nullable AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
-        mViewAdapter = new ViewAdapter(ViewBinder.getViewBinderList());
+        setupView(context);
+    }
+
+    private void setupView(Context context){
+        mViewAdapter = new ViewAdapter();
         mBuilder = new PlaceHolderViewBuilder(context, this);
+        setAdapter(mViewAdapter);
     }
 
     private PlaceHolderViewBuilder builder(){
@@ -43,23 +49,23 @@ public class PlaceHolderView extends RecyclerView {
         mViewAdapter.notifyDataSetChanged();
     }
 
-    protected <T extends ViewResolver>PlaceHolderView addView(T viewResolver){
+    public <T extends ViewResolver>PlaceHolderView addView(T viewResolver){
         mViewAdapter.addView(viewResolver);
         return this;
     }
 
-    protected  <T extends ViewResolver>PlaceHolderView removeView(T viewResolver){
+    public  <T extends ViewResolver>PlaceHolderView removeView(T viewResolver){
         mViewAdapter.removeView(viewResolver);
         return this;
     }
 
-    protected <T extends ViewResolver>PlaceHolderView addViewAtPosition(int position, T viewResolver){
-        mViewAdapter.addViewAtPosition(position, viewResolver);
+    public <T extends ViewResolver>PlaceHolderView addView(int position, T viewResolver){
+        mViewAdapter.addView(position, viewResolver);
         return this;
     }
 
-    public PlaceHolderView removeViewAtPosition(int position){
-        mViewAdapter.removeViewAtPosition(position);
+    public PlaceHolderView removeView(int position){
+        mViewAdapter.removeView(position);
         return this;
     }
 

@@ -1,6 +1,7 @@
 package com.mindorks.test;
 
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.mindorks.placeholderview.ViewResolver;
 import com.mindorks.placeholderview.annotations.Click;
@@ -14,10 +15,10 @@ import com.mindorks.placeholderview.annotations.View;
 public class View2 extends ViewResolver{
 
     @View(R.id.txt1)
-    public Button txt1;
+    public TextView txt1;
 
     @View(R.id.txt2)
-    public Button txt2;
+    public TextView txt2;
 
     @Override
     public void onResolved() {

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,8 +15,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<ViewBinder<ViewResolver>> mViewBinderList;
 
-    public ViewAdapter(List<ViewBinder<ViewResolver>> viewBinderList) {
-        mViewBinderList = viewBinderList;
+    public ViewAdapter() {
+        mViewBinderList = new ArrayList<>();
     }
 
     @Override
@@ -40,7 +41,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         return mViewBinderList.size();
     }
 
-    protected void removeViewAtPosition(int position){
+    protected void removeView(int position){
         mViewBinderList.remove(position);
         notifyItemRemoved(position);
     }
@@ -63,7 +64,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
-    protected <T extends ViewResolver>void addViewAtPosition(int position, T viewResolver){
+    protected <T extends ViewResolver>void addView(int position, T viewResolver){
         mViewBinderList.add(position, new ViewBinder<ViewResolver>(viewResolver));
         notifyItemInserted(position);
     }
