@@ -20,18 +20,18 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(viewType, parent, false);
+        View view = mViewBinderList.get(viewType).getmItemView();
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        mViewBinderList.get(position).bindView(holder.itemView);
+        return;
     }
 
     @Override
     public int getItemViewType(int position) {
-        return mViewBinderList.get(position).getLayoutId();
+        return position;
     }
 
     @Override
@@ -39,13 +39,13 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         return mViewBinderList.size();
     }
 
-    protected void removeViewAtPosition(int position){
+    protected void removeView(int position){
         mViewBinderList.remove(position);
         notifyItemRemoved(position);
     }
 
     protected <T extends ViewResolver>void addView(T viewResolver){
-        mViewBinderList.add(new ViewBinder<ViewResolver>(viewResolver));
+        mViewBinderList.add(viewResolver.getViewBinder());
         notifyItemInserted(mViewBinderList.size() - 1);
     }
 
@@ -62,8 +62,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
-    protected <T extends ViewResolver>void addViewAtPosition(int position, T viewResolver){
-        mViewBinderList.add(position, new ViewBinder<ViewResolver>(viewResolver));
+    protected <T extends ViewResolver>void addView(int position, T viewResolver){
+        mViewBinderList.add(position, viewResolver.getViewBinder());
         notifyItemInserted(position);
     }
 

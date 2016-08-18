@@ -53,13 +53,13 @@ public class PlaceHolderView extends RecyclerView {
         return this;
     }
 
-    protected <T extends ViewResolver>PlaceHolderView addViewAtPosition(int position, T viewResolver){
-        mViewAdapter.addViewAtPosition(position, viewResolver);
+    protected <T extends ViewResolver>PlaceHolderView addView(int position, T viewResolver){
+        mViewAdapter.addView(position, viewResolver);
         return this;
     }
 
     public PlaceHolderView removeViewAtPosition(int position){
-        mViewAdapter.removeViewAtPosition(position);
+        mViewAdapter.removeView(position);
         return this;
     }
 

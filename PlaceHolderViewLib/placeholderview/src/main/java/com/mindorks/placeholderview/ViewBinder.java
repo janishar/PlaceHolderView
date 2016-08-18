@@ -1,5 +1,8 @@
 package com.mindorks.placeholderview;
 
+import android.content.Context;
+import android.view.LayoutInflater;
+
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.View;
 
@@ -18,30 +21,33 @@ public class ViewBinder<T extends ViewResolver> {
 
     private static List<ViewBinder<ViewResolver>> mViewBinderList = new ArrayList<>();
     private int mLayoutId;
+    private android.view.View mItemView;
     private T mResolver;
 
-    protected ViewBinder(final T resolver){
+    protected ViewBinder(final T resolver, Context context){
         mResolver = resolver;
-        bindLayout(resolver);
+        mItemView = bindLayout(context, resolver);
+        bindView(mItemView);
         mViewBinderList.add((ViewBinder<ViewResolver>) this);
     }
 
-    protected void bindView(android.view.View promptsView){
-        bindViews(mResolver, mResolver.getClass().getFields(), promptsView);
-        bindClick(mResolver, mResolver.getClass().getMethods(), promptsView);
+    protected void bindView(android.view.View itemView){
+        bindViews(mResolver, mResolver.getClass().getFields(), itemView);
+        bindClick(mResolver, mResolver.getClass().getMethods(), itemView);
     }
 
-    private void bindLayout(final T resolver){
+    private android.view.View bindLayout(Context context, final T resolver){
         Layout layoutAnnotation = resolver.getClass().getAnnotation(Layout.class);
         int id = layoutAnnotation.value();
         mLayoutId = id;
+        return LayoutInflater.from(context).inflate(id, null);
     }
 
-    private void bindViews(final T resolver,final Field[] fields, android.view.View promptsView){
+    private void bindViews(final T resolver,final Field[] fields, android.view.View itemView){
         for(final Field field : fields) {
             View viewAnnotation = field.getAnnotation(View.class);
             int id = viewAnnotation.value();
-            android.view.View view = promptsView.findViewById(id);
+            android.view.View view = itemView.findViewById(id);
             try {
                 field.set(resolver, view);
             } catch (IllegalAccessException e) {
@@ -50,11 +56,11 @@ public class ViewBinder<T extends ViewResolver> {
         }
     }
 
-    private void bindClick(final T resolver,final Method[] methods,final android.view.View promptsView){
+    private void bindClick(final T resolver,final Method[] methods,final android.view.View itemView){
         for(final Method method : methods){
             Click onClick = method.getAnnotation(Click.class);
             int id = onClick.value();
-            android.view.View view =  promptsView.findViewById(id);
+            android.view.View view =  itemView.findViewById(id);
             view.setOnClickListener(new android.view.View.OnClickListener() {
                 @Override
                 public void onClick(android.view.View v) {
@@ -77,6 +83,10 @@ public class ViewBinder<T extends ViewResolver> {
 
     protected T getResolver() {
         return mResolver;
+    }
+
+    public android.view.View getmItemView() {
+        return mItemView;
     }
 
     protected static List<ViewBinder<ViewResolver>> getViewBinderList() {
