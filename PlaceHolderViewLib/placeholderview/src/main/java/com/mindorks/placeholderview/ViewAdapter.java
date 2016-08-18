@@ -27,6 +27,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         mViewBinderList.get(position).bindView(holder.itemView);
+        mViewBinderList.get(position).getResolver().onResolved();
     }
 
     @Override
