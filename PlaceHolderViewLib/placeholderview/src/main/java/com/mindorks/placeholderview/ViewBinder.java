@@ -24,7 +24,7 @@ public class ViewBinder<T extends ViewResolver> {
     private android.view.View mItemView;
     private T mResolver;
 
-    protected ViewBinder(final T resolver, Context context){
+    protected ViewBinder(Context context, final T resolver){
         mResolver = resolver;
         mItemView = bindLayout(context, resolver);
         bindView(mItemView);

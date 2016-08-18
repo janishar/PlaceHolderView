@@ -43,17 +43,17 @@ public class PlaceHolderView extends RecyclerView {
         mViewAdapter.notifyDataSetChanged();
     }
 
-    protected <T extends ViewResolver>PlaceHolderView addView(T viewResolver){
+    public <T extends ViewResolver>PlaceHolderView addView(T viewResolver){
         mViewAdapter.addView(viewResolver);
         return this;
     }
 
-    protected  <T extends ViewResolver>PlaceHolderView removeView(T viewResolver){
+    public  <T extends ViewResolver>PlaceHolderView removeView(T viewResolver){
         mViewAdapter.removeView(viewResolver);
         return this;
     }
 
-    protected <T extends ViewResolver>PlaceHolderView addView(int position, T viewResolver){
+    public <T extends ViewResolver>PlaceHolderView addView(int position, T viewResolver){
         mViewAdapter.addView(position, viewResolver);
         return this;
     }

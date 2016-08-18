@@ -5,14 +5,17 @@ import android.content.Context;
 /**
  * Created by janisharali on 18/08/16.
  */
-public class ViewResolver {
+public abstract class ViewResolver {
 
     private Context mContext;
     private ViewBinder<ViewResolver> mViewBinder;
 
-    public ViewResolver(Context context, ViewResolver resolver) {
+    public ViewResolver(Context context) {
         mContext = context;
-        mViewBinder = new ViewBinder<>(resolver);
+    }
+
+    public void onBind(ViewResolver resolver){
+        mViewBinder = new ViewBinder<>(mContext, resolver);
     }
 
     public Context getContext() {
