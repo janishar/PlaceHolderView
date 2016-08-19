@@ -18,11 +18,11 @@ public class View1{
 
     @Resolve
     public void onResolved() {
-        txt.setText("ALI");
+        txt.setText(String.valueOf(System.currentTimeMillis() / 1000));
     }
 
     @Click(R.id.btn)
     public void onClick(){
-        txt.setText("ALI1");
+        txt.setText(String.valueOf(System.currentTimeMillis() / 1000));
     }
 }

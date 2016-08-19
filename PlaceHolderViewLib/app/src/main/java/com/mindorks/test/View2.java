@@ -22,13 +22,15 @@ public class View2{
 
     @Resolve
     public void onResolved() {
-        txt1.setText("ALI");
-        txt2.setText("ANWAR");
+        txt1.setText("A");
+        txt2.setText("B");
     }
 
     @Click(R.id.btn)
     public void onClick(){
-        txt1.setText("ALI2");
-        txt2.setText("ANWAR2");
+        String str1 = txt1.getText().toString();
+        String str2 = txt2.getText().toString();
+        txt1.setText(str2);
+        txt2.setText(str1);
     }
 }

@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnifeLite.bind(this);
         placeHolderView.getBuilder()
                 .setHasFixedSize(false)
-                .setItemViewCacheSize(5);
+                .setItemViewCacheSize(10);
 //                .setLayoutManager(new GridLayoutManager(this, 3));
 
         placeHolderView
@@ -30,7 +30,6 @@ public class MainActivity extends AppCompatActivity {
                 .addView(new View1())
                 .addView(new View1())
                 .addView(new View2());
-
 //        placeHolderView.removeView(1).removeView(3);
     }
 
