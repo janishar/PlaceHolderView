@@ -1,12 +1,8 @@
 package com.mindorks.placeholderview;
 
 import android.content.Context;
-import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by janisharali on 18/08/16.
