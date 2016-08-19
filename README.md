@@ -1,7 +1,7 @@
 # PlaceHolderView
 ##No ListView : No GridView : No RecyclerView : Only one View for all : *PlaceHolderView*
 
-##This library tends to remove the boiler plate code involved in creating RecyclerView. In the process making it extremely simple and easy to create any type of dynamic view with just few lines of code. No adapter is required to build and manipulate the view, rather anotation based model in a very simple form is sufficient. It makes the code modular and lean, yet much more powerful.
+##This library tends to remove the boiler plate code involved in creating RecyclerView. In the process making it extremely simple and easy to create any type of dynamic view with just few lines of code. No adapter is required to build and manipulate the view, rather annotation based model in a very simple form is sufficient. It makes the code modular and lean, yet much more powerful.
 
 ##STEP 1: Define a PlaceHolderView inside any XML layout
 ```java
@@ -87,7 +87,7 @@ public class View1{
 
 ##PlaceHolderView
 1. getBuilder(): Get builder for the PlaceHolderView to modify the default properties
-2. setLayoutManager(layoutManeger): Add custom layout manager
+2. setLayoutManager(layoutManager): Add custom layout manager
 3. addView(): Add views to the PlaceHolderView
 4. removeView(): Removes the existing view
 5. SmoothLinearLayoutManager: This class is bundled with the library, and should be used for those view which have dynamic images. It reduces the screen flikering on bind
