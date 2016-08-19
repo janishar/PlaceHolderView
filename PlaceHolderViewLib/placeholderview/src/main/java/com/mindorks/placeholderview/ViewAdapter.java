@@ -13,7 +13,7 @@ import java.util.List;
  */
 public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
-    private List<ViewBinder<ViewResolver>> mViewBinderList;
+    private List<ViewBinder> mViewBinderList;
 
     public ViewAdapter() {
         mViewBinderList = new ArrayList<>();
@@ -39,7 +39,6 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         mViewBinderList.get(position).bindView(holder.itemView);
-        mViewBinderList.get(position).getResolver().onResolved();
     }
 
     /**
@@ -77,8 +76,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
      * @param <T>
      * @throws IndexOutOfBoundsException
      */
-    protected <T extends ViewResolver>void addView(T viewResolver)throws IndexOutOfBoundsException{
-        mViewBinderList.add(new ViewBinder<ViewResolver>(viewResolver));
+    protected <T>void addView(T viewResolver)throws IndexOutOfBoundsException{
+        mViewBinderList.add(new ViewBinder(viewResolver));
         notifyItemInserted(mViewBinderList.size() - 1);
     }
 
@@ -88,7 +87,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
      * @param <T>
      * @throws IndexOutOfBoundsException
      */
-    protected  <T extends ViewResolver>void removeView(T viewResolver)throws IndexOutOfBoundsException{
+    protected  <T>void removeView(T viewResolver)throws IndexOutOfBoundsException{
         int position = -1;
         for(ViewBinder viewBinder : mViewBinderList){
             if(viewBinder.getResolver() == viewResolver){
@@ -108,8 +107,8 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
      * @param <T>
      * @throws IndexOutOfBoundsException
      */
-    protected <T extends ViewResolver>void addView(int position, T viewResolver)throws IndexOutOfBoundsException{
-        mViewBinderList.add(position, new ViewBinder<ViewResolver>(viewResolver));
+    protected <T>void addView(int position, T viewResolver)throws IndexOutOfBoundsException{
+        mViewBinderList.add(position, new ViewBinder(viewResolver));
         notifyItemInserted(position);
     }
 

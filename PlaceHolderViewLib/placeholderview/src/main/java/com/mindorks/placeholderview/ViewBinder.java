@@ -1,6 +1,7 @@
 package com.mindorks.placeholderview;
 
 import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
 import com.mindorks.placeholderview.annotations.Click;
@@ -15,10 +16,11 @@ import java.util.List;
 /**
  * Created by janisharali on 18/08/16.
  */
-public class ViewBinder<T extends ViewResolver> {
+public class ViewBinder<T> {
 
     private int mLayoutId;
     private T mResolver;
+    private List<Method> resolveMethodList;
 
     /**
      *
@@ -26,6 +28,7 @@ public class ViewBinder<T extends ViewResolver> {
      */
     protected ViewBinder(final T resolver){
         mResolver = resolver;
+        resolveMethodList = new ArrayList<>();
         bindLayout(resolver);
     }
 
@@ -36,6 +39,7 @@ public class ViewBinder<T extends ViewResolver> {
     protected void bindView(android.view.View promptsView){
         bindViews(mResolver, mResolver.getClass().getFields(), promptsView);
         bindClick(mResolver, mResolver.getClass().getMethods(), promptsView);
+        resolveView(mResolver, mResolver.getClass().getMethods());
     }
 
     /**
@@ -65,6 +69,26 @@ public class ViewBinder<T extends ViewResolver> {
                 try {
                     field.set(resolver, view);
                 } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     * @param resolver
+     * @param methods
+     */
+    private void resolveView(final T resolver,final Method[] methods){
+        for(final Method method : methods) {
+            Annotation annotation = method.getAnnotation(Resolve.class);
+            if(annotation instanceof Resolve) {
+                try {
+                    method.invoke(resolver);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
                     e.printStackTrace();
                 }
             }

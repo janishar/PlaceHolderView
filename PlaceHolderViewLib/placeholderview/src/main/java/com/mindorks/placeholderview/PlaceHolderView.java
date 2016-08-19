@@ -82,7 +82,7 @@ public class PlaceHolderView extends RecyclerView {
      * @return
      * @throws IndexOutOfBoundsException
      */
-    public <T extends ViewResolver>PlaceHolderView addView(T viewResolver)throws IndexOutOfBoundsException{
+    public <T>PlaceHolderView addView(T viewResolver)throws IndexOutOfBoundsException{
         mViewAdapter.addView(viewResolver);
         return this;
     }
@@ -94,7 +94,7 @@ public class PlaceHolderView extends RecyclerView {
      * @return
      * @throws IndexOutOfBoundsException
      */
-    public  <T extends ViewResolver>PlaceHolderView removeView(T viewResolver)throws IndexOutOfBoundsException{
+    public  <T>PlaceHolderView removeView(T viewResolver)throws IndexOutOfBoundsException{
         mViewAdapter.removeView(viewResolver);
         return this;
     }
@@ -107,7 +107,7 @@ public class PlaceHolderView extends RecyclerView {
      * @return
      * @throws IndexOutOfBoundsException
      */
-    public <T extends ViewResolver>PlaceHolderView addView(int position, T viewResolver)throws IndexOutOfBoundsException{
+    public <T>PlaceHolderView addView(int position, T viewResolver)throws IndexOutOfBoundsException{
         mViewAdapter.addView(position, viewResolver);
         return this;
     }
