@@ -63,6 +63,7 @@ public class View1{
 
 ##STEP 4: Build the PlaceHolderView in the main view
 ```java
+ PlaceHolderView placeHolderView = (PlaceHolderView)findViewById(R.id.placeHolderView);
  placeHolderView.getBuilder()
                 .setHasFixedSize(false)
                 .setItemViewCacheSize(10);
