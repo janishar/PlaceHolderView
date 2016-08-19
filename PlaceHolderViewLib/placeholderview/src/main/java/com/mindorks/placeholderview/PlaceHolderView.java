@@ -32,7 +32,7 @@ public class PlaceHolderView extends RecyclerView {
      * @param context
      * @param attrs
      */
-    public PlaceHolderView(Context context, @Nullable AttributeSet attrs) {
+    public PlaceHolderView(Context context, AttributeSet attrs) {
         super(context, attrs);
         mContext = context;
         setupView(context);
@@ -44,7 +44,7 @@ public class PlaceHolderView extends RecyclerView {
      * @param attrs
      * @param defStyle
      */
-    public PlaceHolderView(Context context, @Nullable AttributeSet attrs, int defStyle) {
+    public PlaceHolderView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         mContext = context;
         setupView(context);
