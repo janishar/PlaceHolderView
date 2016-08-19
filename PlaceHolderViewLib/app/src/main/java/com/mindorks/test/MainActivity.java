@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
         placeHolderView
                 .addView(new View1())
                 .addView(new View2())
-                .addView(new View1())
+                .addView(new View3(this))
                 .addView(new View1())
                 .addView(new View2());
 //        placeHolderView.removeView(1).removeView(3);

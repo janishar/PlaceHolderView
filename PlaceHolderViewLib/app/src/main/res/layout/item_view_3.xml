@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     tools:context="com.mindorks.test.MainActivity">
     <com.mindorks.placeholderview.PlaceHolderView
-        android:id="@+id/placeHolderView"
+        android:id="@+id/itemPlaceHolderView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </RelativeLayout>
