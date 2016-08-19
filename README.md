@@ -1,6 +1,6 @@
 # PlaceHolderView
 ##*A wrapper for android recyclerview*
-No ListView no GridView no RecyclerView: Only one View for all: *PlaceHolderView*
+No ListView : No GridView : No RecyclerView : Only one View for all : *PlaceHolderView*
 
 ##This library tends to remove the boiler plate code involved in creating RecyclerView. In the process making it extremely simple and easy to create any type of dynamic view with just few lines of code. No adapter is required to build and manipulate the view, rather anotation based model in a very simple form is sufficient. It makes the code modular and lean, yet much more powerful.
 
