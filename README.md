@@ -80,7 +80,7 @@ public class View1{
 
 #NOTES:
 
-##Anotations
+##Annotations
 1. @Layout: Bind the XML layout with the class
 2. @View: Bind the variable with the view defined in the above layout
 3. @Click: Bind the OnClickListener to the view
