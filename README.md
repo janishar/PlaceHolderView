@@ -1,7 +1,7 @@
 # PlaceHolderView
 ##No ListView : No GridView : No RecyclerView : Only one View for all : *PlaceHolderView*
 
-##New beta3 release has awesome animations prebuilt, will be rewriting this reademe in a while
+##New beta3 release has awesome animations prebuilt, will be rewriting this readme in a while
 
 ##This library tends to remove the boiler plate code involved in creating RecyclerView. In the process making it extremely simple and easy to create any type of dynamic view with just few lines of code. No adapter is required to build and manipulate the view, rather annotation based model in a very simple form is sufficient. It makes the code modular and lean, yet much more powerful.
 
