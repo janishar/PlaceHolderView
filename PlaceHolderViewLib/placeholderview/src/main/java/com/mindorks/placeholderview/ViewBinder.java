@@ -2,6 +2,7 @@ package com.mindorks.placeholderview;
 
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
+import com.mindorks.placeholderview.annotations.Nullable;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
@@ -21,6 +22,7 @@ public class ViewBinder<T> {
 
     private int mLayoutId;
     private T mResolver;
+    private boolean isNullable = false;
 
     /**
      *
@@ -29,6 +31,7 @@ public class ViewBinder<T> {
     protected ViewBinder(final T resolver){
         mResolver = resolver;
         bindLayout(resolver);
+        getNullable(resolver);
     }
 
     /**
@@ -51,6 +54,14 @@ public class ViewBinder<T> {
         if(annotation instanceof Layout) {
             Layout layout = (Layout) annotation;
             mLayoutId = layout.value();
+        }
+    }
+
+    private void getNullable(final T resolver){
+        Annotation annotation = resolver.getClass().getAnnotation(Nullable.class);
+        if(annotation instanceof Nullable) {
+            Nullable nullable = (Nullable) annotation;
+            isNullable = nullable.value();
         }
     }
 
@@ -160,7 +171,7 @@ public class ViewBinder<T> {
      * Remove all the references in the original class
      */
     protected void unbind(){
-        if(mResolver != null) {
+        if(mResolver != null && isNullable) {
             for (final Field field : mResolver.getClass().getDeclaredFields()) {
                 try {
                     field.setAccessible(true);
