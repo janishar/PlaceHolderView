@@ -1,6 +1,8 @@
 # PlaceHolderView
 ##No ListView : No GridView : No RecyclerView : Only one View for all : *PlaceHolderView*
 
+##New beta3 release has awesome animations prebuilt, will be rewriting this reademe in a while
+
 ##This library tends to remove the boiler plate code involved in creating RecyclerView. In the process making it extremely simple and easy to create any type of dynamic view with just few lines of code. No adapter is required to build and manipulate the view, rather annotation based model in a very simple form is sufficient. It makes the code modular and lean, yet much more powerful.
 
 ##STEP 1: Define a PlaceHolderView inside any XML layout
@@ -99,7 +101,7 @@ public class View1{
 
 #Gradle
 ```java
-compile 'com.mindorks:placeholderview:0.0.1-beta2'
+compile 'com.mindorks:placeholderview:0.0.1-beta3'
 ```
 #Dependency: It depends on the RecyclerView
 ```java
