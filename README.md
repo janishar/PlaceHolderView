@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"/>
 
 ```
-##STEP 2: Create item views XML's, example : item_view_1.xml
+##STEP 2: Create item views XML, example : item_view_1.xml
 ```java
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
@@ -80,7 +80,7 @@ public class View1{
 
 #NOTES:
 
-##Anotations
+##Annotations
 1. @Layout: Bind the XML layout with the class
 2. @View: Bind the variable with the view defined in the above layout
 3. @Click: Bind the OnClickListener to the view
