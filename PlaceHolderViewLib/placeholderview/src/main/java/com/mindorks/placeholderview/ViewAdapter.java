@@ -66,6 +66,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
      * @throws IndexOutOfBoundsException
      */
     protected void removeView(int position)throws IndexOutOfBoundsException{
+        mViewBinderList.get(position).unbind();
         mViewBinderList.remove(position);
         notifyItemRemoved(position);
     }
@@ -95,6 +96,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
             }
         }
         if(position != -1){
+            mViewBinderList.get(position).unbind();
             mViewBinderList.remove(position);
             notifyItemRemoved(position);
         }
@@ -111,5 +113,4 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         mViewBinderList.add(position, new ViewBinder(viewResolver));
         notifyItemInserted(position);
     }
-
 }

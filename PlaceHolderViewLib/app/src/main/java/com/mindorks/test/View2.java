@@ -15,10 +15,10 @@ import com.mindorks.placeholderview.annotations.View;
 public class View2{
 
     @View(R.id.txt1)
-    public TextView txt1;
+    private TextView txt1;
 
     @View(R.id.txt2)
-    public TextView txt2;
+    private TextView txt2;
 
     @Resolve
     public void onResolved() {
@@ -27,7 +27,7 @@ public class View2{
     }
 
     @Click(R.id.btn)
-    public void onClick(){
+    private void onClick(){
         String str1 = txt1.getText().toString();
         String str2 = txt2.getText().toString();
         txt1.setText(str2);

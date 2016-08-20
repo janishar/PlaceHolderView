@@ -1,6 +1,7 @@
 package com.mindorks.placeholderview;
 
 import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
@@ -20,7 +21,6 @@ public class ViewBinder<T> {
 
     private int mLayoutId;
     private T mResolver;
-    private List<Method> resolveMethodList;
 
     /**
      *
@@ -28,7 +28,6 @@ public class ViewBinder<T> {
      */
     protected ViewBinder(final T resolver){
         mResolver = resolver;
-        resolveMethodList = new ArrayList<>();
         bindLayout(resolver);
     }
 
@@ -37,9 +36,10 @@ public class ViewBinder<T> {
      * @param promptsView
      */
     protected void bindView(android.view.View promptsView){
-        bindViews(mResolver, mResolver.getClass().getFields(), promptsView);
-        bindClick(mResolver, mResolver.getClass().getMethods(), promptsView);
-        resolveView(mResolver, mResolver.getClass().getMethods());
+        bindViews(mResolver, mResolver.getClass().getDeclaredFields(), promptsView);
+        bindClick(mResolver, mResolver.getClass().getDeclaredMethods(), promptsView);
+        bindLongPress(mResolver, mResolver.getClass().getDeclaredMethods(), promptsView);
+        resolveView(mResolver, mResolver.getClass().getDeclaredMethods());
     }
 
     /**
@@ -67,6 +67,7 @@ public class ViewBinder<T> {
                 View viewAnnotation = (View) annotation;
                 android.view.View view = promptsView.findViewById(viewAnnotation.value());
                 try {
+                    field.setAccessible(true);
                     field.set(resolver, view);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
@@ -85,6 +86,7 @@ public class ViewBinder<T> {
             Annotation annotation = method.getAnnotation(Resolve.class);
             if(annotation instanceof Resolve) {
                 try {
+                    method.setAccessible(true);
                     method.invoke(resolver);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
@@ -111,6 +113,7 @@ public class ViewBinder<T> {
                     @Override
                     public void onClick(android.view.View v) {
                         try {
+                            method.setAccessible(true);
                             method.invoke(resolver);
                         } catch (IllegalAccessException e) {
                             e.printStackTrace();
@@ -120,6 +123,53 @@ public class ViewBinder<T> {
                     }
                 });
             }
+        }
+    }
+
+    /**
+     *
+     * @param resolver
+     * @param methods
+     * @param promptsView
+     */
+    private void bindLongPress(final T resolver,final Method[] methods,final android.view.View promptsView){
+        for(final Method method : methods){
+            Annotation annotation = method.getAnnotation(LongClick.class);
+            if(annotation instanceof LongClick) {
+                LongClick longClickAnnotation = (LongClick) annotation;
+                android.view.View view = promptsView.findViewById(longClickAnnotation.value());
+                view.setOnLongClickListener(new android.view.View.OnLongClickListener() {
+                    @Override
+                    public boolean onLongClick(android.view.View v) {
+                        try {
+                            method.setAccessible(true);
+                            method.invoke(resolver);
+                        } catch (IllegalAccessException e) {
+                            e.printStackTrace();
+                        } catch (InvocationTargetException e) {
+                            e.printStackTrace();
+                        }
+                        return true;
+                    }
+                });
+            }
+        }
+    }
+
+    /**
+     * Remove all the references in the original class
+     */
+    protected void unbind(){
+        if(mResolver != null) {
+            for (final Field field : mResolver.getClass().getDeclaredFields()) {
+                try {
+                    field.setAccessible(true);
+                    field.set(mResolver, null);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+            mResolver = null;
         }
     }
 

@@ -1,9 +1,14 @@
 package com.mindorks.test;
 
+import android.graphics.Color;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.TextView;
+
+import com.mindorks.placeholderview.PlaceHolderView;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
@@ -14,15 +19,26 @@ import com.mindorks.placeholderview.annotations.View;
 public class View1{
 
     @View(R.id.txt)
-    public TextView txt;
+    private TextView txt;
+
+    private PlaceHolderView mPlaceHolderView;
+
+    public View1(PlaceHolderView placeHolderView) {
+        mPlaceHolderView = placeHolderView;
+    }
 
     @Resolve
-    public void onResolved() {
+    private void onResolved() {
         txt.setText(String.valueOf(System.currentTimeMillis() / 1000));
     }
 
     @Click(R.id.btn)
-    public void onClick(){
+    private void onClick(){
         txt.setText(String.valueOf(System.currentTimeMillis() / 1000));
+    }
+
+    @LongClick(R.id.mainView)
+    private void onMainViewLongClick(){
+        mPlaceHolderView.removeView(this);
     }
 }

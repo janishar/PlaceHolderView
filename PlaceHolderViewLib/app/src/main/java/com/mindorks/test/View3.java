@@ -18,7 +18,7 @@ import com.mindorks.placeholderview.annotations.View;
 public class View3 {
 
     @View(R.id.itemPlaceHolderView)
-    public PlaceHolderView placeHolderView;
+    private PlaceHolderView placeHolderView;
 
     private Context mContext;
 
@@ -27,17 +27,14 @@ public class View3 {
     }
 
     @Resolve
-    public void onResolved() {
+    private void onResolved() {
         placeHolderView.getBuilder()
                 .setHasFixedSize(false)
                 .setItemViewCacheSize(10)
                 .setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
 
         placeHolderView
-                .addView(new View1())
                 .addView(new View2())
-                .addView(new View1())
-                .addView(new View1())
                 .addView(new View2());
     }
 }
