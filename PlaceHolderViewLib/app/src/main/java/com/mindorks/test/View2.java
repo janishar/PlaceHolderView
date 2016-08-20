@@ -3,6 +3,8 @@ package com.mindorks.test;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.mindorks.placeholderview.Animation;
+import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;

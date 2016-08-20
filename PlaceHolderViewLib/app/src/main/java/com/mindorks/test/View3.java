@@ -5,7 +5,9 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.widget.TextView;
 
+import com.mindorks.placeholderview.Animation;
 import com.mindorks.placeholderview.PlaceHolderView;
+import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
@@ -34,6 +36,9 @@ public class View3 {
                 .setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
 
         placeHolderView
+                .addView(new View2())
+                .addView(new View2())
+                .addView(new View2())
                 .addView(new View2())
                 .addView(new View2());
     }

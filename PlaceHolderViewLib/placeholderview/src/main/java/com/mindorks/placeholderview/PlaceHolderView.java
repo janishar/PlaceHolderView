@@ -51,7 +51,7 @@ public class PlaceHolderView extends RecyclerView {
      * @param context
      */
     private void setupView(Context context){
-        mViewAdapter = new ViewAdapter();
+        mViewAdapter = new ViewAdapter(context);
         mBuilder = new PlaceHolderViewBuilder(context, this);
         setAdapter(mViewAdapter);
     }

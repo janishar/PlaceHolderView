@@ -1,5 +1,9 @@
 package com.mindorks.placeholderview;
 
+import android.content.Context;
+import android.support.annotation.AnimatorRes;
+
+import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.Nullable;
@@ -14,14 +18,16 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by janisharali on 18/08/16.
  */
-public class ViewBinder<T> {
+public class ViewBinder<T, V extends android.view.View> {
 
     private int mLayoutId;
     private T mResolver;
+    private AnimResolver mAnimResolver;
     private boolean isNullable = false;
 
     /**
@@ -32,17 +38,28 @@ public class ViewBinder<T> {
         mResolver = resolver;
         bindLayout(resolver);
         getNullable(resolver);
+        mAnimResolver = new AnimResolver<>();
     }
 
     /**
      *
      * @param promptsView
      */
-    protected void bindView(android.view.View promptsView){
+    protected void bindView(V promptsView){
         bindViews(mResolver, mResolver.getClass().getDeclaredFields(), promptsView);
         bindClick(mResolver, mResolver.getClass().getDeclaredMethods(), promptsView);
         bindLongPress(mResolver, mResolver.getClass().getDeclaredMethods(), promptsView);
         resolveView(mResolver, mResolver.getClass().getDeclaredMethods());
+    }
+
+    /**
+     *
+     * @param deviceWidth
+     * @param deviceHeight
+     * @param view
+     */
+    protected void bindAnimation(int deviceWidth, int deviceHeight, V view){
+        mAnimResolver.bindAnimation(deviceWidth,deviceHeight, mResolver, view);
     }
 
     /**
@@ -57,6 +74,10 @@ public class ViewBinder<T> {
         }
     }
 
+    /**
+     *
+     * @param resolver
+     */
     private void getNullable(final T resolver){
         Annotation annotation = resolver.getClass().getAnnotation(Nullable.class);
         if(annotation instanceof Nullable) {
@@ -71,7 +92,7 @@ public class ViewBinder<T> {
      * @param fields
      * @param promptsView
      */
-    private void bindViews(final T resolver,final Field[] fields, android.view.View promptsView){
+    private void bindViews(final T resolver,final Field[] fields, V promptsView){
         for(final Field field : fields) {
             Annotation annotation = field.getAnnotation(View.class);
             if(annotation instanceof View) {
@@ -114,7 +135,7 @@ public class ViewBinder<T> {
      * @param methods
      * @param promptsView
      */
-    private void bindClick(final T resolver,final Method[] methods,final android.view.View promptsView){
+    private void bindClick(final T resolver,final Method[] methods,final V promptsView){
         for(final Method method : methods){
             Annotation annotation = method.getAnnotation(Click.class);
             if(annotation instanceof Click) {
@@ -143,7 +164,7 @@ public class ViewBinder<T> {
      * @param methods
      * @param promptsView
      */
-    private void bindLongPress(final T resolver,final Method[] methods,final android.view.View promptsView){
+    private void bindLongPress(final T resolver,final Method[] methods,final V promptsView){
         for(final Method method : methods){
             Annotation annotation = method.getAnnotation(LongClick.class);
             if(annotation instanceof LongClick) {
@@ -181,6 +202,7 @@ public class ViewBinder<T> {
                 }
             }
             mResolver = null;
+            mAnimResolver = null;
         }
     }
 

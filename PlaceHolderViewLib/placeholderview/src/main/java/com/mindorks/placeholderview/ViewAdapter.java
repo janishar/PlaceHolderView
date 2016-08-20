@@ -1,5 +1,6 @@
 package com.mindorks.placeholderview;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,8 +15,10 @@ import java.util.List;
 public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<ViewBinder> mViewBinderList;
+    private Context mContext;
 
-    public ViewAdapter() {
+    public ViewAdapter(Context context) {
+        mContext = context;
         mViewBinderList = new ArrayList<>();
     }
 
@@ -39,6 +42,17 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         mViewBinderList.get(position).bindView(holder.itemView);
+    }
+
+    @Override
+    public void onViewAttachedToWindow(ViewHolder holder) {
+        super.onViewAttachedToWindow(holder);
+        if(holder.getLayoutPosition() > RecyclerView.NO_POSITION && holder.getLayoutPosition() < mViewBinderList.size()) {
+            mViewBinderList.get(holder.getLayoutPosition()).bindAnimation(
+                    Utils.getDeviceWidth(mContext),
+                    Utils.getDeviceHeight(mContext),
+                    holder.itemView);
+        }
     }
 
     /**

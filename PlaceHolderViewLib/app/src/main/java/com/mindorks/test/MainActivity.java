@@ -3,6 +3,7 @@ package com.mindorks.test;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.view.animation.DecelerateInterpolator;
 
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
                 .setHasFixedSize(false)
                 .setItemViewCacheSize(10);
 //                .setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
+//                .setLayoutManager(new GridLayoutManager(this, 3));
 
         mPlaceHolderView
                 .addView(new View1(mPlaceHolderView))
