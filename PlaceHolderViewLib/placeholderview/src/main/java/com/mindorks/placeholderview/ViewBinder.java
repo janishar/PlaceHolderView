@@ -2,7 +2,7 @@ package com.mindorks.placeholderview;
 
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
-import com.mindorks.placeholderview.annotations.Nullable;
+import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
@@ -72,10 +72,10 @@ public class ViewBinder<T, V extends android.view.View> {
      * @param resolver
      */
     private void getNullable(final T resolver){
-        Annotation annotation = resolver.getClass().getAnnotation(Nullable.class);
-        if(annotation instanceof Nullable) {
-            Nullable nullable = (Nullable) annotation;
-            isNullable = nullable.value();
+        Annotation annotation = resolver.getClass().getAnnotation(NonReusable.class);
+        if(annotation instanceof NonReusable) {
+            NonReusable nonReusable = (NonReusable) annotation;
+            isNullable = nonReusable.value();
         }
     }
 

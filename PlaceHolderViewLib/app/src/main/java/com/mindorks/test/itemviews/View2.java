@@ -1,4 +1,4 @@
-package com.mindorks.test;
+package com.mindorks.test.itemviews;
 
 import android.widget.Button;
 import android.widget.TextView;
@@ -9,6 +9,7 @@ import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
+import com.mindorks.test.R;
 
 /**
  * Created by janisharali on 19/08/16.

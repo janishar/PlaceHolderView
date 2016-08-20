@@ -1,9 +1,5 @@
-package com.mindorks.test;
+package com.mindorks.test.itemviews;
 
-import android.graphics.Color;
-import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import com.mindorks.placeholderview.Animation;
@@ -12,15 +8,16 @@ import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
-import com.mindorks.placeholderview.annotations.Nullable;
+import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
+import com.mindorks.test.R;
 
 /**
  * Created by janisharali on 19/08/16.
  */
 @Animate(Animation.ENTER_RIGHT_DESC)
-@Nullable
+@NonReusable
 @Layout(R.layout.item_view_1)
 public class View1{
 
