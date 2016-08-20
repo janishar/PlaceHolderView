@@ -10,8 +10,21 @@ import java.lang.annotation.Annotation;
 /**
  * Created by janisharali on 20/08/16.
  */
-public class AnimResolver<T, V extends View> {
 
+/**
+ *
+ * @param <T>
+ * @param <V>
+ */
+public class AnimationResolver<T, V extends View> {
+
+    /**
+     *
+     * @param deviceWidth
+     * @param deviceHeight
+     * @param resolver
+     * @param view
+     */
     protected void bindAnimation(int deviceWidth, int deviceHeight,T resolver, V view){
         Annotation annotation = resolver.getClass().getAnnotation(Animate.class);
         if(annotation instanceof Animate) {

@@ -1,9 +1,5 @@
 package com.mindorks.placeholderview;
 
-import android.content.Context;
-import android.support.annotation.AnimatorRes;
-
-import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.Nullable;
@@ -16,9 +12,6 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
 
 /**
  * Created by janisharali on 18/08/16.
@@ -27,7 +20,7 @@ public class ViewBinder<T, V extends android.view.View> {
 
     private int mLayoutId;
     private T mResolver;
-    private AnimResolver mAnimResolver;
+    private AnimationResolver mAnimationResolver;
     private boolean isNullable = false;
 
     /**
@@ -38,7 +31,7 @@ public class ViewBinder<T, V extends android.view.View> {
         mResolver = resolver;
         bindLayout(resolver);
         getNullable(resolver);
-        mAnimResolver = new AnimResolver<>();
+        mAnimationResolver = new AnimationResolver<>();
     }
 
     /**
@@ -59,7 +52,7 @@ public class ViewBinder<T, V extends android.view.View> {
      * @param view
      */
     protected void bindAnimation(int deviceWidth, int deviceHeight, V view){
-        mAnimResolver.bindAnimation(deviceWidth,deviceHeight, mResolver, view);
+        mAnimationResolver.bindAnimation(deviceWidth,deviceHeight, mResolver, view);
     }
 
     /**
@@ -202,7 +195,7 @@ public class ViewBinder<T, V extends android.view.View> {
                 }
             }
             mResolver = null;
-            mAnimResolver = null;
+            mAnimationResolver = null;
         }
     }
 

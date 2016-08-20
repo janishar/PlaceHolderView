@@ -12,6 +12,7 @@ import java.util.List;
 /**
  * Created by janisharali on 18/08/16.
  */
+
 public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
 
     private List<ViewBinder> mViewBinderList;

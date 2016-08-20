@@ -7,10 +7,20 @@ import android.content.Context;
  */
 public class Utils {
 
+    /**
+     *
+     * @param context
+     * @return
+     */
     protected static int getDeviceWidth(Context context){
         return context.getResources().getDisplayMetrics().widthPixels;
     }
 
+    /**
+     *
+     * @param context
+     * @return
+     */
     protected static int getDeviceHeight(Context context){
         return context.getResources().getDisplayMetrics().widthPixels;
     }
