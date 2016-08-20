@@ -33,6 +33,7 @@ public class DrawerMenuItem {
 
     private int mMenuPosition;
     private Context mContext;
+    private DrawerCallBack mCallBack;
 
     @View(R.id.itemNameTxt)
     private TextView itemNameTxt;
@@ -88,28 +89,51 @@ public class DrawerMenuItem {
         switch (mMenuPosition){
             case DRAWER_MENU_ITEM_PROFILE:
                 Toast.makeText(mContext, "Profile", Toast.LENGTH_SHORT).show();
+                if(mCallBack != null)mCallBack.onProfileMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_REQUESTS:
                 Toast.makeText(mContext, "Requests", Toast.LENGTH_SHORT).show();
+                if(mCallBack != null)mCallBack.onRequestMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_GROUPS:
                 Toast.makeText(mContext, "Groups", Toast.LENGTH_SHORT).show();
+                if(mCallBack != null)mCallBack.onGroupsMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_MESSAGE:
                 Toast.makeText(mContext, "Messages", Toast.LENGTH_SHORT).show();
+                if(mCallBack != null)mCallBack.onMessagesMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_NOTIFICATIONS:
                 Toast.makeText(mContext, "Notifications", Toast.LENGTH_SHORT).show();
+                if(mCallBack != null)mCallBack.onNotificationsMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_SETTINGS:
                 Toast.makeText(mContext, "Settings", Toast.LENGTH_SHORT).show();
+                if(mCallBack != null)mCallBack.onSettingsMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_TERMS:
                 Toast.makeText(mContext, "Terms", Toast.LENGTH_SHORT).show();
+                if(mCallBack != null)mCallBack.onTermsMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_LOGOUT:
                 Toast.makeText(mContext, "Logout", Toast.LENGTH_SHORT).show();
+                if(mCallBack != null)mCallBack.onLogoutMenuSelected();
                 break;
         }
+    }
+
+    public void setDrawerCallBack(DrawerCallBack callBack) {
+        mCallBack = callBack;
+    }
+
+    public interface DrawerCallBack{
+        void onProfileMenuSelected();
+        void onRequestMenuSelected();
+        void onGroupsMenuSelected();
+        void onMessagesMenuSelected();
+        void onNotificationsMenuSelected();
+        void onSettingsMenuSelected();
+        void onTermsMenuSelected();
+        void onLogoutMenuSelected();
     }
 }

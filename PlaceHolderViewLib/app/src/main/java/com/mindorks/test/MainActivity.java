@@ -13,9 +13,6 @@ import com.mindorks.butterknifelite.annotations.BindView;
 import com.mindorks.placeholderview.PlaceHolderView;
 import com.mindorks.test.drawer.DrawerHeader;
 import com.mindorks.test.drawer.DrawerMenuItem;
-import com.mindorks.test.itemviews.View1;
-import com.mindorks.test.itemviews.View2;
-import com.mindorks.test.itemviews.View3;
 
 
 public class MainActivity extends AppCompatActivity {
