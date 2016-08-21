@@ -1,49 +1,45 @@
 # PlaceHolderView
-###No ListView : No GridView : No RecyclerView : Only one View for all : PlaceHolderView
+![](https://github.com/janishar/janishar.github.io/blob/master/images/logo-phv.png)
 
-#Simple, Easy and superfast dynamic view creation for RecyclerView with awesome animations
+#Simple, Easy and Superfast dynamic view creation for RecyclerView with Awesome animations prebuild!
 
+##Few Implementations
 ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)     ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
 
 ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)       ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_scale.gif)
 
-##STEP 1: Define a PlaceHolderView inside any XML layout
+##STEP 1: Define a PlaceHolderView inside XML layout
 ```java
 //PlaceHolderView to wrap around the recycler view in XML
 <com.mindorks.placeholderview.PlaceHolderView
-        android:id="@+id/placeHolderView"
+        android:id="@+id/galleryView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:scrollbars="vertical"/>
 
 ```
-##STEP 2: Create item views XML, example : item_view_1.xml
+##STEP 2: Create item views XML, example: gallery_item_big.xml
 ```java
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <ImageView
+    android:layout_height="wrap_content"
+    android:padding="10dp">
+    <android.support.v7.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        android:src="@android:color/holo_orange_dark"
-        android:padding="10dp"/>
-    <TextView
-        android:id="@+id/txt"
-        android:layout_gravity="center"
-        android:textSize="16dp"
-        android:textColor="@android:color/white"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-    <Button
-        android:id="@+id/btn"
-        android:layout_gravity="bottom|center"
-        android:layout_marginBottom="10dp"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="CLICK"/>
-</FrameLayout>
+        app:cardCornerRadius="6dp"
+        app:cardElevation="6dp">
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop"
+            android:src="@android:color/holo_orange_dark"/>
+    </android.support.v7.widget.CardView>
+</LinearLayout>
 ```
 ##STEP 3: Create item class to bind and define view operations
 ```java
@@ -78,13 +74,16 @@ public class ImageTypeBig {
 }
 ```
 
-##STEP 4: Build the PlaceHolderView in the main view
+##STEP 4 : Add views to the PlaceHolderView
 ```java
+ 
  PlaceHolderView placeHolderView = (PlaceHolderView)findViewById(R.id.placeHolderView);
- placeHolderView.getBuilder()
-                .setHasFixedSize(false)
-                .setItemViewCacheSize(10);
-//                .setLayoutManager(new GridLayoutManager(this, 3));
+
+// (Optional): If customisation is Required then use Builder with the PlaceHolderView
+// placeHolderView.getBuilder()
+//      .setHasFixedSize(false)
+//      .setItemViewCacheSize(10)
+//      .setLayoutManager(new GridLayoutManager(this, 3));
 
   placeHolderView
           .addView(new View1())
@@ -115,14 +114,14 @@ public class ImageTypeBig {
 
 ##There is no adapter configuration required and the process is straight forward
 
-##PlaceHolderView can be nested by using PlaceHolderView inside the item_view_1.xml
-
 #Gradle
 ```java
-compile 'com.mindorks:placeholderview:0.0.1-beta3'
+dependencies {
+        compile 'com.mindorks:placeholderview:0.0.1-beta3'
+}
 ```
 #Dependency: It depends on the RecyclerView
 ```java
-compile 'com.android.support:recyclerview-v7:23.+'
+        com.android.support:recyclerview-v7:23.+
 ```
 
