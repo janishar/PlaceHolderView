@@ -1,7 +1,7 @@
 # PlaceHolderView
 ![](https://github.com/janishar/janishar.github.io/blob/master/images/logo-phv.png)
 
-#Simple, Easy and Superfast dynamic view creation for RecyclerView with Awesome animations prebuild!
+#Simple, Easy and Superfast dynamic view creation for RecyclerView with Awesome animations prebuilt!
 
 ##Few Implementations
 ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)     ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
