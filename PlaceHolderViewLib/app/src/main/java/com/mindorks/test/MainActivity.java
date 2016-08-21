@@ -4,6 +4,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.animation.DecelerateInterpolator;
@@ -40,11 +41,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnifeLite.bind(this);
-//        mDrawerView.getBuilder()
-//                .setHasFixedSize(false)
-//                .setItemViewCacheSize(10);
-//                .setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-//                .setLayoutManager(new GridLayoutManager(this, 3));
         setupDrawer();
         setupGallery();
 
@@ -78,6 +74,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setupGallery(){
+
+//        mGalleryView.getBuilder()
+//                .setHasFixedSize(false)
+//                .setItemViewCacheSize(10)
+//                .setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+//                .setLayoutManager(new GridLayoutManager(this, 3));
+//        for (Image image : imageList){
+//            mGalleryView.addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, image.getUrl()));
+//        }
+
         List<Image> imageList = Utils.loadImages(this.getApplicationContext());
         List<Image> newImageList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
@@ -88,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         for (int i = imageList.size() - 1; i >= 0; i--) {
             mGalleryView.addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, imageList.get(i).getUrl()));
         }
+
     }
 
     @Override
