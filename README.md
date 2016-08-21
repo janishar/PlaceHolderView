@@ -3,8 +3,9 @@
 
 #Simple, Easy and superfast dynamic view creation for RecyclerView with awesome animations
 
-![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
-![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_scale.gif)
+![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)     ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
+
+![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)       ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_scale.gif)
 
 ##STEP 1: Define a PlaceHolderView inside any XML layout
 ```java
