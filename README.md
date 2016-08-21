@@ -1,9 +1,10 @@
 # PlaceHolderView
-##No ListView : No GridView : No RecyclerView : Only one View for all : *PlaceHolderView*
+###No ListView : No GridView : No RecyclerView : Only one View for all : PlaceHolderView
 
-##New beta3 release has awesome animations prebuilt, will be rewriting this readme in a while
+#Simple, Easy and superfast dynamic view creation for RecyclerView with awesome animations
 
-##This library tends to remove the boiler plate code involved in creating RecyclerView. In the process making it extremely simple and easy to create any type of dynamic view with just few lines of code. No adapter is required to build and manipulate the view, rather annotation based model in a very simple form is sufficient. It makes the code modular and lean, yet much more powerful.
+![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
+![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_scale.gif)
 
 ##STEP 1: Define a PlaceHolderView inside any XML layout
 ```java
@@ -45,21 +46,34 @@
 ```
 ##STEP 3: Create item class to bind and define view operations
 ```java
-@Layout(R.layout.item_view_1)
-public class View1{
+@Animate(Animation.ENTER_LEFT_DESC)
+@NonReusable
+@Layout(R.layout.gallery_item_big)
+public class ImageTypeBig {
 
-    @View(R.id.txt)
-    public TextView txt;
+    @View(R.id.imageView)
+    private ImageView imageView;
+
+    private String mUlr;
+    private Context mContext;
+    private PlaceHolderView mPlaceHolderView;
+
+    public ImageTypeBig(Context context, PlaceHolderView placeHolderView, String ulr) {
+        mContext = context;
+        mPlaceHolderView = placeHolderView;
+        mUlr = ulr;
+    }
 
     @Resolve
-    public void onResolved() {
-        txt.setText(String.valueOf(System.currentTimeMillis() / 1000));
+    private void onResolved() {
+        Glide.with(mContext).load(mUlr).into(imageView);
     }
 
-    @Click(R.id.btn)
-    public void onClick(){
-        txt.setText(String.valueOf(System.currentTimeMillis() / 1000));
+    @LongClick(R.id.imageView)
+    private void onLongClick(){
+        mPlaceHolderView.removeView(this);
     }
+
 }
 ```
 
@@ -74,7 +88,7 @@ public class View1{
   placeHolderView
           .addView(new View1())
           .addView(new View2())
-          .addView(new View3(this))
+          .addView(new View3())
           .addView(new View1())
           .addView(new View2());
 ```
@@ -86,7 +100,10 @@ public class View1{
 1. @Layout: Bind the XML layout with the class
 2. @View: Bind the variable with the view defined in the above layout
 3. @Click: Bind the OnClickListener to the view
-4. @Resolve: Any operation being performed on the view reference defined by @View should be annotated with @Resolve
+4. @LongClick: Binf the long click listerner 
+5. @Resolve: Any operation being performed on the view reference defined by @View should be annotated with @Resolve
+6. @Animate(Animation.ENTER_LEFT_DESC) : Sets the defined animations in the Animation class on all the item view
+7. @NonReusable : Releases the view reference and it should not be used again in the addView() 
 
 ##PlaceHolderView
 1. getBuilder(): Get builder for the PlaceHolderView to modify the default properties
