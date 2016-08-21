@@ -19,7 +19,7 @@ import com.mindorks.test.R;
 /**
  * Created by janisharali on 19/08/16.
  */
-@Animate(Animation.FADE_IN_DESC)
+@Animate(Animation.ENTER_LEFT_DESC)
 @NonReusable
 @Layout(R.layout.gallery_item_big)
 public class ImageTypeBig {

@@ -22,6 +22,6 @@ public class Utils {
      * @return
      */
     protected static int getDeviceHeight(Context context){
-        return context.getResources().getDisplayMetrics().widthPixels;
+        return context.getResources().getDisplayMetrics().heightPixels;
     }
 }
