@@ -25,22 +25,28 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     @BindView(R.id.drawerView)
-    PlaceHolderView mDrawerView;
+    private PlaceHolderView mDrawerView;
 
     @BindView(R.id.drawerLayout)
-    DrawerLayout mDrawer;
+    private DrawerLayout mDrawer;
 
     @BindView(R.id.toolbar)
-    Toolbar mToolbar;
+    private Toolbar mToolbar;
 
     @BindView(R.id.galleryView)
-    PlaceHolderView mGalleryView;
+    private PlaceHolderView mGalleryView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnifeLite.bind(this);
+//        ButterKnifeLite.bind(this);
+
+        mDrawer = (DrawerLayout)findViewById(R.id.drawerLayout);
+        mDrawerView = (PlaceHolderView)findViewById(R.id.drawerView);
+        mToolbar = (Toolbar)findViewById(R.id.toolbar);
+        mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
+
         setupDrawer();
         setupGallery();
 
@@ -100,6 +106,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        ButterKnifeLite.unbind(this);
+//        ButterKnifeLite.unbind(this);
     }
 }
