@@ -8,12 +8,19 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipChildren="false">
-        <include
-            android:id="@+id/toolbar"
-            layout="@layout/toolbar_home"/>
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <include
+                android:id="@+id/toolbar"
+                layout="@layout/toolbar_home"/>
+            <com.mindorks.placeholderview.PlaceHolderView
+                android:id="@+id/galleryView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="vertical"/>
+        </LinearLayout>
     </android.support.design.widget.CoordinatorLayout>
     <FrameLayout
         android:layout_width="250dp"
