@@ -126,7 +126,7 @@ dependencies {
 ###If this library helps you in anyway, show your love :heart: by putting a :star: on this project :v:
 
 #Examples
-[Android Navigation Drawer](https://mindorks.blogspot.in/2016/08/navigation-drawer-android-example.html)
+[Android Navigation Drawer](https://medium.com/@janishar.ali/navigation-drawer-android-example-8dfe38c66f59#.vmlw4zb00)
 
 #License
 
