@@ -40,16 +40,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        ButterKnifeLite.bind(this);
-
-        mDrawer = (DrawerLayout)findViewById(R.id.drawerLayout);
-        mDrawerView = (PlaceHolderView)findViewById(R.id.drawerView);
-        mToolbar = (Toolbar)findViewById(R.id.toolbar);
-        mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
-
+        ButterKnifeLite.bind(this);
         setupDrawer();
         setupGallery();
-
     }
 
     private void setupDrawer(){
@@ -92,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Image> imageList = Utils.loadImages(this.getApplicationContext());
         List<Image> newImageList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
+        for (int i = 0; i <  (imageList.size() > 10 ? 10 : imageList.size()); i++) {
             newImageList.add(imageList.get(i));
         }
         mGalleryView.addView(new ImageTypeSmallPlaceHolder(this.getApplicationContext(), newImageList));
@@ -106,6 +99,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-//        ButterKnifeLite.unbind(this);
+        ButterKnifeLite.unbind(this);
     }
 }
