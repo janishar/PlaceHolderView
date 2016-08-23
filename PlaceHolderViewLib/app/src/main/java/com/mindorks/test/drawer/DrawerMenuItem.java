@@ -12,6 +12,7 @@ import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.NonReusable;
+import com.mindorks.placeholderview.annotations.Position;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.test.R;
@@ -31,7 +32,9 @@ public class DrawerMenuItem {
     public static final int DRAWER_MENU_ITEM_TERMS = 7;
     public static final int DRAWER_MENU_ITEM_LOGOUT = 8;
 
+    @Position
     private int mMenuPosition;
+
     private Context mContext;
     private DrawerCallBack mCallBack;
 
@@ -41,9 +44,8 @@ public class DrawerMenuItem {
     @View(R.id.itemIcon)
     private ImageView itemIcon;
 
-    public DrawerMenuItem(Context context, int menuPosition) {
+    public DrawerMenuItem(Context context) {
         mContext = context;
-        mMenuPosition = menuPosition;
     }
 
     @Resolve

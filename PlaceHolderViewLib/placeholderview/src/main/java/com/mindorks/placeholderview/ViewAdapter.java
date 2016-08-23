@@ -1,6 +1,7 @@
 package com.mindorks.placeholderview;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,7 +43,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        mViewBinderList.get(position).bindView(holder.itemView);
+        mViewBinderList.get(position).bindView(holder.itemView, position);
     }
 
     @Override
@@ -108,6 +109,7 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         for(ViewBinder viewBinder : mViewBinderList){
             if(viewBinder.getResolver() == viewResolver){
                 position = mViewBinderList.indexOf(viewBinder);
+                break;
             }
         }
         if(position != -1){
@@ -127,5 +129,22 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     protected <T>void addView(int position, T viewResolver)throws IndexOutOfBoundsException{
         mViewBinderList.add(position, new ViewBinder(viewResolver));
         notifyItemInserted(position);
+    }
+
+    protected <T, V>void addView(T resolverOld, V resolverNew, boolean after)throws Resources.NotFoundException{
+        int position = -1;
+        for(ViewBinder viewBinder : mViewBinderList){
+            if(viewBinder.getResolver() == resolverOld){
+                position = mViewBinderList.indexOf(viewBinder);
+                break;
+            }
+        }
+        if(position != -1){
+            if(after)position++;
+            mViewBinderList.add(position, new ViewBinder(resolverNew));
+            notifyItemInserted(position);
+        }else{
+            throw new Resources.NotFoundException("Old view don't Exists in the list");
+        }
     }
 }

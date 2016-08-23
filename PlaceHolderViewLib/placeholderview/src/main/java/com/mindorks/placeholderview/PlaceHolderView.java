@@ -1,6 +1,7 @@
 package com.mindorks.placeholderview;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
@@ -116,6 +117,16 @@ public class PlaceHolderView extends RecyclerView {
      */
     public PlaceHolderView removeView(int position) throws IndexOutOfBoundsException{
         mViewAdapter.removeView(position);
+        return this;
+    }
+
+    public <T, V>PlaceHolderView addViewBefore(T resolverOld,V resolverNew )throws Resources.NotFoundException {
+        mViewAdapter.addView(resolverOld, resolverNew, false);
+        return this;
+    }
+
+    public <T, V>PlaceHolderView addViewAfter(T resolverOld,V resolverNew )throws Resources.NotFoundException{
+        mViewAdapter.addView(resolverOld, resolverNew, true);
         return this;
     }
 

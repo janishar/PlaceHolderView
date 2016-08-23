@@ -48,14 +48,14 @@ public class MainActivity extends AppCompatActivity {
     private void setupDrawer(){
         mDrawerView
                 .addView(new DrawerHeader())
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_PROFILE))
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_REQUESTS))
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_MESSAGE))
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_GROUPS))
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_NOTIFICATIONS))
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_TERMS))
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_SETTINGS))
-                .addView(new DrawerMenuItem(this.getApplicationContext(), DrawerMenuItem.DRAWER_MENU_ITEM_LOGOUT));
+                .addView(new DrawerMenuItem(this.getApplicationContext()))
+                .addView(new DrawerMenuItem(this.getApplicationContext()))
+                .addView(new DrawerMenuItem(this.getApplicationContext()))
+                .addView(new DrawerMenuItem(this.getApplicationContext()))
+                .addView(new DrawerMenuItem(this.getApplicationContext()))
+                .addView(new DrawerMenuItem(this.getApplicationContext()))
+                .addView(new DrawerMenuItem(this.getApplicationContext()))
+                .addView(new DrawerMenuItem(this.getApplicationContext()));
 
         ActionBarDrawerToggle  drawerToggle = new ActionBarDrawerToggle(this, mDrawer, mToolbar, R.string.open_drawer, R.string.close_drawer){
             @Override
@@ -93,7 +93,6 @@ public class MainActivity extends AppCompatActivity {
         for (int i = imageList.size() - 1; i >= 0; i--) {
             mGalleryView.addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, imageList.get(i).getUrl()));
         }
-
     }
 
     @Override

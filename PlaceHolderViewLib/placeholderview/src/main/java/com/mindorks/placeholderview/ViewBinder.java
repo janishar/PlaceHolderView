@@ -3,6 +3,7 @@ package com.mindorks.placeholderview;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.NonReusable;
+import com.mindorks.placeholderview.annotations.Position;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
@@ -38,8 +39,9 @@ public class ViewBinder<T, V extends android.view.View> {
      *
      * @param promptsView
      */
-    protected void bindView(V promptsView){
+    protected void bindView(V promptsView, int position){
         bindViews(mResolver, mResolver.getClass().getDeclaredFields(), promptsView);
+        bindViewPosition(mResolver, mResolver.getClass().getDeclaredFields(), position);
         bindClick(mResolver, mResolver.getClass().getDeclaredMethods(), promptsView);
         bindLongPress(mResolver, mResolver.getClass().getDeclaredMethods(), promptsView);
         resolveView(mResolver, mResolver.getClass().getDeclaredMethods());
@@ -94,6 +96,26 @@ public class ViewBinder<T, V extends android.view.View> {
                 try {
                     field.setAccessible(true);
                     field.set(resolver, view);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    /**
+     *
+     * @param resolver
+     * @param fields
+     * @param position
+     */
+    private void bindViewPosition(final T resolver,final Field[] fields, int position){
+        for(final Field field : fields) {
+            Annotation annotation = field.getAnnotation(Position.class);
+            if(annotation instanceof Position) {
+                try {
+                    field.setAccessible(true);
+                    field.set(resolver, position);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
@@ -188,8 +210,10 @@ public class ViewBinder<T, V extends android.view.View> {
         if(mResolver != null && isNullable) {
             for (final Field field : mResolver.getClass().getDeclaredFields()) {
                 try {
-                    field.setAccessible(true);
-                    field.set(mResolver, null);
+                    if(!field.getType().isPrimitive()) {
+                        field.setAccessible(true);
+                        field.set(mResolver, null);
+                    }
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 }
