@@ -128,6 +128,10 @@ dependencies {
 #Examples
 [Android Navigation Drawer](https://medium.com/@janishar.ali/navigation-drawer-android-example-8dfe38c66f59#.vmlw4zb00)
 
+[Android Beginner Image Gallery](https://medium.com/@janishar.ali/android-beginner-image-gallery-example-da73a596f4d5#.p42z8w83o)
+
+[Android Advance Image Gallery](https://medium.com/@janishar.ali/android-advance-image-gallery-example-3ec6ddf85ed9#.6n8ouof9k)
+
 #License
 
 ```
