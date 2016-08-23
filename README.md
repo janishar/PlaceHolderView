@@ -101,7 +101,7 @@ public class ImageTypeBig {
 4. @LongClick: Bind the long click listerner to a view
 5. @Resolve: Any operation being performed on the view reference defined by @View should be annotated with @Resolve
 6. @Animate(Animation.ENTER_LEFT_DESC) : Sets the defined animations in the Animation class on this item view
-7. @NonReusable : Releases the view reference along with all the attached references and the view object using this annotation should not be used again in the addView() 
+7. @NonReusable : Releases the view reference along with all the attached references in the view object. This view object should not be used again in the addView()
 
 ##PlaceHolderView
 1. getBuilder(): Get builder for the PlaceHolderView to modify the default properties
@@ -126,7 +126,7 @@ dependencies {
 ###If this library helps you in anyway, show your love :heart: by putting a :star: on this project :v:
 
 #Examples
-[Android Navigation Drawer](https://mindorks.blogspot.in/2016/08/android-drawer-android-drawer-with-help.html)
+[Android Navigation Drawer](https://medium.com/@janishar.ali/navigation-drawer-android-example-8dfe38c66f59#.vmlw4zb00)
 
 #License
 
