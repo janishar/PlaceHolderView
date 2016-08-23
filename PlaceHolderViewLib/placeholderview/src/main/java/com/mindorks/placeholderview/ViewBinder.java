@@ -238,5 +238,4 @@ public class ViewBinder<T, V extends android.view.View> {
     protected T getResolver() {
         return mResolver;
     }
-
 }

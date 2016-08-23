@@ -14,7 +14,7 @@ import java.util.List;
  * Created by janisharali on 18/08/16.
  */
 
-public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
+public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
 
     private List<ViewBinder> mViewBinderList;
     private Context mContext;
@@ -90,10 +90,9 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     /**
      *
      * @param viewResolver
-     * @param <T>
      * @throws IndexOutOfBoundsException
      */
-    protected <T>void addView(T viewResolver)throws IndexOutOfBoundsException{
+    protected void addView(T viewResolver)throws IndexOutOfBoundsException{
         mViewBinderList.add(new ViewBinder(viewResolver));
         notifyItemInserted(mViewBinderList.size() - 1);
     }
@@ -101,10 +100,9 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
     /**
      *
      * @param viewResolver
-     * @param <T>
      * @throws IndexOutOfBoundsException
      */
-    protected  <T>void removeView(T viewResolver)throws IndexOutOfBoundsException{
+    protected  void removeView(T viewResolver)throws IndexOutOfBoundsException{
         int position = -1;
         for(ViewBinder viewBinder : mViewBinderList){
             if(viewBinder.getResolver() == viewResolver){
@@ -123,15 +121,14 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
      *
      * @param position
      * @param viewResolver
-     * @param <T>
      * @throws IndexOutOfBoundsException
      */
-    protected <T>void addView(int position, T viewResolver)throws IndexOutOfBoundsException{
+    protected void addView(int position, T viewResolver)throws IndexOutOfBoundsException{
         mViewBinderList.add(position, new ViewBinder(viewResolver));
         notifyItemInserted(position);
     }
 
-    protected <T, V>void addView(T resolverOld, V resolverNew, boolean after)throws Resources.NotFoundException{
+    protected void addView(T resolverOld, T resolverNew, boolean after)throws Resources.NotFoundException{
         int position = -1;
         for(ViewBinder viewBinder : mViewBinderList){
             if(viewBinder.getResolver() == resolverOld){
@@ -146,5 +143,13 @@ public class ViewAdapter extends RecyclerView.Adapter<ViewHolder> {
         }else{
             throw new Resources.NotFoundException("Old view don't Exists in the list");
         }
+    }
+
+    protected List<ViewBinder> getViewBinderList() {
+        return mViewBinderList;
+    }
+
+    protected Context getContext() {
+        return mContext;
     }
 }

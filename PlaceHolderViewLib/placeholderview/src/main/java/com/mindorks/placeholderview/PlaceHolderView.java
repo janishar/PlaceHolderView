@@ -12,7 +12,6 @@ public class PlaceHolderView extends RecyclerView {
 
     private ViewAdapter mViewAdapter;
     private PlaceHolderViewBuilder mBuilder;
-    private Context mContext;
 
     /**
      *
@@ -20,8 +19,7 @@ public class PlaceHolderView extends RecyclerView {
      */
     public PlaceHolderView(Context context) {
         super(context);
-        mContext = context;
-        setupView(context);
+        setupView(context, new ViewAdapter(context), new PlaceHolderViewBuilder(context, this));
     }
 
     /**
@@ -31,8 +29,7 @@ public class PlaceHolderView extends RecyclerView {
      */
     public PlaceHolderView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mContext = context;
-        setupView(context);
+        setupView(context, new ViewAdapter(context), new PlaceHolderViewBuilder(context, this));
     }
 
     /**
@@ -43,17 +40,16 @@ public class PlaceHolderView extends RecyclerView {
      */
     public PlaceHolderView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        mContext = context;
-        setupView(context);
+        setupView(context, new ViewAdapter(context), new PlaceHolderViewBuilder(context, this));
     }
 
     /**
      *
      * @param context
      */
-    private void setupView(Context context){
-        mViewAdapter = new ViewAdapter(context);
-        mBuilder = new PlaceHolderViewBuilder(context, this);
+    protected void setupView(Context context, ViewAdapter viewAdapter, PlaceHolderViewBuilder builder){
+        mViewAdapter = viewAdapter;
+        mBuilder = builder;
         setAdapter(mViewAdapter);
     }
 
@@ -75,7 +71,6 @@ public class PlaceHolderView extends RecyclerView {
     /**
      *
      * @param viewResolver
-     * @param <T>
      * @return
      * @throws IndexOutOfBoundsException
      */
@@ -91,7 +86,7 @@ public class PlaceHolderView extends RecyclerView {
      * @return
      * @throws IndexOutOfBoundsException
      */
-    public  <T>PlaceHolderView removeView(T viewResolver)throws IndexOutOfBoundsException{
+    public <T>PlaceHolderView removeView(T viewResolver)throws IndexOutOfBoundsException{
         mViewAdapter.removeView(viewResolver);
         return this;
     }
@@ -120,12 +115,12 @@ public class PlaceHolderView extends RecyclerView {
         return this;
     }
 
-    public <T, V>PlaceHolderView addViewBefore(T resolverOld,V resolverNew )throws Resources.NotFoundException {
+    public <T>PlaceHolderView addViewBefore(T resolverOld,T resolverNew )throws Resources.NotFoundException {
         mViewAdapter.addView(resolverOld, resolverNew, false);
         return this;
     }
 
-    public <T, V>PlaceHolderView addViewAfter(T resolverOld,V resolverNew )throws Resources.NotFoundException{
+    public <T>PlaceHolderView addViewAfter(T resolverOld,T resolverNew )throws Resources.NotFoundException{
         mViewAdapter.addView(resolverOld, resolverNew, true);
         return this;
     }
@@ -136,5 +131,9 @@ public class PlaceHolderView extends RecyclerView {
      */
     public PlaceHolderViewBuilder getBuilder() {
         return mBuilder;
+    }
+
+    protected ViewAdapter getViewAdapter() {
+        return mViewAdapter;
     }
 }
