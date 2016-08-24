@@ -20,6 +20,7 @@ import java.lang.reflect.Method;
 public class ViewBinder<T, V extends android.view.View> {
 
     private int mLayoutId;
+    private int mPosition;
     private T mResolver;
     private AnimationResolver mAnimationResolver;
     private boolean isNullable = false;
@@ -108,6 +109,7 @@ public class ViewBinder<T, V extends android.view.View> {
      * @param position
      */
     private void bindViewPosition(final T resolver, int position){
+        mPosition = position;
         for(final Field field : resolver.getClass().getDeclaredFields()) {
             Annotation annotation = field.getAnnotation(Position.class);
             if(annotation instanceof Position) {
@@ -232,5 +234,9 @@ public class ViewBinder<T, V extends android.view.View> {
      */
     protected T getResolver() {
         return mResolver;
+    }
+
+    protected int getPosition() {
+        return mPosition;
     }
 }

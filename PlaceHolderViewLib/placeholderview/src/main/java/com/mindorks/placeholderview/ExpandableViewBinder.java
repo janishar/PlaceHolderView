@@ -26,6 +26,7 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
     private ExpansionCallback mCallback;
     private int mChildPosition;
     private int mParentPosition;
+    private ExpandableViewBinder<T,V> mParentViewBinder;
 
     public ExpandableViewBinder(T resolver) {
         super(resolver);
@@ -52,6 +53,7 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
     }
 
     protected void bindParentPosition(int position){
+        mParentPosition = position;
         T resolver = getResolver();
         for(final Field field : resolver.getClass().getDeclaredFields()) {
             Annotation annotation = field.getAnnotation(ParentPosition.class);
@@ -67,6 +69,7 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
     }
 
     protected void bindChildPosition(int position){
+        mChildPosition = position;
         T resolver = getResolver();
         for(final Field field : resolver.getClass().getDeclaredFields()) {
             Annotation annotation = field.getAnnotation(ChildPosition.class);
@@ -180,5 +183,21 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
 
     protected boolean isSingleTop() {
         return isSingleTop;
+    }
+
+    protected int getChildPosition() {
+        return mChildPosition;
+    }
+
+    protected int getParentPosition() {
+        return mParentPosition;
+    }
+
+    protected ExpandableViewBinder<T, V> getParentViewBinder() {
+        return mParentViewBinder;
+    }
+
+    protected void setParentViewBinder(ExpandableViewBinder<T, V> mParentViewBinder) {
+        this.mParentViewBinder = mParentViewBinder;
     }
 }

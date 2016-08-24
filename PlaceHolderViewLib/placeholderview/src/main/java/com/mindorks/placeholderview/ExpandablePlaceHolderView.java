@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -30,5 +31,33 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
     @Override
     protected void setupView(Context context, ViewAdapter viewAdapter, PlaceHolderViewBuilder builder) {
         super.setupView(context, viewAdapter, builder);
+    }
+
+    public <T, V extends View> PlaceHolderView addChildView(T parentResolver, T childResolver) throws Resources.NotFoundException {
+        ((ExpandableViewAdapter<T, V>)getViewAdapter()).addChildView(parentResolver, childResolver);
+        return this;
+    }
+
+    public <T, V extends View> PlaceHolderView addChildView(int parentPosition, T childResolver) throws Resources.NotFoundException {
+        ((ExpandableViewAdapter<T, V>)getViewAdapter()).addChildView(parentPosition, childResolver);
+        return this;
+    }
+
+    @Deprecated
+    @Override
+    public <T> PlaceHolderView addView(int position, T viewResolver) throws IndexOutOfBoundsException {
+        return super.addView(position, viewResolver);
+    }
+
+    @Deprecated
+    @Override
+    public <T> PlaceHolderView addViewBefore(T resolverOld, T resolverNew) throws Resources.NotFoundException {
+        return super.addViewBefore(resolverOld, resolverNew);
+    }
+
+    @Deprecated
+    @Override
+    public <T> PlaceHolderView addViewAfter(T resolverOld, T resolverNew) throws Resources.NotFoundException {
+        return super.addViewAfter(resolverOld, resolverNew);
     }
 }

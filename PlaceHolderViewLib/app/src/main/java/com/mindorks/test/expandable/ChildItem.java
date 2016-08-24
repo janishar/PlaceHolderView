@@ -6,7 +6,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mindorks.placeholderview.Animation;
+import com.mindorks.placeholderview.ExpandablePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Animate;
+import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
@@ -44,13 +46,23 @@ public class ChildItem {
     @View(R.id.mainView)
     private LinearLayout mainView;
 
-    public ChildItem() {
+    private ExpandablePlaceHolderView mExpandablePlaceHolderView;
+
+    public ChildItem(ExpandablePlaceHolderView expandablePlaceHolderView) {
+
+        mExpandablePlaceHolderView = expandablePlaceHolderView;
+
         childTitleList = new ArrayList<>();
         List<String>titleList1 = new ArrayList<>();
         titleList1.add("a");
         titleList1.add("b");
         titleList1.add("c");
         titleList1.add("d");
+        titleList1.add("e");
+        titleList1.add("e");
+        titleList1.add("e");
+        titleList1.add("e");
+        titleList1.add("e");
         titleList1.add("e");
         childTitleList.add(titleList1);
 
@@ -60,6 +72,12 @@ public class ChildItem {
         titleList2.add("cc");
         titleList2.add("dd");
         titleList2.add("ee");
+        titleList2.add("ee");
+        titleList2.add("ee");
+        titleList2.add("ee");
+        titleList2.add("ee");
+        titleList2.add("ee");
+        titleList2.add("ee");
         childTitleList.add(titleList2);
 
         List<String>titleList3 = new ArrayList<>();
@@ -67,6 +85,11 @@ public class ChildItem {
         titleList3.add("bbb");
         titleList3.add("ccc");
         titleList3.add("ddd");
+        titleList3.add("eee");
+        titleList3.add("eee");
+        titleList3.add("eee");
+        titleList3.add("eee");
+        titleList3.add("eee");
         titleList3.add("eee");
         childTitleList.add(titleList3);
 
@@ -76,6 +99,22 @@ public class ChildItem {
         titleList4.add("cccc");
         titleList4.add("dddd");
         titleList4.add("eeee");
+        titleList4.add("eeee");
+        titleList4.add("eeee");
+        titleList4.add("eeee");
+        titleList4.add("eeee");
+        titleList4.add("eeee");
+        titleList4.add("eeee");
+        childTitleList.add(titleList4);
+
+        childTitleList.add(titleList4);
+        childTitleList.add(titleList4);
+        childTitleList.add(titleList4);
+        childTitleList.add(titleList4);
+        childTitleList.add(titleList4);
+        childTitleList.add(titleList4);
+        childTitleList.add(titleList4);
+        childTitleList.add(titleList4);
         childTitleList.add(titleList4);
     }
 
@@ -83,10 +122,12 @@ public class ChildItem {
     private void onResolved() {
         mainView.setBackgroundColor(Color.GRAY);
         itemNameTxt.setText(childTitleList.get(mParentPosition).get(mChildPosition));
+        itemIcon.setImageDrawable(mExpandablePlaceHolderView.getResources().getDrawable(R.drawable.ic_book_black_18dp));
     }
 
-//    @Click(R.id.mainView)
-//    private void onMenuItemClick(){
-//
-//    }
+    @Click(R.id.mainView)
+    private void onItemClick(){
+//        mExpandablePlaceHolderView.addChildView(mParentPosition, new ChildItem(mExpandablePlaceHolderView));
+        mExpandablePlaceHolderView.removeView(this);
+    }
 }

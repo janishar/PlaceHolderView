@@ -6,6 +6,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.expand.Collapse;
 import com.mindorks.placeholderview.annotations.expand.Expand;
@@ -52,6 +53,14 @@ public class ParentItem {
         titleList.add("Orange");
         titleList.add("Banana");
         titleList.add("Papaya");
+        titleList.add("Papaya");
+        titleList.add("Papaya");
+        titleList.add("Papaya");
+        titleList.add("Papaya");
+        titleList.add("Papaya");
+        titleList.add("Papaya");
+        titleList.add("Papaya");
+        titleList.add("Papaya");
     }
 
     @Resolve
@@ -70,9 +79,4 @@ public class ParentItem {
     private void onCollapse(){
         itemIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_keyboard_arrow_up_white_24dp));
     }
-
-//    @Click(R.id.mainView)
-//    private void onMenuItemClick(){
-//
-//    }
 }
