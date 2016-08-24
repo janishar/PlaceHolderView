@@ -111,9 +111,9 @@ public class ImageTypeBig {
 7. @NonReusable: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the addView().
 
 ##ExpandablePlaceHolderView
-######This class is build upon the PlaceHolderView and implements all the features of ExpandableListView but with much power and lot easier
+####This class is build upon the PlaceHolderView and implements all the features of ExpandableListView but with much power and lot easier
 
-#Annotations(ExpandablePlaceHolderView)
+##Annotations(ExpandablePlaceHolderView)
 1. @Parent: Defines the class to be used as the parent in the expandable list.
 2. @SingleTop: Makes only one parent remain in expanded state.
 3. @Collapse: Bind a method of the parent class to listen to the collapse event.
