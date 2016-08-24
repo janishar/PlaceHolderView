@@ -25,7 +25,6 @@ import java.util.List;
  * Created by janisharali on 19/08/16.
  */
 
-@Animate
 @Layout(R.layout.drawer_item)
 public class ChildItem {
 

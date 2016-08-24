@@ -46,6 +46,8 @@ public class PlaceHolderView extends RecyclerView {
     /**
      *
      * @param context
+     * @param viewAdapter
+     * @param builder
      */
     protected void setupView(Context context, ViewAdapter viewAdapter, PlaceHolderViewBuilder builder){
         mViewAdapter = viewAdapter;
@@ -53,6 +55,10 @@ public class PlaceHolderView extends RecyclerView {
         super.setAdapter(mViewAdapter);
     }
 
+    /**
+     *
+     * @param adapter
+     */
     @Deprecated
     @Override
     public void setAdapter(Adapter adapter) {
@@ -121,11 +127,27 @@ public class PlaceHolderView extends RecyclerView {
         return this;
     }
 
+    /**
+     *
+     * @param resolverOld
+     * @param resolverNew
+     * @param <T>
+     * @return
+     * @throws Resources.NotFoundException
+     */
     public <T>PlaceHolderView addViewBefore(T resolverOld,T resolverNew )throws Resources.NotFoundException {
         mViewAdapter.addView(resolverOld, resolverNew, false);
         return this;
     }
 
+    /**
+     *
+     * @param resolverOld
+     * @param resolverNew
+     * @param <T>
+     * @return
+     * @throws Resources.NotFoundException
+     */
     public <T>PlaceHolderView addViewAfter(T resolverOld,T resolverNew )throws Resources.NotFoundException{
         mViewAdapter.addView(resolverOld, resolverNew, true);
         return this;
@@ -139,6 +161,10 @@ public class PlaceHolderView extends RecyclerView {
         return mBuilder;
     }
 
+    /**
+     *
+     * @return
+     */
     protected ViewAdapter getViewAdapter() {
         return mViewAdapter;
     }

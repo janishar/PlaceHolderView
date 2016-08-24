@@ -1,0 +1,15 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/bg_color"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_feed"/>
+    <com.mindorks.placeholderview.ExpandablePlaceHolderView
+        android:id="@+id/expandableView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
+</LinearLayout>

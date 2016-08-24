@@ -19,6 +19,10 @@ public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
     private List<ViewBinder> mViewBinderList;
     private Context mContext;
 
+    /**
+     *
+     * @param context
+     */
     public ViewAdapter(Context context) {
         mContext = context;
         mViewBinderList = new ArrayList<>();
@@ -128,6 +132,13 @@ public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
         notifyItemInserted(position);
     }
 
+    /**
+     *
+     * @param resolverOld
+     * @param resolverNew
+     * @param after
+     * @throws Resources.NotFoundException
+     */
     protected void addView(T resolverOld, T resolverNew, boolean after)throws Resources.NotFoundException{
         int position = -1;
         for(ViewBinder viewBinder : mViewBinderList){
@@ -145,10 +156,18 @@ public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     protected List<ViewBinder> getViewBinderList() {
         return mViewBinderList;
     }
 
+    /**
+     *
+     * @return
+     */
     protected Context getContext() {
         return mContext;
     }

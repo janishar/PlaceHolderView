@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mindorks.test.feed.data.Feed;
 
 import org.json.JSONArray;
 
@@ -32,6 +33,24 @@ public class Utils {
                 imageList.add(image);
             }
             return imageList;
+        }catch (Exception e){
+            Log.d(TAG,"seedGames parseException " + e);
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static List<Feed> loadFeeds(Context context){
+        try{
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
+            JSONArray array = new JSONArray(loadJSONFromAsset(context, "news.json"));
+            List<Feed> feedList = new ArrayList<>();
+            for(int i=0;i<array.length();i++){
+                Feed feed = gson.fromJson(array.getString(i), Feed.class);
+                feedList.add(feed);
+            }
+            return feedList;
         }catch (Exception e){
             Log.d(TAG,"seedGames parseException " + e);
             e.printStackTrace();

@@ -39,6 +39,7 @@ public class ViewBinder<T, V extends android.view.View> {
     /**
      *
      * @param promptsView
+     * @param position
      */
     protected void bindView(V promptsView, int position){
         bindViews(mResolver, promptsView);

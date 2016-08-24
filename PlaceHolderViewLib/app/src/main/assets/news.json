@@ -1,0 +1,112 @@
+[
+	{
+		"catergory" : "Top News",
+		"data" : [
+			{
+				"title" : "Nashville Season 5 Premiere Set at CMT",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMjA2NTE0NzkyMF5BMl5BanBnXkFtZTgwMjAwMzg5NjE@._V1._SY140_.jpg",
+				"caption" : "The cancelled ABC country-music drama will make its CMT debut with a two-hour premiere on Thursday, January 5, at 9/8c, the cable network announced Wednesday",
+				"time" : "1 hours ago"
+			},
+			{
+				"title" : "Sarah Paulson Joins Ryan Murphy's FX Drama Feud as Geraldine Page",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMTUzMTA3NjM4MV5BMl5BanBnXkFtZTcwNjk1NTAyMg@@._V1._SY140_.jpg",
+				"caption" : "Ryan Murphy is taking a page from his successful playbook, casting frequent collaborator Sarah Paulson in his new FX anthology drama Feud.",
+				"time" : "2 hours ago"
+			},
+			{
+				"title" : "Ronald Reagan Biopic Draws ‘Soul Surfer’ Director Sean McNamara",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMzEzOTk4OTQ2OF5BMl5BanBnXkFtZTYwMzkyODQ2._V1._SY140_.jpg",
+				"caption" : "\"Soul Surfer\" Sean McNamara has signed to helm a Ronald Reagan biopic that’s set to start production next spring.",
+				"time" : "3 hours ago"
+			},
+			{
+				"title" : "Martin Lawrence Gets First Stand-Up Special in 14 Years at Showtime",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMTczOTMwOTc1OF5BMl5BanBnXkFtZTgwNTc3MjY5NzE@._V1._SY140_.jpg",
+				"caption" : "Martin Lawrence‘s first stand-up special in 14 years will air on Showtime next month, the network announced on Tuesday.",
+				"time" : "10 hours ago"
+			},
+			{
+				"title" : "Cmt Announces ‘Nashville’ Season 5 Premiere Date",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMjgwMzg2ODgtZTkzYi00YTU0LThhYjMtMWM0Zjc0ZGFhMDViXkEyXkFqcGdeQXVyNjQxMDY5MjM@._V1._SY140_.jpg",
+				"caption" : "\"Nashville\" is heading back to TV with a new network, new showrunners and a new year",
+				"time" : "13 hours ago"
+			}
+		]
+	},
+	{
+		"catergory" : "Movie News",
+		"data" : [
+			{
+				"title" : "AFI Cancels Birth of a Nation Screening, Nate Parker Q&A",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMzk3MjE5NjE4NF5BMl5BanBnXkFtZTcwOTUzODY0OQ@@._V1._SY140_.jpg",
+				"caption" : "The American Film Institute has canceled its Friday screening of “Birth of a Nation,” which was to be followed by a Q&A with filmmaker and star Nate Parker, whose 1999 rape case has put the filmmaker and distributor Fox Searchlight on the defensive this past week.",
+				"time" : "2 hours ago"
+			},
+			{
+				"title" : "Horror Movie ‘Don’t Breathe’ to Scare Off ‘Suicide Squad’ for No 1 Spot",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BZGI5ZTU2M2YtZWY4MC00ZDFhLTliYTItZTk1NjdlN2NkMzg2XkEyXkFqcGdeQXVyMjY5ODI4NDk@._V1._SY140_.jpg",
+				"caption" : "After three straight weekends at No. 1, Warner Bros. comic book hit “Suicide Squad” is finally going down.",
+				"time" : "4 hours ago"
+			},
+			{
+				"title" : "After The Infiltrator Fizzles, Broad Green Plots Its Comeback",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMTEwNzM2NjY2MTNeQTJeQWpwZ15BbWU4MDQ3MDI3Njgx._V1._SY140_.jpg",
+				"caption" : "Gabriel Hammond was frustrated.",
+				"time" : "3 hours ago"
+			},
+			{
+				"title" : "The Fall: Series 3 Teaser Trailer: Gillian Anderson is Haunted By Killer Jamie Dornan",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMTQzMTk4MjY3NF5BMl5BanBnXkFtZTcwMzI1ODAxOA@@._V1._SY140_.jpg",
+				"caption" : "It’s been two years since audiences last saw Gillian Anderson as the driven and obsessive Stella Gibson, the detective superintendent who’s been after serial killer Paul Spector (played by Jamie Dornan) in BBC Two’s drama \"The Fall.\"",
+				"time" : "6 hours ago"
+			}
+		]
+	},
+	{
+		"catergory" : "TV News",
+		"data" : [
+			{
+				"title" : "Nashville Season 5 Premiere Set at CMT",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMjA2NTE0NzkyMF5BMl5BanBnXkFtZTgwMjAwMzg5NjE@._V1._SY140_.jpg",
+				"caption" : "Nashville‘s comeback tour will kick off just after the new year.",
+				"time" : "40 minutes ago"
+			},
+			{
+				"title" : "Lifetime Developing Robert Durst TV Movie",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BNTMyMzc4NTk2NV5BMl5BanBnXkFtZTgwNjMyMzYyNDE@._V1._SY140_.jpg",
+				"caption" : "The Robert Durst story is headed to TV — again.",
+				"time" : "2 hours ago"
+			},
+			{
+				"title" : "Ming-Na Wen goes from S.H.I.E.L.D. agent to time travel agent for Disney XD",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMTIyNjUwNTk3OV5BMl5BanBnXkFtZTcwOTE4NTMzMQ@@._V1._SY140_.jpg",
+				"caption" : "AnimationFix: Your regular round-up of the latest animation news, from HitFix reporter Emily Rome Ming-Na Wen is ever-strengthening her family ties to Disney",
+				"time" : "23 hours ago"
+			}
+		]
+	},
+	{
+		"catergory" : "Celebrity News",
+		"data" : [
+			{
+				"title" : "Scott Eastwood’s Deceased Girlfriend Identified as Aspiring Model Jewel Brangman",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMTczODYzOTA0Nl5BMl5BanBnXkFtZTgwNDcwMzIyNTE@._V1._SY140_.jpg",
+				"caption" : "Scott Eastwood did not reveal the name of his former girlfriend in his emotional revelation about her death this week, but she has since been identified as aspiring model Jewel Brangman.",
+				"time" : "10 hours ago"
+			},
+			{
+				"title" : "Mady and Cara Gosselin Open Up About Their Estranged Relationship with Dad Jon: 'He Doesn't Even Know Us'",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMTQ1NTU3MjE1OF5BMl5BanBnXkFtZTcwODEzMjYyMw@@._V1._SY140_.jpg",
+				"caption" : "Kate Gosselin and her kids open up about how finding reality TV fame more than 10 years ago changed their lives forever. Subscribe now for an inside look at how they've overcome setbacks and remain hopeful for the future",
+				"time" : "12 hours ago"
+			},
+			{
+				"title" : "Dream Getaways: Celebrity Couples' Luxurious Vacation Homes",
+				"image_url" : "http://ia.media-imdb.com/images/M/MV5BMjEyMTEyOTQ0MV5BMl5BanBnXkFtZTcwNzU3NTMzNw@@._V1._SY140_.jpg",
+				"caption" : "Who needs one house when you can have two?!  Celebrity couples already live a life of luxury in their everyday mansions, but some husband and wives opt to purchase another home for when they feel like getting away on vacation.",
+				"time" : "23 hours ago"
+			}
+		]
+	}
+]
