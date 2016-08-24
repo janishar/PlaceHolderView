@@ -50,7 +50,13 @@ public class PlaceHolderView extends RecyclerView {
     protected void setupView(Context context, ViewAdapter viewAdapter, PlaceHolderViewBuilder builder){
         mViewAdapter = viewAdapter;
         mBuilder = builder;
-        setAdapter(mViewAdapter);
+        super.setAdapter(mViewAdapter);
+    }
+
+    @Deprecated
+    @Override
+    public void setAdapter(Adapter adapter) {
+        super.setAdapter(adapter);
     }
 
     /**
