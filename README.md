@@ -6,7 +6,7 @@
 ##Few Implementations
 ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)     ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
 
-![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)       ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_scale.gif)
+![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)       ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/feed_vid.gif)
 
 ##STEP 1: Define a PlaceHolderView inside XML layout
 ```java
@@ -94,15 +94,6 @@ public class ImageTypeBig {
 
 #NOTES:
 
-##Annotations
-1. @Layout: Bind the XML layout with the class
-2. @View: Bind the variable with the view defined in the above layout
-3. @Click: Bind the OnClickListener to a view
-4. @LongClick: Bind the long click listerner to a view
-5. @Resolve: Any operation being performed on the view reference defined by @View should be annotated with @Resolve
-6. @Animate(Animation.ENTER_LEFT_DESC) : Sets the defined animations in the Animation class on this item view
-7. @NonReusable : Releases the view reference along with all the attached references in the view object. This view object should not be used again in the addView()
-
 ##PlaceHolderView
 1. getBuilder(): Get builder for the PlaceHolderView to modify the default properties
 2. setLayoutManager(layoutManager): Add custom layout manager
@@ -110,12 +101,33 @@ public class ImageTypeBig {
 4. removeView(): Removes the existing view
 5. SmoothLinearLayoutManager: This class is bundled with the library, and should be used for those view which has dynamic heavy contents. It reduces the screen flikering on bind
 
+##Annotations
+1. @Layout: Bind the XML layout with the class.
+2. @View: Bind the variable with the view defined in the above layout.
+3. @Click: Bind the OnClickListener to a view.
+4. @LongClick: Bind the long click listerner to a view.
+5. @Resolve: Any operation being performed on the view reference defined by @View should be annotated with this.
+6. @Animate(Animation.ENTER_LEFT_DESC): Sets the defined animations in the Animation class on this item view.
+7. @NonReusable: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the addView().
+
+##ExpandablePlaceHolderView
+######This class is build upon the PlaceHolderView and implements all the features of ExpandableListView but with much power and lot easier
+
+#Annotations(ExpandablePlaceHolderView)
+1. @Parent: Defines the class to be used as the parent in the expandable list.
+2. @SingleTop: Makes only one parent remain in expanded state.
+3. @Collapse: Bind a method of the parent class to listen to the collapse event.
+4. @Expand: Bind a method of the parent class to listen to the Expand event.
+5. @ParentPosition: Bind an int variable to update with relative position among parents.
+6. @ChildPosition: Bind an int variable to update with relative position among children of a parent.
+7. @Toggle: Bind a view to be used as a trigger for expanding or collapsing a parent view. If not provided then the parent view becomes a toggle by default.
+
 ##There is no adapter configuration required
 
 #Gradle
 ```java
 dependencies {
-    compile 'com.mindorks:placeholderview:0.0.2'
+    compile 'com.mindorks:placeholderview:0.0.3'
 }
 ```
 #Dependency: It depends on the RecyclerView
