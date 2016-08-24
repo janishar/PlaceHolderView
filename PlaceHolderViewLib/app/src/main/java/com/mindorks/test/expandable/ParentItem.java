@@ -16,6 +16,7 @@ import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.expand.ParentPosition;
 import com.mindorks.placeholderview.annotations.expand.SingleTop;
 import com.mindorks.placeholderview.annotations.View;
+import com.mindorks.placeholderview.annotations.expand.Toggle;
 import com.mindorks.test.R;
 
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class ParentItem {
     @View(R.id.itemNameTxt)
     private TextView itemNameTxt;
 
+    @Toggle(R.id.itemIcon)
     @View(R.id.itemIcon)
     private ImageView itemIcon;
 

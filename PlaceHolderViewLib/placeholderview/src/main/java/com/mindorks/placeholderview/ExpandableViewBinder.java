@@ -6,6 +6,7 @@ import com.mindorks.placeholderview.annotations.expand.Expand;
 import com.mindorks.placeholderview.annotations.expand.Parent;
 import com.mindorks.placeholderview.annotations.expand.ParentPosition;
 import com.mindorks.placeholderview.annotations.expand.SingleTop;
+import com.mindorks.placeholderview.annotations.expand.Toggle;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -88,14 +89,39 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
     protected void bindView(V promptsView, int position) {
         super.bindView(promptsView, position);
         if(isParent){
+            bindToggle(getResolver(), promptsView);
+        }
+    }
+
+    private void bindToggle(final T resolver,final V promptsView){
+        boolean toggleSet = false;
+        for(final Field field : resolver.getClass().getDeclaredFields()){
+            Annotation annotation = field.getAnnotation(Toggle.class);
+            if(annotation instanceof Toggle) {
+                Toggle toggle = (Toggle) annotation;
+                android.view.View view = promptsView.findViewById(toggle.value());
+                view.setOnClickListener(new android.view.View.OnClickListener() {
+                    @Override
+                    public void onClick(android.view.View v) {
+                        try {
+                            if (isExpanded) {collapse();}
+                            else {expand();}
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                });
+                toggleSet = true;
+            }
+        }
+
+        if(!toggleSet){
             promptsView.setOnClickListener(new android.view.View.OnClickListener() {
                 @Override
                 public void onClick(android.view.View v) {
                     try {
-                        if (isExpanded)
-                            collapse();
-                        else
-                            expand();
+                        if (isExpanded) {collapse();}
+                        else {expand();}
                     }catch (Exception e){
                         e.printStackTrace();
                     }
