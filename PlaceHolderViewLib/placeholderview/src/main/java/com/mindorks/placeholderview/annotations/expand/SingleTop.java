@@ -1,4 +1,4 @@
-package com.mindorks.placeholderview.annotations;
+package com.mindorks.placeholderview.annotations.expand;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

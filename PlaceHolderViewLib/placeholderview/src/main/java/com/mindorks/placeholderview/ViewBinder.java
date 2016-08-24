@@ -40,11 +40,11 @@ public class ViewBinder<T, V extends android.view.View> {
      * @param promptsView
      */
     protected void bindView(V promptsView, int position){
-        bindViews(mResolver, mResolver.getClass().getDeclaredFields(), promptsView);
-        bindViewPosition(mResolver, mResolver.getClass().getDeclaredFields(), position);
-        bindClick(mResolver, mResolver.getClass().getDeclaredMethods(), promptsView);
-        bindLongPress(mResolver, mResolver.getClass().getDeclaredMethods(), promptsView);
-        resolveView(mResolver, mResolver.getClass().getDeclaredMethods());
+        bindViews(mResolver, promptsView);
+        bindViewPosition(mResolver, position);
+        bindClick(mResolver, promptsView);
+        bindLongPress(mResolver, promptsView);
+        resolveView(mResolver);
     }
 
     /**
@@ -84,11 +84,10 @@ public class ViewBinder<T, V extends android.view.View> {
     /**
      *
      * @param resolver
-     * @param fields
      * @param promptsView
      */
-    private void bindViews(final T resolver,final Field[] fields, V promptsView){
-        for(final Field field : fields) {
+    private void bindViews(final T resolver, V promptsView){
+        for(final Field field : resolver.getClass().getDeclaredFields()) {
             Annotation annotation = field.getAnnotation(View.class);
             if(annotation instanceof View) {
                 View viewAnnotation = (View) annotation;
@@ -106,11 +105,10 @@ public class ViewBinder<T, V extends android.view.View> {
     /**
      *
      * @param resolver
-     * @param fields
      * @param position
      */
-    private void bindViewPosition(final T resolver,final Field[] fields, int position){
-        for(final Field field : fields) {
+    private void bindViewPosition(final T resolver, int position){
+        for(final Field field : resolver.getClass().getDeclaredFields()) {
             Annotation annotation = field.getAnnotation(Position.class);
             if(annotation instanceof Position) {
                 try {
@@ -126,10 +124,9 @@ public class ViewBinder<T, V extends android.view.View> {
     /**
      *
      * @param resolver
-     * @param methods
      */
-    private void resolveView(final T resolver,final Method[] methods){
-        for(final Method method : methods) {
+    private void resolveView(final T resolver){
+        for(final Method method : resolver.getClass().getDeclaredMethods()) {
             Annotation annotation = method.getAnnotation(Resolve.class);
             if(annotation instanceof Resolve) {
                 try {
@@ -147,11 +144,10 @@ public class ViewBinder<T, V extends android.view.View> {
     /**
      *
      * @param resolver
-     * @param methods
      * @param promptsView
      */
-    private void bindClick(final T resolver,final Method[] methods,final V promptsView){
-        for(final Method method : methods){
+    private void bindClick(final T resolver,final V promptsView){
+        for(final Method method : resolver.getClass().getDeclaredMethods()){
             Annotation annotation = method.getAnnotation(Click.class);
             if(annotation instanceof Click) {
                 Click clickAnnotation = (Click) annotation;
@@ -176,11 +172,10 @@ public class ViewBinder<T, V extends android.view.View> {
     /**
      *
      * @param resolver
-     * @param methods
      * @param promptsView
      */
-    private void bindLongPress(final T resolver,final Method[] methods,final V promptsView){
-        for(final Method method : methods){
+    private void bindLongPress(final T resolver,final V promptsView){
+        for(final Method method : resolver.getClass().getDeclaredMethods()){
             Annotation annotation = method.getAnnotation(LongClick.class);
             if(annotation instanceof LongClick) {
                 LongClick longClickAnnotation = (LongClick) annotation;

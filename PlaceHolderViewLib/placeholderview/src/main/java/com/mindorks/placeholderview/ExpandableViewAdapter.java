@@ -26,26 +26,27 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T>
     @Override
     protected void addView(T viewResolver) throws IndexOutOfBoundsException {
         ExpandableViewBinder<T, V> expandableViewBinder = new ExpandableViewBinder(viewResolver);
-        if(expandableViewBinder.bindViewType(expandableViewBinder.getResolver())){
+        if(expandableViewBinder.bindViewType()){
+            expandableViewBinder.setCallback(this);
             mParentBinder = expandableViewBinder;
-            mParentBinder.setCallback(this);
-            getViewBinderList().add(expandableViewBinder);
+            getViewBinderList().add(mParentBinder);
+            mParentBinder.bindParentPosition(getParentPosition(mParentBinder));
             notifyItemInserted(getViewBinderList().size() - 1);
         }
         else if(mParentBinder != null){
             mParentBinder.getChildList().add(expandableViewBinder);
+            expandableViewBinder.bindParentPosition(getParentPosition(mParentBinder));
+            expandableViewBinder.bindChildPosition(getChildPosition(mParentBinder, expandableViewBinder));
         }
     }
 
     @Override
-    protected void addView(int position, T viewResolver) throws IndexOutOfBoundsException {
-
-    }
+    @Deprecated
+    protected void addView(int position, T viewResolver) throws IndexOutOfBoundsException {}
 
     @Override
-    protected void addView(T resolverOld, T resolverNew, boolean after) throws Resources.NotFoundException {
-
-    }
+    @Deprecated
+    protected void addView(T resolverOld, T resolverNew, boolean after) throws Resources.NotFoundException {}
 
     @Override
     public void onExpand(ExpandableViewBinder<T, V> parentBinder) {
@@ -73,9 +74,26 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T>
                 expandableViewBinderList.add(expandableViewBinder);
             }
         }
-
         for(ExpandableViewBinder viewBinder : expandableViewBinderList){
             viewBinder.collapse();
         }
+    }
+
+    private int getParentPosition(ExpandableViewBinder<T, V> parentViewBinder){
+        int position = -1;
+        for (ViewBinder viewBinder : getViewBinderList()) {
+            ExpandableViewBinder<T, V> expandableViewBinder = (ExpandableViewBinder<T, V>) viewBinder;
+            if(expandableViewBinder.isParent()) {
+                if (parentViewBinder == expandableViewBinder) {
+                    return ++position;
+                }
+                position++;
+            }
+        }
+        return position;
+    }
+
+    private int getChildPosition(ExpandableViewBinder<T, V> parentViewBinder, ExpandableViewBinder<T, V> childViewBinder){
+        return parentViewBinder.getChildList().indexOf(childViewBinder);
     }
 }
