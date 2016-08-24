@@ -20,10 +20,6 @@ import com.mindorks.test.R;
 @Layout(R.layout.drawer_item)
 public class ChildItem {
 
-    @Position
-    private int mMenuPosition;
-
-
     @View(R.id.itemNameTxt)
     private TextView itemNameTxt;
 

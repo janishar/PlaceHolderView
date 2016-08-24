@@ -12,6 +12,7 @@ import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Parent;
 import com.mindorks.placeholderview.annotations.Position;
 import com.mindorks.placeholderview.annotations.Resolve;
+import com.mindorks.placeholderview.annotations.SingleTop;
 import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.test.R;
 
@@ -19,12 +20,12 @@ import com.mindorks.test.R;
  * Created by janisharali on 19/08/16.
  */
 @Parent
+@SingleTop
 @Layout(R.layout.drawer_item)
 public class ParentItem {
 
     @Position
     private int mMenuPosition;
-
 
     @View(R.id.itemNameTxt)
     private TextView itemNameTxt;

@@ -33,15 +33,7 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T>
             notifyItemInserted(getViewBinderList().size() - 1);
         }
         else if(mParentBinder != null){
-            int position = mParentBinder.getChildList().size() - 1;
-            if(position == -1){
-                position = getViewBinderList().indexOf(mParentBinder) + 1;
-            }else{
-                position = getViewBinderList().indexOf(mParentBinder.getChildList().get(position)) + 1;
-            }
             mParentBinder.getChildList().add(expandableViewBinder);
-            getViewBinderList().add(position, expandableViewBinder);
-            notifyItemInserted(position);
         }
     }
 
@@ -62,6 +54,8 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T>
             getViewBinderList().add(position, viewBinder);
             notifyItemInserted(position);
         }
+        if(parentBinder.isSingleTop())
+            collapseOthers(parentBinder);
     }
 
     @Override
@@ -71,7 +65,17 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T>
         }
     }
 
-    private void collapseOthers(){
+    private void collapseOthers(ExpandableViewBinder<T, V> parentBinder){
+        List<ExpandableViewBinder<T,V>> expandableViewBinderList = new ArrayList<>();
+        for (ViewBinder viewBinder : getViewBinderList()){
+            ExpandableViewBinder expandableViewBinder = (ExpandableViewBinder)viewBinder;
+            if(expandableViewBinder != parentBinder){
+                expandableViewBinderList.add(expandableViewBinder);
+            }
+        }
 
+        for(ExpandableViewBinder viewBinder : expandableViewBinderList){
+            viewBinder.collapse();
+        }
     }
 }
