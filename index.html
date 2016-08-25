@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Placeholderview by janishar</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Placeholderview</h1>
+      <h2 class="project-tagline">Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!</h2>
+      <a href="https://github.com/janishar/PlaceHolderView" class="btn">View on GitHub</a>
+      <a href="https://github.com/janishar/PlaceHolderView/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/janishar/PlaceHolderView/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="placeholderview" class="anchor" href="#placeholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>PlaceHolderView</strong>
+</h1>
+
+<p><img src="https://janishar.github.io/images/logo-phv.png" alt=""></p>
+
+<h6>
+<a id="simple-easy-and-superfast-dynamic-view-creation-with-awesome-animations-prebuilt" class="anchor" href="#simple-easy-and-superfast-dynamic-view-creation-with-awesome-animations-prebuilt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!</h6>
+
+<h2>
+<a id="few-implementations" class="anchor" href="#few-implementations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Few Implementations</h2>
+
+<p><img src="https://janishar.github.io/gifs/vid_drawer.gif" alt="">    <img src="https://janishar.github.io/gifs/vid_slides.gif" alt=""></p>
+
+<p><img src="https://janishar.github.io/gifs/vid_fade.gif" alt="">      <img src="https://janishar.github.io/gifs/feed_vid.gif" alt=""></p>
+
+<h2>
+<a id="step-1-define-a-placeholderview-inside-xml-layout" class="anchor" href="#step-1-define-a-placeholderview-inside-xml-layout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>STEP 1: Define a PlaceHolderView inside XML layout</h2>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-c">//PlaceHolderView to wrap around the recycler view in XML</span>
+<span class="pl-k">&lt;</span><span class="pl-smi">com.mindorks.placeholderview<span class="pl-k">.</span>PlaceHolderView</span>
+        android<span class="pl-k">:</span>id<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>@+id/galleryView<span class="pl-pds">"</span></span>
+        android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+        android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span><span class="pl-k">/</span><span class="pl-k">&gt;</span>
+</pre></div>
+
+<h2>
+<a id="step-2-create-item-views-xml-example-gallery_item_bigxml" class="anchor" href="#step-2-create-item-views-xml-example-gallery_item_bigxml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>STEP 2: Create item views XML, example: gallery_item_big.xml</h2>
+
+<div class="highlight highlight-source-java"><pre><span class="pl-k">&lt;</span><span class="pl-k">?</span>xml version<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span> encoding<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span><span class="pl-k">?</span><span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span><span class="pl-smi">LinearLayout</span> xmlns<span class="pl-k">:</span>android<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res/android<span class="pl-pds">"</span></span>
+    xmlns<span class="pl-k">:</span>app<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res-auto<span class="pl-pds">"</span></span>
+    android<span class="pl-k">:</span>orientation<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>vertical<span class="pl-pds">"</span></span>
+    android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+    android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+    android<span class="pl-k">:</span>padding<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>10dp<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-smi">android.support.v7.widget<span class="pl-k">.</span>CardView</span>
+        android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+        android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+        app<span class="pl-k">:</span>cardCornerRadius<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>6dp<span class="pl-pds">"</span></span>
+        app<span class="pl-k">:</span>cardElevation<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>6dp<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
+        <span class="pl-k">&lt;</span><span class="pl-smi">ImageView</span>
+            android<span class="pl-k">:</span>id<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>@+id/imageView<span class="pl-pds">"</span></span>
+            android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+            android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>250dp<span class="pl-pds">"</span></span>
+            android<span class="pl-k">:</span>scaleType<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>centerCrop<span class="pl-pds">"</span></span>
+            android<span class="pl-k">:</span>src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>@android:color/holo_orange_dark<span class="pl-pds">"</span></span><span class="pl-k">/</span><span class="pl-k">&gt;</span>
+    <span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-smi">android.support.v7.widget<span class="pl-k">.</span>CardView</span><span class="pl-k">&gt;</span>
+<span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-smi">LinearLayout</span><span class="pl-k">&gt;</span></pre></div>
+
+<h2>
+<a id="step-3-create-item-class-to-bind-and-define-view-operations" class="anchor" href="#step-3-create-item-class-to-bind-and-define-view-operations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>STEP 3: Create item class to bind and define view operations</h2>
+
+<div class="highlight highlight-source-java"><pre>@Animate(<span class="pl-smi">Animation</span><span class="pl-c1"><span class="pl-k">.</span>ENTER_LEFT_DESC</span>)
+@<span class="pl-smi">NonReusable</span>
+@Layout(<span class="pl-smi">R</span><span class="pl-k">.</span>layout<span class="pl-k">.</span>gallery_item_big)
+<span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">ImageTypeBig</span> {
+
+    <span class="pl-k">@View</span>(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>imageView)
+    <span class="pl-k">private</span> <span class="pl-smi">ImageView</span> imageView;
+
+    <span class="pl-k">private</span> <span class="pl-smi">String</span> mUlr;
+    <span class="pl-k">private</span> <span class="pl-smi">Context</span> mContext;
+    <span class="pl-k">private</span> <span class="pl-smi">PlaceHolderView</span> mPlaceHolderView;
+
+    <span class="pl-k">public</span> <span class="pl-en">ImageTypeBig</span>(<span class="pl-smi">Context</span> <span class="pl-v">context</span>, <span class="pl-smi">PlaceHolderView</span> <span class="pl-v">placeHolderView</span>, <span class="pl-smi">String</span> <span class="pl-v">ulr</span>) {
+        mContext <span class="pl-k">=</span> context;
+        mPlaceHolderView <span class="pl-k">=</span> placeHolderView;
+        mUlr <span class="pl-k">=</span> ulr;
+    }
+
+    <span class="pl-k">@Resolve</span>
+    <span class="pl-k">private</span> <span class="pl-k">void</span> <span class="pl-en">onResolved</span>() {
+        <span class="pl-smi">Glide</span><span class="pl-k">.</span>with(mContext)<span class="pl-k">.</span>load(mUlr)<span class="pl-k">.</span>into(imageView);
+    }
+
+    <span class="pl-k">@LongClick</span>(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>imageView)
+    <span class="pl-k">private</span> <span class="pl-k">void</span> <span class="pl-en">onLongClick</span>(){
+        mPlaceHolderView<span class="pl-k">.</span>removeView(<span class="pl-v">this</span>);
+    }
+
+}</pre></div>
+
+<h2>
+<a id="step-4--add-views-to-the-placeholderview" class="anchor" href="#step-4--add-views-to-the-placeholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>STEP 4 : Add views to the PlaceHolderView</h2>
+
+<div class="highlight highlight-source-java"><pre>
+ <span class="pl-smi">PlaceHolderView</span> mGalleryView <span class="pl-k">=</span> (<span class="pl-smi">PlaceHolderView</span>)findViewById(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>galleryView);
+
+<span class="pl-c">// (Optional): If customisation is Required then use Builder with the PlaceHolderView</span>
+<span class="pl-c">// placeHolderView.getBuilder()</span>
+<span class="pl-c">//      .setHasFixedSize(false)</span>
+<span class="pl-c">//      .setItemViewCacheSize(10)</span>
+<span class="pl-c">//      .setLayoutManager(new GridLayoutManager(this, 3));</span>
+
+  mGalleryView
+        .addView(<span class="pl-k">new</span> <span class="pl-smi">ImageTypeBig</span>(<span class="pl-v">this</span><span class="pl-k">.</span>getApplicationContext(), mGalleryView, url1));
+        .addView(<span class="pl-k">new</span> <span class="pl-smi">ImageTypeBig</span>(<span class="pl-v">this</span><span class="pl-k">.</span>getApplicationContext(), mGalleryView, url2));
+        .addView(<span class="pl-k">new</span> <span class="pl-smi">ImageTypeBig</span>(<span class="pl-v">this</span><span class="pl-k">.</span>getApplicationContext(), mGalleryView, url3));
+        .addView(<span class="pl-k">new</span> <span class="pl-smi">ImageTypeBig</span>(<span class="pl-v">this</span><span class="pl-k">.</span>getApplicationContext(), mGalleryView, url4));</pre></div>
+
+<h2>
+<a id="thats-all-cheers-beer" class="anchor" href="#thats-all-cheers-beer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>That's All! Cheers!</em> <g-emoji alias="beer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f37a.png">🍺</g-emoji>
+</h2>
+
+<h1>
+<a id="notes" class="anchor" href="#notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NOTES:</h1>
+
+<h2>
+<a id="placeholderview-1" class="anchor" href="#placeholderview-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PlaceHolderView</h2>
+
+<ol>
+<li>getBuilder(): Get builder for the PlaceHolderView to modify the default properties</li>
+<li>setLayoutManager(layoutManager): Add custom layout manager</li>
+<li>addView(): Add views to the PlaceHolderView</li>
+<li>removeView(): Removes the existing view</li>
+<li>SmoothLinearLayoutManager: This class is bundled with the library, and should be used for those view which has dynamic heavy contents. It reduces the screen flikering on bind</li>
+</ol>
+
+<h2>
+<a id="annotations" class="anchor" href="#annotations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations</h2>
+
+<ol>
+<li>
+<a href="https://github.com/Layout" class="user-mention">@Layout</a>: Bind the XML layout with the class.</li>
+<li>
+<a href="https://github.com/View" class="user-mention">@View</a>: Bind the variable with the view defined in the above layout.</li>
+<li>
+<a href="https://github.com/Click" class="user-mention">@Click</a>: Bind the OnClickListener to a view.</li>
+<li>@LongClick: Bind the long click listerner to a view.</li>
+<li>
+<a href="https://github.com/Resolve" class="user-mention">@Resolve</a>: Any operation being performed on the view reference defined by <a href="https://github.com/View" class="user-mention">@View</a> should be annotated with this.</li>
+<li>
+<a href="https://github.com/Animate" class="user-mention">@Animate</a>(Animation.ENTER_LEFT_DESC): Sets the defined animations in the Animation class on this item view.</li>
+<li>@NonReusable: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the addView().</li>
+</ol>
+
+<h2>
+<a id="expandableplaceholderview" class="anchor" href="#expandableplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ExpandablePlaceHolderView</h2>
+
+<h4>
+<a id="this-class-is-build-upon-the-placeholderview-and-implements-all-the-features-of-expandablelistview-but-with-much-power-and-lot-easier" class="anchor" href="#this-class-is-build-upon-the-placeholderview-and-implements-all-the-features-of-expandablelistview-but-with-much-power-and-lot-easier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class is build upon the PlaceHolderView and implements all the features of ExpandableListView but with much power and lot easier</h4>
+
+<h2>
+<a id="annotationsexpandableplaceholderview" class="anchor" href="#annotationsexpandableplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations(ExpandablePlaceHolderView)</h2>
+
+<ol>
+<li>
+<a href="https://github.com/Parent" class="user-mention">@Parent</a>: Defines the class to be used as the parent in the expandable list.</li>
+<li>@SingleTop: Makes only one parent remain in expanded state.</li>
+<li>
+<a href="https://github.com/Collapse" class="user-mention">@Collapse</a>: Bind a method of the parent class to listen to the collapse event.</li>
+<li>
+<a href="https://github.com/Expand" class="user-mention">@Expand</a>: Bind a method of the parent class to listen to the Expand event.</li>
+<li>@ParentPosition: Bind an int variable to update with relative position among parents.</li>
+<li>@ChildPosition: Bind an int variable to update with relative position among children of a parent.</li>
+<li>
+<a href="https://github.com/Toggle" class="user-mention">@Toggle</a>: Bind a view to be used as a trigger for expanding or collapsing a parent view. If not provided then the parent view becomes a toggle by default.</li>
+</ol>
+
+<h2>
+<a id="there-is-no-adapter-configuration-required" class="anchor" href="#there-is-no-adapter-configuration-required" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>There is no adapter configuration required</h2>
+
+<h1>
+<a id="gradle" class="anchor" href="#gradle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Gradle</h1>
+
+<div class="highlight highlight-source-java"><pre>dependencies {
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.mindorks:placeholderview:0.0.3<span class="pl-pds">'</span></span>
+}</pre></div>
+
+<h1>
+<a id="dependency-it-depends-on-the-recyclerview" class="anchor" href="#dependency-it-depends-on-the-recyclerview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependency: It depends on the RecyclerView</h1>
+
+<div class="highlight highlight-source-java"><pre>    com<span class="pl-k">.</span>android<span class="pl-k">.</span>support<span class="pl-k">:</span>recyclerview<span class="pl-k">-</span>v7<span class="pl-k">:</span><span class="pl-c1">23.</span><span class="pl-k">+</span></pre></div>
+
+<h3>
+<a id="if-this-library-helps-you-in-anyway-show-your-love-heart-by-putting-a-star-on-this-project-v" class="anchor" href="#if-this-library-helps-you-in-anyway-show-your-love-heart-by-putting-a-star-on-this-project-v" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>If this library helps you in anyway, show your love <g-emoji alias="heart" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png">❤️</g-emoji> by putting a <g-emoji alias="star" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b50.png">⭐</g-emoji> on this project <g-emoji alias="v" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/270c.png">✌️</g-emoji>
+</h3>
+
+<h1>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Examples</h1>
+
+<p><a href="https://medium.com/@janishar.ali/navigation-drawer-android-example-8dfe38c66f59#.vmlw4zb00">Android Navigation Drawer</a></p>
+
+<p><a href="https://medium.com/@janishar.ali/android-beginner-image-gallery-example-da73a596f4d5#.p42z8w83o">Android Beginner Image Gallery</a></p>
+
+<p><a href="https://medium.com/@janishar.ali/android-advance-image-gallery-example-3ec6ddf85ed9#.6n8ouof9k">Android Advance Image Gallery</a></p>
+
+<p><a href="https://medium.com/@janishar.ali/android-expandable-news-feed-example-4b4544e1fe7e#.3n9k18x2s">Android Expandable News Feed</a></p>
+
+<h1>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
+
+<pre><code>   Copyright (C) 2016 Janishar Ali Anwar
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License
+
+</code></pre>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/janishar/PlaceHolderView">Placeholderview</a> is maintained by <a href="https://github.com/janishar">janishar</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
