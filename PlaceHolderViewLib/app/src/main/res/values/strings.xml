@@ -1,7 +1,0 @@
-<resources>
-    <string name="app_name">PlaceHolderViewLib</string>
-    <string name="home">Home</string>
-    <string name="News">News</string>
-    <string name="open_drawer">Drawer Open</string>
-    <string name="close_drawer">Drawer Close</string>
-</resources>
