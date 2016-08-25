@@ -54,5 +54,4 @@ public class FeedTestActivity extends AppCompatActivity {
         super.onDestroy();
         ButterKnifeLite.unbind(this);
     }
-    
 }
