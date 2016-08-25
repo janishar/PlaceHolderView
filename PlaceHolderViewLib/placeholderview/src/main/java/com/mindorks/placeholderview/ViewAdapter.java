@@ -97,7 +97,7 @@ public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
      * @throws IndexOutOfBoundsException
      */
     protected void addView(T viewResolver)throws IndexOutOfBoundsException{
-        mViewBinderList.add(new ViewBinder(viewResolver));
+        mViewBinderList.add(new ViewBinder<>(viewResolver));
         notifyItemInserted(mViewBinderList.size() - 1);
     }
 
@@ -128,7 +128,7 @@ public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
      * @throws IndexOutOfBoundsException
      */
     protected void addView(int position, T viewResolver)throws IndexOutOfBoundsException{
-        mViewBinderList.add(position, new ViewBinder(viewResolver));
+        mViewBinderList.add(position, new ViewBinder<>(viewResolver));
         notifyItemInserted(position);
     }
 
@@ -149,7 +149,7 @@ public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
         }
         if(position != -1){
             if(after)position++;
-            mViewBinderList.add(position, new ViewBinder(resolverNew));
+            mViewBinderList.add(position, new ViewBinder<>(resolverNew));
             notifyItemInserted(position);
         }else{
             throw new Resources.NotFoundException("Old view don't Exists in the list");

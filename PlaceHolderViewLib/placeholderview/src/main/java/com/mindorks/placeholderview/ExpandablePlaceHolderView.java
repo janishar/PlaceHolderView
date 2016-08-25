@@ -19,7 +19,7 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
      */
     public ExpandablePlaceHolderView(Context context) {
         super(context);
-        setupView(context, new ExpandableViewAdapter(context), new PlaceHolderViewBuilder(context, this));
+        setupView(context, new ExpandableViewAdapter<>(context), new PlaceHolderViewBuilder(context, this));
     }
 
     /**
@@ -29,7 +29,7 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
      */
     public ExpandablePlaceHolderView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setupView(context, new ExpandableViewAdapter(context), new PlaceHolderViewBuilder(context, this));
+        setupView(context, new ExpandableViewAdapter<>(context), new PlaceHolderViewBuilder(context, this));
     }
 
     /**
@@ -40,7 +40,7 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
      */
     public ExpandablePlaceHolderView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
-        setupView(context, new ExpandableViewAdapter(context), new PlaceHolderViewBuilder(context, this));
+        setupView(context, new ExpandableViewAdapter<>(context), new PlaceHolderViewBuilder(context, this));
     }
 
     /**
