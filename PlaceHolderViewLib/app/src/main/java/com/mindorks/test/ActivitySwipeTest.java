@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 
-import com.mindorks.placeholderview.SwipePlaceHolderView;
+import com.mindorks.placeholderview.*;
 import com.mindorks.test.swipe.SwipeCard;
 
 public class ActivitySwipeTest extends AppCompatActivity {
@@ -31,7 +31,8 @@ public class ActivitySwipeTest extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         mSwipView.getBuilder()
                 .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_DEFAULT)
-                .setDisplayViewCount(2);
+                .setDisplayViewCount(5)
+                .setSwipeDecor(new SwipeDecor().setPaddingBottom(60).isAnimateScale(false));
         mSwipView
                 .addView(new SwipeCard())
                 .addView(new SwipeCard())

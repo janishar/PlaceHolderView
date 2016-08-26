@@ -35,13 +35,13 @@ public class SwipeViewBuilder {
         return this;
     }
 
-    public SwipeViewBuilder setSpacing(int spacing) {
-        mSwipePlaceHolderView.setSpacing(spacing);
+    public SwipeViewBuilder setDisplayReverse(boolean reverse) {
+        mSwipePlaceHolderView.setIsReverse(reverse);
         return this;
     }
 
-    public SwipeViewBuilder setDisplayReverse(boolean reverse) {
-        mSwipePlaceHolderView.setIsReverse(reverse);
+    public SwipeViewBuilder setSwipeDecor(SwipeDecor decor) {
+        mSwipePlaceHolderView.setSwipeDecor(decor);
         return this;
     }
 }

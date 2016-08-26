@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
 /**
  * Created by janisharali on 26/08/16.
  */
-public class SwipeViewBinder<T, V extends View> extends ViewBinder<T, V>{
+public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
     private V mLayoutView;
     private SwipeCallback mCallback;
@@ -36,7 +36,7 @@ public class SwipeViewBinder<T, V extends View> extends ViewBinder<T, V>{
         mCallback = callback;
     }
 
-    protected void bindView(V promptsView, int position, int swipeType) {
+    protected void bindView(V promptsView, int position, int swipeType, SwipeDecor swipeDecor) {
         super.bindView(promptsView, position);
         mLayoutView = promptsView;
         mSwipeType = swipeType;
@@ -88,9 +88,7 @@ public class SwipeViewBinder<T, V extends View> extends ViewBinder<T, V>{
     private void serAnimatorListener(){
         mAnimatorListener = new Animator.AnimatorListener() {
             @Override
-            public void onAnimationStart(Animator animation) {
-
-            }
+            public void onAnimationStart(Animator animation) {}
 
             @Override
             public void onAnimationEnd(Animator animation) {
@@ -100,14 +98,10 @@ public class SwipeViewBinder<T, V extends View> extends ViewBinder<T, V>{
             }
 
             @Override
-            public void onAnimationCancel(Animator animation) {
-
-            }
+            public void onAnimationCancel(Animator animation) {}
 
             @Override
-            public void onAnimationRepeat(Animator animation) {
-
-            }
+            public void onAnimationRepeat(Animator animation) {}
         };
     }
 
@@ -293,5 +287,6 @@ public class SwipeViewBinder<T, V extends View> extends ViewBinder<T, V>{
 
     protected interface SwipeCallback{
         void onRemoveView(SwipeViewBinder swipeViewBinder);
+        void onScaleBottom(float value);
     }
 }
