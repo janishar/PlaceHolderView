@@ -59,6 +59,26 @@ public class SwipeCard {
                 break;
             case 6:
                 mainView.setBackgroundColor(Color.GRAY);
+            case 7:
+                mainView.setBackgroundColor(Color.RED);
+                break;
+            case 8:
+                mainView.setBackgroundColor(Color.GREEN);
+                break;
+            case 9:
+                mainView.setBackgroundColor(Color.BLACK);
+                break;
+            case 10:
+                mainView.setBackgroundColor(Color.BLUE);
+                break;
+            case 11:
+                mainView.setBackgroundColor(Color.YELLOW);
+                break;
+            case 12:
+                mainView.setBackgroundColor(Color.MAGENTA);
+                break;
+            case 13:
+                mainView.setBackgroundColor(Color.GRAY);
                 break;
         }
     }

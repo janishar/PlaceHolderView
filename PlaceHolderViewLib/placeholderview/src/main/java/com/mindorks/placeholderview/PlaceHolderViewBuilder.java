@@ -9,13 +9,10 @@ import android.support.v7.widget.RecyclerView;
  */
 public class PlaceHolderViewBuilder {
 
-    private final int DEFAULT_ITEM_VIEW_CACHE_SIZE = 10;
-    private final boolean DEFAULT_HAS_FIXED_SIZE = false;
+    private int mItemViewCacheSize = PlaceHolderView.DEFAULT_ITEM_VIEW_CACHE_SIZE;
+    private boolean mHasFixedSize = PlaceHolderView.DEFAULT_HAS_FIXED_SIZE;
 
     private RecyclerView.LayoutManager mLayoutManager;
-    private int mItemViewCacheSize = DEFAULT_ITEM_VIEW_CACHE_SIZE;
-    private boolean mHasFixedSize = DEFAULT_HAS_FIXED_SIZE;
-
     private RecyclerView mRecyclerView;
 
     /**

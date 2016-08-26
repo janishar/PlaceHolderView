@@ -10,6 +10,9 @@ import android.util.AttributeSet;
  */
 public class PlaceHolderView extends RecyclerView {
 
+    public static final int DEFAULT_ITEM_VIEW_CACHE_SIZE = 10;
+    public static final boolean DEFAULT_HAS_FIXED_SIZE = false;
+
     private ViewAdapter mViewAdapter;
     private PlaceHolderViewBuilder mBuilder;
 

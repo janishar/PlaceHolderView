@@ -29,7 +29,14 @@ public class ActivitySwipeTest extends AppCompatActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
+        mSwipView.getBuilder()
+                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_DEFAULT)
+                .setDisplayViewCount(2);
         mSwipView
+                .addView(new SwipeCard())
+                .addView(new SwipeCard())
+                .addView(new SwipeCard())
+                .addView(new SwipeCard())
                 .addView(new SwipeCard())
                 .addView(new SwipeCard())
                 .addView(new SwipeCard())

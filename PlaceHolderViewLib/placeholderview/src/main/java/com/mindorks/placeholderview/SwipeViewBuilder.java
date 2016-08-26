@@ -39,4 +39,9 @@ public class SwipeViewBuilder {
         mSwipePlaceHolderView.setSpacing(spacing);
         return this;
     }
+
+    public SwipeViewBuilder setDisplayReverse(boolean reverse) {
+        mSwipePlaceHolderView.setIsReverse(reverse);
+        return this;
+    }
 }

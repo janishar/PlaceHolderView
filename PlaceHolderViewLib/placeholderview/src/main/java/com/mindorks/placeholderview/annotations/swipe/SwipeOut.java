@@ -9,7 +9,6 @@ import java.lang.annotation.Target;
  * Created by janisharali on 18/08/16.
  */
 @Retention(RetentionPolicy.RUNTIME)
-@Target(ElementType.FIELD)
-public @interface Swipe {
-    int value();
+@Target(ElementType.METHOD)
+public @interface SwipeOut {
 }
