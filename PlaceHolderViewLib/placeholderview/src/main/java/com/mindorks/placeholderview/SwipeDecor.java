@@ -1,5 +1,9 @@
 package com.mindorks.placeholderview;
 
+import android.view.Gravity;
+
+import com.mindorks.placeholderview.annotations.View;
+
 /**
  * Created by janisharali on 26/08/16.
  */
@@ -13,9 +17,7 @@ public class SwipeDecor {
     private boolean mAnimateScale;
     private int mSwipeInMsgLayoutId;
     private int mSwipeOutMsgLayoutId;
-    private boolean mSwipeInMsgAttachEnds;
-    private boolean mSwipeInMsgAttachCorners;
-    private boolean mSwipeInMsgAttachCenters;
+    private int mSwipeInMsgGravity;
     private int mSwipeDistToDisplayMsg;
 
     public SwipeDecor() {
@@ -25,9 +27,7 @@ public class SwipeDecor {
         mAnimateScale = true;
         mSwipeInMsgLayoutId = PRIMITIVE_NULL;
         mSwipeOutMsgLayoutId = PRIMITIVE_NULL;
-        mSwipeInMsgAttachEnds = false;
-        mSwipeInMsgAttachCorners = false;
-        mSwipeInMsgAttachCenters = true;
+        mSwipeInMsgGravity = Gravity.CENTER ;
         mSwipeDistToDisplayMsg = 100;
     }
 
@@ -57,24 +57,8 @@ public class SwipeDecor {
         return this;
     }
 
-    public SwipeDecor setSwipeInMsgAttachEnds(boolean value){
-        mSwipeInMsgAttachEnds = value;
-        mSwipeInMsgAttachCenters = false;
-        mSwipeInMsgAttachCorners = false;
-        return this;
-    }
-
-    public SwipeDecor setSwipeInMsgAttachCorners(boolean value){
-        mSwipeInMsgAttachCorners = value;
-        mSwipeInMsgAttachCenters = false;
-        mSwipeInMsgAttachEnds = false;
-        return this;
-    }
-
-    public SwipeDecor setSwipeInMsgAttachCenters(boolean value){
-        mSwipeInMsgAttachCenters = value;
-        mSwipeInMsgAttachCorners = false;
-        mSwipeInMsgAttachEnds = false;
+    public SwipeDecor setSwipeInMsgGravity(int gravity){
+        mSwipeInMsgGravity = gravity;
         return this;
     }
 
@@ -122,16 +106,8 @@ public class SwipeDecor {
         return mSwipeOutMsgLayoutId;
     }
 
-    public boolean isSwipeInMsgAttachEnds() {
-        return mSwipeInMsgAttachEnds;
-    }
-
-    public boolean isSwipeInMsgAttachCorners() {
-        return mSwipeInMsgAttachCorners;
-    }
-
-    public boolean isSwipeInMsgAttachCenters() {
-        return mSwipeInMsgAttachCenters;
+    public int getSwipeInMsgGravity() {
+        return mSwipeInMsgGravity;
     }
 
     public int getSwipeDistToDisplayMsg() {

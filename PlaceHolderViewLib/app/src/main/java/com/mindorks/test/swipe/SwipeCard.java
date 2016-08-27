@@ -2,6 +2,7 @@ package com.mindorks.test.swipe;
 
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -16,6 +17,10 @@ import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Position;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
+import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
+import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
+import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
+import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 import com.mindorks.test.R;
 import com.mindorks.test.Utils;
 
@@ -81,5 +86,25 @@ public class SwipeCard {
                 mainView.setBackgroundColor(Color.GRAY);
                 break;
         }
+    }
+
+    @SwipeOut
+    private void onSwipedOut(){
+        Log.d("DEBUG", "onSwipedOut");
+    }
+
+    @SwipeIn
+    private void onSwipeIn(){
+        Log.d("DEBUG", "onSwipedIn");
+    }
+
+    @SwipeInState
+    private void onSwipeInState(){
+        Log.d("DEBUG", "onSwipeInState");
+    }
+
+    @SwipeOutState
+    private void onSwipeOutState(){
+        Log.d("DEBUG", "onSwipeOutState");
     }
 }

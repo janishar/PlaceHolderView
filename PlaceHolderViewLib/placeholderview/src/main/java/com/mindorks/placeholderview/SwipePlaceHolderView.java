@@ -143,18 +143,8 @@ public class SwipePlaceHolderView extends FrameLayout implements
             FrameLayout.LayoutParams layoutParamsOutMsg = new FrameLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
-            if(swipeDecor.isSwipeInMsgAttachCenters()){
-                layoutParamsInMsg.gravity = Gravity.CENTER;
-                layoutParamsOutMsg.gravity = Gravity.CENTER;
-            }
-            else if(swipeDecor.isSwipeInMsgAttachCorners()){
-                layoutParamsInMsg.gravity = Gravity.RIGHT|Gravity.TOP;
-                layoutParamsOutMsg.gravity = Gravity.LEFT|Gravity.TOP;
-            }
-            else if(swipeDecor.isSwipeInMsgAttachEnds()){
-                layoutParamsInMsg.gravity = Gravity.RIGHT|Gravity.CENTER;
-                layoutParamsOutMsg.gravity = Gravity.LEFT|Gravity.CENTER;
-            }
+            layoutParamsInMsg.gravity = mSwipeDecor.getSwipeInMsgGravity();
+            layoutParamsOutMsg.gravity = mSwipeDecor.getSwipeInMsgGravity();
 
             swipeInMsgLayout.setLayoutParams(layoutParamsInMsg);
             swipeOutMsgLayout.setLayoutParams(layoutParamsOutMsg);
@@ -262,9 +252,8 @@ public class SwipePlaceHolderView extends FrameLayout implements
             }
         }
 
-        if((distXMovedAbs > mSwipeDecor.getSwipeDistToDisplayMsg() || distYMovedAbs > mSwipeDecor.getSwipeDistToDisplayMsg())
-                && mSwipeDecor.getSwipeInMsgLayoutId() != SwipeDecor.PRIMITIVE_NULL
-                && mSwipeDecor.getSwipeOutMsgLayoutId() != SwipeDecor.PRIMITIVE_NULL) {
+        if((distXMovedAbs > mSwipeDecor.getSwipeDistToDisplayMsg() || distYMovedAbs > mSwipeDecor.getSwipeDistToDisplayMsg())){
+
             boolean isSwipeIn = false;
             if (distXMoved > 0) {
                 isSwipeIn = true;
@@ -278,25 +267,33 @@ public class SwipePlaceHolderView extends FrameLayout implements
                 }
             }
 
-            if(isSwipeIn){
-                if(swipeViewBinder.getSwipeInMsgView() != null
-                        && swipeViewBinder.getSwipeInMsgView().getVisibility() == GONE) {
-                    swipeViewBinder.getSwipeInMsgView().setVisibility(VISIBLE);
-                }
-                if(swipeViewBinder.getSwipeOutMsgView() != null
-                        && swipeViewBinder.getSwipeOutMsgView().getVisibility() == VISIBLE){
-                    swipeViewBinder.getSwipeOutMsgView().setVisibility(GONE);
-                }
+            if (isSwipeIn) {
+                swipeViewBinder.bindSwipeInState();
+            } else {
+                swipeViewBinder.bindSwipeOutState();
             }
 
-            else{
-                if(swipeViewBinder.getSwipeOutMsgView() != null
-                        && swipeViewBinder.getSwipeOutMsgView().getVisibility() == GONE) {
-                    swipeViewBinder.getSwipeOutMsgView().setVisibility(VISIBLE);
-                }
-                if(swipeViewBinder.getSwipeInMsgView() != null
-                        && swipeViewBinder.getSwipeInMsgView().getVisibility() == VISIBLE){
-                    swipeViewBinder.getSwipeInMsgView().setVisibility(GONE);
+            if (mSwipeDecor.getSwipeInMsgLayoutId() != SwipeDecor.PRIMITIVE_NULL
+                    && mSwipeDecor.getSwipeOutMsgLayoutId() != SwipeDecor.PRIMITIVE_NULL) {
+
+                if (isSwipeIn) {
+                    if (swipeViewBinder.getSwipeInMsgView() != null
+                            && swipeViewBinder.getSwipeInMsgView().getVisibility() == GONE) {
+                        swipeViewBinder.getSwipeInMsgView().setVisibility(VISIBLE);
+                    }
+                    if (swipeViewBinder.getSwipeOutMsgView() != null
+                            && swipeViewBinder.getSwipeOutMsgView().getVisibility() == VISIBLE) {
+                        swipeViewBinder.getSwipeOutMsgView().setVisibility(GONE);
+                    }
+                } else {
+                    if (swipeViewBinder.getSwipeOutMsgView() != null
+                            && swipeViewBinder.getSwipeOutMsgView().getVisibility() == GONE) {
+                        swipeViewBinder.getSwipeOutMsgView().setVisibility(VISIBLE);
+                    }
+                    if (swipeViewBinder.getSwipeInMsgView() != null
+                            && swipeViewBinder.getSwipeInMsgView().getVisibility() == VISIBLE) {
+                        swipeViewBinder.getSwipeInMsgView().setVisibility(GONE);
+                    }
                 }
             }
         }

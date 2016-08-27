@@ -10,7 +10,9 @@ import android.widget.FrameLayout;
 
 
 import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
+import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
+import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
@@ -83,6 +85,39 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             }
         }
     }
+
+    protected void bindSwipeInState(){
+        for(final Method method : getResolver().getClass().getDeclaredMethods()) {
+            Annotation annotation = method.getAnnotation(SwipeInState.class);
+            if(annotation instanceof SwipeInState) {
+                try {
+                    method.setAccessible(true);
+                    method.invoke(getResolver());
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    protected void bindSwipeOutState(){
+        for(final Method method : getResolver().getClass().getDeclaredMethods()) {
+            Annotation annotation = method.getAnnotation(SwipeOutState.class);
+            if(annotation instanceof SwipeOutState) {
+                try {
+                    method.setAccessible(true);
+                    method.invoke(getResolver());
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
 
     private void serAnimatorListener(){
         mAnimatorListener = new Animator.AnimatorListener() {

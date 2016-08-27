@@ -31,12 +31,7 @@ public class ActivitySwipeTest extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         mSwipView.getBuilder()
                 .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_DEFAULT)
-                .setSwipeDecor(
-                        new SwipeDecor()
-                                .setPaddingTop(30)
-                                .setSwipeInMsgLayoutId(R.layout.swipe_in_msg_view)
-                                .setSwipeOutMsgLayoutId(R.layout.swipe_out_msg_view)
-                                .setSwipeInMsgAttachEnds(true));
+                .setSwipeDecor(new SwipeDecor().setPaddingTop(30));
         mSwipView
                 .addView(new SwipeCard())
                 .addView(new SwipeCard())
