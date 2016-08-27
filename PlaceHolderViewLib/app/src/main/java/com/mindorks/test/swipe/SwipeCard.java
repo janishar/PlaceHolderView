@@ -11,6 +11,7 @@ import com.bumptech.glide.Glide;
 import com.mindorks.placeholderview.Animation;
 import com.mindorks.placeholderview.PlaceHolderView;
 import com.mindorks.placeholderview.annotations.Animate;
+import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.NonReusable;
@@ -87,6 +88,11 @@ public class SwipeCard {
                 mainView.setBackgroundColor(Color.GRAY);
                 break;
         }
+    }
+
+    @Click(R.id.txtView)
+    private void onTxtClick(){
+        Log.d("DEBUG", "onTxtClick");
     }
 
     @SwipeOut

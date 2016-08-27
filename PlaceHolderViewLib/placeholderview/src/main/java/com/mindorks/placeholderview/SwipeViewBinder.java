@@ -135,6 +135,11 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         }
     }
 
+    @Override
+    protected void unbind() {
+        super.unbind();
+        mLayoutView.setOnTouchListener(null);
+    }
 
     private void serAnimatorListener(){
         mAnimatorListener = new Animator.AnimatorListener() {
@@ -158,22 +163,22 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
     private void setDefaultTouchListener(final V view){
         serAnimatorListener();
-        final FrameLayout.LayoutParams originalParamsInitial = (FrameLayout.LayoutParams) view.getLayoutParams();
-        final int originalTopMargin = originalParamsInitial.topMargin;
-        final int originalLeftMargin = originalParamsInitial.leftMargin;
         final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
-
         view.setOnTouchListener(new View.OnTouchListener() {
             private float dx;
             private float dy;
+            int originalTopMargin;
+            int originalLeftMargin;
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 final PointF pointerCurrentPoint = new PointF(event.getRawX(), event.getRawY());
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
-                        FrameLayout.LayoutParams layoutParamsInitial = (FrameLayout.LayoutParams) v.getLayoutParams();
-                        dx = pointerCurrentPoint.x - layoutParamsInitial.leftMargin;
-                        dy = pointerCurrentPoint.y - layoutParamsInitial.topMargin;
+                        FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
+                        originalTopMargin = layoutParamsOriginal.topMargin;
+                        originalLeftMargin = layoutParamsOriginal.leftMargin;
+                        dx = pointerCurrentPoint.x - layoutParamsOriginal.leftMargin;
+                        dy = pointerCurrentPoint.y - layoutParamsOriginal.topMargin;
                         break;
                     case MotionEvent.ACTION_UP:
                         float distSlideX = pointerCurrentPoint.x - dx;
@@ -240,19 +245,19 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
     private void setHorizontalTouchListener(final V view){
         serAnimatorListener();
-        final FrameLayout.LayoutParams originalParamsInitial = (FrameLayout.LayoutParams) view.getLayoutParams();
-        final int originalLeftMargin = originalParamsInitial.leftMargin;
         final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
 
         view.setOnTouchListener(new View.OnTouchListener() {
             private float dx;
+            int originalLeftMargin;
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 final float x = event.getRawX();
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
-                        FrameLayout.LayoutParams layoutParamsInitial = (FrameLayout.LayoutParams) v.getLayoutParams();
-                        dx = x - layoutParamsInitial.leftMargin;
+                        FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
+                        originalLeftMargin = layoutParamsOriginal.leftMargin;
+                        dx = x - layoutParamsOriginal.leftMargin;
                         break;
                     case MotionEvent.ACTION_UP:
                         float distSlideX = x - dx;
@@ -297,19 +302,18 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
     private void setVerticalTouchListener(final V view){
         serAnimatorListener();
-        final FrameLayout.LayoutParams originalParamsInitial = (FrameLayout.LayoutParams) view.getLayoutParams();
-        final int originalTopMargin = originalParamsInitial.topMargin;
         final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
-
         view.setOnTouchListener(new View.OnTouchListener() {
             private float dy;
+            int originalTopMargin;
             @Override
             public boolean onTouch(View v, MotionEvent event) {
                 final float y = event.getRawY();
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
-                        FrameLayout.LayoutParams layoutParamsInitial = (FrameLayout.LayoutParams) v.getLayoutParams();
-                        dy = y - layoutParamsInitial.topMargin;
+                        FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
+                        originalTopMargin = layoutParamsOriginal.topMargin;
+                        dy = y - layoutParamsOriginal.topMargin;
                         break;
                     case MotionEvent.ACTION_UP:
                         float distSlideY = y - dy;

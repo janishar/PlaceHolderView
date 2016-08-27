@@ -3,10 +3,13 @@ package com.mindorks.placeholderview;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.support.v4.view.MotionEventCompat;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 
@@ -101,13 +104,13 @@ public class SwipePlaceHolderView extends FrameLayout implements
             int position = mSwipeViewBinderList.indexOf(swipeViewBinder);
             View promptsView = mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), null);
 
-            FrameLayout frameLayout = new FrameLayout(getContext());
-            frameLayout.setLayoutParams(getLayoutParamsWithSwipeDecor(position, mSwipeDecor));
-            frameLayout.addView(promptsView);
-            attachSwipeInfoViews(promptsView, frameLayout, swipeViewBinder, mSwipeDecor);
-            addView(frameLayout);
-            setRelativeScale(frameLayout, position, mSwipeDecor);
-            swipeViewBinder.bindView(frameLayout, position, mSwipeType, this);
+            FrameView frameView = new FrameView(getContext());
+            frameView.setLayoutParams(getLayoutParamsWithSwipeDecor(position, mSwipeDecor));
+            frameView.addView(promptsView);
+            attachSwipeInfoViews(promptsView, frameView, swipeViewBinder, mSwipeDecor);
+            addView(frameView);
+            setRelativeScale(frameView, position, mSwipeDecor);
+            swipeViewBinder.bindView(frameView, position, mSwipeType, this);
         }
         return this;
     }
@@ -117,13 +120,13 @@ public class SwipePlaceHolderView extends FrameLayout implements
         int position = mSwipeViewBinderList.indexOf(swipeViewBinder);
         View promptsView = mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), null);
 
-        FrameLayout frameLayout = new FrameLayout(getContext());
-        frameLayout.setLayoutParams(getLayoutParamsWithSwipeDecor(position, mSwipeDecor));
-        frameLayout.addView(promptsView);
-        attachSwipeInfoViews(promptsView, frameLayout, swipeViewBinder, mSwipeDecor);
-        addView(frameLayout);
-        setRelativeScale(frameLayout, position, mSwipeDecor);
-        swipeViewBinder.bindView(frameLayout, oldPosition - 1, mSwipeType, this);
+        FrameView frameView = new FrameView(getContext());
+        frameView.setLayoutParams(getLayoutParamsWithSwipeDecor(position, mSwipeDecor));
+        frameView.addView(promptsView);
+        attachSwipeInfoViews(promptsView, frameView, swipeViewBinder, mSwipeDecor);
+        addView(frameView);
+        setRelativeScale(frameView, position, mSwipeDecor);
+        swipeViewBinder.bindView(frameView, oldPosition - 1, mSwipeType, this);
     }
 
     protected <V extends View, F extends FrameLayout, T extends SwipeViewBinder>void attachSwipeInfoViews(
@@ -171,7 +174,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         return layoutParams;
     }
 
-    protected <V extends  FrameLayout>void getLayoutParamsWithSwipeDecor(V frame, int position, SwipeDecor decor){
+    protected <V extends  FrameLayout>void setLayoutParamsWithSwipeDecor(V frame, int position, SwipeDecor decor){
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams)frame.getLayoutParams();
         layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
         frame.setLayoutParams(layoutParams);
@@ -252,7 +255,8 @@ public class SwipePlaceHolderView extends FrameLayout implements
             }
         }
 
-        if((distXMovedAbs > mSwipeDecor.getSwipeDistToDisplayMsg() || distYMovedAbs > mSwipeDecor.getSwipeDistToDisplayMsg())){
+        if((distXMovedAbs > mSwipeDecor.getSwipeDistToDisplayMsg()
+                || distYMovedAbs > mSwipeDecor.getSwipeDistToDisplayMsg())){
 
             boolean isSwipeIn = false;
             if (distXMoved > 0) {
@@ -327,8 +331,78 @@ public class SwipePlaceHolderView extends FrameLayout implements
             for (int i = 0; i <= lastPosition && mSwipeViewBinderList.get(i) != null; i++) {
                 SwipeViewBinder<Object, FrameLayout> swipeViewBinder = mSwipeViewBinderList.get(i);
                 setRelativeScale(swipeViewBinder.getLayoutView(), i, swipeDecor);
-                getLayoutParamsWithSwipeDecor(swipeViewBinder.getLayoutView(), i, swipeDecor);
+                setLayoutParamsWithSwipeDecor(swipeViewBinder.getLayoutView(), i, swipeDecor);
             }
+        }
+    }
+
+    protected class FrameView extends FrameLayout{
+
+        private int mTouchSlop;
+        private boolean mMoving;
+        private float mDownX;
+        private float mDownY;
+
+        public FrameView(Context context) {
+            super(context);
+            ViewConfiguration vc = ViewConfiguration.get(getContext());
+            mTouchSlop = vc.getScaledTouchSlop();
+        }
+
+        public FrameView(Context context, AttributeSet attrs) {
+            super(context, attrs);
+        }
+
+        public FrameView(Context context, AttributeSet attrs, int defStyleAttr) {
+            super(context, attrs, defStyleAttr);
+        }
+
+        @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+        public FrameView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+            super(context, attrs, defStyleAttr, defStyleRes);
+        }
+
+        @Override
+        public boolean onInterceptTouchEvent(MotionEvent ev) {
+            final int action = MotionEventCompat.getActionMasked(ev);
+
+            if (action == MotionEvent.ACTION_CANCEL || action == MotionEvent.ACTION_UP) {
+                mMoving = false;
+                return false;
+            }
+            switch (action){
+                case MotionEvent.ACTION_DOWN:
+                    mMoving = false;
+                    mDownX = ev.getRawX();
+                    mDownY = ev.getRawY();
+                    break;
+                case MotionEvent.ACTION_MOVE:
+                    if(mMoving){
+                        return true;
+                    }
+                    int xDiff = calculateDistanceX(ev);
+                    int yDiff = calculateDistanceY(ev);
+                    xDiff = xDiff >= 0 ? xDiff : -xDiff;
+                    yDiff = yDiff >= 0 ? yDiff : -yDiff;
+                    if (xDiff > mTouchSlop) {
+                        mMoving = true;
+                        return true;
+                    }
+                    else if(yDiff > mTouchSlop){
+                        mMoving = true;
+                        return true;
+                    }
+                    break;
+            }
+            return false;
+        }
+
+        private int calculateDistanceX(MotionEvent ev) {
+            return (int) (ev.getRawX() - mDownX);
+        }
+
+        private int calculateDistanceY(MotionEvent ev) {
+            return (int) (ev.getRawY() - mDownY);
         }
     }
 }

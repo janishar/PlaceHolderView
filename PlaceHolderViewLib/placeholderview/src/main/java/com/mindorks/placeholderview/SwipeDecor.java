@@ -28,7 +28,7 @@ public class SwipeDecor {
         mSwipeInMsgLayoutId = PRIMITIVE_NULL;
         mSwipeOutMsgLayoutId = PRIMITIVE_NULL;
         mSwipeInMsgGravity = Gravity.CENTER ;
-        mSwipeDistToDisplayMsg = 100;
+        mSwipeDistToDisplayMsg = 30;
     }
 
     public SwipeDecor setPaddingTop(int padding){
