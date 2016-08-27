@@ -16,7 +16,8 @@ import java.util.List;
 /**
  * Created by janisharali on 26/08/16.
  */
-public class SwipePlaceHolderView extends FrameLayout implements SwipeViewBinder.SwipeCallback{
+public class SwipePlaceHolderView extends FrameLayout implements
+        SwipeViewBinder.SwipeCallback<SwipeViewBinder<Object, FrameLayout>>{
 
     public static final int DEFAULT_DISPLAY_VIEW_COUNT = 20;
     public static final int SWIPE_TYPE_DEFAULT = 1;
@@ -100,13 +101,11 @@ public class SwipePlaceHolderView extends FrameLayout implements SwipeViewBinder
             View promptsView = mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), null);
 
             FrameLayout frameLayout = new FrameLayout(getContext());
-            frameLayout.setLayoutParams(buildSwipeDecor(position, mSwipeDecor));
+            frameLayout.setLayoutParams(buildViewWithSwipeDecor(position, mSwipeDecor));
             frameLayout.addView(promptsView);
             addView(frameLayout);
             setRelativeScale(frameLayout, position, mSwipeDecor);
-
-            swipeViewBinder.bindView(frameLayout, position, mSwipeType);
-            swipeViewBinder.setSwipeCallback(this);
+            swipeViewBinder.bindView(frameLayout, position, mSwipeType, this);
         }
         return this;
     }
@@ -117,17 +116,15 @@ public class SwipePlaceHolderView extends FrameLayout implements SwipeViewBinder
         View promptsView = mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), null);
 
         FrameLayout frameLayout = new FrameLayout(getContext());
-        frameLayout.setLayoutParams(buildSwipeDecor(position, mSwipeDecor));
+        frameLayout.setLayoutParams(buildViewWithSwipeDecor(position, mSwipeDecor));
         frameLayout.addView(promptsView);
         addView(frameLayout);
         setRelativeScale(frameLayout, position, mSwipeDecor);
 
-        swipeViewBinder.bindView(frameLayout, oldPosition - 1, mSwipeType);
-        swipeViewBinder.setSwipeCallback(this);
+        swipeViewBinder.bindView(frameLayout, oldPosition - 1, mSwipeType, this);
     }
 
-    protected FrameLayout.LayoutParams buildSwipeDecor(int position, SwipeDecor decor){
-
+    protected FrameLayout.LayoutParams buildViewWithSwipeDecor(int position, SwipeDecor decor){
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = Gravity.CENTER;
@@ -136,7 +133,7 @@ public class SwipePlaceHolderView extends FrameLayout implements SwipeViewBinder
         return layoutParams;
     }
 
-    protected <V extends  FrameLayout>void rebuildSwipeDecor(V frame, int position, SwipeDecor decor){
+    protected <V extends  FrameLayout>void rebuildViewWithSwipeDecor(V frame, int position, SwipeDecor decor){
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams)frame.getLayoutParams();
         layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position,
                 decor.getPaddingRight() * position, decor.getPaddingBottom() * position);
@@ -171,12 +168,66 @@ public class SwipePlaceHolderView extends FrameLayout implements SwipeViewBinder
         }
     }
 
-    protected <T extends SwipeDecor>void resetViewOrientation(int lastPosition,  T swipeDecor){
+    @Override
+    public void onAnimateView(float distXMoved, float distYMoved, float finalXDist,
+                              float finalYDist, SwipeViewBinder<Object, FrameLayout> swipeViewBinder) {
+        if(mSwipeDecor.isAnimateScale() && mSwipeViewBinderList.contains(swipeViewBinder)){
+            int count;
+            if(mSwipeViewBinderList.size() > mDisplayViewCount){
+                count = mDisplayViewCount;
+            }else{
+                count  = mSwipeViewBinderList.size();
+            }
+
+            for(int i = mSwipeViewBinderList.indexOf(swipeViewBinder) +  1; i < count; i++){
+                SwipeViewBinder<Object, FrameLayout> swipeViewBinderBelow = mSwipeViewBinderList.get(i);
+
+                FrameLayout.LayoutParams layoutParams =
+                        (FrameLayout.LayoutParams) swipeViewBinderBelow.getLayoutView().getLayoutParams();
+
+                float value = (-mSwipeDecor.getPaddingTop() / finalYDist) * distYMoved + mSwipeDecor.getPaddingTop() * i;
+                layoutParams.topMargin = (int)value;
+
+                value = (-mSwipeDecor.getPaddingLeft() / finalXDist) * distXMoved + mSwipeDecor.getPaddingLeft() * i;
+                layoutParams.leftMargin = (int)value;
+
+                swipeViewBinderBelow.getLayoutView().setLayoutParams(layoutParams);
+
+                distXMoved = distXMoved > 0 ? distXMoved : -distXMoved;
+                distYMoved = distYMoved > 0 ? distYMoved : -distYMoved;
+                float distMoved;
+                float finalDist;
+                if(distXMoved > distYMoved){
+                    distMoved = distXMoved;
+                    finalDist = finalXDist;
+                }else{
+                    distMoved = distYMoved;
+                    finalDist = finalYDist;
+                }
+                float scaleDefault = 1 - i * mSwipeDecor.getRelativeScale();
+                float scaleOfAboveViewDefault = 1 - (i - 1) * mSwipeDecor.getRelativeScale();
+                float scale = ((scaleOfAboveViewDefault - scaleDefault) / finalDist) * distMoved + scaleDefault;
+                swipeViewBinderBelow.getLayoutView().setScaleX(scale);
+                swipeViewBinderBelow.getLayoutView().setScaleY(scale);
+            }
+        }
+    }
+
+    @Override
+    public void onResetView(SwipeViewBinder swipeViewBinder) {
+        if(mSwipeViewBinderList.size() > mDisplayViewCount){
+            resetViewOrientation(mDisplayViewCount - 1, mSwipeDecor);
+        }else{
+            resetViewOrientation(mSwipeViewBinderList.size() - 1, mSwipeDecor);
+        }
+    }
+
+    protected <T extends SwipeDecor>void resetViewOrientation(int lastPosition, T swipeDecor){
         if(swipeDecor.isAnimateScale()) {
             for (int i = 0; i <= lastPosition && mSwipeViewBinderList.get(i) != null; i++) {
                 SwipeViewBinder<Object, FrameLayout> swipeViewBinder = mSwipeViewBinderList.get(i);
                 setRelativeScale(swipeViewBinder.getLayoutView(), i, swipeDecor);
-                rebuildSwipeDecor(swipeViewBinder.getLayoutView(), i, swipeDecor);
+                rebuildViewWithSwipeDecor(swipeViewBinder.getLayoutView(), i, swipeDecor);
             }
         }
     }

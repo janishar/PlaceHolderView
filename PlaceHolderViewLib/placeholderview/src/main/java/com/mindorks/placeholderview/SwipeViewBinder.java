@@ -9,7 +9,6 @@ import android.view.animation.*;
 import android.widget.FrameLayout;
 
 
-import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 
@@ -26,20 +25,16 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
     private SwipeCallback mCallback;
     private Animator.AnimatorListener mAnimatorListener;
     private int mSwipeType = SwipePlaceHolderView.SWIPE_TYPE_DEFAULT;
-    private boolean mIsReverse;
 
     public SwipeViewBinder(T resolver) {
         super(resolver);
     }
 
-    public void setSwipeCallback(SwipeCallback callback) {
-        mCallback = callback;
-    }
-
-    protected void bindView(V promptsView, int position, int swipeType, SwipeDecor swipeDecor) {
+    protected void bindView(V promptsView, int position, int swipeType, SwipeCallback callback) {
         super.bindView(promptsView, position);
         mLayoutView = promptsView;
         mSwipeType = swipeType;
+        mCallback = callback;
         switch (swipeType){
             case SwipePlaceHolderView.SWIPE_TYPE_DEFAULT:
                 setDefaultTouchListener(promptsView);
@@ -110,6 +105,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         final FrameLayout.LayoutParams originalParamsInitial = (FrameLayout.LayoutParams) view.getLayoutParams();
         final int originalTopMargin = originalParamsInitial.topMargin;
         final int originalLeftMargin = originalParamsInitial.leftMargin;
+        final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
+
         view.setOnTouchListener(new View.OnTouchListener() {
             private float dx;
             private float dy;
@@ -133,8 +130,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                             layoutParamsFinal.topMargin = originalTopMargin;
                             layoutParamsFinal.leftMargin = originalLeftMargin;
                             v.setLayoutParams(layoutParamsFinal);
+                            mCallback.onResetView(SwipeViewBinder.this);
                         }else{
-                            DisplayMetrics displayMetrics = v.getContext().getResources().getDisplayMetrics();
                             float transX = displayMetrics.widthPixels;
                             float transY = displayMetrics.heightPixels;
 
@@ -173,6 +170,11 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                         layoutParamsTemp.topMargin = (int)(pointerCurrentPoint.y - dy);
                         layoutParamsTemp.leftMargin = (int)(pointerCurrentPoint.x - dx);
                         v.setLayoutParams(layoutParamsTemp);
+
+                        int distanceMovedTop = originalTopMargin - layoutParamsTemp.topMargin;
+                        int distanceMovedLeft = originalLeftMargin - layoutParamsTemp.leftMargin;
+                        mCallback.onAnimateView(distanceMovedLeft,distanceMovedTop, displayMetrics.widthPixels/2,
+                                displayMetrics.heightPixels / 2, SwipeViewBinder.this);
                         break;
                 }
                 return true;
@@ -184,6 +186,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         serAnimatorListener();
         final FrameLayout.LayoutParams originalParamsInitial = (FrameLayout.LayoutParams) view.getLayoutParams();
         final int originalLeftMargin = originalParamsInitial.leftMargin;
+        final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
+
         view.setOnTouchListener(new View.OnTouchListener() {
             private float dx;
             @Override
@@ -202,6 +206,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                             FrameLayout.LayoutParams layoutParamsFinal = (FrameLayout.LayoutParams) v.getLayoutParams();
                             layoutParamsFinal.leftMargin = originalLeftMargin;
                             v.setLayoutParams(layoutParamsFinal);
+                            mCallback.onResetView(SwipeViewBinder.this);
                         }else{
                             DisplayMetrics displayMetrics = v.getContext().getResources().getDisplayMetrics();
                             float transX = displayMetrics.widthPixels;
@@ -224,6 +229,9 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                         FrameLayout.LayoutParams layoutParamsTemp = (FrameLayout.LayoutParams) v.getLayoutParams();
                         layoutParamsTemp.leftMargin = (int)(x - dx);
                         v.setLayoutParams(layoutParamsTemp);
+                        int distanceMoved = originalLeftMargin - layoutParamsTemp.leftMargin;
+                        mCallback.onAnimateView(distanceMoved, 0, displayMetrics.widthPixels/2,
+                                displayMetrics.heightPixels / 2, SwipeViewBinder.this);
                         break;
                 }
                 return true;
@@ -235,6 +243,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         serAnimatorListener();
         final FrameLayout.LayoutParams originalParamsInitial = (FrameLayout.LayoutParams) view.getLayoutParams();
         final int originalTopMargin = originalParamsInitial.topMargin;
+        final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
+
         view.setOnTouchListener(new View.OnTouchListener() {
             private float dy;
             @Override
@@ -253,8 +263,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                             FrameLayout.LayoutParams layoutParamsFinal = (FrameLayout.LayoutParams) v.getLayoutParams();
                             layoutParamsFinal.topMargin = originalTopMargin;
                             v.setLayoutParams(layoutParamsFinal);
+                            mCallback.onResetView(SwipeViewBinder.this);
                         }else{
-                            DisplayMetrics displayMetrics = v.getContext().getResources().getDisplayMetrics();
                             float transY = displayMetrics.heightPixels;
                             if(y < displayMetrics.heightPixels / 2){
                                 transY = -v.getHeight();
@@ -274,6 +284,10 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                         FrameLayout.LayoutParams layoutParamsTemp = (FrameLayout.LayoutParams) v.getLayoutParams();
                         layoutParamsTemp.topMargin = (int)(y - dy);
                         v.setLayoutParams(layoutParamsTemp);
+
+                        int distanceMoved = originalTopMargin - layoutParamsTemp.topMargin;
+                        mCallback.onAnimateView(0, distanceMoved, displayMetrics.widthPixels/2,
+                                displayMetrics.heightPixels / 2, SwipeViewBinder.this);
                         break;
                 }
                 return true;
@@ -285,8 +299,9 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         return mLayoutView;
     }
 
-    protected interface SwipeCallback{
-        void onRemoveView(SwipeViewBinder swipeViewBinder);
-        void onScaleBottom(float value);
+    protected interface SwipeCallback<T extends SwipeViewBinder<Object, FrameLayout>>{
+        void onRemoveView(T swipeViewBinder);
+        void onResetView(T swipeViewBinder);
+        void onAnimateView(float distXMoved, float distYMoved, float finalXDist, float finalYDist, T swipeViewBinder);
     }
 }
