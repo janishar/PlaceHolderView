@@ -17,6 +17,7 @@ import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Position;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
+import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
 import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
@@ -91,6 +92,11 @@ public class SwipeCard {
     @SwipeOut
     private void onSwipedOut(){
         Log.d("DEBUG", "onSwipedOut");
+    }
+
+    @SwipeCancelState
+    private void onSwipeCancelState(){
+        Log.d("DEBUG", "onSwipeCancelState");
     }
 
     @SwipeIn

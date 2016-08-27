@@ -9,6 +9,7 @@ import android.view.animation.*;
 import android.widget.FrameLayout;
 
 
+import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
 import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
@@ -106,6 +107,22 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         for(final Method method : getResolver().getClass().getDeclaredMethods()) {
             Annotation annotation = method.getAnnotation(SwipeOutState.class);
             if(annotation instanceof SwipeOutState) {
+                try {
+                    method.setAccessible(true);
+                    method.invoke(getResolver());
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    protected void bindSwipeCancelState(){
+        for(final Method method : getResolver().getClass().getDeclaredMethods()) {
+            Annotation annotation = method.getAnnotation(SwipeCancelState.class);
+            if(annotation instanceof SwipeCancelState) {
                 try {
                     method.setAccessible(true);
                     method.invoke(getResolver());

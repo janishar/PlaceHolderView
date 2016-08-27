@@ -319,6 +319,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
                 swipeViewBinder.getSwipeOutMsgView().setVisibility(GONE);
             }
         }
+        swipeViewBinder.bindSwipeCancelState();
     }
 
     protected <T extends SwipeDecor>void resetViewOrientation(int lastPosition, T swipeDecor){
