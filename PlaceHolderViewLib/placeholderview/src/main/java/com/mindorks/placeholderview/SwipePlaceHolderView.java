@@ -128,15 +128,13 @@ public class SwipePlaceHolderView extends FrameLayout implements
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = Gravity.CENTER;
-        layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position,
-                decor.getPaddingRight() * position, decor.getPaddingBottom() * position);
+        layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
         return layoutParams;
     }
 
     protected <V extends  FrameLayout>void rebuildViewWithSwipeDecor(V frame, int position, SwipeDecor decor){
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams)frame.getLayoutParams();
-        layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position,
-                decor.getPaddingRight() * position, decor.getPaddingBottom() * position);
+        layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
         frame.setLayoutParams(layoutParams);
     }
 
@@ -171,8 +169,23 @@ public class SwipePlaceHolderView extends FrameLayout implements
     @Override
     public void onAnimateView(float distXMoved, float distYMoved, float finalXDist,
                               float finalYDist, SwipeViewBinder<Object, FrameLayout> swipeViewBinder) {
-        if(mSwipeDecor.isAnimateScale() && mSwipeViewBinderList.contains(swipeViewBinder)){
+
+        distXMoved = distXMoved > 0 ? distXMoved : -distXMoved;
+        distYMoved = distYMoved > 0 ? distYMoved : -distYMoved;
+
+        if(mSwipeDecor.isAnimateScale() && mSwipeViewBinderList.contains(swipeViewBinder)
+                && distXMoved <= finalXDist && distYMoved <= finalYDist){
             int count;
+            float distMoved;
+            float finalDist;
+            if(distXMoved > distYMoved){
+                distMoved = distXMoved;
+                finalDist = finalXDist;
+            }else{
+                distMoved = distYMoved;
+                finalDist = finalYDist;
+            }
+
             if(mSwipeViewBinderList.size() > mDisplayViewCount){
                 count = mDisplayViewCount;
             }else{
@@ -180,35 +193,23 @@ public class SwipePlaceHolderView extends FrameLayout implements
             }
 
             for(int i = mSwipeViewBinderList.indexOf(swipeViewBinder) +  1; i < count; i++){
+
                 SwipeViewBinder<Object, FrameLayout> swipeViewBinderBelow = mSwipeViewBinderList.get(i);
-
-                FrameLayout.LayoutParams layoutParams =
-                        (FrameLayout.LayoutParams) swipeViewBinderBelow.getLayoutView().getLayoutParams();
-
-                float value = (-mSwipeDecor.getPaddingTop() / finalYDist) * distYMoved + mSwipeDecor.getPaddingTop() * i;
-                layoutParams.topMargin = (int)value;
-
-                value = (-mSwipeDecor.getPaddingLeft() / finalXDist) * distXMoved + mSwipeDecor.getPaddingLeft() * i;
-                layoutParams.leftMargin = (int)value;
-
-                swipeViewBinderBelow.getLayoutView().setLayoutParams(layoutParams);
-
-                distXMoved = distXMoved > 0 ? distXMoved : -distXMoved;
-                distYMoved = distYMoved > 0 ? distYMoved : -distYMoved;
-                float distMoved;
-                float finalDist;
-                if(distXMoved > distYMoved){
-                    distMoved = distXMoved;
-                    finalDist = finalXDist;
-                }else{
-                    distMoved = distYMoved;
-                    finalDist = finalYDist;
-                }
                 float scaleDefault = 1 - i * mSwipeDecor.getRelativeScale();
                 float scaleOfAboveViewDefault = 1 - (i - 1) * mSwipeDecor.getRelativeScale();
                 float scale = ((scaleOfAboveViewDefault - scaleDefault) / finalDist) * distMoved + scaleDefault;
                 swipeViewBinderBelow.getLayoutView().setScaleX(scale);
                 swipeViewBinderBelow.getLayoutView().setScaleY(scale);
+
+                FrameLayout.LayoutParams layoutParams =
+                        (FrameLayout.LayoutParams) swipeViewBinderBelow.getLayoutView().getLayoutParams();
+                float value = (-mSwipeDecor.getPaddingTop() / finalDist) * distMoved + mSwipeDecor.getPaddingTop() * i;
+                layoutParams.topMargin = (int) value;
+
+                value = (-mSwipeDecor.getPaddingLeft() / finalDist) * distMoved + mSwipeDecor.getPaddingLeft() * i;
+                layoutParams.leftMargin = (int) value;
+
+                swipeViewBinderBelow.getLayoutView().setLayoutParams(layoutParams);
             }
         }
     }

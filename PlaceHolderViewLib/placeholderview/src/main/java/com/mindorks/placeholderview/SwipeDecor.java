@@ -8,9 +8,7 @@ public class SwipeDecor {
     public static final int PRIMITIVE_NULL = -1;
 
     private int mPaddingTop;
-    private int mPaddingBottom;
     private int mPaddingLeft;
-    private int mPaddingRight;
     private float mRelativeScale;
     private boolean mAnimateScale;
     private int mSwipeInMsgLayoutId;
@@ -21,9 +19,7 @@ public class SwipeDecor {
 
     public SwipeDecor() {
         mPaddingTop = 0;
-        mPaddingBottom = 0;
         mPaddingLeft = 0;
-        mPaddingRight = 0;
         mRelativeScale = 0.05f;
         mAnimateScale = true;
         mSwipeInMsgLayoutId = PRIMITIVE_NULL;
@@ -38,18 +34,8 @@ public class SwipeDecor {
         return this;
     }
 
-    public SwipeDecor setPaddingBottom(int padding){
-        mPaddingBottom = padding;
-        return this;
-    }
-
     public SwipeDecor setPaddingLeft(int padding){
         mPaddingLeft = padding;
-        return this;
-    }
-
-    public SwipeDecor setPaddingRight(int padding){
-        mPaddingRight = padding;
         return this;
     }
 
@@ -103,16 +89,8 @@ public class SwipeDecor {
         return mPaddingTop;
     }
 
-    public int getPaddingBottom() {
-        return mPaddingBottom;
-    }
-
     public int getPaddingLeft() {
         return mPaddingLeft;
-    }
-
-    public int getPaddingRight() {
-        return mPaddingRight;
     }
 
     public float getRelativeScale() {
