@@ -16,6 +16,7 @@ public class SwipeDecor {
     private boolean mSwipeInMsgAttachEnds;
     private boolean mSwipeInMsgAttachCorners;
     private boolean mSwipeInMsgAttachCenters;
+    private int mSwipeDistToDisplayMsg;
 
     public SwipeDecor() {
         mPaddingTop = 0;
@@ -26,7 +27,8 @@ public class SwipeDecor {
         mSwipeOutMsgLayoutId = PRIMITIVE_NULL;
         mSwipeInMsgAttachEnds = false;
         mSwipeInMsgAttachCorners = false;
-        mSwipeInMsgAttachCenters = false;
+        mSwipeInMsgAttachCenters = true;
+        mSwipeDistToDisplayMsg = 100;
     }
 
     public SwipeDecor setPaddingTop(int padding){
@@ -57,16 +59,22 @@ public class SwipeDecor {
 
     public SwipeDecor setSwipeInMsgAttachEnds(boolean value){
         mSwipeInMsgAttachEnds = value;
+        mSwipeInMsgAttachCenters = false;
+        mSwipeInMsgAttachCorners = false;
         return this;
     }
 
-    public SwipeDecor setSwipeInMsgAttachCornerss(boolean value){
+    public SwipeDecor setSwipeInMsgAttachCorners(boolean value){
         mSwipeInMsgAttachCorners = value;
+        mSwipeInMsgAttachCenters = false;
+        mSwipeInMsgAttachEnds = false;
         return this;
     }
 
     public SwipeDecor setSwipeInMsgAttachCenters(boolean value){
         mSwipeInMsgAttachCenters = value;
+        mSwipeInMsgAttachCorners = false;
+        mSwipeInMsgAttachEnds = false;
         return this;
     }
 
@@ -82,6 +90,11 @@ public class SwipeDecor {
 
     public SwipeDecor isAnimateScale(boolean animate){
         mAnimateScale = animate;
+        return this;
+    }
+
+    public SwipeDecor setSwipeDistToDisplayMsg(int swipeDistToDisplayMsg) {
+        mSwipeDistToDisplayMsg = swipeDistToDisplayMsg;
         return this;
     }
 
@@ -119,5 +132,9 @@ public class SwipeDecor {
 
     public boolean isSwipeInMsgAttachCenters() {
         return mSwipeInMsgAttachCenters;
+    }
+
+    public int getSwipeDistToDisplayMsg() {
+        return mSwipeDistToDisplayMsg;
     }
 }
