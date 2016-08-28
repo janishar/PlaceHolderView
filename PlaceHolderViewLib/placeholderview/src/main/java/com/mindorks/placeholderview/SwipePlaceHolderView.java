@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.support.v4.view.MotionEventCompat;
+import android.text.Layout;
 import android.util.AttributeSet;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -275,16 +276,16 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
             float angleMax = 0;
             if(distXMoved > 0 && distYMoved > 0){
-                angleMax = 45;
+                angleMax = 20;
             }
             else if(distXMoved > 0 && distYMoved < 0){
-                angleMax = -45;
+                angleMax = -20;
             }
             else if(distXMoved < 0 && distYMoved > 0){
-                angleMax = -45;
+                angleMax = -20;
             }
             else if(distXMoved < 0 && distYMoved < 0){
-                angleMax = 45;
+                angleMax = 20;
             }
 
             float angle = angleMax / finalDist * distMoved;
