@@ -20,6 +20,8 @@ public class SwipeDecor {
     private int mSwipeInMsgGravity;
     private int mSwipeOutMsgGravity;
     private int mSwipeDistToDisplayMsg;
+    private int mSwipeRestoreAnimTime;
+    private float mSwipeRestoreAnimFactor;
 
     public SwipeDecor() {
         mPaddingTop = 0;
@@ -30,6 +32,8 @@ public class SwipeDecor {
         mSwipeOutMsgLayoutId = PRIMITIVE_NULL;
         mSwipeInMsgGravity = Gravity.CENTER ;
         mSwipeDistToDisplayMsg = 30;
+        mSwipeRestoreAnimTime = 200;
+        mSwipeRestoreAnimFactor = 0.75f;
     }
 
     public SwipeDecor setPaddingTop(int padding){
@@ -88,6 +92,16 @@ public class SwipeDecor {
         return this;
     }
 
+    public SwipeDecor setSwipeRestoreAnimTime(int millis) {
+        mSwipeRestoreAnimTime = millis;
+        return this;
+    }
+
+    public SwipeDecor setSwipeRestoreAnimFactor(float factor) {
+        mSwipeRestoreAnimFactor = factor;
+        return this;
+    }
+
     public int getPaddingTop() {
         return mPaddingTop;
     }
@@ -122,5 +136,13 @@ public class SwipeDecor {
 
     public int getSwipeDistToDisplayMsg() {
         return mSwipeDistToDisplayMsg;
+    }
+
+    public float getSwipeRestoreAnimFactor() {
+        return mSwipeRestoreAnimFactor;
+    }
+
+    public int getSwipeRestoreAnimTime() {
+        return mSwipeRestoreAnimTime;
     }
 }

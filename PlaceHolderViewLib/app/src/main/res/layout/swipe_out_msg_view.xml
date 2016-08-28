@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <TextView
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="300dp"
         android:textSize="28sp"
         android:textStyle="bold"

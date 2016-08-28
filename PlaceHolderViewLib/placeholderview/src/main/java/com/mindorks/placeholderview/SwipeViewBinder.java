@@ -35,16 +35,18 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
     private float mHeightSwipeDistFactor;
     private View mSwipeInMsgView;
     private View mSwipeOutMsgView;
+    private SwipeDecor mDecor;
 
     public SwipeViewBinder(T resolver) {
         super(resolver);
     }
 
     protected void bindView(V promptsView, int position, int swipeType, float widthSwipeDistFactor,
-                            float heightSwipeDistFactor, SwipeCallback callback) {
+                            float heightSwipeDistFactor, SwipeDecor decor, SwipeCallback callback) {
         super.bindView(promptsView, position);
         mLayoutView = promptsView;
         mSwipeType = swipeType;
+        mDecor = decor;
         mWidthSwipeDistFactor = widthSwipeDistFactor;
         mHeightSwipeDistFactor = heightSwipeDistFactor;
         mCallback = callback;
@@ -436,8 +438,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
         ValueAnimator animatorX = null;
         ValueAnimator animatorY = null;
-        int animTime = 200;
-        DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator(0.75f);
+        int animTime = mDecor.getSwipeRestoreAnimTime();
+        DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator(mDecor.getSwipeRestoreAnimFactor());
         ViewPropertyAnimator animatorR = v.animate()
                 .rotation(0)
                 .setInterpolator(decelerateInterpolator)

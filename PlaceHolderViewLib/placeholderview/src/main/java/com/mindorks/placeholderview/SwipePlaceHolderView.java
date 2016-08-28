@@ -122,7 +122,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
             attachSwipeInfoViews(promptsView, frameView, swipeViewBinder, mSwipeDecor);
             addView(frameView);
             setRelativeScale(frameView, position, mSwipeDecor);
-            swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, this);
+            swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, mSwipeDecor, this);
 
             if(mSwipeViewBinderList.indexOf(swipeViewBinder) == 0){
                 swipeViewBinder.setOnTouch();
@@ -142,7 +142,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         attachSwipeInfoViews(promptsView, frameView, swipeViewBinder, mSwipeDecor);
         addView(frameView);
         setRelativeScale(frameView, position, mSwipeDecor);
-        swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, this);
+        swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, mSwipeDecor, this);
     }
 
     protected <V extends View, F extends FrameLayout, T extends SwipeViewBinder>void attachSwipeInfoViews(

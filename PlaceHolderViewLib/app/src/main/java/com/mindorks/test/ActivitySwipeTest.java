@@ -35,7 +35,7 @@ public class ActivitySwipeTest extends AppCompatActivity {
                 .setDisplayViewCount(3)
                 .setSwipeDecor(
                         new SwipeDecor()
-                                .setPaddingTop(10)
+                                .setPaddingTop(20)
                                 .setRelativeScale(0.01f)
                                 .setSwipeInMsgLayoutId(R.layout.swipe_in_msg_view)
                                 .setSwipeOutMsgLayoutId(R.layout.swipe_out_msg_view));
