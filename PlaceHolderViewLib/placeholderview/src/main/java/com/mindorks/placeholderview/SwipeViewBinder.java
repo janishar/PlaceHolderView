@@ -501,11 +501,11 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                 case SwipePlaceHolderView.SWIPE_TYPE_DEFAULT:
                     if(isSwipeIn){
                         bindSwipeIn(getResolver());
-                        animator.rotation(-SwipeDecor.SWIPE_ROTATION);
+                        animator.rotation(-mSwipeDecor.getSwipeRotationAngle());
                     }else{
                         bindSwipeOut(getResolver());
                         transX = -mLayoutView.getWidth();
-                        animator.rotation(SwipeDecor.SWIPE_ROTATION);
+                        animator.rotation(mSwipeDecor.getSwipeRotationAngle());
                     }
                     animator.translationX(transX).translationY(transY);
                     break;

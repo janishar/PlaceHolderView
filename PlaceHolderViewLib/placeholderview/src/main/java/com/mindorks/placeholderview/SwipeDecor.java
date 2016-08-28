@@ -8,7 +8,6 @@ import android.view.Gravity;
 public class SwipeDecor {
 
     public static final int PRIMITIVE_NULL = -1;
-    public static final int SWIPE_ROTATION = 20;
 
     private int mPaddingTop;
     private int mPaddingLeft;
@@ -21,6 +20,7 @@ public class SwipeDecor {
     private int mSwipeDistToDisplayMsg;
     private int mSwipeAnimTime;
     private float mSwipeAnimFactor;
+    private int mSwipeRotationAngle;
 
     public SwipeDecor() {
         mPaddingTop = 0;
@@ -34,6 +34,7 @@ public class SwipeDecor {
         mSwipeDistToDisplayMsg = 30;
         mSwipeAnimTime = 200;
         mSwipeAnimFactor = 0.75f;
+        mSwipeRotationAngle = 20;
     }
 
     public SwipeDecor setPaddingTop(int padding){
@@ -102,6 +103,11 @@ public class SwipeDecor {
         return this;
     }
 
+    public SwipeDecor setSwipeRotationAngle(int degree) {
+        mSwipeRotationAngle = degree;
+        return this;
+    }
+
     public int getPaddingTop() {
         return mPaddingTop;
     }
@@ -144,5 +150,9 @@ public class SwipeDecor {
 
     public int getSwipeAnimTime() {
         return mSwipeAnimTime;
+    }
+
+    public int getSwipeRotationAngle() {
+        return mSwipeRotationAngle;
     }
 }

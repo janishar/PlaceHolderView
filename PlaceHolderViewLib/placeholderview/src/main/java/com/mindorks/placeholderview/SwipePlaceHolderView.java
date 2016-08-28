@@ -193,8 +193,8 @@ public class SwipePlaceHolderView extends FrameLayout implements
         view.setScaleY(1 - position * swipeDecor.getRelativeScale());
     }
 
-    public <T>SwipePlaceHolderView doSwipe(T resolver, boolean isSwipeIn){
-        SwipeViewBinder<T, FrameLayout> swipeViewBinder = null;
+    public void doSwipe(Object resolver, boolean isSwipeIn){
+        SwipeViewBinder<Object, FrameLayout> swipeViewBinder = null;
         for(SwipeViewBinder viewBinder : mSwipeViewBinderList){
             if(viewBinder.getResolver() == resolver){
                 swipeViewBinder = viewBinder;
@@ -205,7 +205,12 @@ public class SwipePlaceHolderView extends FrameLayout implements
         if(swipeViewBinder != null){
             swipeViewBinder.doSwipe(isSwipeIn);
         }
-        return this;
+    }
+
+    public void doSwipe(boolean isSwipeIn){
+        if(mSwipeViewBinderList.size() > 0){
+            mSwipeViewBinderList.get(0).doSwipe(isSwipeIn);
+        }
     }
 
     @Override
@@ -283,16 +288,16 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
             float angleMax = 0;
             if(distXMoved > 0 && distYMoved > 0){
-                angleMax = SwipeDecor.SWIPE_ROTATION;
+                angleMax = mSwipeDecor.getSwipeRotationAngle();
             }
             else if(distXMoved > 0 && distYMoved < 0){
-                angleMax = -SwipeDecor.SWIPE_ROTATION;
+                angleMax = -mSwipeDecor.getSwipeRotationAngle();
             }
             else if(distXMoved < 0 && distYMoved > 0){
-                angleMax = -SwipeDecor.SWIPE_ROTATION;
+                angleMax = -mSwipeDecor.getSwipeRotationAngle();
             }
             else if(distXMoved < 0 && distYMoved < 0){
-                angleMax = SwipeDecor.SWIPE_ROTATION;
+                angleMax = mSwipeDecor.getSwipeRotationAngle();
             }
 
             float angle = angleMax / finalDist * distMoved;
