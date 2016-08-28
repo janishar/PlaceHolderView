@@ -32,6 +32,7 @@ public class ActivitySwipeTest extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
         mSwipView.getBuilder()
                 .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_DEFAULT)
+//                .setDisplayViewCount(3)
                 .setSwipeDecor(
                         new SwipeDecor()
                                 .setPaddingTop(10)

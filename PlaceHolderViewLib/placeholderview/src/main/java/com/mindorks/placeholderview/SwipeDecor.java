@@ -18,6 +18,7 @@ public class SwipeDecor {
     private int mSwipeInMsgLayoutId;
     private int mSwipeOutMsgLayoutId;
     private int mSwipeInMsgGravity;
+    private int mSwipeOutMsgGravity;
     private int mSwipeDistToDisplayMsg;
 
     public SwipeDecor() {
@@ -59,6 +60,11 @@ public class SwipeDecor {
 
     public SwipeDecor setSwipeInMsgGravity(int gravity){
         mSwipeInMsgGravity = gravity;
+        return this;
+    }
+
+    public SwipeDecor setSwipeOutMsgGravity(int gravity){
+        mSwipeOutMsgGravity = gravity;
         return this;
     }
 
@@ -108,6 +114,10 @@ public class SwipeDecor {
 
     public int getSwipeInMsgGravity() {
         return mSwipeInMsgGravity;
+    }
+
+    public int getSwipeOutMsgGravity() {
+        return mSwipeOutMsgGravity;
     }
 
     public int getSwipeDistToDisplayMsg() {

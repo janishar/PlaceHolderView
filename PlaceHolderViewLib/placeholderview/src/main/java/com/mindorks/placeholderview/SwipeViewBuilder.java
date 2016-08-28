@@ -44,4 +44,14 @@ public class SwipeViewBuilder {
         mSwipePlaceHolderView.setSwipeDecor(decor);
         return this;
     }
+
+    public SwipeViewBuilder setWidthSwipeDistFactor(int factor) {
+        mSwipePlaceHolderView.setWidthSwipeDistFactor(factor);
+        return this;
+    }
+
+    public SwipeViewBuilder setHeightSwipeDistFactor(int factor) {
+        mSwipePlaceHolderView.setHeightSwipeDistFactor(factor);
+        return this;
+    }
 }

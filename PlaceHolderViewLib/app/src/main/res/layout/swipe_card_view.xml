@@ -1,21 +1,26 @@
 <LinearLayout
+    android:id="@+id/mainView"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:gravity="center"
     android:orientation="horizontal"
     xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout
-        android:id="@+id/mainView"
-        android:layout_width="250dp"
+    <FrameLayout
+        android:layout_width="300dp"
         android:layout_height="300dp"
         android:orientation="vertical"
-        android:gravity="center"
-        android:background="@android:color/holo_orange_dark">
+        android:gravity="center">
+        <ImageView
+            android:layout_width="300dp"
+            android:layout_height="300dp"
+            android:src="@drawable/logo"/>
         <TextView
             android:id="@+id/txtView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
+            android:layout_gravity="center"
+            android:text="sdsaahkfkjdhkfkajdhfka"
             android:textColor="@color/white"/>
-        </LinearLayout>
+    </FrameLayout>
 </LinearLayout>

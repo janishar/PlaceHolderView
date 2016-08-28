@@ -32,8 +32,11 @@ public class SwipePlaceHolderView extends FrameLayout implements
     private LayoutInflater mLayoutInflater;
     private int mDisplayViewCount = DEFAULT_DISPLAY_VIEW_COUNT;
     private int mSwipeType = SWIPE_TYPE_DEFAULT;
+    private float mWidthSwipeDistFactor = 3f;
+    private float mHeightSwipeDistFactor = 3f;
     private boolean mIsReverse = false;
     private SwipeDecor mSwipeDecor;
+
 
     public SwipePlaceHolderView(Context context) {
         super(context);
@@ -97,6 +100,14 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }
     }
 
+    protected void setWidthSwipeDistFactor(int Factor) {
+        mWidthSwipeDistFactor = Factor;
+    }
+
+    protected void setHeightSwipeDistFactor(int factor) {
+        mHeightSwipeDistFactor = factor;
+    }
+
     public <T>SwipePlaceHolderView addView(T resolver){
         SwipeViewBinder<Object, FrameLayout> swipeViewBinder = new SwipeViewBinder<>((Object)resolver);
         mSwipeViewBinderList.add(swipeViewBinder);
@@ -110,7 +121,11 @@ public class SwipePlaceHolderView extends FrameLayout implements
             attachSwipeInfoViews(promptsView, frameView, swipeViewBinder, mSwipeDecor);
             addView(frameView);
             setRelativeScale(frameView, position, mSwipeDecor);
-            swipeViewBinder.bindView(frameView, position, mSwipeType, this);
+            swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, this);
+
+            if(mSwipeViewBinderList.indexOf(swipeViewBinder) == 0){
+                swipeViewBinder.setOnTouch();
+            }
         }
         return this;
     }
@@ -126,7 +141,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         attachSwipeInfoViews(promptsView, frameView, swipeViewBinder, mSwipeDecor);
         addView(frameView);
         setRelativeScale(frameView, position, mSwipeDecor);
-        swipeViewBinder.bindView(frameView, oldPosition - 1, mSwipeType, this);
+        swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, this);
     }
 
     protected <V extends View, F extends FrameLayout, T extends SwipeViewBinder>void attachSwipeInfoViews(
@@ -147,7 +162,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
                     ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
             layoutParamsInMsg.gravity = mSwipeDecor.getSwipeInMsgGravity();
-            layoutParamsOutMsg.gravity = mSwipeDecor.getSwipeInMsgGravity();
+            layoutParamsOutMsg.gravity = mSwipeDecor.getSwipeOutMsgGravity();
 
             swipeInMsgLayout.setLayoutParams(layoutParamsInMsg);
             swipeOutMsgLayout.setLayoutParams(layoutParamsOutMsg);
@@ -206,6 +221,10 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }else{
             resetViewOrientation(mSwipeViewBinderList.size() - 1, mSwipeDecor);
         }
+
+        if(mSwipeViewBinderList.size() > 0){
+            mSwipeViewBinderList.get(0).setOnTouch();
+        }
     }
 
     @Override
@@ -253,6 +272,23 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
                 swipeViewBinderBelow.getLayoutView().setLayoutParams(layoutParams);
             }
+
+            float angleMax = 0;
+            if(distXMoved > 0 && distYMoved > 0){
+                angleMax = 45;
+            }
+            else if(distXMoved > 0 && distYMoved < 0){
+                angleMax = -45;
+            }
+            else if(distXMoved < 0 && distYMoved > 0){
+                angleMax = -45;
+            }
+            else if(distXMoved < 0 && distYMoved < 0){
+                angleMax = 45;
+            }
+
+            float angle = angleMax / finalDist * distMoved;
+            swipeViewBinder.getLayoutView().setRotation(angle);
         }
 
         if((distXMovedAbs > mSwipeDecor.getSwipeDistToDisplayMsg()
@@ -323,6 +359,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
                 swipeViewBinder.getSwipeOutMsgView().setVisibility(GONE);
             }
         }
+        swipeViewBinder.getLayoutView().setRotation(0);
         swipeViewBinder.bindSwipeCancelState();
     }
 
