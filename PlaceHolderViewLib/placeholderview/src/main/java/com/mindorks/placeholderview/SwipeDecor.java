@@ -8,6 +8,7 @@ import android.view.Gravity;
 public class SwipeDecor {
 
     public static final int PRIMITIVE_NULL = -1;
+    public static final int SWIPE_ROTATION = 20;
 
     private int mPaddingTop;
     private int mPaddingLeft;

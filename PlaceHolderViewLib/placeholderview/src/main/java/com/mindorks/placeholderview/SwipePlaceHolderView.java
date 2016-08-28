@@ -193,6 +193,21 @@ public class SwipePlaceHolderView extends FrameLayout implements
         view.setScaleY(1 - position * swipeDecor.getRelativeScale());
     }
 
+    public <T>SwipePlaceHolderView doSwipe(T resolver, boolean isSwipeIn){
+        SwipeViewBinder<T, FrameLayout> swipeViewBinder = null;
+        for(SwipeViewBinder viewBinder : mSwipeViewBinderList){
+            if(viewBinder.getResolver() == resolver){
+                swipeViewBinder = viewBinder;
+                break;
+            }
+        }
+
+        if(swipeViewBinder != null){
+            swipeViewBinder.doSwipe(isSwipeIn);
+        }
+        return this;
+    }
+
     @Override
     public void onRemoveView(SwipeViewBinder swipeViewBinder) {
 
@@ -268,16 +283,16 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
             float angleMax = 0;
             if(distXMoved > 0 && distYMoved > 0){
-                angleMax = 20;
+                angleMax = SwipeDecor.SWIPE_ROTATION;
             }
             else if(distXMoved > 0 && distYMoved < 0){
-                angleMax = -20;
+                angleMax = -SwipeDecor.SWIPE_ROTATION;
             }
             else if(distXMoved < 0 && distYMoved > 0){
-                angleMax = -20;
+                angleMax = -SwipeDecor.SWIPE_ROTATION;
             }
             else if(distXMoved < 0 && distYMoved < 0){
-                angleMax = 20;
+                angleMax = SwipeDecor.SWIPE_ROTATION;
             }
 
             float angle = angleMax / finalDist * distMoved;
@@ -434,5 +449,94 @@ public class SwipePlaceHolderView extends FrameLayout implements
         private int calculateDistanceY(MotionEvent ev) {
             return (int) (ev.getRawY() - mDownY);
         }
+    }
+
+    @Deprecated
+    @Override
+    public void removeView(View view) {
+        super.removeView(view);
+    }
+
+    @Deprecated
+    @Override
+    public void removeViewInLayout(View view) {
+        super.removeViewInLayout(view);
+    }
+
+    @Deprecated
+    @Override
+    public void removeViewsInLayout(int start, int count) {
+        super.removeViewsInLayout(start, count);
+    }
+
+    @Deprecated
+    @Override
+    public void removeViewAt(int index) {
+        super.removeViewAt(index);
+    }
+
+    @Deprecated
+    @Override
+    public void removeViews(int start, int count) {
+        super.removeViews(start, count);
+    }
+
+    @Override
+    public void removeAllViews() {
+        super.removeAllViews();
+    }
+
+    @Deprecated
+    @Override
+    public void removeAllViewsInLayout() {
+        super.removeAllViewsInLayout();
+    }
+
+    @Deprecated
+    @Override
+    protected void removeDetachedView(View child, boolean animate) {
+        super.removeDetachedView(child, animate);
+    }
+
+    @Deprecated
+    @Override
+    public void addView(View child) {
+        super.addView(child);
+    }
+
+    @Deprecated
+    @Override
+    public void addView(View child, int index) {
+        super.addView(child, index);
+    }
+
+    @Deprecated
+    @Override
+    public void addView(View child, int width, int height) {
+        super.addView(child, width, height);
+    }
+
+    @Deprecated
+    @Override
+    public void addView(View child, ViewGroup.LayoutParams params) {
+        super.addView(child, params);
+    }
+
+    @Deprecated
+    @Override
+    public void addView(View child, int index, ViewGroup.LayoutParams params) {
+        super.addView(child, index, params);
+    }
+
+    @Deprecated
+    @Override
+    protected boolean addViewInLayout(View child, int index, ViewGroup.LayoutParams params) {
+        return super.addViewInLayout(child, index, params);
+    }
+
+    @Deprecated
+    @Override
+    protected boolean addViewInLayout(View child, int index, ViewGroup.LayoutParams params, boolean preventRequestLayout) {
+        return super.addViewInLayout(child, index, params, preventRequestLayout);
     }
 }

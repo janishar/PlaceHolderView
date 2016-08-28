@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.mindorks.placeholderview.Animation;
 import com.mindorks.placeholderview.PlaceHolderView;
+import com.mindorks.placeholderview.SwipePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
@@ -39,61 +40,21 @@ public class SwipeCard {
     @Position
     private int mPosition;
 
-//    @View(R.id.txtView)
-//    private TextView txtView;
+    private SwipePlaceHolderView mSwipePlaceHolderView;
 
-//    @Resolve
-//    private void onResolved() {
-//        txtView.setText(String.valueOf(System.nanoTime()));
-//        switch (mPosition){
-//            case 0:
-//                mainView.setBackgroundColor(Color.RED);
-//                break;
-//            case 1:
-//                mainView.setBackgroundColor(Color.GREEN);
-//                break;
-//            case 2:
-//                mainView.setBackgroundColor(Color.BLACK);
-//                break;
-//            case 3:
-//                mainView.setBackgroundColor(Color.BLUE);
-//                break;
-//            case 4:
-//                mainView.setBackgroundColor(Color.YELLOW);
-//                break;
-//            case 5:
-//                mainView.setBackgroundColor(Color.MAGENTA);
-//                break;
-//            case 6:
-//                mainView.setBackgroundColor(Color.GRAY);
-//            case 7:
-//                mainView.setBackgroundColor(Color.RED);
-//                break;
-//            case 8:
-//                mainView.setBackgroundColor(Color.GREEN);
-//                break;
-//            case 9:
-//                mainView.setBackgroundColor(Color.BLACK);
-//                break;
-//            case 10:
-//                mainView.setBackgroundColor(Color.BLUE);
-//                break;
-//            case 11:
-//                mainView.setBackgroundColor(Color.YELLOW);
-//                break;
-//            case 12:
-//                mainView.setBackgroundColor(Color.MAGENTA);
-//                break;
-//            case 13:
-//                mainView.setBackgroundColor(Color.GRAY);
-//                break;
-//        }
-//    }
+    public SwipeCard(SwipePlaceHolderView swipePlaceHolderView) {
+        mSwipePlaceHolderView = swipePlaceHolderView;
+    }
 
-//    @Click(R.id.txtView)
-//    private void onTxtClick(){
-//        Log.d("DEBUG", "onTxtClick");
-//    }
+    @Click(R.id.rejectBtn)
+    private void rejectBtnClick(){
+        mSwipePlaceHolderView.doSwipe(this, false);
+    }
+
+    @Click(R.id.acceptBtn)
+    private void acceptBtnClick(){
+        mSwipePlaceHolderView.doSwipe(this, true);
+    }
 
     @SwipeOut
     private void onSwipedOut(){

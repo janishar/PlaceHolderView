@@ -31,7 +31,7 @@ public class ActivitySwipeTest extends AppCompatActivity {
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mSwipView.getBuilder()
-                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_DEFAULT)
+                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_VERTICAL)
                 .setDisplayViewCount(3)
                 .setSwipeDecor(
                         new SwipeDecor()
@@ -39,16 +39,16 @@ public class ActivitySwipeTest extends AppCompatActivity {
                                 .setRelativeScale(0.01f)
                                 .setSwipeInMsgLayoutId(R.layout.swipe_in_msg_view)
                                 .setSwipeOutMsgLayoutId(R.layout.swipe_out_msg_view));
-        mSwipView
-                .addView(new SwipeCard())
-                .addView(new SwipeCard())
-                .addView(new SwipeCard())
-                .addView(new SwipeCard())
-                .addView(new SwipeCard())
-                .addView(new SwipeCard())
-                .addView(new SwipeCard())
-                .addView(new SwipeCard())
-                .addView(new SwipeCard())
-                .addView(new SwipeCard());
+
+        mSwipView.addView(new SwipeCard(mSwipView))
+                .addView(new SwipeCard(mSwipView))
+                .addView(new SwipeCard(mSwipView))
+                .addView(new SwipeCard(mSwipView))
+                .addView(new SwipeCard(mSwipView))
+                .addView(new SwipeCard(mSwipView))
+                .addView(new SwipeCard(mSwipView))
+                .addView(new SwipeCard(mSwipView))
+                .addView(new SwipeCard(mSwipView))
+                .addView(new SwipeCard(mSwipView));
     }
 }

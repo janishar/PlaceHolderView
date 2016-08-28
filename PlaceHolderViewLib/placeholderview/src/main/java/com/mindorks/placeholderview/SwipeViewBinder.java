@@ -483,6 +483,59 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         animatorR.start();
     }
 
+    protected void doSwipe(boolean isSwipeIn){
+        if(mLayoutView != null && mViewRemoveAnimatorListener != null) {
+            mLayoutView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent rawEvent) {
+                    return false;
+                }
+            });
+
+            DisplayMetrics displayMetrics = mLayoutView.getResources().getDisplayMetrics();
+            ViewPropertyAnimator animator = mLayoutView.animate();
+
+            float transX = displayMetrics.widthPixels;
+            float transY = displayMetrics.heightPixels;
+            switch (mSwipeType){
+                case SwipePlaceHolderView.SWIPE_TYPE_DEFAULT:
+                    if(isSwipeIn){
+                        bindSwipeIn(getResolver());
+                        animator.rotation(-SwipeDecor.SWIPE_ROTATION);
+                    }else{
+                        bindSwipeOut(getResolver());
+                        transX = -mLayoutView.getWidth();
+                        animator.rotation(SwipeDecor.SWIPE_ROTATION);
+                    }
+                    animator.translationX(transX).translationY(transY);
+                    break;
+                case SwipePlaceHolderView.SWIPE_TYPE_HORIZONTAL:
+                    if(isSwipeIn){
+                        bindSwipeIn(getResolver());
+                    }else{
+                        bindSwipeOut(getResolver());
+                        transX = -mLayoutView.getWidth();
+                    }
+                    animator.translationX(transX);
+                    break;
+                case SwipePlaceHolderView.SWIPE_TYPE_VERTICAL:
+                    if(isSwipeIn){
+                        bindSwipeIn(getResolver());
+                    }else{
+                        bindSwipeOut(getResolver());
+                        transY = -mLayoutView.getHeight();
+                    }
+                    animator.translationY(transY);
+                    break;
+            }
+
+            animator.setDuration((long) (mSwipeDecor.getSwipeAnimTime() * 1.25))
+                    .setInterpolator(new AccelerateInterpolator(mSwipeDecor.getSwipeAnimFactor()))
+                    .setListener(mViewRemoveAnimatorListener)
+                    .start();
+        }
+    }
+
     protected View getSwipeInMsgView() {
         return mSwipeInMsgView;
     }
