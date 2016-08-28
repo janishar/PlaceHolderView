@@ -115,8 +115,8 @@ public class SwipePlaceHolderView extends FrameLayout implements
             int position = mSwipeViewBinderList.indexOf(swipeViewBinder);
             FrameView frameView = new FrameView(getContext());
             frameView.setLayoutParams(getLayoutParamsWithSwipeDecor(position, mSwipeDecor));
-            View promptsView = mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), frameView, true);
-            attachSwipeInfoViews(promptsView, frameView, swipeViewBinder, mSwipeDecor);
+            mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), frameView, true);
+            attachSwipeInfoViews(frameView, swipeViewBinder, mSwipeDecor);
             addView(frameView);
             setRelativeScale(frameView, position, mSwipeDecor);
             swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, mSwipeDecor, this);
@@ -128,24 +128,21 @@ public class SwipePlaceHolderView extends FrameLayout implements
         return this;
     }
 
-    protected  <T>void addPendingView(SwipeViewBinder<T, FrameLayout> swipeViewBinder, int oldPosition){
+    protected  <T>void addPendingView(SwipeViewBinder<T, FrameLayout> swipeViewBinder){
         int position = mSwipeViewBinderList.indexOf(swipeViewBinder);
         FrameView frameView = new FrameView(getContext());
         frameView.setLayoutParams(getLayoutParamsWithSwipeDecor(position, mSwipeDecor));
-        View promptsView = mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), frameView, true);
-        attachSwipeInfoViews(promptsView, frameView, swipeViewBinder, mSwipeDecor);
+        mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), frameView, true);
+        attachSwipeInfoViews(frameView, swipeViewBinder, mSwipeDecor);
         addView(frameView);
         setRelativeScale(frameView, position, mSwipeDecor);
         swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, mSwipeDecor, this);
     }
 
-    protected <V extends View, F extends FrameLayout, T extends SwipeViewBinder>void attachSwipeInfoViews(
-            V view, F frame, T swipeViewBinder, SwipeDecor swipeDecor){
+    protected <V extends FrameLayout, T extends SwipeViewBinder>void attachSwipeInfoViews(V frame, T swipeViewBinder, SwipeDecor swipeDecor){
 
         if(swipeDecor.getSwipeInMsgLayoutId() != SwipeDecor.PRIMITIVE_NULL
                 && swipeDecor.getSwipeOutMsgLayoutId() != SwipeDecor.PRIMITIVE_NULL){
-            View swipeInMsgLayout = mLayoutInflater.inflate(swipeDecor.getSwipeInMsgLayoutId(), null);
-            View swipeOutMsgLayout = mLayoutInflater.inflate(swipeDecor.getSwipeOutMsgLayoutId(), null);
 
             FrameLayout swipeInMsgView = new FrameLayout(getContext());
             FrameLayout swipeOutMsgView = new FrameLayout(getContext());
@@ -159,11 +156,11 @@ public class SwipePlaceHolderView extends FrameLayout implements
             layoutParamsInMsg.gravity = mSwipeDecor.getSwipeInMsgGravity();
             layoutParamsOutMsg.gravity = mSwipeDecor.getSwipeOutMsgGravity();
 
-            swipeInMsgLayout.setLayoutParams(layoutParamsInMsg);
-            swipeOutMsgLayout.setLayoutParams(layoutParamsOutMsg);
+            swipeInMsgView.setLayoutParams(layoutParamsInMsg);
+            swipeOutMsgView.setLayoutParams(layoutParamsOutMsg);
 
-            swipeInMsgView.addView(swipeInMsgLayout);
-            swipeOutMsgView.addView(swipeOutMsgLayout);
+            mLayoutInflater.inflate(swipeDecor.getSwipeInMsgLayoutId(), swipeInMsgView, true);
+            mLayoutInflater.inflate(swipeDecor.getSwipeOutMsgLayoutId(), swipeOutMsgView, true);
 
             frame.addView(swipeInMsgView);
             frame.addView(swipeOutMsgView);
@@ -212,7 +209,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         swipeViewBinder.unbind();
 
         if(newSwipeViewBinder != null && position != SwipeDecor.PRIMITIVE_NULL){
-            addPendingView(newSwipeViewBinder, position);
+            addPendingView(newSwipeViewBinder);
             resetViewOrientation(position - 1, mSwipeDecor);
         }else{
             resetViewOrientation(mSwipeViewBinderList.size() - 1, mSwipeDecor);

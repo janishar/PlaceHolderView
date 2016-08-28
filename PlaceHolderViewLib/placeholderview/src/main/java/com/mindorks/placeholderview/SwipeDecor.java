@@ -31,6 +31,7 @@ public class SwipeDecor {
         mSwipeInMsgLayoutId = PRIMITIVE_NULL;
         mSwipeOutMsgLayoutId = PRIMITIVE_NULL;
         mSwipeInMsgGravity = Gravity.CENTER ;
+        mSwipeOutMsgGravity = Gravity.CENTER ;
         mSwipeDistToDisplayMsg = 30;
         mSwipeRestoreAnimTime = 200;
         mSwipeRestoreAnimFactor = 0.75f;
