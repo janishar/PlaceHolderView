@@ -9,10 +9,19 @@ public class SwipeViewBuilder {
 
     private SwipePlaceHolderView mSwipePlaceHolderView;
 
+    /**
+     *
+     * @param swipePlaceHolderView
+     */
     public SwipeViewBuilder(SwipePlaceHolderView swipePlaceHolderView) {
         mSwipePlaceHolderView = swipePlaceHolderView;
     }
 
+    /**
+     *
+     * @param swipeType
+     * @return
+     */
     public SwipeViewBuilder setSwipeType(int swipeType){
         if(swipeType == SwipePlaceHolderView.SWIPE_TYPE_HORIZONTAL){
             mSwipePlaceHolderView.setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_HORIZONTAL);
@@ -26,6 +35,11 @@ public class SwipeViewBuilder {
         return this;
     }
 
+    /**
+     *
+     * @param viewCount
+     * @return
+     */
     public SwipeViewBuilder setDisplayViewCount(int viewCount){
         if(viewCount < 0){
             mSwipePlaceHolderView.setDisplayViewCount(SwipePlaceHolderView.DEFAULT_DISPLAY_VIEW_COUNT);
@@ -35,21 +49,41 @@ public class SwipeViewBuilder {
         return this;
     }
 
+    /**
+     *
+     * @param reverse
+     * @return
+     */
     public SwipeViewBuilder setDisplayReverse(boolean reverse) {
         mSwipePlaceHolderView.setIsReverse(reverse);
         return this;
     }
 
+    /**
+     *
+     * @param decor
+     * @return
+     */
     public SwipeViewBuilder setSwipeDecor(SwipeDecor decor) {
         mSwipePlaceHolderView.setSwipeDecor(decor);
         return this;
     }
 
+    /**
+     *
+     * @param factor
+     * @return
+     */
     public SwipeViewBuilder setWidthSwipeDistFactor(int factor) {
         mSwipePlaceHolderView.setWidthSwipeDistFactor(factor);
         return this;
     }
 
+    /**
+     *
+     * @param factor
+     * @return
+     */
     public SwipeViewBuilder setHeightSwipeDistFactor(int factor) {
         mSwipePlaceHolderView.setHeightSwipeDistFactor(factor);
         return this;

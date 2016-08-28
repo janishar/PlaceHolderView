@@ -37,16 +37,31 @@ public class SwipeDecor {
         mSwipeRotationAngle = 20;
     }
 
+    /**
+     *
+     * @param padding
+     * @return
+     */
     public SwipeDecor setPaddingTop(int padding){
         mPaddingTop = padding;
         return this;
     }
 
+    /**
+     *
+     * @param padding
+     * @return
+     */
     public SwipeDecor setPaddingLeft(int padding){
         mPaddingLeft = padding;
         return this;
     }
 
+    /**
+     *
+     * @param layoutId
+     * @return
+     */
     public SwipeDecor setSwipeInMsgLayoutId(int layoutId){
         if(layoutId < 0){
             layoutId = PRIMITIVE_NULL;
@@ -55,6 +70,11 @@ public class SwipeDecor {
         return this;
     }
 
+    /**
+     *
+     * @param layoutId
+     * @return
+     */
     public SwipeDecor setSwipeOutMsgLayoutId(int layoutId){
         if(layoutId < 0){
             layoutId = PRIMITIVE_NULL;
@@ -63,16 +83,31 @@ public class SwipeDecor {
         return this;
     }
 
+    /**
+     *
+     * @param gravity
+     * @return
+     */
     public SwipeDecor setSwipeInMsgGravity(int gravity){
         mSwipeInMsgGravity = gravity;
         return this;
     }
 
+    /**
+     *
+     * @param gravity
+     * @return
+     */
     public SwipeDecor setSwipeOutMsgGravity(int gravity){
         mSwipeOutMsgGravity = gravity;
         return this;
     }
 
+    /**
+     *
+     * @param scale
+     * @return
+     */
     public SwipeDecor setRelativeScale(float scale){
         if(scale > 1){
             scale = 1;
@@ -83,75 +118,148 @@ public class SwipeDecor {
         return this;
     }
 
+    /**
+     *
+     * @param animate
+     * @return
+     */
     public SwipeDecor isAnimateScale(boolean animate){
         mAnimateScale = animate;
         return this;
     }
 
+    /**
+     *
+     * @param swipeDistToDisplayMsg
+     * @return
+     */
     public SwipeDecor setSwipeDistToDisplayMsg(int swipeDistToDisplayMsg) {
         mSwipeDistToDisplayMsg = swipeDistToDisplayMsg;
         return this;
     }
 
+    /**
+     *
+     * @param millis
+     * @return
+     */
     public SwipeDecor setSwipeAnimTime(int millis) {
         mSwipeAnimTime = millis;
         return this;
     }
 
+    /**
+     *
+     * @param factor
+     * @return
+     */
     public SwipeDecor setSwipeAnimFactor(float factor) {
         mSwipeAnimFactor = factor;
         return this;
     }
 
+    /**
+     *
+     * @param degree
+     * @return
+     */
     public SwipeDecor setSwipeRotationAngle(int degree) {
         mSwipeRotationAngle = degree;
         return this;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPaddingTop() {
         return mPaddingTop;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getPaddingLeft() {
         return mPaddingLeft;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getRelativeScale() {
         return mRelativeScale;
     }
 
+    /**
+     *
+     * @return
+     */
     public boolean isAnimateScale() {
         return mAnimateScale;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSwipeInMsgLayoutId() {
         return mSwipeInMsgLayoutId;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSwipeOutMsgLayoutId() {
         return mSwipeOutMsgLayoutId;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSwipeInMsgGravity() {
         return mSwipeInMsgGravity;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSwipeOutMsgGravity() {
         return mSwipeOutMsgGravity;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSwipeDistToDisplayMsg() {
         return mSwipeDistToDisplayMsg;
     }
 
+    /**
+     *
+     * @return
+     */
     public float getSwipeAnimFactor() {
         return mSwipeAnimFactor;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSwipeAnimTime() {
         return mSwipeAnimTime;
     }
 
+    /**
+     *
+     * @return
+     */
     public int getSwipeRotationAngle() {
         return mSwipeRotationAngle;
     }

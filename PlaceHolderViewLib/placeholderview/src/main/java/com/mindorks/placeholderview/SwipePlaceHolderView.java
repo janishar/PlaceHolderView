@@ -38,28 +38,54 @@ public class SwipePlaceHolderView extends FrameLayout implements
     private boolean mIsReverse = false;
     private SwipeDecor mSwipeDecor;
 
-
+    /**
+     *
+     * @param context
+     */
     public SwipePlaceHolderView(Context context) {
         super(context);
         setupView(new ArrayList<SwipeViewBinder<Object, FrameLayout>>(), new SwipeViewBuilder(this));
     }
 
+    /**
+     *
+     * @param context
+     * @param attrs
+     */
     public SwipePlaceHolderView(Context context, AttributeSet attrs) {
         super(context, attrs);
         setupView(new ArrayList<SwipeViewBinder<Object, FrameLayout>>(), new SwipeViewBuilder(this));
     }
 
+    /**
+     *
+     * @param context
+     * @param attrs
+     * @param defStyleAttr
+     */
     public SwipePlaceHolderView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
         setupView(new ArrayList<SwipeViewBinder<Object, FrameLayout>>(), new SwipeViewBuilder(this));
     }
 
+    /**
+     *
+     * @param context
+     * @param attrs
+     * @param defStyleAttr
+     * @param defStyleRes
+     */
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     public SwipePlaceHolderView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
         setupView(new ArrayList<SwipeViewBinder<Object, FrameLayout>>(), new SwipeViewBuilder(this));
     }
 
+    /**
+     *
+     * @param swipeViewBinderList
+     * @param swipeViewBuilder
+     */
     private void setupView(List<SwipeViewBinder<Object, FrameLayout>> swipeViewBinderList,
                            SwipeViewBuilder swipeViewBuilder){
         mSwipeViewBinderList = swipeViewBinderList;
@@ -69,6 +95,12 @@ public class SwipePlaceHolderView extends FrameLayout implements
         setChildrenDrawingOrderEnabled(true);
     }
 
+    /**
+     *
+     * @param childCount
+     * @param i
+     * @return
+     */
     @Override
     protected int getChildDrawingOrder(int childCount, int i) {
         if(mIsReverse) {
@@ -78,36 +110,70 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public SwipeViewBuilder getBuilder() {
         return mSwipeViewBuilder;
     }
 
+    /**
+     *
+     * @param displayViewCount
+     */
     protected void setDisplayViewCount(int displayViewCount) {
         mDisplayViewCount = displayViewCount;
     }
 
+    /**
+     *
+     * @param swipeType
+     */
     protected void setSwipeType(int swipeType) {
         mSwipeType = swipeType;
     }
 
+    /**
+     *
+     * @param isReverse
+     */
     protected void setIsReverse(boolean isReverse) {
         mIsReverse = isReverse;
     }
 
+    /**
+     *
+     * @param swipeDecor
+     */
     protected void setSwipeDecor(SwipeDecor swipeDecor) {
         if(swipeDecor != null) {
             mSwipeDecor = swipeDecor;
         }
     }
 
+    /**
+     *
+     * @param Factor
+     */
     protected void setWidthSwipeDistFactor(int Factor) {
         mWidthSwipeDistFactor = Factor;
     }
 
+    /**
+     *
+     * @param factor
+     */
     protected void setHeightSwipeDistFactor(int factor) {
         mHeightSwipeDistFactor = factor;
     }
 
+    /**
+     *
+     * @param resolver
+     * @param <T>
+     * @return
+     */
     public <T>SwipePlaceHolderView addView(T resolver){
         SwipeViewBinder<Object, FrameLayout> swipeViewBinder = new SwipeViewBinder<>((Object)resolver);
         mSwipeViewBinderList.add(swipeViewBinder);
@@ -128,6 +194,11 @@ public class SwipePlaceHolderView extends FrameLayout implements
         return this;
     }
 
+    /**
+     *
+     * @param swipeViewBinder
+     * @param <T>
+     */
     protected  <T>void addPendingView(SwipeViewBinder<T, FrameLayout> swipeViewBinder){
         int position = mSwipeViewBinderList.indexOf(swipeViewBinder);
         FrameView frameView = new FrameView(getContext());
@@ -139,6 +210,14 @@ public class SwipePlaceHolderView extends FrameLayout implements
         swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, mSwipeDecor, this);
     }
 
+    /**
+     *
+     * @param frame
+     * @param swipeViewBinder
+     * @param swipeDecor
+     * @param <V>
+     * @param <T>
+     */
     protected <V extends FrameLayout, T extends SwipeViewBinder>void attachSwipeInfoViews(V frame, T swipeViewBinder, SwipeDecor swipeDecor){
 
         if(swipeDecor.getSwipeInMsgLayoutId() != SwipeDecor.PRIMITIVE_NULL
@@ -173,6 +252,12 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }
     }
 
+    /**
+     *
+     * @param position
+     * @param decor
+     * @return
+     */
     protected FrameLayout.LayoutParams getLayoutParamsWithSwipeDecor(int position, SwipeDecor decor){
 
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
@@ -182,17 +267,37 @@ public class SwipePlaceHolderView extends FrameLayout implements
         return layoutParams;
     }
 
+    /**
+     *
+     * @param frame
+     * @param position
+     * @param decor
+     * @param <V>
+     */
     protected <V extends  FrameLayout>void setLayoutParamsWithSwipeDecor(V frame, int position, SwipeDecor decor){
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams)frame.getLayoutParams();
         layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
         frame.setLayoutParams(layoutParams);
     }
 
+    /**
+     *
+     * @param view
+     * @param position
+     * @param swipeDecor
+     * @param <V>
+     * @param <T>
+     */
     protected <V extends View, T extends SwipeDecor>void setRelativeScale(V view, int position,  T swipeDecor){
         view.setScaleX( 1 - position * swipeDecor.getRelativeScale());
         view.setScaleY(1 - position * swipeDecor.getRelativeScale());
     }
 
+    /**
+     *
+     * @param resolver
+     * @param isSwipeIn
+     */
     public void doSwipe(Object resolver, boolean isSwipeIn){
         SwipeViewBinder<Object, FrameLayout> swipeViewBinder = null;
         for(SwipeViewBinder viewBinder : mSwipeViewBinderList){
@@ -207,12 +312,20 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }
     }
 
+    /**
+     *
+     * @param isSwipeIn
+     */
     public void doSwipe(boolean isSwipeIn){
         if(mSwipeViewBinderList.size() > 0){
             mSwipeViewBinderList.get(0).doSwipe(isSwipeIn);
         }
     }
 
+    /**
+     *
+     * @param swipeViewBinder
+     */
     @Override
     public void onRemoveView(SwipeViewBinder swipeViewBinder) {
 
@@ -240,6 +353,14 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }
     }
 
+    /**
+     *
+     * @param distXMoved
+     * @param distYMoved
+     * @param finalXDist
+     * @param finalYDist
+     * @param swipeViewBinder
+     */
     @Override
     public void onAnimateView(float distXMoved, float distYMoved, float finalXDist,
                               float finalYDist, SwipeViewBinder<Object, FrameLayout> swipeViewBinder) {
@@ -352,6 +473,10 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }
     }
 
+    /**
+     *
+     * @param swipeViewBinder
+     */
     @Override
     public void onResetView(SwipeViewBinder swipeViewBinder) {
         if(mSwipeViewBinderList.size() > mDisplayViewCount){
@@ -376,6 +501,12 @@ public class SwipePlaceHolderView extends FrameLayout implements
         swipeViewBinder.bindSwipeCancelState();
     }
 
+    /**
+     *
+     * @param lastPosition
+     * @param swipeDecor
+     * @param <T>
+     */
     protected <T extends SwipeDecor>void resetViewOrientation(int lastPosition, T swipeDecor){
         if(swipeDecor.isAnimateScale()) {
             for (int i = 0; i <= lastPosition && mSwipeViewBinderList.get(i) != null; i++) {
@@ -386,6 +517,9 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }
     }
 
+    /**
+     * Frame layout custom view to control the touch event propagation
+     */
     protected class FrameView extends FrameLayout{
 
         private int mTouchSlop;
@@ -393,25 +527,52 @@ public class SwipePlaceHolderView extends FrameLayout implements
         private float mDownX;
         private float mDownY;
 
+        /**
+         *
+         * @param context
+         */
         public FrameView(Context context) {
             super(context);
             ViewConfiguration vc = ViewConfiguration.get(getContext());
             mTouchSlop = vc.getScaledTouchSlop();
         }
 
+        /**
+         *
+         * @param context
+         * @param attrs
+         */
         public FrameView(Context context, AttributeSet attrs) {
             super(context, attrs);
         }
 
+        /**
+         *
+         * @param context
+         * @param attrs
+         * @param defStyleAttr
+         */
         public FrameView(Context context, AttributeSet attrs, int defStyleAttr) {
             super(context, attrs, defStyleAttr);
         }
 
+        /**
+         *
+         * @param context
+         * @param attrs
+         * @param defStyleAttr
+         * @param defStyleRes
+         */
         @TargetApi(Build.VERSION_CODES.LOLLIPOP)
         public FrameView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
             super(context, attrs, defStyleAttr, defStyleRes);
         }
 
+        /**
+         *
+         * @param ev
+         * @return
+         */
         @Override
         public boolean onInterceptTouchEvent(MotionEvent ev) {
             final int action = MotionEventCompat.getActionMasked(ev);
@@ -447,98 +608,182 @@ public class SwipePlaceHolderView extends FrameLayout implements
             return false;
         }
 
+        /**
+         *
+         * @param ev
+         * @return
+         */
         private int calculateDistanceX(MotionEvent ev) {
             return (int) (ev.getRawX() - mDownX);
         }
 
+        /**
+         *
+         * @param ev
+         * @return
+         */
         private int calculateDistanceY(MotionEvent ev) {
             return (int) (ev.getRawY() - mDownY);
         }
     }
 
+    /**
+     *
+     * @param view
+     */
     @Deprecated
     @Override
     public void removeView(View view) {
         super.removeView(view);
     }
 
+    /**
+     *
+     * @param view
+     */
     @Deprecated
     @Override
     public void removeViewInLayout(View view) {
         super.removeViewInLayout(view);
     }
 
+    /**
+     *
+     * @param start
+     * @param count
+     */
     @Deprecated
     @Override
     public void removeViewsInLayout(int start, int count) {
         super.removeViewsInLayout(start, count);
     }
 
+    /**
+     *
+     * @param index
+     */
     @Deprecated
     @Override
     public void removeViewAt(int index) {
         super.removeViewAt(index);
     }
 
+    /**
+     *
+     * @param start
+     * @param count
+     */
     @Deprecated
     @Override
     public void removeViews(int start, int count) {
         super.removeViews(start, count);
     }
 
+    /**
+     *
+     */
     @Override
     public void removeAllViews() {
         super.removeAllViews();
     }
 
+    /**
+     *
+     */
     @Deprecated
     @Override
     public void removeAllViewsInLayout() {
         super.removeAllViewsInLayout();
     }
 
+    /**
+     *
+     * @param child
+     * @param animate
+     */
     @Deprecated
     @Override
     protected void removeDetachedView(View child, boolean animate) {
         super.removeDetachedView(child, animate);
     }
 
+    /**
+     *
+     * @param child
+     */
     @Deprecated
     @Override
     public void addView(View child) {
         super.addView(child);
     }
 
+    /**
+     *
+     * @param child
+     * @param index
+     */
     @Deprecated
     @Override
     public void addView(View child, int index) {
         super.addView(child, index);
     }
 
+    /**
+     *
+     * @param child
+     * @param width
+     * @param height
+     */
     @Deprecated
     @Override
     public void addView(View child, int width, int height) {
         super.addView(child, width, height);
     }
 
+    /**
+     *
+     * @param child
+     * @param params
+     */
     @Deprecated
     @Override
     public void addView(View child, ViewGroup.LayoutParams params) {
         super.addView(child, params);
     }
 
+    /**
+     *
+     * @param child
+     * @param index
+     * @param params
+     */
     @Deprecated
     @Override
     public void addView(View child, int index, ViewGroup.LayoutParams params) {
         super.addView(child, index, params);
     }
 
+    /**
+     *
+     * @param child
+     * @param index
+     * @param params
+     * @return
+     */
     @Deprecated
     @Override
     protected boolean addViewInLayout(View child, int index, ViewGroup.LayoutParams params) {
         return super.addViewInLayout(child, index, params);
     }
 
+    /**
+     *
+     * @param child
+     * @param index
+     * @param params
+     * @param preventRequestLayout
+     * @return
+     */
     @Deprecated
     @Override
     protected boolean addViewInLayout(View child, int index, ViewGroup.LayoutParams params, boolean preventRequestLayout) {

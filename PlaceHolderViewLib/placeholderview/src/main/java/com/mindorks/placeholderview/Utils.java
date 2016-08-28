@@ -27,10 +27,20 @@ public class Utils {
         return context.getResources().getDisplayMetrics().heightPixels;
     }
 
+    /**
+     *
+     * @return
+     */
     protected static boolean isAboveApi21(){
         return Build.VERSION.SDK_INT > Build.VERSION_CODES.LOLLIPOP;
     }
 
+    /**
+     *
+     * @param context
+     * @param dp
+     * @return
+     */
     public static int dpToPx(Context context,int dp) {
         return (int) (dp * context.getResources().getDisplayMetrics().density);
     }
