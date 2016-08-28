@@ -69,7 +69,6 @@ public class SwipePlaceHolderView extends FrameLayout implements
         setChildrenDrawingOrderEnabled(true);
     }
 
-
     @Override
     protected int getChildDrawingOrder(int childCount, int i) {
         if(mIsReverse) {
@@ -114,11 +113,9 @@ public class SwipePlaceHolderView extends FrameLayout implements
         mSwipeViewBinderList.add(swipeViewBinder);
         if(mSwipeViewBinderList.size() <= mDisplayViewCount){
             int position = mSwipeViewBinderList.indexOf(swipeViewBinder);
-            View promptsView = mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), null);
-
             FrameView frameView = new FrameView(getContext());
             frameView.setLayoutParams(getLayoutParamsWithSwipeDecor(position, mSwipeDecor));
-            frameView.addView(promptsView);
+            View promptsView = mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), frameView, true);
             attachSwipeInfoViews(promptsView, frameView, swipeViewBinder, mSwipeDecor);
             addView(frameView);
             setRelativeScale(frameView, position, mSwipeDecor);
@@ -132,13 +129,10 @@ public class SwipePlaceHolderView extends FrameLayout implements
     }
 
     protected  <T>void addPendingView(SwipeViewBinder<T, FrameLayout> swipeViewBinder, int oldPosition){
-
         int position = mSwipeViewBinderList.indexOf(swipeViewBinder);
-        View promptsView = mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), null);
-
         FrameView frameView = new FrameView(getContext());
         frameView.setLayoutParams(getLayoutParamsWithSwipeDecor(position, mSwipeDecor));
-        frameView.addView(promptsView);
+        View promptsView = mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), frameView, true);
         attachSwipeInfoViews(promptsView, frameView, swipeViewBinder, mSwipeDecor);
         addView(frameView);
         setRelativeScale(frameView, position, mSwipeDecor);
@@ -183,6 +177,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
     }
 
     protected FrameLayout.LayoutParams getLayoutParamsWithSwipeDecor(int position, SwipeDecor decor){
+
         FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         layoutParams.gravity = Gravity.CENTER;
