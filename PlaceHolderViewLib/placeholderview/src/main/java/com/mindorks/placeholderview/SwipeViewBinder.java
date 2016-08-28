@@ -1,11 +1,12 @@
 package com.mindorks.placeholderview;
 
 import android.animation.Animator;
+import android.animation.ValueAnimator;
 import android.graphics.PointF;
 import android.util.DisplayMetrics;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewPropertyAnimator;
 import android.view.animation.*;
 import android.widget.FrameLayout;
 
@@ -27,7 +28,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
     private V mLayoutView;
     private SwipeCallback mCallback;
-    private Animator.AnimatorListener mAnimatorListener;
+    private Animator.AnimatorListener mViewRemoveAnimatorListener;
+    private Animator.AnimatorListener mViewRestoreAnimatorListener;
     private int mSwipeType = SwipePlaceHolderView.SWIPE_TYPE_DEFAULT;
     private float mWidthSwipeDistFactor;
     private float mHeightSwipeDistFactor;
@@ -148,7 +150,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
     }
 
     private void serAnimatorListener(){
-        mAnimatorListener = new Animator.AnimatorListener() {
+        mViewRemoveAnimatorListener = new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {}
 
@@ -165,8 +167,25 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             @Override
             public void onAnimationRepeat(Animator animation) {}
         };
-    }
 
+        mViewRestoreAnimatorListener = new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {}
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                if(mCallback != null){
+                    mCallback.onResetView(SwipeViewBinder.this);
+                }
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {}
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {}
+        };
+    }
 
     private void setDefaultTouchListener(final V view){
         serAnimatorListener();
@@ -180,7 +199,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             private boolean resetDone = false;
             private PointF pointerCurrentPoint = new PointF();
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
+            public boolean onTouch(final View v, MotionEvent event) {
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
                         pointerCurrentPoint.set(event.getRawX(), event.getRawY());
@@ -203,13 +222,11 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
                             distSlideX = distSlideX < 0 ? -distSlideX : distSlideX;
                             distSlideY = distSlideY < 0 ? -distSlideY : distSlideY;
-                            if (distSlideX < displayMetrics.widthPixels / mWidthSwipeDistFactor && distSlideY < displayMetrics.heightPixels / mHeightSwipeDistFactor) {
-                                FrameLayout.LayoutParams layoutParamsFinal = (FrameLayout.LayoutParams) v.getLayoutParams();
-                                layoutParamsFinal.topMargin = originalTopMargin;
-                                layoutParamsFinal.leftMargin = originalLeftMargin;
-                                v.setLayoutParams(layoutParamsFinal);
-                                mCallback.onResetView(SwipeViewBinder.this);
-                            } else {
+                            if (distSlideX < displayMetrics.widthPixels / mWidthSwipeDistFactor
+                                    && distSlideY < displayMetrics.heightPixels / mHeightSwipeDistFactor) {
+                                animateSwipeRestore(v, originalTopMargin, originalLeftMargin, mSwipeType);
+                            }
+                            else {
                                 mLayoutView.setOnTouchListener(new View.OnTouchListener() {
                                     @Override
                                     public boolean onTouch(View v, MotionEvent rawEvent) {
@@ -243,7 +260,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                         .translationY(transY)
                                         .setInterpolator(new DecelerateInterpolator(0.3f))
                                         .setDuration(150)
-                                        .setListener(mAnimatorListener)
+                                        .setListener(mViewRemoveAnimatorListener)
                                         .start();
                             }
                             resetDone = true;
@@ -299,10 +316,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                             float distSlideX = x - dx;
                             distSlideX = distSlideX < 0 ? -distSlideX : distSlideX;
                             if (distSlideX < displayMetrics.widthPixels / mWidthSwipeDistFactor) {
-                                FrameLayout.LayoutParams layoutParamsFinal = (FrameLayout.LayoutParams) v.getLayoutParams();
-                                layoutParamsFinal.leftMargin = originalLeftMargin;
-                                v.setLayoutParams(layoutParamsFinal);
-                                mCallback.onResetView(SwipeViewBinder.this);
+                                animateSwipeRestore(v, 0, originalLeftMargin, mSwipeType);
                             } else {
                                 mLayoutView.setOnTouchListener(new View.OnTouchListener() {
                                     @Override
@@ -322,7 +336,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                         .translationX(transX)
                                         .setInterpolator(new DecelerateInterpolator(0.3f))
                                         .setDuration(150)
-                                        .setListener(mAnimatorListener)
+                                        .setListener(mViewRemoveAnimatorListener)
                                         .start();
                             }
                         }
@@ -372,10 +386,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                             float distSlideY = y - dy;
                             distSlideY = distSlideY < 0 ? -distSlideY : distSlideY;
                             if (distSlideY < displayMetrics.heightPixels / mHeightSwipeDistFactor) {
-                                FrameLayout.LayoutParams layoutParamsFinal = (FrameLayout.LayoutParams) v.getLayoutParams();
-                                layoutParamsFinal.topMargin = originalTopMargin;
-                                v.setLayoutParams(layoutParamsFinal);
-                                mCallback.onResetView(SwipeViewBinder.this);
+                                animateSwipeRestore(v, originalTopMargin, 0, mSwipeType);
                             } else {
                                 mLayoutView.setOnTouchListener(new View.OnTouchListener() {
                                     @Override
@@ -395,7 +406,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                         .translationY(transY)
                                         .setInterpolator(new DecelerateInterpolator(0.3f))
                                         .setDuration(150)
-                                        .setListener(mAnimatorListener)
+                                        .setListener(mViewRemoveAnimatorListener)
                                         .start();
 
                             }
@@ -418,6 +429,56 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                 return true;
             }
         });
+    }
+
+    private void animateSwipeRestore(final View v, int originalTopMargin, int originalLeftMargin, int swipeType){
+        final FrameLayout.LayoutParams layoutParamsFinal = (FrameLayout.LayoutParams) v.getLayoutParams();
+
+        ValueAnimator animatorX = null;
+        ValueAnimator animatorY = null;
+        int animTime = 200;
+        DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator(0.75f);
+        ViewPropertyAnimator animatorR = v.animate()
+                .rotation(0)
+                .setInterpolator(decelerateInterpolator)
+                .setDuration(animTime)
+                .setListener(mViewRestoreAnimatorListener);
+
+        if(swipeType == SwipePlaceHolderView.SWIPE_TYPE_DEFAULT
+                || swipeType == SwipePlaceHolderView.SWIPE_TYPE_HORIZONTAL){
+            animatorX = ValueAnimator.ofInt(layoutParamsFinal.leftMargin, originalLeftMargin);
+            animatorX.setInterpolator(decelerateInterpolator);
+            animatorX.setDuration(animTime);
+            animatorX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    layoutParamsFinal.leftMargin = (Integer) valueAnimator.getAnimatedValue();
+                    v.setLayoutParams(layoutParamsFinal);
+                }
+
+            });
+        }
+        if(swipeType == SwipePlaceHolderView.SWIPE_TYPE_DEFAULT
+                || swipeType == SwipePlaceHolderView.SWIPE_TYPE_VERTICAL){
+            animatorY = ValueAnimator.ofInt(layoutParamsFinal.topMargin, originalTopMargin);
+            animatorY.setInterpolator(decelerateInterpolator);
+            animatorY.setDuration(animTime);
+            animatorY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                @Override
+                public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                    layoutParamsFinal.topMargin = (Integer) valueAnimator.getAnimatedValue();
+                    v.setLayoutParams(layoutParamsFinal);
+                }
+            });
+        }
+
+        if(animatorX != null){
+            animatorX.start();
+        }
+        if(animatorY != null){
+            animatorY.start();
+        }
+        animatorR.start();
     }
 
     protected View getSwipeInMsgView() {
