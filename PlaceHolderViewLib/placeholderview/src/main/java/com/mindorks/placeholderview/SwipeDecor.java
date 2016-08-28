@@ -2,8 +2,6 @@ package com.mindorks.placeholderview;
 
 import android.view.Gravity;
 
-import com.mindorks.placeholderview.annotations.View;
-
 /**
  * Created by janisharali on 26/08/16.
  */
@@ -20,8 +18,8 @@ public class SwipeDecor {
     private int mSwipeInMsgGravity;
     private int mSwipeOutMsgGravity;
     private int mSwipeDistToDisplayMsg;
-    private int mSwipeRestoreAnimTime;
-    private float mSwipeRestoreAnimFactor;
+    private int mSwipeAnimTime;
+    private float mSwipeAnimFactor;
 
     public SwipeDecor() {
         mPaddingTop = 0;
@@ -33,8 +31,8 @@ public class SwipeDecor {
         mSwipeInMsgGravity = Gravity.CENTER ;
         mSwipeOutMsgGravity = Gravity.CENTER ;
         mSwipeDistToDisplayMsg = 30;
-        mSwipeRestoreAnimTime = 200;
-        mSwipeRestoreAnimFactor = 0.75f;
+        mSwipeAnimTime = 200;
+        mSwipeAnimFactor = 0.75f;
     }
 
     public SwipeDecor setPaddingTop(int padding){
@@ -93,13 +91,13 @@ public class SwipeDecor {
         return this;
     }
 
-    public SwipeDecor setSwipeRestoreAnimTime(int millis) {
-        mSwipeRestoreAnimTime = millis;
+    public SwipeDecor setSwipeAnimTime(int millis) {
+        mSwipeAnimTime = millis;
         return this;
     }
 
-    public SwipeDecor setSwipeRestoreAnimFactor(float factor) {
-        mSwipeRestoreAnimFactor = factor;
+    public SwipeDecor setSwipeAnimFactor(float factor) {
+        mSwipeAnimFactor = factor;
         return this;
     }
 
@@ -139,11 +137,11 @@ public class SwipeDecor {
         return mSwipeDistToDisplayMsg;
     }
 
-    public float getSwipeRestoreAnimFactor() {
-        return mSwipeRestoreAnimFactor;
+    public float getSwipeAnimFactor() {
+        return mSwipeAnimFactor;
     }
 
-    public int getSwipeRestoreAnimTime() {
-        return mSwipeRestoreAnimTime;
+    public int getSwipeAnimTime() {
+        return mSwipeAnimTime;
     }
 }

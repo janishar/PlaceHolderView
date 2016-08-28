@@ -35,7 +35,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
     private float mHeightSwipeDistFactor;
     private View mSwipeInMsgView;
     private View mSwipeOutMsgView;
-    private SwipeDecor mDecor;
+    private SwipeDecor mSwipeDecor;
 
     public SwipeViewBinder(T resolver) {
         super(resolver);
@@ -46,7 +46,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         super.bindView(promptsView, position);
         mLayoutView = promptsView;
         mSwipeType = swipeType;
-        mDecor = decor;
+        mSwipeDecor = decor;
         mWidthSwipeDistFactor = widthSwipeDistFactor;
         mHeightSwipeDistFactor = heightSwipeDistFactor;
         mCallback = callback;
@@ -260,8 +260,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                 view.animate()
                                         .translationX(transX)
                                         .translationY(transY)
-                                        .setInterpolator(new DecelerateInterpolator(0.3f))
-                                        .setDuration(150)
+                                        .setInterpolator(new AccelerateInterpolator(mSwipeDecor.getSwipeAnimFactor()))
+                                        .setDuration((long)(mSwipeDecor.getSwipeAnimTime() * 1.25))
                                         .setListener(mViewRemoveAnimatorListener)
                                         .start();
                             }
@@ -336,8 +336,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                 }
                                 view.animate()
                                         .translationX(transX)
-                                        .setInterpolator(new DecelerateInterpolator(0.3f))
-                                        .setDuration(150)
+                                        .setInterpolator(new AccelerateInterpolator(mSwipeDecor.getSwipeAnimFactor()))
+                                        .setDuration((long)(mSwipeDecor.getSwipeAnimTime() * 1.25))
                                         .setListener(mViewRemoveAnimatorListener)
                                         .start();
                             }
@@ -406,8 +406,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                 }
                                 view.animate()
                                         .translationY(transY)
-                                        .setInterpolator(new DecelerateInterpolator(0.3f))
-                                        .setDuration(150)
+                                        .setInterpolator(new AccelerateInterpolator(mSwipeDecor.getSwipeAnimFactor()))
+                                        .setDuration((long)(mSwipeDecor.getSwipeAnimTime() * 1.25))
                                         .setListener(mViewRemoveAnimatorListener)
                                         .start();
 
@@ -438,8 +438,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
         ValueAnimator animatorX = null;
         ValueAnimator animatorY = null;
-        int animTime = mDecor.getSwipeRestoreAnimTime();
-        DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator(mDecor.getSwipeRestoreAnimFactor());
+        int animTime = mSwipeDecor.getSwipeAnimTime();
+        DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator(mSwipeDecor.getSwipeAnimFactor());
         ViewPropertyAnimator animatorR = v.animate()
                 .rotation(0)
                 .setInterpolator(decelerateInterpolator)
