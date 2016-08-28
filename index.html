@@ -23,7 +23,7 @@
 <a id="placeholderview" class="anchor" href="#placeholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>PlaceHolderView</strong>
 </h1>
 
-<p><img src="https://janishar.github.io/images/logo-phv.png" alt=""></p>
+<p><img src="https://github.com/janishar/janishar.github.io/blob/master/images/logo-phv.png" alt=""></p>
 
 <h6>
 <a id="simple-easy-and-superfast-dynamic-view-creation-with-awesome-animations-prebuilt" class="anchor" href="#simple-easy-and-superfast-dynamic-view-creation-with-awesome-animations-prebuilt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!</h6>
@@ -31,9 +31,9 @@
 <h2>
 <a id="few-implementations" class="anchor" href="#few-implementations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Few Implementations</h2>
 
-<p><img src="https://janishar.github.io/gifs/vid_drawer.gif" alt="">     <img src="https://janishar.github.io/gifs/vid_slides.gif" alt=""></p>
+<p><img src="https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_tinder.gif" alt=""><img src="https://github.com/janishar/janishar.github.io/blob/master/gifs/feed_vid.gif" alt=""><img src="https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif" alt=""></p>
 
-<p><img src="https://janishar.github.io/gifs/vid_fade.gif" alt="">       <img src="https://janishar.github.io/gifs/feed_vid.gif" alt=""></p>
+<p><img src="https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif" alt=""><img src="https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif" alt="">  </p>
 
 <h2>
 <a id="step-1-define-a-placeholderview-inside-xml-layout" class="anchor" href="#step-1-define-a-placeholderview-inside-xml-layout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>STEP 1: Define a PlaceHolderView inside XML layout</h2>
@@ -72,9 +72,9 @@
 <h2>
 <a id="step-3-create-item-class-to-bind-and-define-view-operations" class="anchor" href="#step-3-create-item-class-to-bind-and-define-view-operations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>STEP 3: Create item class to bind and define view operations</h2>
 
-<div class="highlight highlight-source-java"><pre>@Animate(<span class="pl-smi">Animation</span><span class="pl-c1"><span class="pl-k">.</span>ENTER_LEFT_DESC</span>)
-@<span class="pl-smi">NonReusable</span>
-@Layout(<span class="pl-smi">R</span><span class="pl-k">.</span>layout<span class="pl-k">.</span>gallery_item_big)
+<div class="highlight highlight-source-java"><pre><span class="pl-k">@Animate</span>(<span class="pl-smi">Animation</span><span class="pl-c1"><span class="pl-k">.</span>ENTER_LEFT_DESC</span>)
+<span class="pl-k">@NonReusable</span>
+<span class="pl-k">@Layout</span>(<span class="pl-smi">R</span><span class="pl-k">.</span>layout<span class="pl-k">.</span>gallery_item_big)
 <span class="pl-k">public</span> <span class="pl-k">class</span> <span class="pl-en">ImageTypeBig</span> {
 
     <span class="pl-k">@View</span>(<span class="pl-smi">R</span><span class="pl-k">.</span>id<span class="pl-k">.</span>imageView)
@@ -124,11 +124,11 @@
 <a id="thats-all-cheers-beer" class="anchor" href="#thats-all-cheers-beer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>That's All! Cheers!</em> <g-emoji alias="beer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f37a.png">🍺</g-emoji>
 </h2>
 
-<h1>
-<a id="notes" class="anchor" href="#notes" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>NOTES:</h1>
-
 <h2>
-<a id="placeholderview-1" class="anchor" href="#placeholderview-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PlaceHolderView</h2>
+<a id="classes-overview" class="anchor" href="#classes-overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes OverView</h2>
+
+<h1>
+<a id="placeholderview-1" class="anchor" href="#placeholderview-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PlaceHolderView</h1>
 
 <ol>
 <li>getBuilder(): Get builder for the PlaceHolderView to modify the default properties</li>
@@ -142,17 +142,22 @@
 <a id="annotations" class="anchor" href="#annotations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations</h2>
 
 <ol>
-<li>@Layout</a>: Bind the XML layout with the class.</li>
-<li>@View</a>: Bind the variable with the view defined in the above layout.</li>
-<li>@Click</a>: Bind the OnClickListener to a view.</li>
+<li>
+<a href="https://github.com/Layout" class="user-mention">@Layout</a>: Bind the XML layout with the class.</li>
+<li>
+<a href="https://github.com/View" class="user-mention">@View</a>: Bind the variable with the view defined in the above layout.</li>
+<li>
+<a href="https://github.com/Click" class="user-mention">@Click</a>: Bind the OnClickListener to a view.</li>
 <li>@LongClick: Bind the long click listerner to a view.</li>
-<li>@Resolve</a>: Any operation being performed on the view reference defined by <a href="https://github.com/View" class="user-mention">@View</a> should be annotated with this.</li>
-<li>@Animate</a>(Animation.ENTER_LEFT_DESC): Sets the defined animations in the Animation class on this item view.</li>
+<li>
+<a href="https://github.com/Resolve" class="user-mention">@Resolve</a>: Any operation being performed on the view reference defined by <a href="https://github.com/View" class="user-mention">@View</a> should be annotated with this.</li>
+<li>
+<a href="https://github.com/Animate" class="user-mention">@Animate</a>(Animation.ENTER_LEFT_DESC): Sets the defined animations in the Animation class on this item view.</li>
 <li>@NonReusable: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the addView().</li>
 </ol>
 
-<h2>
-<a id="expandableplaceholderview" class="anchor" href="#expandableplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ExpandablePlaceHolderView</h2>
+<h1>
+<a id="expandableplaceholderview" class="anchor" href="#expandableplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ExpandablePlaceHolderView</h1>
 
 <h4>
 <a id="this-class-is-build-upon-the-placeholderview-and-implements-all-the-features-of-expandablelistview-but-with-much-power-and-lot-easier" class="anchor" href="#this-class-is-build-upon-the-placeholderview-and-implements-all-the-features-of-expandablelistview-but-with-much-power-and-lot-easier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class is build upon the PlaceHolderView and implements all the features of ExpandableListView but with much power and lot easier</h4>
@@ -161,23 +166,60 @@
 <a id="annotationsexpandableplaceholderview" class="anchor" href="#annotationsexpandableplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations(ExpandablePlaceHolderView)</h2>
 
 <ol>
-<li>@Parent</a>: Defines the class to be used as the parent in the expandable list.</li>
+<li>
+<a href="https://github.com/Parent" class="user-mention">@Parent</a>: Defines the class to be used as the parent in the expandable list.</li>
 <li>@SingleTop: Makes only one parent remain in expanded state.</li>
-<li>@Collapse</a>: Bind a method of the parent class to listen to the collapse event.</li>
-<li>@Expand</a>: Bind a method of the parent class to listen to the Expand event.</li>
+<li>
+<a href="https://github.com/Collapse" class="user-mention">@Collapse</a>: Bind a method of the parent class to listen to the collapse event.</li>
+<li>
+<a href="https://github.com/Expand" class="user-mention">@Expand</a>: Bind a method of the parent class to listen to the Expand event.</li>
 <li>@ParentPosition: Bind an int variable to update with relative position among parents.</li>
 <li>@ChildPosition: Bind an int variable to update with relative position among children of a parent.</li>
-<li>@Toggle</a>: Bind a view to be used as a trigger for expanding or collapsing a parent view. If not provided then the parent view becomes a toggle by default.</li>
+<li>
+<a href="https://github.com/Toggle" class="user-mention">@Toggle</a>: Bind a view to be used as a trigger for expanding or collapsing a parent view. If not provided then the parent view becomes a toggle by default.</li>
 </ol>
 
 <h2>
 <a id="there-is-no-adapter-configuration-required" class="anchor" href="#there-is-no-adapter-configuration-required" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>There is no adapter configuration required</h2>
 
 <h1>
+<a id="swipeplaceholderview" class="anchor" href="#swipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SwipePlaceHolderView</h1>
+
+<h4>
+<a id="this-class-is-bundled-with-view-that-can-create-beautiful-card-stacks-like-tinder-linkdin-and-card-games-this-class-provides-methods-to-customize-the-behavior-of-the-stack-gesture-inputs-and-animations" class="anchor" href="#this-class-is-bundled-with-view-that-can-create-beautiful-card-stacks-like-tinder-linkdin-and-card-games-this-class-provides-methods-to-customize-the-behavior-of-the-stack-gesture-inputs-and-animations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class is bundled with view that can create beautiful card stacks like Tinder, LinkdIn and Card Games. This class provides methods to customize the behavior of the stack, gesture inputs and animations.</h4>
+
+<h2>
+<a id="swipedecor" class="anchor" href="#swipedecor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SwipeDecor</h2>
+
+<h4>
+<a id="this-class-contains-view-behaviour-settings-and-animation-controls-for-swipeplaceholderview" class="anchor" href="#this-class-contains-view-behaviour-settings-and-animation-controls-for-swipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class contains view behaviour settings and animation controls for SwipePlaceHolderView.</h4>
+
+<h2>
+<a id="builderswipeplaceholderview" class="anchor" href="#builderswipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Builder(SwipePlaceHolderView)</h2>
+
+<h4>
+<a id="the-stack-structure-and-type-configurations-are-done-using-builder-class" class="anchor" href="#the-stack-structure-and-type-configurations-are-done-using-builder-class" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The stack structure and type configurations are done using builder class</h4>
+
+<h2>
+<a id="annotationsswipeplaceholderview" class="anchor" href="#annotationsswipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations(SwipePlaceHolderView)</h2>
+
+<ol>
+<li>@SwipeIn: It binds a method and calls it when a view is swiped in/accepted</li>
+<li>@SwipeOut: It binds a method and calls it when a view is swiped out/rejected.</li>
+<li>@SwipeCancelState: It binds a method and calls it when a card is put back in the stack/canceled.</li>
+<li>@SwipeInState: It binds a method and pings it till a card is moving in the direction of swiping in/accepted</li>
+<li>@SwipeOutState: It binds a method and pings it till a card is moving in the direction of swiping out/rejected</li>
+</ol>
+
+<h6>
+<a id="the-full-documentation-is-in-the-process-of-writing-for-any-query-post-it-in-the-discussion-or-janisharaligmailcom" class="anchor" href="#the-full-documentation-is-in-the-process-of-writing-for-any-query-post-it-in-the-discussion-or-janisharaligmailcom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Full Documentation is in the process of writing. For any query post it in the discussion or <a href="mailto:janishar.ali@gmail.com">janishar.ali@gmail.com</a>
+</h6>
+
+<h1>
 <a id="gradle" class="anchor" href="#gradle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Gradle</h1>
 
 <div class="highlight highlight-source-java"><pre>dependencies {
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.mindorks:placeholderview:0.0.3<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.mindorks:placeholderview:0.1.0<span class="pl-pds">'</span></span>
 }</pre></div>
 
 <h1>
