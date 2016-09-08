@@ -14,7 +14,7 @@ import java.util.List;
  * Created by janisharali on 18/08/16.
  */
 
-public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T>
+public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
         implements ExpandableViewBinder.ExpansionCallback<T, V>{
 
     private ExpandableViewBinder<T, V> mParentBinder;

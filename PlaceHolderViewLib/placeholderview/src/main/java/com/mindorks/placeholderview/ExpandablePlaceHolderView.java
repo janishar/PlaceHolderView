@@ -59,12 +59,11 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
      * @param parentResolver
      * @param childResolver
      * @param <T>
-     * @param <V>
      * @return
      * @throws Resources.NotFoundException
      */
-    public <T, V extends View> PlaceHolderView addChildView(T parentResolver, T childResolver) throws Resources.NotFoundException {
-        ((ExpandableViewAdapter<T, V>)getViewAdapter()).addChildView(parentResolver, childResolver);
+    public <T> PlaceHolderView addChildView(T parentResolver, T childResolver) throws Resources.NotFoundException {
+        ((ExpandableViewAdapter<T, View>)getViewAdapter()).addChildView(parentResolver, childResolver);
         return this;
     }
 
@@ -73,12 +72,11 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
      * @param parentPosition
      * @param childResolver
      * @param <T>
-     * @param <V>
      * @return
      * @throws Resources.NotFoundException
      */
-    public <T, V extends View> PlaceHolderView addChildView(int parentPosition, T childResolver) throws Resources.NotFoundException {
-        ((ExpandableViewAdapter<T, V>)getViewAdapter()).addChildView(parentPosition, childResolver);
+    public <T> PlaceHolderView addChildView(int parentPosition, T childResolver) throws Resources.NotFoundException {
+        ((ExpandableViewAdapter<T, View>)getViewAdapter()).addChildView(parentPosition, childResolver);
         return this;
     }
 
