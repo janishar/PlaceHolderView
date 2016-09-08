@@ -183,6 +183,13 @@ public class PlaceHolderView extends RecyclerView {
         return mBuilder;
     }
 
+    @Override
+    public void removeAllViews() {
+        super.removeAllViews();
+        if(mViewAdapter != null)
+            mViewAdapter.removeAllViewBinders();
+    }
+
     /**
      *
      * @return

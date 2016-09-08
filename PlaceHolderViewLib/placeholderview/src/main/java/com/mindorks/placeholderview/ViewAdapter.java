@@ -189,4 +189,11 @@ public class ViewAdapter<T, V extends View> extends RecyclerView.Adapter<ViewHol
     protected  T getViewResolverAtPosition(int position) throws IndexOutOfBoundsException{
         return mViewBinderList.get(position).getResolver();
     }
+
+    protected void removeAllViewBinders(){
+        for(ViewBinder<T, V> viewBinder : mViewBinderList){
+            viewBinder.unbind();
+        }
+        mViewBinderList.clear();
+    }
 }
