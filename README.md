@@ -4,9 +4,9 @@
 ######Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!
 
 ##Few Implementations
-![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)     ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
+![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_tinder.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/feed_vid.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
 
-![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)       ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/feed_vid.gif)
+![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)  
 
 ##STEP 1: Define a PlaceHolderView inside XML layout
 ```java
@@ -92,9 +92,9 @@ public class ImageTypeBig {
 ```
 ##*That's All! Cheers!* :beer:
 
-#NOTES:
+##Classes OverView
 
-##PlaceHolderView
+#PlaceHolderView
 1. getBuilder(): Get builder for the PlaceHolderView to modify the default properties
 2. setLayoutManager(layoutManager): Add custom layout manager
 3. addView(): Add views to the PlaceHolderView
@@ -110,7 +110,7 @@ public class ImageTypeBig {
 6. @Animate(Animation.ENTER_LEFT_DESC): Sets the defined animations in the Animation class on this item view.
 7. @NonReusable: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the addView().
 
-##ExpandablePlaceHolderView
+#ExpandablePlaceHolderView
 ####This class is build upon the PlaceHolderView and implements all the features of ExpandableListView but with much power and lot easier
 
 ##Annotations(ExpandablePlaceHolderView)
@@ -124,10 +124,28 @@ public class ImageTypeBig {
 
 ##There is no adapter configuration required
 
+#SwipePlaceHolderView
+####This class is bundled with view that can create beautiful card stacks like Tinder, LinkdIn and Card Games. This class provides methods to customize the behavior of the stack, gesture inputs and animations.
+
+##SwipeDecor
+####This class contains view behaviour settings and animation controls for SwipePlaceHolderView.
+
+##Builder(SwipePlaceHolderView)
+####The stack structure and type configurations are done using builder class
+
+##Annotations(SwipePlaceHolderView)
+1. @SwipeIn: It binds a method and calls it when a view is swiped in/accepted
+2. @SwipeOut: It binds a method and calls it when a view is swiped out/rejected.
+3. @SwipeCancelState: It binds a method and calls it when a card is put back in the stack/canceled.
+4. @SwipeInState: It binds a method and pings it till a card is moving in the direction of swiping in/accepted
+5. @SwipeOutState: It binds a method and pings it till a card is moving in the direction of swiping out/rejected
+
+######The Full Documentation is in the process of writing. For any query post it in the discussion or janishar.ali@gmail.com
+
 #Gradle
 ```java
 dependencies {
-    compile 'com.mindorks:placeholderview:0.0.3'
+    compile 'com.mindorks:placeholderview:0.1.0'
 }
 ```
 #Dependency: It depends on the RecyclerView
@@ -145,6 +163,8 @@ dependencies {
 [Android Advance Image Gallery](https://medium.com/@janishar.ali/android-advance-image-gallery-example-3ec6ddf85ed9#.6n8ouof9k)
 
 [Android Expandable News Feed](https://medium.com/@janishar.ali/android-expandable-news-feed-example-4b4544e1fe7e#.3n9k18x2s)
+
+[Android Tinder Swipe](https://medium.com/@janishar.ali/android-tinder-swipe-view-example-3eca9b0d4794#.413dgor3o)
 
 #License
 
