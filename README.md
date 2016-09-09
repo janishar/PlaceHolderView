@@ -145,7 +145,7 @@ public class ImageTypeBig {
 #Gradle
 ```java
 dependencies {
-    compile 'com.mindorks:placeholderview:0.1.0'
+    compile 'com.mindorks:placeholderview:0.1.3'
 }
 ```
 #Dependency: It depends on the RecyclerView
