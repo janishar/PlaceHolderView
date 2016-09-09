@@ -110,6 +110,11 @@ public class ImageTypeBig {
 6. @Animate(Animation.ENTER_LEFT_DESC): Sets the defined animations in the Animation class on this item view.
 7. @NonReusable: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the addView().
 
+##Important
+1. PlaceHolderView will recycle the viewItems and will try to use similar/same viewtype viewItem to populate the data of the current viewItem. So, the method annotated with @Resolve will be called everytime the viewItem is attached to the window. Meaning if you don't explicitly manage to populate the viewItem in method annotated with @Resolve then that viewItem may show history of the reused viewItem.
+2. Try to instantiate any class in the contructor rather than method annotated with @Resolve.
+3. If the itemView contains PlaceHolderView/ListViews and item are being adding through method annotated with @Resolve, then first make the list empty. This is required because duplicate viewitems may get added if the recycled view contains PlaceHolderView/ListViews of other itemView. For PlaceHolderView: call removeAllViews() before adding views in method annotated with @Resolve.
+
 #ExpandablePlaceHolderView
 ####This class is build upon the PlaceHolderView and implements all the features of ExpandableListView but with much power and lot easier
 
