@@ -14,9 +14,9 @@ import java.util.List;
  * Created by janisharali on 18/08/16.
  */
 
-public class ViewAdapter<T, V extends View> extends RecyclerView.Adapter<ViewHolder> {
+public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
 
-    private List<ViewBinder<T, V>> mViewBinderList;
+    private List<ViewBinder<T, View>> mViewBinderList;
     private Context mContext;
 
     /**
@@ -47,7 +47,7 @@ public class ViewAdapter<T, V extends View> extends RecyclerView.Adapter<ViewHol
      */
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        mViewBinderList.get(position).bindView((V)holder.itemView, position);
+        mViewBinderList.get(position).bindView(holder.itemView, position);
     }
 
     @Override
@@ -57,7 +57,7 @@ public class ViewAdapter<T, V extends View> extends RecyclerView.Adapter<ViewHol
             mViewBinderList.get(holder.getLayoutPosition()).bindAnimation(
                     Utils.getDeviceWidth(mContext),
                     Utils.getDeviceHeight(mContext),
-                    (V)holder.itemView);
+                    holder.itemView);
         }
     }
 
@@ -97,7 +97,7 @@ public class ViewAdapter<T, V extends View> extends RecyclerView.Adapter<ViewHol
      * @throws IndexOutOfBoundsException
      */
     protected void addView(T viewResolver)throws IndexOutOfBoundsException{
-        mViewBinderList.add(new ViewBinder<T,V>(viewResolver));
+        mViewBinderList.add(new ViewBinder<>(viewResolver));
         notifyItemInserted(mViewBinderList.size() - 1);
     }
 
@@ -128,7 +128,7 @@ public class ViewAdapter<T, V extends View> extends RecyclerView.Adapter<ViewHol
      * @throws IndexOutOfBoundsException
      */
     protected void addView(int position, T viewResolver)throws IndexOutOfBoundsException{
-        mViewBinderList.add(position, new ViewBinder<T,V>(viewResolver));
+        mViewBinderList.add(position, new ViewBinder<>(viewResolver));
         notifyItemInserted(position);
     }
 
@@ -149,7 +149,7 @@ public class ViewAdapter<T, V extends View> extends RecyclerView.Adapter<ViewHol
         }
         if(position != -1){
             if(after)position++;
-            mViewBinderList.add(position, new ViewBinder<T,V>(resolverNew));
+            mViewBinderList.add(position, new ViewBinder<>(resolverNew));
             notifyItemInserted(position);
         }else{
             throw new Resources.NotFoundException("Old view don't Exists in the list");
@@ -160,7 +160,7 @@ public class ViewAdapter<T, V extends View> extends RecyclerView.Adapter<ViewHol
      *
      * @return
      */
-    protected List<ViewBinder<T, V>> getViewBinderList() {
+    protected List<ViewBinder<T, View>> getViewBinderList() {
         return mViewBinderList;
     }
 
@@ -190,8 +190,20 @@ public class ViewAdapter<T, V extends View> extends RecyclerView.Adapter<ViewHol
         return mViewBinderList.get(position).getResolver();
     }
 
+    /**
+     *
+     * @return
+     */
+    protected  List<T> getAllViewResolvers() {
+        List<T> resolverList = new ArrayList<>();
+        for(ViewBinder<T, View> viewBinder : mViewBinderList){
+            resolverList.add(viewBinder.getResolver());
+        }
+        return resolverList;
+    }
+
     protected void removeAllViewBinders(){
-        for(ViewBinder<T, V> viewBinder : mViewBinderList){
+        for(ViewBinder<T, View> viewBinder : mViewBinderList){
             viewBinder.unbind();
         }
         mViewBinderList.clear();

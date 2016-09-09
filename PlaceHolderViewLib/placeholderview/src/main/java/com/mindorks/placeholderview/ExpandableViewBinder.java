@@ -1,5 +1,7 @@
 package com.mindorks.placeholderview;
 
+import android.view.View;
+
 import com.mindorks.placeholderview.annotations.expand.ChildPosition;
 import com.mindorks.placeholderview.annotations.expand.Collapse;
 import com.mindorks.placeholderview.annotations.expand.Expand;
@@ -236,11 +238,10 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
     /**
      *
      * @param <T>
-     * @param <V>
      */
-    protected interface ExpansionCallback<T, V extends android.view.View>{
-        void onExpand(ExpandableViewBinder<T, V> parentBinder);
-        void onCollapse(ExpandableViewBinder<T, V> parentBinder);
+    protected interface ExpansionCallback<T>{
+        void onExpand(ExpandableViewBinder<T, View> parentBinder);
+        void onCollapse(ExpandableViewBinder<T, View> parentBinder);
     }
 
     /**

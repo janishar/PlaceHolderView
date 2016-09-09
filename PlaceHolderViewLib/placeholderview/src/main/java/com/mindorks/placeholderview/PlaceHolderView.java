@@ -6,6 +6,8 @@ import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.List;
+
 /**
  * Created by janisharali on 18/08/16.
  */
@@ -14,7 +16,7 @@ public class PlaceHolderView extends RecyclerView {
     public static final int DEFAULT_ITEM_VIEW_CACHE_SIZE = 10;
     public static final boolean DEFAULT_HAS_FIXED_SIZE = false;
 
-    private ViewAdapter<Object, View> mViewAdapter;
+    private ViewAdapter<Object> mViewAdapter;
     private PlaceHolderViewBuilder mBuilder;
 
     /**
@@ -175,6 +177,10 @@ public class PlaceHolderView extends RecyclerView {
         return mViewAdapter.getViewResolverAtPosition(position);
     }
 
+    public List<Object> getAllViewResolvers(){
+        return mViewAdapter.getAllViewResolvers();
+    }
+
     /**
      *
      * @return
@@ -194,7 +200,7 @@ public class PlaceHolderView extends RecyclerView {
      *
      * @return
      */
-    protected ViewAdapter<Object, View> getViewAdapter() {
+    protected ViewAdapter<Object> getViewAdapter() {
         return mViewAdapter;
     }
 }

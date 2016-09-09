@@ -14,10 +14,10 @@ import java.util.List;
  * Created by janisharali on 18/08/16.
  */
 
-public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
-        implements ExpandableViewBinder.ExpansionCallback<T, V>{
+public class ExpandableViewAdapter<T> extends ViewAdapter<T>
+        implements ExpandableViewBinder.ExpansionCallback<T>{
 
-    private ExpandableViewBinder<T, V> mParentBinder;
+    private ExpandableViewBinder<T, View> mParentBinder;
 
     /**
      *
@@ -34,7 +34,7 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      */
     @Override
     protected void addView(T viewResolver) throws IndexOutOfBoundsException {
-        ExpandableViewBinder<T, V> expandableViewBinder = new ExpandableViewBinder<>(viewResolver);
+        ExpandableViewBinder<T, View> expandableViewBinder = new ExpandableViewBinder<>(viewResolver);
         if(expandableViewBinder.bindViewType()){
             expandableViewBinder.setCallback(this);
             mParentBinder = expandableViewBinder;
@@ -62,9 +62,9 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      * @throws Resources.NotFoundException
      */
     protected void addChildView(T parentResolver, T childResolver) throws Resources.NotFoundException {
-        ExpandableViewBinder<T, V> parentBinder = getBinderForResolver(parentResolver);
+        ExpandableViewBinder<T, View> parentBinder = getBinderForResolver(parentResolver);
         if(parentBinder != null && parentBinder.isParent()){
-            ExpandableViewBinder<T, V> childViewBinder = new ExpandableViewBinder<>(childResolver);
+            ExpandableViewBinder<T, View> childViewBinder = new ExpandableViewBinder<>(childResolver);
             parentBinder.getChildList().add(childViewBinder);
             if(parentBinder.isExpanded()){
                 int position;
@@ -85,10 +85,10 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      * @throws Resources.NotFoundException
      */
     protected void addChildView(int parentPosition, T childResolver) throws Resources.NotFoundException {
-        for(ViewBinder<T,V> viewBinder : getViewBinderList()){
-            ExpandableViewBinder<T, V> parentBinder = (ExpandableViewBinder<T, V>)viewBinder;
+        for(ViewBinder<T, View> viewBinder : getViewBinderList()){
+            ExpandableViewBinder<T, View> parentBinder = (ExpandableViewBinder<T, View>)viewBinder;
             if(parentBinder.isParent() && parentBinder.getParentPosition() == parentPosition){
-                ExpandableViewBinder<T, V> childViewBinder = new ExpandableViewBinder<>(childResolver);
+                ExpandableViewBinder<T, View> childViewBinder = new ExpandableViewBinder<>(childResolver);
                 parentBinder.getChildList().add(childViewBinder);
                 if(parentBinder.isExpanded()){
                     int position;
@@ -130,7 +130,7 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      */
     @Override
     protected void removeView(T viewResolver) throws IndexOutOfBoundsException {
-        ExpandableViewBinder<T, V> expandableViewBinder = getBinderForResolver(viewResolver);
+        ExpandableViewBinder<T, View> expandableViewBinder = getBinderForResolver(viewResolver);
         if(expandableViewBinder != null){
             if(expandableViewBinder.isParent()){
                 onCollapse(expandableViewBinder);
@@ -148,7 +148,7 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      */
     @Override
     protected void removeView(int position) throws IndexOutOfBoundsException {
-        ExpandableViewBinder<T, V> expandableViewBinder = (ExpandableViewBinder<T, V>)getViewBinderList().get(position);
+        ExpandableViewBinder<T, View> expandableViewBinder = (ExpandableViewBinder<T, View>)getViewBinderList().get(position);
         if(expandableViewBinder != null){
             if(expandableViewBinder.isParent()){
                 onCollapse(expandableViewBinder);
@@ -164,9 +164,9 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      * @param parentBinder
      */
     @Override
-    public void onExpand(ExpandableViewBinder<T, V> parentBinder) {
+    public void onExpand(ExpandableViewBinder<T, View> parentBinder) {
         int position = getViewBinderList().indexOf(parentBinder) + 1;
-        for(ExpandableViewBinder<T, V> viewBinder : parentBinder.getChildList()) {
+        for(ExpandableViewBinder<T, View> viewBinder : parentBinder.getChildList()) {
             getViewBinderList().add(position, viewBinder);
             notifyItemInserted(position);
         }
@@ -179,8 +179,8 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      * @param parentBinder
      */
     @Override
-    public void onCollapse(ExpandableViewBinder<T, V> parentBinder) {
-        for(ExpandableViewBinder<T, V> viewBinder : parentBinder.getChildList()){
+    public void onCollapse(ExpandableViewBinder<T, View> parentBinder) {
+        for(ExpandableViewBinder<T, View> viewBinder : parentBinder.getChildList()){
             super.removeView(viewBinder.getResolver());
         }
     }
@@ -189,8 +189,8 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      *
      * @param parentBinder
      */
-    private void collapseOthers(ExpandableViewBinder<T, V> parentBinder){
-        List<ExpandableViewBinder<T,V>> expandableViewBinderList = new ArrayList<>();
+    private void collapseOthers(ExpandableViewBinder<T, View> parentBinder){
+        List<ExpandableViewBinder<T,View>> expandableViewBinderList = new ArrayList<>();
         for (ViewBinder viewBinder : getViewBinderList()){
             ExpandableViewBinder expandableViewBinder = (ExpandableViewBinder)viewBinder;
             if(expandableViewBinder != parentBinder){
@@ -207,10 +207,10 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      * @param parentViewBinder
      * @return
      */
-    private int getParentPosition(ExpandableViewBinder<T, V> parentViewBinder){
+    private int getParentPosition(ExpandableViewBinder<T, View> parentViewBinder){
         int position = -1;
         for (ViewBinder viewBinder : getViewBinderList()) {
-            ExpandableViewBinder<T, V> expandableViewBinder = (ExpandableViewBinder<T, V>) viewBinder;
+            ExpandableViewBinder<T, View> expandableViewBinder = (ExpandableViewBinder<T, View>) viewBinder;
             if(expandableViewBinder.isParent()) {
                 if (parentViewBinder == expandableViewBinder) {
                     return ++position;
@@ -227,7 +227,7 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      * @param childViewBinder
      * @return
      */
-    private int getChildPosition(ExpandableViewBinder<T, V> parentViewBinder, ExpandableViewBinder<T, V> childViewBinder){
+    private int getChildPosition(ExpandableViewBinder<T, View> parentViewBinder, ExpandableViewBinder<T, View> childViewBinder){
         return parentViewBinder.getChildList().indexOf(childViewBinder);
     }
 
@@ -235,9 +235,9 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      *
      * @return
      */
-    private ExpandableViewBinder<T,V> getLastParentBinder() {
+    private ExpandableViewBinder<T, View> getLastParentBinder() {
         for (int i = getViewBinderList().size() - 1; i >= 0; i--){
-            ExpandableViewBinder<T, V> expandableViewBinder = (ExpandableViewBinder<T, V>) getViewBinderList().get(i);
+            ExpandableViewBinder<T, View> expandableViewBinder = (ExpandableViewBinder<T, View>) getViewBinderList().get(i);
             if (expandableViewBinder.isParent()) {
                 return expandableViewBinder;
             }
@@ -250,9 +250,9 @@ public class ExpandableViewAdapter<T, V extends View> extends ViewAdapter<T, V>
      * @param viewResolver
      * @return
      */
-    protected ExpandableViewBinder<T, V> getBinderForResolver(T viewResolver){
-        for(ViewBinder<T,V> viewBinder : getViewBinderList()){
-            ExpandableViewBinder<T, V> expandableViewBinder = (ExpandableViewBinder<T, V>)viewBinder;
+    protected ExpandableViewBinder<T, View> getBinderForResolver(T viewResolver){
+        for(ViewBinder<T, View> viewBinder : getViewBinderList()){
+            ExpandableViewBinder<T, View> expandableViewBinder = (ExpandableViewBinder<T, View>)viewBinder;
             if(expandableViewBinder.getResolver() == viewResolver) {
                 return expandableViewBinder;
             }
