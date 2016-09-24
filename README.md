@@ -1,5 +1,6 @@
 #**PlaceHolderView**
 [![GitHub version](https://badge.fury.io/gh/janishar%2FPlaceHolderView.svg)](https://badge.fury.io/gh/janishar%2FPlaceHolderView)
+[ ![Download](https://api.bintray.com/packages/janishar/mindorks/placeholderview/images/download.svg) ](https://bintray.com/janishar/mindorks/placeholderview/_latestVersion)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
