@@ -1,4 +1,8 @@
 #**PlaceHolderView**
+[![GitHub version](https://badge.fury.io/gh/janishar%2FPlaceHolderView.svg)](https://badge.fury.io/gh/janishar%2FPlaceHolderView)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 ![](https://github.com/janishar/janishar.github.io/blob/master/images/logo-phv.png)
 
 ######Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!
