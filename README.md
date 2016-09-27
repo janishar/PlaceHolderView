@@ -153,14 +153,23 @@ public class ImageTypeBig {
 ######The Full Documentation is in the process of writing. For any query post it in the discussion or janishar.ali@gmail.com
 
 #Gradle
-```java
+```groovy
 dependencies {
     compile 'com.mindorks:placeholderview:0.1.3'
 }
 ```
 #Dependency: It depends on the RecyclerView
-```java
+```groovy
     com.android.support:recyclerview-v7:23.+
+```
+
+# Proguard Note:
+### If you are using proguard, then add this rule in proguard-project.txt
+```groovy
+  -keepattributes *Annotation*
+  -keepclassmembers class ** {
+    @com.mindorks.placeholderview.annotations.** <methods>;
+  }
 ```
 
 ###If this library helps you in anyway, show your love :heart: by putting a :star: on this project :v:
