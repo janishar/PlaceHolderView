@@ -5,6 +5,7 @@
     android:layout_width="350dp"
     android:layout_height="425dp"
     android:orientation="vertical">
+
     <android.support.v7.widget.CardView
         android:orientation="vertical"
         android:background="@color/white"

@@ -33,6 +33,11 @@ public class TinderCard {
     @View(R.id.locationNameTxt)
     private TextView locationNameTxt;
 
+    @Click(R.id.profileImageView)
+    private void onClick(){
+        Log.d("DEBUG", "profileImageView");
+    }
+
     @SwipeOut
     private void onSwipedOut(){
         Log.d("DEBUG", "onSwipedOut");

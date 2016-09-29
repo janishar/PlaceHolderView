@@ -3,6 +3,7 @@ package com.mindorks.placeholderview;
 import android.animation.Animator;
 import android.animation.ValueAnimator;
 import android.graphics.PointF;
+import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.view.View;
@@ -36,6 +37,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
     private View mSwipeInMsgView;
     private View mSwipeOutMsgView;
     private SwipeDecor mSwipeDecor;
+    private boolean hasInterceptedEvent = false;
 
     /**
      *
@@ -246,17 +248,30 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             private PointF pointerCurrentPoint = new PointF();
             @Override
             public boolean onTouch(final View v, MotionEvent event) {
+
+                if(!hasInterceptedEvent){
+                    pointerCurrentPoint.set(event.getRawX(), event.getRawY());
+                    activePointerId = event.getPointerId(0);
+                    resetDone = false;
+                    FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
+                    originalTopMargin = layoutParamsOriginal.topMargin;
+                    originalLeftMargin = layoutParamsOriginal.leftMargin;
+                    dx = pointerCurrentPoint.x - layoutParamsOriginal.leftMargin;
+                    dy = pointerCurrentPoint.y - layoutParamsOriginal.topMargin;
+                    hasInterceptedEvent = true;
+                }
+
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
                         pointerCurrentPoint.set(event.getRawX(), event.getRawY());
                         activePointerId = event.getPointerId(0);
                         resetDone = false;
-
                         FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
                         originalTopMargin = layoutParamsOriginal.topMargin;
                         originalLeftMargin = layoutParamsOriginal.leftMargin;
                         dx = pointerCurrentPoint.x - layoutParamsOriginal.leftMargin;
                         dy = pointerCurrentPoint.y - layoutParamsOriginal.topMargin;
+                        hasInterceptedEvent = true;
                         break;
                     case MotionEvent.ACTION_POINTER_UP:
                         if (event.getPointerId(event.getActionIndex()) == activePointerId && !resetDone) {}
@@ -309,6 +324,10 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                         .setListener(mViewRemoveAnimatorListener)
                                         .start();
                             }
+                            new CountDownTimer(mSwipeDecor.getSwipeAnimTime(), mSwipeDecor.getSwipeAnimTime()) {
+                                public void onTick(long millisUntilFinished) {}
+                                public void onFinish() {hasInterceptedEvent = false;}
+                            }.start();
                             resetDone = true;
                         }
                         break;
@@ -347,22 +366,32 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             private boolean resetDone = false;
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+
+                if(!hasInterceptedEvent){
+                    x = event.getRawX();
+                    activePointerId = event.getPointerId(0);
+                    resetDone = false;
+                    FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
+                    originalLeftMargin = layoutParamsOriginal.leftMargin;
+                    dx = x - layoutParamsOriginal.leftMargin;
+                    hasInterceptedEvent = true;
+                }
+
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
                         x = event.getRawX();
                         activePointerId = event.getPointerId(0);
                         resetDone = false;
-
                         FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
                         originalLeftMargin = layoutParamsOriginal.leftMargin;
                         dx = x - layoutParamsOriginal.leftMargin;
+                        hasInterceptedEvent = true;
                         break;
                     case MotionEvent.ACTION_POINTER_UP:
                         if (event.getPointerId(event.getActionIndex()) == activePointerId && !resetDone) {}
                         else{break;}
                     case MotionEvent.ACTION_UP:
                         if(!resetDone) {
-                            resetDone = true;
                             float distSlideX = x - dx;
                             distSlideX = distSlideX < 0 ? -distSlideX : distSlideX;
                             if (distSlideX < displayMetrics.widthPixels / mWidthSwipeDistFactor) {
@@ -389,6 +418,11 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                         .setListener(mViewRemoveAnimatorListener)
                                         .start();
                             }
+                            new CountDownTimer(mSwipeDecor.getSwipeAnimTime(), mSwipeDecor.getSwipeAnimTime()) {
+                                public void onTick(long millisUntilFinished) {}
+                                public void onFinish() {hasInterceptedEvent = false;}
+                            }.start();
+                            resetDone = true;
                         }
                         break;
                     case MotionEvent.ACTION_MOVE:
@@ -423,6 +457,17 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             private boolean resetDone = false;
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+
+                if(!hasInterceptedEvent){
+                    y = event.getRawY();
+                    activePointerId = event.getPointerId(0);
+                    resetDone = false;
+                    FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
+                    originalTopMargin = layoutParamsOriginal.topMargin;
+                    dy = y - layoutParamsOriginal.topMargin;
+                    hasInterceptedEvent = true;
+                }
+
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
                         y = event.getRawY();
@@ -431,6 +476,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                         FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
                         originalTopMargin = layoutParamsOriginal.topMargin;
                         dy = y - layoutParamsOriginal.topMargin;
+                        hasInterceptedEvent = true;
                         break;
                     case MotionEvent.ACTION_POINTER_UP:
                         if (event.getPointerId(event.getActionIndex()) == activePointerId && !resetDone) {}
@@ -464,6 +510,10 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                         .start();
 
                             }
+                            new CountDownTimer(mSwipeDecor.getSwipeAnimTime(), mSwipeDecor.getSwipeAnimTime()) {
+                                public void onTick(long millisUntilFinished) {}
+                                public void onFinish() {hasInterceptedEvent = false;}
+                            }.start();
                             resetDone = true;
                         }
                         break;
@@ -643,7 +693,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      *
      * @param <T>
      */
-    protected interface SwipeCallback<T extends SwipeViewBinder<Object, FrameLayout>>{
+    protected interface SwipeCallback<T extends SwipeViewBinder<?, ? extends FrameLayout>>{
         void onRemoveView(T swipeViewBinder);
         void onResetView(T swipeViewBinder);
         void onAnimateView(float distXMoved, float distYMoved, float finalXDist, float finalYDist, T swipeViewBinder);

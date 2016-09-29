@@ -49,11 +49,13 @@ public class SwipeCard {
     @Click(R.id.rejectBtn)
     private void rejectBtnClick(){
         mSwipePlaceHolderView.doSwipe(this, false);
+        Log.d("DEBUG", "rejectBtn");
     }
 
     @Click(R.id.acceptBtn)
     private void acceptBtnClick(){
         mSwipePlaceHolderView.doSwipe(this, true);
+        Log.d("DEBUG", "acceptBtn");
     }
 
     @SwipeOut
