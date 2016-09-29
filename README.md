@@ -1,4 +1,9 @@
 #**PlaceHolderView**
+[![GitHub version](https://badge.fury.io/gh/janishar%2FPlaceHolderView.svg)](https://badge.fury.io/gh/janishar%2FPlaceHolderView)
+[ ![Download](https://api.bintray.com/packages/janishar/mindorks/placeholderview/images/download.svg) ](https://bintray.com/janishar/mindorks/placeholderview/_latestVersion)
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
 ![](https://github.com/janishar/janishar.github.io/blob/master/images/logo-phv.png)
 
 ######Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!
@@ -110,6 +115,11 @@ public class ImageTypeBig {
 6. @Animate(Animation.ENTER_LEFT_DESC): Sets the defined animations in the Animation class on this item view.
 7. @NonReusable: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the addView().
 
+##Important
+1. PlaceHolderView will recycle the viewItems and will try to use similar/same viewtype viewItem to populate the data of the current viewItem. So, the method annotated with @Resolve will be called everytime the viewItem is attached to the window. Meaning if you don't explicitly manage to populate the viewItem in method annotated with @Resolve then that viewItem may show history of the reused viewItem.
+2. Try to instantiate any class in the contructor rather than method annotated with @Resolve.
+3. If the itemView contains PlaceHolderView/ListViews and item are being adding through method annotated with @Resolve, then first make the list empty. This is required because duplicate viewitems may get added if the recycled view contains PlaceHolderView/ListViews of other itemView. For PlaceHolderView: call removeAllViews() before adding views in method annotated with @Resolve.
+
 #ExpandablePlaceHolderView
 ####This class is build upon the PlaceHolderView and implements all the features of ExpandableListView but with much power and lot easier
 
@@ -143,14 +153,23 @@ public class ImageTypeBig {
 ######The Full Documentation is in the process of writing. For any query post it in the discussion or janishar.ali@gmail.com
 
 #Gradle
-```java
+```groovy
 dependencies {
-    compile 'com.mindorks:placeholderview:0.1.0'
+    compile 'com.mindorks:placeholderview:0.1.3'
 }
 ```
 #Dependency: It depends on the RecyclerView
-```java
+```groovy
     com.android.support:recyclerview-v7:23.+
+```
+
+# Proguard Note:
+### If you are using proguard, then add this rule in proguard-project.txt
+```groovy
+  -keepattributes *Annotation*
+  -keepclassmembers class ** {
+    @com.mindorks.placeholderview.annotations.** <methods>;
+  }
 ```
 
 ###If this library helps you in anyway, show your love :heart: by putting a :star: on this project :v:
