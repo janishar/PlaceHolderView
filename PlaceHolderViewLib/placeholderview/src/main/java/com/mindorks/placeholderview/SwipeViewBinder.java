@@ -263,15 +263,6 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
-                        pointerCurrentPoint.set(event.getRawX(), event.getRawY());
-                        activePointerId = event.getPointerId(0);
-                        resetDone = false;
-                        FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
-                        originalTopMargin = layoutParamsOriginal.topMargin;
-                        originalLeftMargin = layoutParamsOriginal.leftMargin;
-                        dx = pointerCurrentPoint.x - layoutParamsOriginal.leftMargin;
-                        dy = pointerCurrentPoint.y - layoutParamsOriginal.topMargin;
-                        hasInterceptedEvent = true;
                         break;
                     case MotionEvent.ACTION_POINTER_UP:
                         if (event.getPointerId(event.getActionIndex()) == activePointerId && !resetDone) {}
@@ -379,13 +370,6 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
-                        x = event.getRawX();
-                        activePointerId = event.getPointerId(0);
-                        resetDone = false;
-                        FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
-                        originalLeftMargin = layoutParamsOriginal.leftMargin;
-                        dx = x - layoutParamsOriginal.leftMargin;
-                        hasInterceptedEvent = true;
                         break;
                     case MotionEvent.ACTION_POINTER_UP:
                         if (event.getPointerId(event.getActionIndex()) == activePointerId && !resetDone) {}
@@ -470,13 +454,6 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
                 switch (event.getAction() & MotionEvent.ACTION_MASK) {
                     case MotionEvent.ACTION_DOWN:
-                        y = event.getRawY();
-                        activePointerId = event.getPointerId(0);
-                        resetDone = false;
-                        FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) v.getLayoutParams();
-                        originalTopMargin = layoutParamsOriginal.topMargin;
-                        dy = y - layoutParamsOriginal.topMargin;
-                        hasInterceptedEvent = true;
                         break;
                     case MotionEvent.ACTION_POINTER_UP:
                         if (event.getPointerId(event.getActionIndex()) == activePointerId && !resetDone) {}

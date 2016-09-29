@@ -13,7 +13,7 @@ ext {
     siteUrl = 'https://github.com/janishar/PlaceHolderView'
     gitUrl = 'https://github.com/janishar/PlaceHolderView.git'
 
-    libraryVersion = '0.1.3'
+    libraryVersion = '0.1.5'
 
     developerId = 'janishar.ali@gmail.com'
     developerName = 'Janishar Ali'
@@ -32,7 +32,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 23
         versionCode 6
-        versionName "0.1.3"
+        versionName "0.1.4"
     }
     buildTypes {
         release {
