@@ -14,7 +14,7 @@
 ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)  
 
 ##STEP 1: Define a PlaceHolderView inside XML layout
-```java
+```xml
 //PlaceHolderView to wrap around the recycler view in XML
 <com.mindorks.placeholderview.PlaceHolderView
         android:id="@+id/galleryView"
@@ -23,7 +23,7 @@
 
 ```
 ##STEP 2: Create item views XML, example: gallery_item_big.xml
-```java
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
