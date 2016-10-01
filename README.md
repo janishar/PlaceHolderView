@@ -186,7 +186,7 @@ dependencies {
 [Android Tinder Swipe](https://medium.com/@janishar.ali/android-tinder-swipe-view-example-3eca9b0d4794#.413dgor3o)
 
 # Recent Library: [`JPost`](https://github.com/janishar/JPost)
-#### `JPost` is a pubsub library based on massages over a channel. It's very efficient and much powerful that other pubsub libraries. It prevents memory leak and increases code control. Also, provide a mechanism to run code asynchronously.
+#### `JPost` is a pubsub library based on massages over a channel. It's very efficient and much powerful than other pubsub libraries. It prevents memory leak and increases code control. Also, provide a mechanism to run code asynchronously.
 
 #### Why should you use this library
 1. In contrast to the existing pub-sub libraries, it hold the subscribers with weakreference. Thus it doesn't create memory leaks.
