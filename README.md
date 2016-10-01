@@ -172,17 +172,6 @@ dependencies {
   }
 ```
 
-# Recent Library: [`JPost`](https://https://github.com/janishar/JPost)
-#### JPost is a pubsub library based on massages over a channel. Its very efficient and much powerful that other pubsub libraries. It prevents memory leak and increases code control. Also, provide a mechanism to run code asynchronously.
-
-#### Why should you use this library
-1. In contrast to the existing pub-sub libraries, it hold the subscribers with weakreference. Thus it doesn't create memory leaks.
-2. Single message can be sent to selected subscribes. This avoids the problem of event getting received at undesirable places. Thus minimising the chances of abnormal application behaviour.
-3. The subscriber addition can be controlled by using private channels. It minimises the chances of adding subscribes by mistake to receive undesirable messages.
-4. It is a tiny library < 55kb . Thus not effecting the application overall size.
-5. It facilicates synchronous as well as asynchronous message delivery and processing.
-6. It provides a mechanism to run code asynchronously.
-
 ###If this library helps you in anyway, show your love :heart: by putting a :star: on this project :v:
 
 #Examples
@@ -195,6 +184,17 @@ dependencies {
 [Android Expandable News Feed](https://medium.com/@janishar.ali/android-expandable-news-feed-example-4b4544e1fe7e#.3n9k18x2s)
 
 [Android Tinder Swipe](https://medium.com/@janishar.ali/android-tinder-swipe-view-example-3eca9b0d4794#.413dgor3o)
+
+# Recent Library: [`JPost`](https://https://github.com/janishar/JPost)
+#### `JPost` is a pubsub library based on massages over a channel. Its very efficient and much powerful that other pubsub libraries. It prevents memory leak and increases code control. Also, provide a mechanism to run code asynchronously.
+
+#### Why should you use this library
+1. In contrast to the existing pub-sub libraries, it hold the subscribers with weakreference. Thus it doesn't create memory leaks.
+2. Single message can be sent to selected subscribes. This avoids the problem of event getting received at undesirable places. Thus minimising the chances of abnormal application behaviour.
+3. The subscriber addition can be controlled by using private channels. It minimises the chances of adding subscribes by mistake to receive undesirable messages.
+4. It is a tiny library < 55kb . Thus not effecting the application overall size.
+5. It facilicates synchronous as well as asynchronous message delivery and processing.
+6. It provides a mechanism to run code asynchronously.
 
 #License
 
