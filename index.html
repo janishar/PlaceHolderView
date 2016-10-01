@@ -23,7 +23,12 @@
 <a id="placeholderview" class="anchor" href="#placeholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>PlaceHolderView</strong>
 </h1>
 
-<p><img src="https://janishar.github.io/images/logo-phv.png" alt=""></p>
+<p><a href="https://bintray.com/janishar/mindorks/placeholderview/_latestVersion"> <img src="https://api.bintray.com/packages/janishar/mindorks/placeholderview/images/download.svg" alt="Download"> </a>
+<a href="https://android-arsenal.com/details/1/4414"><img src="https://img.shields.io/badge/Android%20Arsenal-PlaceHolderView-green.svg?style=true" alt="Android Arsenal"></a>
+<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=102" alt="Open Source Love"></a>
+<a href="https://opensource.org/licenses/Apache-2.0"><img src="https://img.shields.io/badge/License-Apache%202.0-blue.svg" alt="License"></a></p>
+
+<p><img src="https://github.com/janishar/janishar.github.io/blob/master/images/logo-phv.png" alt=""></p>
 
 <h6>
 <a id="simple-easy-and-superfast-dynamic-view-creation-with-awesome-animations-prebuilt" class="anchor" href="#simple-easy-and-superfast-dynamic-view-creation-with-awesome-animations-prebuilt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!</h6>
@@ -38,36 +43,36 @@
 <h2>
 <a id="step-1-define-a-placeholderview-inside-xml-layout" class="anchor" href="#step-1-define-a-placeholderview-inside-xml-layout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>STEP 1: Define a PlaceHolderView inside XML layout</h2>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-c">//PlaceHolderView to wrap around the recycler view in XML</span>
-<span class="pl-k">&lt;</span><span class="pl-smi">com.mindorks.placeholderview<span class="pl-k">.</span>PlaceHolderView</span>
-        android<span class="pl-k">:</span>id<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>@+id/galleryView<span class="pl-pds">"</span></span>
-        android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
-        android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span><span class="pl-k">/</span><span class="pl-k">&gt;</span>
+<div class="highlight highlight-text-xml"><pre>//PlaceHolderView to wrap around the recycler view in XML
+&lt;<span class="pl-ent">com</span>.mindorks.placeholderview.PlaceHolderView
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>@+id/galleryView<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>/&gt;
 </pre></div>
 
 <h2>
 <a id="step-2-create-item-views-xml-example-gallery_item_bigxml" class="anchor" href="#step-2-create-item-views-xml-example-gallery_item_bigxml" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>STEP 2: Create item views XML, example: gallery_item_big.xml</h2>
 
-<div class="highlight highlight-source-java"><pre><span class="pl-k">&lt;</span><span class="pl-k">?</span>xml version<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span> encoding<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span><span class="pl-k">?</span><span class="pl-k">&gt;</span>
-<span class="pl-k">&lt;</span><span class="pl-smi">LinearLayout</span> xmlns<span class="pl-k">:</span>android<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res/android<span class="pl-pds">"</span></span>
-    xmlns<span class="pl-k">:</span>app<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res-auto<span class="pl-pds">"</span></span>
-    android<span class="pl-k">:</span>orientation<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>vertical<span class="pl-pds">"</span></span>
-    android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
-    android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
-    android<span class="pl-k">:</span>padding<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>10dp<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
-    <span class="pl-k">&lt;</span><span class="pl-smi">android.support.v7.widget<span class="pl-k">.</span>CardView</span>
-        android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
-        android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
-        app<span class="pl-k">:</span>cardCornerRadius<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>6dp<span class="pl-pds">"</span></span>
-        app<span class="pl-k">:</span>cardElevation<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>6dp<span class="pl-pds">"</span></span><span class="pl-k">&gt;</span>
-        <span class="pl-k">&lt;</span><span class="pl-smi">ImageView</span>
-            android<span class="pl-k">:</span>id<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>@+id/imageView<span class="pl-pds">"</span></span>
-            android<span class="pl-k">:</span>layout_width<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
-            android<span class="pl-k">:</span>layout_height<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>250dp<span class="pl-pds">"</span></span>
-            android<span class="pl-k">:</span>scaleType<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>centerCrop<span class="pl-pds">"</span></span>
-            android<span class="pl-k">:</span>src<span class="pl-k">=</span><span class="pl-s"><span class="pl-pds">"</span>@android:color/holo_orange_dark<span class="pl-pds">"</span></span><span class="pl-k">/</span><span class="pl-k">&gt;</span>
-    <span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-smi">android.support.v7.widget<span class="pl-k">.</span>CardView</span><span class="pl-k">&gt;</span>
-<span class="pl-k">&lt;</span><span class="pl-k">/</span><span class="pl-smi">LinearLayout</span><span class="pl-k">&gt;</span></pre></div>
+<div class="highlight highlight-text-xml"><pre>&lt;?<span class="pl-ent">xml</span><span class="pl-e"> version</span>=<span class="pl-s"><span class="pl-pds">"</span>1.0<span class="pl-pds">"</span></span><span class="pl-e"> encoding</span>=<span class="pl-s"><span class="pl-pds">"</span>utf-8<span class="pl-pds">"</span></span>?&gt;
+&lt;<span class="pl-ent">LinearLayout</span> <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">android</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res/android<span class="pl-pds">"</span></span>
+    <span class="pl-e">xmlns</span><span class="pl-e">:</span><span class="pl-e">app</span>=<span class="pl-s"><span class="pl-pds">"</span>http://schemas.android.com/apk/res-auto<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">orientation</span>=<span class="pl-s"><span class="pl-pds">"</span>vertical<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+    <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">padding</span>=<span class="pl-s"><span class="pl-pds">"</span>10dp<span class="pl-pds">"</span></span>&gt;
+    &lt;<span class="pl-ent">android</span>.support.v7.widget.CardView
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+        <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>wrap_content<span class="pl-pds">"</span></span>
+        <span class="pl-e">app</span><span class="pl-e">:</span><span class="pl-e">cardCornerRadius</span>=<span class="pl-s"><span class="pl-pds">"</span>6dp<span class="pl-pds">"</span></span>
+        <span class="pl-e">app</span><span class="pl-e">:</span><span class="pl-e">cardElevation</span>=<span class="pl-s"><span class="pl-pds">"</span>6dp<span class="pl-pds">"</span></span>&gt;
+        &lt;<span class="pl-ent">ImageView</span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">id</span>=<span class="pl-s"><span class="pl-pds">"</span>@+id/imageView<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_width</span>=<span class="pl-s"><span class="pl-pds">"</span>match_parent<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">layout_height</span>=<span class="pl-s"><span class="pl-pds">"</span>250dp<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">scaleType</span>=<span class="pl-s"><span class="pl-pds">"</span>centerCrop<span class="pl-pds">"</span></span>
+            <span class="pl-e">android</span><span class="pl-e">:</span><span class="pl-e">src</span>=<span class="pl-s"><span class="pl-pds">"</span>@android:color/holo_orange_dark<span class="pl-pds">"</span></span>/&gt;
+    &lt;/<span class="pl-ent">android</span>.support.v7.widget.CardView&gt;
+&lt;/<span class="pl-ent">LinearLayout</span>&gt;</pre></div>
 
 <h2>
 <a id="step-3-create-item-class-to-bind-and-define-view-operations" class="anchor" href="#step-3-create-item-class-to-bind-and-define-view-operations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>STEP 3: Create item class to bind and define view operations</h2>
@@ -128,86 +133,116 @@
 <a id="classes-overview" class="anchor" href="#classes-overview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Classes OverView</h2>
 
 <h1>
-<a id="placeholderview-1" class="anchor" href="#placeholderview-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>PlaceHolderView</h1>
+<a id="placeholderview-1" class="anchor" href="#placeholderview-1" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>PlaceHolderView</code>
+</h1>
 
 <ol>
-<li>getBuilder(): Get builder for the PlaceHolderView to modify the default properties</li>
-<li>setLayoutManager(layoutManager): Add custom layout manager</li>
-<li>addView(): Add views to the PlaceHolderView</li>
-<li>removeView(): Removes the existing view</li>
-<li>SmoothLinearLayoutManager: This class is bundled with the library, and should be used for those view which has dynamic heavy contents. It reduces the screen flikering on bind</li>
+<li>
+<code>getBuilder()</code>: Get builder for the PlaceHolderView to modify the default properties</li>
+<li>
+<code>setLayoutManager(layoutManager)</code>: Add custom layout manager</li>
+<li>
+<code>addView()</code>: Add views to the PlaceHolderView</li>
+<li>
+<code>removeView()</code>: Removes the existing view</li>
+<li>
+<code>SmoothLinearLayoutManager</code>: This class is bundled with the library, and should be used for those view which has dynamic heavy contents. It reduces the screen flikering on bind</li>
 </ol>
 
 <h2>
 <a id="annotations" class="anchor" href="#annotations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations</h2>
 
 <ol>
-<li>@Layout: Bind the XML layout with the class.</li>
-<li>@View: Bind the variable with the view defined in the above layout.</li>
-<li>@Click: Bind the OnClickListener to a view.</li>
-<li>@LongClick: Bind the long click listerner to a view.</li>
-<li>@Resolve: Any operation being performed on the view reference defined by <a href="https://github.com/View" class="user-mention">@View</a> should be annotated with this.</li>
-<li>@Animate(Animation.ENTER_LEFT_DESC): Sets the defined animations in the Animation class on this item view.</li>
-<li>@NonReusable: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the addView().</li>
+<li>
+<code>@Layout</code>: Bind the XML layout with the class.</li>
+<li>
+<code>@View</code>: Bind the variable with the view defined in the above layout.</li>
+<li>
+<code>@Click</code>: Bind the <code>OnClickListener</code> to a view.</li>
+<li>
+<code>@LongClick</code>: Bind the long click listerner to a view.</li>
+<li>
+<code>@Resolve</code>: Any operation being performed on the view reference defined by <code>@View</code> should be annotated with this.</li>
+<li>
+<code>@Animate(Animation.ENTER_LEFT_DESC)</code>: Sets the defined animations in the Animation class on this item view.</li>
+<li>
+<code>@NonReusable</code>: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the <code>addView()</code>.</li>
 </ol>
 
 <h2>
 <a id="important" class="anchor" href="#important" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Important</h2>
+
 <ol>
-<li>PlaceHolderView will recycle the viewItems and will try to use similar/same viewtype viewItem to populate the data of the current viewItem. So, the method annotated with @Resolve will be called everytime the viewItem is attached to the window. Meaning if you don't explicitly manage to populate the viewItem in method annotated with @Resolve then that viewItem may show history of the reused viewItem.</li>
-<li>Try to instantiate any class in the contructor rather than method annotated with @Resolve.</li>
-<li>If the itemView contains PlaceHolderView/ListViews and item are being adding through method annotated with @Resolve, then first make the list empty. This is required because duplicate viewitems may get added if the recycled view contains PlaceHolderView/ListViews of other itemView. For PlaceHolderView: call removeAllViews() before adding views in method annotated with @Resolve.</li>
+<li>
+<code>PlaceHolderView</code> will recycle the viewItems and will try to use similar/same viewtype viewItem to populate the data of the current viewItem. So, the method annotated with <code>@Resolve</code> will be called everytime the viewItem is attached to the window. Meaning if you don't explicitly manage to populate the viewItem in method annotated with <code>@Resolve</code> then that viewItem may show history of the reused viewItem.</li>
+<li>Try to instantiate any class in the contructor rather than method annotated with <code>@Resolve</code>.</li>
+<li>If the itemView contains PlaceHolderView/ListViews and item are being adding through method annotated with <code>@Resolve</code>, then first make the list empty. This is required because duplicate viewitems may get added if the recycled view contains PlaceHolderView/ListViews of other itemView. For PlaceHolderView: call removeAllViews() before adding views in method annotated with <code>@Resolve</code>.</li>
 </ol>
 
 <h1>
-<a id="expandableplaceholderview" class="anchor" href="#expandableplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>ExpandablePlaceHolderView</h1>
+<a id="expandableplaceholderview" class="anchor" href="#expandableplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>ExpandablePlaceHolderView</code>
+</h1>
 
 <h4>
-<a id="this-class-is-build-upon-the-placeholderview-and-implements-all-the-features-of-expandablelistview-but-with-much-power-and-lot-easier" class="anchor" href="#this-class-is-build-upon-the-placeholderview-and-implements-all-the-features-of-expandablelistview-but-with-much-power-and-lot-easier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class is build upon the PlaceHolderView and implements all the features of ExpandableListView but with much power and lot easier</h4>
+<a id="this-class-is-build-upon-the-placeholderview-and-implements-all-the-features-of-expandablelistview-but-with-much-power-and-lot-easier" class="anchor" href="#this-class-is-build-upon-the-placeholderview-and-implements-all-the-features-of-expandablelistview-but-with-much-power-and-lot-easier" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class is build upon the <code>PlaceHolderView</code> and implements all the features of <code>ExpandableListView</code> but with much power and lot easier</h4>
 
 <h2>
-<a id="annotationsexpandableplaceholderview" class="anchor" href="#annotationsexpandableplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations(ExpandablePlaceHolderView)</h2>
+<a id="annotationsexpandableplaceholderview" class="anchor" href="#annotationsexpandableplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations(<code>ExpandablePlaceHolderView</code>)</h2>
 
 <ol>
-<li>@Parent: Defines the class to be used as the parent in the expandable list.</li>
-<li>@SingleTop: Makes only one parent remain in expanded state.</li>
-<li>@Collapse: Bind a method of the parent class to listen to the collapse event.</li>
-<li>@Expand: Bind a method of the parent class to listen to the Expand event.</li>
-<li>@ParentPosition: Bind an int variable to update with relative position among parents.</li>
-<li>@ChildPosition: Bind an int variable to update with relative position among children of a parent.</li>
-<li>@Toggle: Bind a view to be used as a trigger for expanding or collapsing a parent view. If not provided then the parent view becomes a toggle by default.</li>
+<li>
+<code>@Parent</code>: Defines the class to be used as the parent in the expandable list.</li>
+<li>
+<code>@SingleTop</code>: Makes only one parent remain in expanded state.</li>
+<li>
+<code>@Collapse</code>: Bind a method of the parent class to listen to the collapse event.</li>
+<li>
+<code>@Expand</code>: Bind a method of the parent class to listen to the Expand event.</li>
+<li>
+<code>@ParentPosition</code>: Bind an int variable to update with relative position among parents.</li>
+<li>
+<code>@ChildPosition</code>: Bind an int variable to update with relative position among children of a parent.</li>
+<li>
+<code>@Toggle</code>: Bind a view to be used as a trigger for expanding or collapsing a parent view. If not provided then the parent view becomes a toggle by default.</li>
 </ol>
 
 <h2>
 <a id="there-is-no-adapter-configuration-required" class="anchor" href="#there-is-no-adapter-configuration-required" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>There is no adapter configuration required</h2>
 
 <h1>
-<a id="swipeplaceholderview" class="anchor" href="#swipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SwipePlaceHolderView</h1>
+<a id="swipeplaceholderview" class="anchor" href="#swipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>SwipePlaceHolderView</code>
+</h1>
 
 <h4>
 <a id="this-class-is-bundled-with-view-that-can-create-beautiful-card-stacks-like-tinder-linkdin-and-card-games-this-class-provides-methods-to-customize-the-behavior-of-the-stack-gesture-inputs-and-animations" class="anchor" href="#this-class-is-bundled-with-view-that-can-create-beautiful-card-stacks-like-tinder-linkdin-and-card-games-this-class-provides-methods-to-customize-the-behavior-of-the-stack-gesture-inputs-and-animations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class is bundled with view that can create beautiful card stacks like Tinder, LinkdIn and Card Games. This class provides methods to customize the behavior of the stack, gesture inputs and animations.</h4>
 
 <h2>
-<a id="swipedecor" class="anchor" href="#swipedecor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>SwipeDecor</h2>
+<a id="swipedecor" class="anchor" href="#swipedecor" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>SwipeDecor</code>
+</h2>
 
 <h4>
 <a id="this-class-contains-view-behaviour-settings-and-animation-controls-for-swipeplaceholderview" class="anchor" href="#this-class-contains-view-behaviour-settings-and-animation-controls-for-swipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class contains view behaviour settings and animation controls for SwipePlaceHolderView.</h4>
 
 <h2>
-<a id="builderswipeplaceholderview" class="anchor" href="#builderswipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Builder(SwipePlaceHolderView)</h2>
+<a id="builderswipeplaceholderview" class="anchor" href="#builderswipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Builder(<code>SwipePlaceHolderView</code>)</h2>
 
 <h4>
 <a id="the-stack-structure-and-type-configurations-are-done-using-builder-class" class="anchor" href="#the-stack-structure-and-type-configurations-are-done-using-builder-class" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The stack structure and type configurations are done using builder class</h4>
 
 <h2>
-<a id="annotationsswipeplaceholderview" class="anchor" href="#annotationsswipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations(SwipePlaceHolderView)</h2>
+<a id="annotationsswipeplaceholderview" class="anchor" href="#annotationsswipeplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations(<code>SwipePlaceHolderView</code>)</h2>
 
 <ol>
-<li>@SwipeIn: It binds a method and calls it when a view is swiped in/accepted</li>
-<li>@SwipeOut: It binds a method and calls it when a view is swiped out/rejected.</li>
-<li>@SwipeCancelState: It binds a method and calls it when a card is put back in the stack/canceled.</li>
-<li>@SwipeInState: It binds a method and pings it till a card is moving in the direction of swiping in/accepted</li>
-<li>@SwipeOutState: It binds a method and pings it till a card is moving in the direction of swiping out/rejected</li>
+<li>
+<code>@SwipeIn</code>: It binds a method and calls it when a view is swiped in/accepted</li>
+<li>
+<code>@SwipeOut</code>: It binds a method and calls it when a view is swiped out/rejected.</li>
+<li>
+<code>@SwipeCancelState</code>: It binds a method and calls it when a card is put back in the stack/canceled.</li>
+<li>
+<code>@SwipeInState</code>: It binds a method and pings it till a card is moving in the direction of swiping in/accepted</li>
+<li>
+<code>@SwipeOutState</code>: It binds a method and pings it till a card is moving in the direction of swiping out/rejected</li>
 </ol>
 
 <h6>
@@ -217,14 +252,25 @@
 <h1>
 <a id="gradle" class="anchor" href="#gradle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Gradle</h1>
 
-<div class="highlight highlight-source-java"><pre>dependencies {
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.mindorks:placeholderview:0.1.3<span class="pl-pds">'</span></span>
+<div class="highlight highlight-source-groovy"><pre>dependencies {
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.mindorks:placeholderview:0.1.5<span class="pl-pds">'</span></span>
 }</pre></div>
 
 <h1>
 <a id="dependency-it-depends-on-the-recyclerview" class="anchor" href="#dependency-it-depends-on-the-recyclerview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Dependency: It depends on the RecyclerView</h1>
 
-<div class="highlight highlight-source-java"><pre>    com<span class="pl-k">.</span>android<span class="pl-k">.</span>support<span class="pl-k">:</span>recyclerview<span class="pl-k">-</span>v7<span class="pl-k">:</span><span class="pl-c1">23.</span><span class="pl-k">+</span></pre></div>
+<div class="highlight highlight-source-groovy"><pre>    com<span class="pl-k">.</span>android<span class="pl-k">.</span><span class="pl-c1">support</span>:recyclerview<span class="pl-k">-</span><span class="pl-c1">v7</span>:<span class="pl-c1">23</span><span class="pl-k">.</span><span class="pl-k">+</span></pre></div>
+
+<h1>
+<a id="proguard-note" class="anchor" href="#proguard-note" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Proguard Note:</h1>
+
+<h3>
+<a id="if-you-are-using-proguard-then-add-this-rule-in-proguard-projecttxt" class="anchor" href="#if-you-are-using-proguard-then-add-this-rule-in-proguard-projecttxt" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>If you are using proguard, then add this rule in proguard-project.txt</h3>
+
+<div class="highlight highlight-source-groovy"><pre>  <span class="pl-k">-</span>keepattributes <span class="pl-k">*</span><span class="pl-k">Annotation</span><span class="pl-k">*</span>
+  <span class="pl-k">-</span>keepclassmembers class <span class="pl-k">**</span> {
+    <span class="pl-k">@com.mindorks.placeholderview.annotations.**</span> <span class="pl-k">&lt;</span>methods<span class="pl-k">&gt;</span>;
+  }</pre></div>
 
 <h3>
 <a id="if-this-library-helps-you-in-anyway-show-your-love-heart-by-putting-a-star-on-this-project-v" class="anchor" href="#if-this-library-helps-you-in-anyway-show-your-love-heart-by-putting-a-star-on-this-project-v" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>If this library helps you in anyway, show your love <g-emoji alias="heart" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2764.png">❤️</g-emoji> by putting a <g-emoji alias="star" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/2b50.png">⭐</g-emoji> on this project <g-emoji alias="v" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/270c.png">✌️</g-emoji>
@@ -241,7 +287,26 @@
 
 <p><a href="https://medium.com/@janishar.ali/android-expandable-news-feed-example-4b4544e1fe7e#.3n9k18x2s">Android Expandable News Feed</a></p>
 
-<p><a href="https://medium.com/@janishar.ali/android-tinder-swipe-view-example-3eca9b0d4794#.413dgor3o">Android Tinder Swipe
+<p><a href="https://medium.com/@janishar.ali/android-tinder-swipe-view-example-3eca9b0d4794#.413dgor3o">Android Tinder Swipe</a></p>
+
+<h1>
+<a id="recent-library-jpost" class="anchor" href="#recent-library-jpost" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Recent Library: <a href="https://github.com/janishar/JPost"><code>JPost</code></a>
+</h1>
+
+<h4>
+<a id="jpost-is-a-pubsub-library-based-on-massages-over-a-channel-its-very-efficient-and-much-powerful-than-other-pubsub-libraries-it-prevents-memory-leak-and-increases-code-control-also-provide-a-mechanism-to-run-code-asynchronously" class="anchor" href="#jpost-is-a-pubsub-library-based-on-massages-over-a-channel-its-very-efficient-and-much-powerful-than-other-pubsub-libraries-it-prevents-memory-leak-and-increases-code-control-also-provide-a-mechanism-to-run-code-asynchronously" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>JPost</code> is a pubsub library based on massages over a channel. It's very efficient and much powerful than other pubsub libraries. It prevents memory leak and increases code control. Also, provide a mechanism to run code asynchronously.</h4>
+
+<h4>
+<a id="why-should-you-use-this-library" class="anchor" href="#why-should-you-use-this-library" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Why should you use this library</h4>
+
+<ol>
+<li>In contrast to the existing pub-sub libraries, it hold the subscribers with weakreference. Thus it doesn't create memory leaks.</li>
+<li>Single message can be sent to selected subscribes. This avoids the problem of event getting received at undesirable places. Thus minimising the chances of abnormal application behaviour.</li>
+<li>The subscriber addition can be controlled by using private channels. It minimises the chances of adding subscribes by mistake to receive undesirable messages.</li>
+<li>It is a tiny library &lt; 55kb . Thus not effecting the application overall size.</li>
+<li>It facilicates synchronous as well as asynchronous message delivery and processing.</li>
+<li>It provides a mechanism to run code asynchronously.</li>
+</ol>
 
 <h1>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>License</h1>
