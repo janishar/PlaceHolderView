@@ -47,9 +47,8 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
      */
     protected boolean bindViewType(){
         T resolver = getResolver();
-        Annotation annotation = resolver.getClass().getAnnotation(Parent.class);
-        if(annotation instanceof Parent) {
-            Parent parent = (Parent) annotation;
+        Parent parent = resolver.getClass().getAnnotation(Parent.class);
+        if(parent != null) {
             isParent = parent.value();
         }
         return isParent;
@@ -60,9 +59,8 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
      * @param resolver
      */
     protected void bindCollapseProperty(final T resolver){
-        Annotation annotation = resolver.getClass().getAnnotation(SingleTop.class);
-        if(annotation instanceof SingleTop) {
-            SingleTop singleTop = (SingleTop) annotation;
+        SingleTop singleTop = resolver.getClass().getAnnotation(SingleTop.class);
+        if(singleTop != null) {
             isSingleTop = singleTop.value();
         }
     }
@@ -75,8 +73,8 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
         mParentPosition = position;
         T resolver = getResolver();
         for(final Field field : resolver.getClass().getDeclaredFields()) {
-            Annotation annotation = field.getAnnotation(ParentPosition.class);
-            if(annotation instanceof ParentPosition) {
+            ParentPosition annotation = field.getAnnotation(ParentPosition.class);
+            if(annotation != null) {
                 try {
                     field.setAccessible(true);
                     field.set(resolver, position);
@@ -95,8 +93,8 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
         mChildPosition = position;
         T resolver = getResolver();
         for(final Field field : resolver.getClass().getDeclaredFields()) {
-            Annotation annotation = field.getAnnotation(ChildPosition.class);
-            if(annotation instanceof ChildPosition) {
+            ChildPosition annotation = field.getAnnotation(ChildPosition.class);
+            if(annotation != null) {
                 try {
                     field.setAccessible(true);
                     field.set(resolver, position);
@@ -128,9 +126,8 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
     private void bindToggle(final T resolver,final V promptsView){
         boolean toggleSet = false;
         for(final Field field : resolver.getClass().getDeclaredFields()){
-            Annotation annotation = field.getAnnotation(Toggle.class);
-            if(annotation instanceof Toggle) {
-                Toggle toggle = (Toggle) annotation;
+            Toggle toggle = field.getAnnotation(Toggle.class);
+            if(toggle != null) {
                 android.view.View view = promptsView.findViewById(toggle.value());
                 view.setOnClickListener(new android.view.View.OnClickListener() {
                     @Override
@@ -168,8 +165,8 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
      */
     private void bindCollapse(final T resolver){
         for(final Method method : resolver.getClass().getDeclaredMethods()){
-            Annotation annotation = method.getAnnotation(Collapse.class);
-            if(annotation instanceof Collapse) {
+            Collapse annotation = method.getAnnotation(Collapse.class);
+            if(annotation != null) {
                 try {
                     method.setAccessible(true);
                     method.invoke(resolver);
@@ -188,8 +185,8 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
      */
     private void bindExpand(final T resolver){
         for(final Method method : resolver.getClass().getDeclaredMethods()){
-            Annotation annotation = method.getAnnotation(Expand.class);
-            if(annotation instanceof Expand) {
+            Expand annotation = method.getAnnotation(Expand.class);
+            if(annotation != null) {
                 try {
                     method.setAccessible(true);
                     method.invoke(resolver);

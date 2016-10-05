@@ -64,9 +64,8 @@ public class ViewBinder<T, V extends android.view.View> {
      * @param resolver
      */
     private void bindLayout(final T resolver){
-        Annotation annotation = resolver.getClass().getAnnotation(Layout.class);
-        if(annotation instanceof Layout) {
-            Layout layout = (Layout) annotation;
+        Layout layout = resolver.getClass().getAnnotation(Layout.class);
+        if(layout != null) {
             mLayoutId = layout.value();
         }
     }
@@ -76,9 +75,8 @@ public class ViewBinder<T, V extends android.view.View> {
      * @param resolver
      */
     private void getNullable(final T resolver){
-        Annotation annotation = resolver.getClass().getAnnotation(NonReusable.class);
-        if(annotation instanceof NonReusable) {
-            NonReusable nonReusable = (NonReusable) annotation;
+        NonReusable nonReusable = resolver.getClass().getAnnotation(NonReusable.class);
+        if(nonReusable != null) {
             isNullable = nonReusable.value();
         }
     }
@@ -90,9 +88,8 @@ public class ViewBinder<T, V extends android.view.View> {
      */
     private void bindViews(final T resolver, V promptsView){
         for(final Field field : resolver.getClass().getDeclaredFields()) {
-            Annotation annotation = field.getAnnotation(View.class);
-            if(annotation instanceof View) {
-                View viewAnnotation = (View) annotation;
+            View viewAnnotation = field.getAnnotation(View.class);
+            if(viewAnnotation != null) {
                 android.view.View view = promptsView.findViewById(viewAnnotation.value());
                 try {
                     field.setAccessible(true);
@@ -112,8 +109,8 @@ public class ViewBinder<T, V extends android.view.View> {
     private void bindViewPosition(final T resolver, int position){
         mPosition = position;
         for(final Field field : resolver.getClass().getDeclaredFields()) {
-            Annotation annotation = field.getAnnotation(Position.class);
-            if(annotation instanceof Position) {
+            Position annotation = field.getAnnotation(Position.class);
+            if(annotation != null) {
                 try {
                     field.setAccessible(true);
                     field.set(resolver, position);
@@ -130,8 +127,8 @@ public class ViewBinder<T, V extends android.view.View> {
      */
     private void resolveView(final T resolver){
         for(final Method method : resolver.getClass().getDeclaredMethods()) {
-            Annotation annotation = method.getAnnotation(Resolve.class);
-            if(annotation instanceof Resolve) {
+            Resolve annotation = method.getAnnotation(Resolve.class);
+            if(annotation != null) {
                 try {
                     method.setAccessible(true);
                     method.invoke(resolver);
@@ -151,9 +148,8 @@ public class ViewBinder<T, V extends android.view.View> {
      */
     private void bindClick(final T resolver,final V promptsView){
         for(final Method method : resolver.getClass().getDeclaredMethods()){
-            Annotation annotation = method.getAnnotation(Click.class);
-            if(annotation instanceof Click) {
-                Click clickAnnotation = (Click) annotation;
+            Click clickAnnotation = method.getAnnotation(Click.class);
+            if(clickAnnotation != null) {
                 android.view.View view = promptsView.findViewById(clickAnnotation.value());
                 view.setOnClickListener(new android.view.View.OnClickListener() {
                     @Override
@@ -179,9 +175,8 @@ public class ViewBinder<T, V extends android.view.View> {
      */
     private void bindLongPress(final T resolver,final V promptsView){
         for(final Method method : resolver.getClass().getDeclaredMethods()){
-            Annotation annotation = method.getAnnotation(LongClick.class);
-            if(annotation instanceof LongClick) {
-                LongClick longClickAnnotation = (LongClick) annotation;
+            LongClick longClickAnnotation = method.getAnnotation(LongClick.class);
+            if(longClickAnnotation != null) {
                 android.view.View view = promptsView.findViewById(longClickAnnotation.value());
                 view.setOnLongClickListener(new android.view.View.OnLongClickListener() {
                     @Override

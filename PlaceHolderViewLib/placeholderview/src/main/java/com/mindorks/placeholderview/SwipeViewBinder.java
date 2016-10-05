@@ -91,8 +91,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      */
     private void bindSwipeIn(final T resolver){
         for(final Method method : resolver.getClass().getDeclaredMethods()) {
-            Annotation annotation = method.getAnnotation(SwipeIn.class);
-            if(annotation instanceof SwipeIn) {
+            SwipeIn annotation = method.getAnnotation(SwipeIn.class);
+            if(annotation != null) {
                 try {
                     method.setAccessible(true);
                     method.invoke(resolver);
@@ -111,8 +111,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      */
     private void bindSwipeOut(final T resolver){
         for(final Method method : resolver.getClass().getDeclaredMethods()) {
-            Annotation annotation = method.getAnnotation(SwipeOut.class);
-            if(annotation instanceof SwipeOut) {
+            SwipeOut annotation = method.getAnnotation(SwipeOut.class);
+            if(annotation != null) {
                 try {
                     method.setAccessible(true);
                     method.invoke(resolver);
@@ -130,8 +130,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      */
     protected void bindSwipeInState(){
         for(final Method method : getResolver().getClass().getDeclaredMethods()) {
-            Annotation annotation = method.getAnnotation(SwipeInState.class);
-            if(annotation instanceof SwipeInState) {
+            SwipeInState annotation = method.getAnnotation(SwipeInState.class);
+            if(annotation != null) {
                 try {
                     method.setAccessible(true);
                     method.invoke(getResolver());
@@ -149,8 +149,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      */
     protected void bindSwipeOutState(){
         for(final Method method : getResolver().getClass().getDeclaredMethods()) {
-            Annotation annotation = method.getAnnotation(SwipeOutState.class);
-            if(annotation instanceof SwipeOutState) {
+            SwipeOutState annotation = method.getAnnotation(SwipeOutState.class);
+            if(annotation != null) {
                 try {
                     method.setAccessible(true);
                     method.invoke(getResolver());
@@ -168,8 +168,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      */
     protected void bindSwipeCancelState(){
         for(final Method method : getResolver().getClass().getDeclaredMethods()) {
-            Annotation annotation = method.getAnnotation(SwipeCancelState.class);
-            if(annotation instanceof SwipeCancelState) {
+            SwipeCancelState annotation = method.getAnnotation(SwipeCancelState.class);
+            if(annotation != null) {
                 try {
                     method.setAccessible(true);
                     method.invoke(getResolver());

@@ -26,9 +26,8 @@ public class AnimationResolver<T, V extends View> {
      * @param view
      */
     protected void bindAnimation(int deviceWidth, int deviceHeight,T resolver, V view){
-        Annotation annotation = resolver.getClass().getAnnotation(Animate.class);
-        if(annotation instanceof Animate) {
-            Animate animate = (Animate) annotation;
+        Animate animate = resolver.getClass().getAnnotation(Animate.class);
+        if(animate != null) {
             switch (animate.value()){
                 case Animation.ENTER_LEFT_DESC:
                     Animation.itemAnimFromXDesc(view, deviceWidth, view.getTranslationX(), animate.factor(), animate.duration());
