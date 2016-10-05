@@ -7,6 +7,7 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mindorks.test.feed.data.Feed;
+import com.mindorks.test.infinite.InfiniteFeedInfo;
 
 import org.json.JSONArray;
 
@@ -48,6 +49,24 @@ public class Utils {
             List<Feed> feedList = new ArrayList<>();
             for(int i=0;i<array.length();i++){
                 Feed feed = gson.fromJson(array.getString(i), Feed.class);
+                feedList.add(feed);
+            }
+            return feedList;
+        }catch (Exception e){
+            Log.d(TAG,"seedGames parseException " + e);
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static List<InfiniteFeedInfo> loadInfiniteFeeds(Context context){
+        try{
+            GsonBuilder builder = new GsonBuilder();
+            Gson gson = builder.create();
+            JSONArray array = new JSONArray(loadJSONFromAsset(context, "infinite_news.json"));
+            List<InfiniteFeedInfo> feedList = new ArrayList<>();
+            for(int i=0;i<array.length();i++){
+                InfiniteFeedInfo feed = gson.fromJson(array.getString(i), InfiniteFeedInfo.class);
                 feedList.add(feed);
             }
             return feedList;

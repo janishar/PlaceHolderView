@@ -40,6 +40,6 @@ public class LoadMoreActivity extends AppCompatActivity {
         for (int i = 0; i <  LoadMoreView.LOAD_VIEW_SET_COUNT && imageList.size() > i; i++) {
             mLoadMoreView.addView(new ImageTypeBig(this.getApplicationContext(), mLoadMoreView, imageList.get(i).getUrl()));
         }
-        mLoadMoreView.setLoadMoreResolver(new LoadMoreView(mLoadMoreView, imageList));
+//        mLoadMoreView.setLoadMoreResolver(new LoadMoreView(mLoadMoreView, imageList));
     }
 }
