@@ -155,12 +155,12 @@ public class ImageTypeBig {
 #Gradle
 ```groovy
 dependencies {
-    compile 'com.mindorks:placeholderview:0.1.5'
+    compile 'com.mindorks:placeholderview:0.1.6'
 }
 ```
 #Dependency: It depends on the RecyclerView
 ```groovy
-    com.android.support:recyclerview-v7:23.+
+    com.android.support:recyclerview-v7:24.+
 ```
 
 # Proguard Note:
