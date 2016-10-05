@@ -84,10 +84,4 @@ public class TestActivity extends AppCompatActivity {
                 .addView(new ChildItem(mExpandableView))
                 .addView(new ChildItem(mExpandableView));
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ButterKnifeLite.unbind(this);
-    }
 }

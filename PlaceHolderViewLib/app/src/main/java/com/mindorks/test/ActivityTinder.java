@@ -58,10 +58,4 @@ public class ActivityTinder extends AppCompatActivity {
     private void onAcceptClick(){
         mSwipView.doSwipe(true);
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ButterKnifeLite.unbind(this);
-    }
 }

@@ -94,10 +94,4 @@ public class MainActivity extends AppCompatActivity {
             mGalleryView.addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, imageList.get(i).getUrl()));
         }
     }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        ButterKnifeLite.unbind(this);
-    }
 }
