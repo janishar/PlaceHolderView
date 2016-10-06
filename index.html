@@ -36,9 +36,9 @@
 <h2>
 <a id="few-implementations" class="anchor" href="#few-implementations" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Few Implementations</h2>
 
-<p><img src="https://janishar.github.io/gifs/vid_tinder.gif" alt=""><img src="https://janishar.github.io/gifs/feed_vid.gif" alt=""><img src="https://janishar.github.io/gifs/vid_slides.gif" alt=""></p>
+<p><img src="https://janishar.github.io/gifs/vid_tinder.gif" alt="">  <img src="https://janishar.github.io/gifs/feed_vid.gif" alt="">  <img src="https://janishar.github.io/gifs/vid_slides.gif" alt=""></p>
 
-<p><img src="https://janishar.github.io/gifs/vid_fade.gif" alt=""><img src="https://janishar.github.io/gifs/vid_drawer.gif" alt="">  </p>
+<p><img src="https://janishar.github.io/gifs/vid_fade.gif" alt="">  <img src="https://janishar.github.io/gifs/vid_drawer.gif" alt="">  <img src="https://janishar.github.io/gifs/infinite_vid.gif" alt="">    </p>
 
 <h2>
 <a id="step-1-define-a-placeholderview-inside-xml-layout" class="anchor" href="#step-1-define-a-placeholderview-inside-xml-layout" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>STEP 1: Define a PlaceHolderView inside XML layout</h2>
@@ -126,7 +126,7 @@
         .addView(<span class="pl-k">new</span> <span class="pl-smi">ImageTypeBig</span>(<span class="pl-v">this</span><span class="pl-k">.</span>getApplicationContext(), mGalleryView, url4));</pre></div>
 
 <h2>
-<a id="thats-all-cheers-beer" class="anchor" href="#thats-all-cheers-beer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><em>That's All! Cheers!</em> <g-emoji alias="beer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f37a.png" ios-version="6.0">🍺</g-emoji>
+<a id="thats-all-cheers-beer" class="anchor" href="#thats-all-cheers-beer" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><strong>That's All! Cheers!</strong> <g-emoji alias="beer" fallback-src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f37a.png" ios-version="6.0">🍺</g-emoji>
 </h2>
 
 <h2>
@@ -245,6 +245,37 @@
 <code>@SwipeOutState</code>: It binds a method and pings it till a card is moving in the direction of swiping out/rejected</li>
 </ol>
 
+<h1>
+<a id="infiniteplaceholderview" class="anchor" href="#infiniteplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a><code>InfinitePlaceHolderView</code>
+</h1>
+
+<h4>
+<a id="this-class-provides-a-machanism-to-load-the-data-in-bunches-for-infinite-loading-if-the-scroll-reaches-the-last-item-it-calls-for-loadmore-and-show-the-defined-loadmore-indicator-view-when-new-data-it-added-the-indication-is-removed-to-get-the-callback-for-loadmore-create-a-class-like-that-used-in-placeholderview-and-define-a-method-with-loadmore-annotation-this-method-should-be-used-to-do-network-calls-and-to-add-new-fetched-views" class="anchor" href="#this-class-provides-a-machanism-to-load-the-data-in-bunches-for-infinite-loading-if-the-scroll-reaches-the-last-item-it-calls-for-loadmore-and-show-the-defined-loadmore-indicator-view-when-new-data-it-added-the-indication-is-removed-to-get-the-callback-for-loadmore-create-a-class-like-that-used-in-placeholderview-and-define-a-method-with-loadmore-annotation-this-method-should-be-used-to-do-network-calls-and-to-add-new-fetched-views" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class provides a machanism to load the data in bunches for infinite loading. If the scroll reaches the last item, it calls for LoadMore and show the defined loadmore indicator view. When new data it added the indication is removed. To get the callback for loadmore create a class like that used in PlaceHolderView and define a method with <code>@LoadMore</code> annotation. This method should be used to do network calls and to add new fetched views.</h4>
+
+<h1>
+<a id="methodsinfiniteplaceholderview" class="anchor" href="#methodsinfiniteplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Methods(<code>InfinitePlaceHolderView</code>)</h1>
+
+<ol>
+<li>
+<code>setLoadMoreResolver(T loadMoreResolver)</code>: This method is used to add a class to be used as indicator for load more. The class can define a view with a progessbar to reflect loading. The class has to be defined in the same way as a class that is used in the PlaceHolderView. See above for PlaceHolderView example.</li>
+<li>
+<code>loadingDone()</code>: After the view has beed added from the new fetch, call this method to remove the loading indicator view.</li>
+<li>
+<code>noMoreToLoad()</code>: When all the data has been fetched, call this method to stop the infinite loading.</li>
+</ol>
+
+<h1>
+<a id="annotationsinfiniteplaceholderview" class="anchor" href="#annotationsinfiniteplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Annotations(<code>InfinitePlaceHolderView</code>)</h1>
+
+<ol>
+<li>
+<code>@LoadMore</code>: This annotation calls a method of the class provided in <code>setLoadMoreResolver</code> with callback when load more is required, i.e. when last item has been seen.</li>
+</ol>
+
+<h4>
+<a id="see-loadmore-example-here-infinite-list" class="anchor" href="#see-loadmore-example-here-infinite-list" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>See loadmore example here: <a href="https://github.com/janishar/Tutorials/tree/master/InfiniteList">Infinite List</a>
+</h4>
+
 <h6>
 <a id="the-full-documentation-is-in-the-process-of-writing-for-any-query-post-it-in-the-discussion-or-janisharaligmailcom" class="anchor" href="#the-full-documentation-is-in-the-process-of-writing-for-any-query-post-it-in-the-discussion-or-janisharaligmailcom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Full Documentation is in the process of writing. For any query post it in the discussion or <a href="mailto:janishar.ali@gmail.com">janishar.ali@gmail.com</a>
 </h6>
@@ -253,7 +284,7 @@
 <a id="gradle" class="anchor" href="#gradle" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Gradle</h1>
 
 <div class="highlight highlight-source-groovy"><pre>dependencies {
-    compile <span class="pl-s"><span class="pl-pds">'</span>com.mindorks:placeholderview:0.1.6<span class="pl-pds">'</span></span>
+    compile <span class="pl-s"><span class="pl-pds">'</span>com.mindorks:placeholderview:0.2.1<span class="pl-pds">'</span></span>
 }</pre></div>
 
 <h1>
