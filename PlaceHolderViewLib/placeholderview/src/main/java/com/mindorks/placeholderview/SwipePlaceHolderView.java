@@ -3,6 +3,7 @@ package com.mindorks.placeholderview;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
+import android.os.CountDownTimer;
 import android.support.v4.view.MotionEventCompat;
 import android.text.Layout;
 import android.util.AttributeSet;
@@ -37,6 +38,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
     private float mHeightSwipeDistFactor = 3f;
     private boolean mIsReverse = false;
     private SwipeDecor mSwipeDecor;
+    private boolean mIsBtnSwipeDone = true;
 
     /**
      *
@@ -299,16 +301,26 @@ public class SwipePlaceHolderView extends FrameLayout implements
      * @param isSwipeIn
      */
     public void doSwipe(Object resolver, boolean isSwipeIn){
-        SwipeViewBinder swipeViewBinder = null;
-        for(SwipeViewBinder viewBinder : mSwipeViewBinderList){
-            if(viewBinder.getResolver() == resolver){
-                swipeViewBinder = viewBinder;
-                break;
+        if(mIsBtnSwipeDone){
+            mIsBtnSwipeDone = false;
+            SwipeViewBinder swipeViewBinder = null;
+            for(SwipeViewBinder viewBinder : mSwipeViewBinderList){
+                if(viewBinder.getResolver() == resolver){
+                    swipeViewBinder = viewBinder;
+                    break;
+                }
             }
-        }
 
-        if(swipeViewBinder != null){
-            swipeViewBinder.doSwipe(isSwipeIn);
+            if(swipeViewBinder != null){
+                swipeViewBinder.doSwipe(isSwipeIn);
+            }
+            new CountDownTimer(2 * mSwipeDecor.getSwipeAnimTime(), mSwipeDecor.getSwipeAnimTime()) {
+                public void onTick(long millisUntilFinished) {
+                }
+                public void onFinish() {
+                    mIsBtnSwipeDone = true;
+                }
+            }.start();
         }
     }
 
@@ -317,8 +329,19 @@ public class SwipePlaceHolderView extends FrameLayout implements
      * @param isSwipeIn
      */
     public void doSwipe(boolean isSwipeIn){
-        if(mSwipeViewBinderList.size() > 0){
-            mSwipeViewBinderList.get(0).doSwipe(isSwipeIn);
+        if(mIsBtnSwipeDone) {
+            mIsBtnSwipeDone = false;
+            if (mSwipeViewBinderList.size() > 0) {
+                mSwipeViewBinderList.get(0).doSwipe(isSwipeIn);
+            }
+
+            new CountDownTimer(2 * mSwipeDecor.getSwipeAnimTime(), mSwipeDecor.getSwipeAnimTime()) {
+                public void onTick(long millisUntilFinished) {
+                }
+                public void onFinish() {
+                    mIsBtnSwipeDone = true;
+                }
+            }.start();
         }
     }
 

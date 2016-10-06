@@ -53,12 +53,12 @@ public class InfinitePlaceHolderView extends PlaceHolderView {
                                     && !mNoMoreToLoad
                                     && totalItemCount > 0
                                     && totalItemCount == lastVisibleItem + 1) {
+                                mIsLoadingMore = true;
                                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                                     @Override
                                     public void run() {
                                         addView(mLoadMoreResolver);
                                         bindLoadMore(mLoadMoreResolver);
-                                        mIsLoadingMore = true;
                                     }
                                 });
                             }
