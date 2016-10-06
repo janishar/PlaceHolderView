@@ -150,7 +150,7 @@ public class ImageTypeBig {
 4. `@SwipeInState`: It binds a method and pings it till a card is moving in the direction of swiping in/accepted
 5. `@SwipeOutState`: It binds a method and pings it till a card is moving in the direction of swiping out/rejected
 
-# InfinitePlaceHolderView
+# `InfinitePlaceHolderView`
 #### This class provides a machanism to load the data in bunches for infinite loading. If the scroll reaches the last item, it calls for LoadMore and show the defined loadmore indicator view. When new data it added the indication is removed. To get the callback for loadmore create a class like that used in PlaceHolderView and define a method with `@LoadMore` annotation. This method should be used to do network calls and to add new fetched views.
 
 # Methods(`InfinitePlaceHolderView`)
