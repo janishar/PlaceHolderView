@@ -32,15 +32,9 @@ public class ActivityTinder extends AppCompatActivity {
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
 
-        int px120 = Utils.dpToPx(120);
-        Point windowSize = Utils.getNavigationBarSize(getWindowManager());
-
         mSwipView.getBuilder()
                 .setDisplayViewCount(3)
                 .setSwipeDecor(new SwipeDecor()
-                        .setViewWidth(windowSize.x)
-                        .setViewHeight(windowSize.y - px120)
-                        .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)
                         .setRelativeScale(0.01f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
