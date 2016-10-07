@@ -17,8 +17,10 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
 import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
+import com.mindorks.placeholderview.annotations.swipe.SwipeView;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -59,13 +61,14 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      */
     protected void bindView(V promptsView, int position, int swipeType, float widthSwipeDistFactor,
                             float heightSwipeDistFactor, SwipeDecor decor, SwipeCallback callback) {
-        super.bindView(promptsView, position);
         mLayoutView = promptsView;
         mSwipeType = swipeType;
         mSwipeDecor = decor;
         mWidthSwipeDistFactor = widthSwipeDistFactor;
         mHeightSwipeDistFactor = heightSwipeDistFactor;
         mCallback = callback;
+        bindSwipeView(promptsView);
+        super.bindView(promptsView, position);
     }
 
     /**
@@ -82,6 +85,21 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             case SwipePlaceHolderView.SWIPE_TYPE_VERTICAL:
                 setVerticalTouchListener(mLayoutView);
                 break;
+        }
+    }
+
+    private void bindSwipeView(V promptsView){
+        T resolver = getResolver();
+        for(final Field field : resolver.getClass().getDeclaredFields()) {
+            SwipeView annotation = field.getAnnotation(SwipeView.class);
+            if(annotation != null) {
+                try {
+                    field.setAccessible(true);
+                    field.set(resolver, promptsView);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 

@@ -37,16 +37,16 @@ public class ActivityTinder extends AppCompatActivity {
                                 .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                                 .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
 
-        mSwipView.addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard())
-                .addView(new TinderCard());
+        mSwipView.addView(new TinderCard(getWindowManager()))
+                .addView(new TinderCard(getWindowManager()))
+                .addView(new TinderCard(getWindowManager()))
+                .addView(new TinderCard(getWindowManager()))
+                .addView(new TinderCard(getWindowManager()))
+                .addView(new TinderCard(getWindowManager()))
+                .addView(new TinderCard(getWindowManager()))
+                .addView(new TinderCard(getWindowManager()))
+                .addView(new TinderCard(getWindowManager()))
+                .addView(new TinderCard(getWindowManager()));
     }
 
     @OnClick(R.id.rejectBtn)
