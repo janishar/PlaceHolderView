@@ -262,11 +262,18 @@ public class SwipePlaceHolderView extends FrameLayout implements
      */
     protected FrameLayout.LayoutParams getLayoutParamsWithSwipeDecor(int position, SwipeDecor decor){
 
-        FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        layoutParams.gravity = Gravity.CENTER;
-        layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
-        return layoutParams;
+        if(decor.getViewHeight() != 0 && decor.getViewWidth() != 0) {
+            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(decor.getViewWidth(), decor.getViewHeight());
+            layoutParams.gravity = decor.getViewGravity();
+            layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
+            return layoutParams;
+        }else{
+            FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
+                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            layoutParams.gravity = Gravity.CENTER;
+            layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
+            return layoutParams;
+        }
     }
 
     /**

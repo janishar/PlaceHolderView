@@ -9,6 +9,9 @@ public class SwipeDecor {
 
     public static final int PRIMITIVE_NULL = -1;
 
+    private int mViewWidth;
+    private int mViewHeight;
+    private int mViewGravity;
     private int mPaddingTop;
     private int mPaddingLeft;
     private float mRelativeScale;
@@ -23,18 +26,36 @@ public class SwipeDecor {
     private int mSwipeRotationAngle;
 
     public SwipeDecor() {
+        mViewWidth = 0;
+        mViewHeight = 0;
         mPaddingTop = 0;
         mPaddingLeft = 0;
         mRelativeScale = 0.05f;
         mAnimateScale = true;
         mSwipeInMsgLayoutId = PRIMITIVE_NULL;
         mSwipeOutMsgLayoutId = PRIMITIVE_NULL;
-        mSwipeInMsgGravity = Gravity.CENTER ;
+        mViewGravity = Gravity.CENTER ;
+        mSwipeOutMsgGravity = Gravity.CENTER ;
         mSwipeOutMsgGravity = Gravity.CENTER ;
         mSwipeDistToDisplayMsg = 30;
         mSwipeAnimTime = 200;
         mSwipeAnimFactor = 0.75f;
         mSwipeRotationAngle = 20;
+    }
+
+    public SwipeDecor setViewWidth(int width){
+        mViewWidth = width;
+        return this;
+    }
+
+    public SwipeDecor setViewHeight(int height){
+        mViewHeight = height;
+        return this;
+    }
+
+    public SwipeDecor setViewGravity(int gravity){
+        mViewGravity = gravity;
+        return this;
     }
 
     /**
@@ -262,5 +283,17 @@ public class SwipeDecor {
      */
     public int getSwipeRotationAngle() {
         return mSwipeRotationAngle;
+    }
+
+    public int getViewWidth() {
+        return mViewWidth;
+    }
+
+    public int getViewHeight() {
+        return mViewHeight;
+    }
+
+    public int getViewGravity() {
+        return mViewGravity;
     }
 }

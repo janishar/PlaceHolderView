@@ -44,30 +44,9 @@ public class TinderCard {
     @View(R.id.locationNameTxt)
     private TextView locationNameTxt;
 
-    @SwipeView
-    private android.view.View swipeView;
-
-    public TinderCard(WindowManager windowManager) {
-        this.windowManager = windowManager;
-    }
-
     @Click(R.id.profileImageView)
     private void onClick(){
         Log.d("DEBUG", "profileImageView");
-    }
-
-    private WindowManager windowManager;
-
-    @Resolve
-    private void onResolve(){
-        Log.d("DEBUG", "swipeView " + swipeView);
-        int px90 = Utils.dpToPx(90);
-        Point windowSize = Utils.getNavigationBarSize(windowManager);
-        FrameLayout.LayoutParams lp =
-                new FrameLayout.LayoutParams(windowSize.x , windowSize.y - px90);
-        lp.gravity = Gravity.TOP;
-        lp.setMargins(0, 0, 0, px90);
-        swipeView.setLayoutParams(lp);
     }
 
     @SwipeOut
