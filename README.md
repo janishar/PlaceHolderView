@@ -6,14 +6,14 @@
 
 ![](https://github.com/janishar/janishar.github.io/blob/master/images/logo-phv.png)
 
-######Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!
+###### Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!
 
-##Few Implementations
-![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_tinder.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/feed_vid.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
+## Few Implementations
+![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_tinder.gif)  ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/feed_vid.gif)  ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
 
-![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)  
+![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)  ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)  ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/infinite_vid.gif)    
 
-##STEP 1: Define a PlaceHolderView inside XML layout
+## STEP 1: Define a PlaceHolderView inside XML layout
 ```xml
 //PlaceHolderView to wrap around the recycler view in XML
 <com.mindorks.placeholderview.PlaceHolderView
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"/>
 
 ```
-##STEP 2: Create item views XML, example: gallery_item_big.xml
+## STEP 2: Create item views XML, example: gallery_item_big.xml
 ```xml
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -45,7 +45,7 @@
     </android.support.v7.widget.CardView>
 </LinearLayout>
 ```
-##STEP 3: Create item class to bind and define view operations
+## STEP 3: Create item class to bind and define view operations
 ```java
 @Animate(Animation.ENTER_LEFT_DESC)
 @NonReusable
@@ -78,7 +78,7 @@ public class ImageTypeBig {
 }
 ```
 
-##STEP 4 : Add views to the PlaceHolderView
+## STEP 4 : Add views to the PlaceHolderView
 ```java
  
  PlaceHolderView mGalleryView = (PlaceHolderView)findViewById(R.id.galleryView);
@@ -95,18 +95,18 @@ public class ImageTypeBig {
         .addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, url3));
         .addView(new ImageTypeBig(this.getApplicationContext(), mGalleryView, url4));
 ```
-##*That's All! Cheers!* :beer:
+## **That's All! Cheers!** :beer:
 
-##Classes OverView
+## Classes OverView
 
-#`PlaceHolderView`
+# `PlaceHolderView`
 1. `getBuilder()`: Get builder for the PlaceHolderView to modify the default properties
 2. `setLayoutManager(layoutManager)`: Add custom layout manager
 3. `addView()`: Add views to the PlaceHolderView
 4. `removeView()`: Removes the existing view
 5. `SmoothLinearLayoutManager`: This class is bundled with the library, and should be used for those view which has dynamic heavy contents. It reduces the screen flikering on bind
 
-##Annotations
+## Annotations
 1. `@Layout`: Bind the XML layout with the class.
 2. `@View`: Bind the variable with the view defined in the above layout.
 3. `@Click`: Bind the `OnClickListener` to a view.
@@ -115,15 +115,15 @@ public class ImageTypeBig {
 6. `@Animate(Animation.ENTER_LEFT_DESC)`: Sets the defined animations in the Animation class on this item view.
 7. `@NonReusable`: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the `addView()`.
 
-##Important
+## Important
 1. `PlaceHolderView` will recycle the viewItems and will try to use similar/same viewtype viewItem to populate the data of the current viewItem. So, the method annotated with `@Resolve` will be called everytime the viewItem is attached to the window. Meaning if you don't explicitly manage to populate the viewItem in method annotated with `@Resolve` then that viewItem may show history of the reused viewItem.
 2. Try to instantiate any class in the contructor rather than method annotated with `@Resolve`.
 3. If the itemView contains PlaceHolderView/ListViews and item are being adding through method annotated with `@Resolve`, then first make the list empty. This is required because duplicate viewitems may get added if the recycled view contains PlaceHolderView/ListViews of other itemView. For PlaceHolderView: call removeAllViews() before adding views in method annotated with `@Resolve`.
 
-#`ExpandablePlaceHolderView`
-####This class is build upon the `PlaceHolderView` and implements all the features of `ExpandableListView` but with much power and lot easier
+# `ExpandablePlaceHolderView`
+#### This class is build upon the `PlaceHolderView` and implements all the features of `ExpandableListView` but with much power and lot easier
 
-##Annotations(`ExpandablePlaceHolderView`)
+## Annotations(`ExpandablePlaceHolderView`)
 1. `@Parent`: Defines the class to be used as the parent in the expandable list.
 2. `@SingleTop`: Makes only one parent remain in expanded state.
 3. `@Collapse`: Bind a method of the parent class to listen to the collapse event.
@@ -132,33 +132,46 @@ public class ImageTypeBig {
 6. `@ChildPosition`: Bind an int variable to update with relative position among children of a parent.
 7. `@Toggle`: Bind a view to be used as a trigger for expanding or collapsing a parent view. If not provided then the parent view becomes a toggle by default.
 
-##There is no adapter configuration required
+## There is no adapter configuration required
 
-#`SwipePlaceHolderView`
-####This class is bundled with view that can create beautiful card stacks like Tinder, LinkdIn and Card Games. This class provides methods to customize the behavior of the stack, gesture inputs and animations.
+# `SwipePlaceHolderView`
+#### This class is bundled with view that can create beautiful card stacks like Tinder, LinkdIn and Card Games. This class provides methods to customize the behavior of the stack, gesture inputs and animations.
 
-##`SwipeDecor`
-####This class contains view behaviour settings and animation controls for SwipePlaceHolderView.
+## `SwipeDecor`
+#### This class contains view behaviour settings and animation controls for SwipePlaceHolderView.
 
-##Builder(`SwipePlaceHolderView`)
-####The stack structure and type configurations are done using builder class
+## Builder(`SwipePlaceHolderView`)
+#### The stack structure and type configurations are done using builder class
 
-##Annotations(`SwipePlaceHolderView`)
+## Annotations(`SwipePlaceHolderView`)
 1. `@SwipeIn`: It binds a method and calls it when a view is swiped in/accepted
 2. `@SwipeOut`: It binds a method and calls it when a view is swiped out/rejected.
 3. `@SwipeCancelState`: It binds a method and calls it when a card is put back in the stack/canceled.
 4. `@SwipeInState`: It binds a method and pings it till a card is moving in the direction of swiping in/accepted
 5. `@SwipeOutState`: It binds a method and pings it till a card is moving in the direction of swiping out/rejected
 
-######The Full Documentation is in the process of writing. For any query post it in the discussion or [janishar.ali@gmail.com](mailto:janishar.ali@gmail.com)
+# `InfinitePlaceHolderView`
+#### This class provides a machanism to load the data in bunches for infinite loading. If the scroll reaches the last item, it calls for LoadMore and show the defined loadmore indicator view. When new data it added the indication is removed. To get the callback for loadmore create a class like that used in PlaceHolderView and define a method with `@LoadMore` annotation. This method should be used to do network calls and to add new fetched views.
 
-#Gradle
+# Methods(`InfinitePlaceHolderView`)
+1. `setLoadMoreResolver(T loadMoreResolver)`: This method is used to add a class to be used as indicator for load more. The class can define a view with a progessbar to reflect loading. The class has to be defined in the same way as a class that is used in the PlaceHolderView. See above for PlaceHolderView example.
+2. `loadingDone()`: After the view has beed added from the new fetch, call this method to remove the loading indicator view.
+3. `noMoreToLoad()`: When all the data has been fetched, call this method to stop the infinite loading.
+
+# Annotations(`InfinitePlaceHolderView`)
+1. `@LoadMore`: This annotation calls a method of the class provided in `setLoadMoreResolver` with callback when load more is required, i.e. when last item has been seen.
+
+#### See loadmore example here: [Infinite List](https://github.com/janishar/Tutorials/tree/master/InfiniteList)
+
+###### The Full Documentation is in the process of writing. For any query post it in the discussion or [janishar.ali@gmail.com](mailto:janishar.ali@gmail.com)
+
+# Gradle
 ```groovy
 dependencies {
-    compile 'com.mindorks:placeholderview:0.1.6'
+    compile 'com.mindorks:placeholderview:0.2.1'
 }
 ```
-#Dependency: It depends on the RecyclerView
+# Dependency: It depends on the RecyclerView
 ```groovy
     com.android.support:recyclerview-v7:24.+
 ```
@@ -172,9 +185,9 @@ dependencies {
   }
 ```
 
-###If this library helps you in anyway, show your love :heart: by putting a :star: on this project :v:
+### If this library helps you in anyway, show your love :heart: by putting a :star: on this project :v:
 
-#Examples
+# Examples
 [Android Navigation Drawer](https://medium.com/@janishar.ali/navigation-drawer-android-example-8dfe38c66f59#.vmlw4zb00)
 
 [Android Beginner Image Gallery](https://medium.com/@janishar.ali/android-beginner-image-gallery-example-da73a596f4d5#.p42z8w83o)
@@ -196,7 +209,7 @@ dependencies {
 5. It facilicates synchronous as well as asynchronous message delivery and processing.
 6. It provides a mechanism to run code asynchronously.
 
-#License
+# License
 
 ```
    Copyright (C) 2016 Janishar Ali Anwar
