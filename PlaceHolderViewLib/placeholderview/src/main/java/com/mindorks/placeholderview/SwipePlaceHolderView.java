@@ -158,7 +158,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
      *
      * @param Factor
      */
-    protected void setWidthSwipeDistFactor(int Factor) {
+    protected void setWidthSwipeDistFactor(float Factor) {
         mWidthSwipeDistFactor = Factor;
     }
 
@@ -166,7 +166,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
      *
      * @param factor
      */
-    protected void setHeightSwipeDistFactor(int factor) {
+    protected void setHeightSwipeDistFactor(float factor) {
         mHeightSwipeDistFactor = factor;
     }
 

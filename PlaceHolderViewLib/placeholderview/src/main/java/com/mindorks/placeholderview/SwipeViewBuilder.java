@@ -74,8 +74,10 @@ public class SwipeViewBuilder {
      * @param factor
      * @return
      */
-    public SwipeViewBuilder setWidthSwipeDistFactor(int factor) {
-        mSwipePlaceHolderView.setWidthSwipeDistFactor(factor);
+    public SwipeViewBuilder setWidthSwipeDistFactor(float factor) {
+        if(factor >= 1) {
+            mSwipePlaceHolderView.setWidthSwipeDistFactor(factor);
+        }
         return this;
     }
 
@@ -84,8 +86,10 @@ public class SwipeViewBuilder {
      * @param factor
      * @return
      */
-    public SwipeViewBuilder setHeightSwipeDistFactor(int factor) {
-        mSwipePlaceHolderView.setHeightSwipeDistFactor(factor);
+    public SwipeViewBuilder setHeightSwipeDistFactor(float factor) {
+        if(factor >= 1) {
+            mSwipePlaceHolderView.setHeightSwipeDistFactor(factor);
+        }
         return this;
     }
 }

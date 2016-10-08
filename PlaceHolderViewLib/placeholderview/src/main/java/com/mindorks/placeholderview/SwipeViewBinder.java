@@ -24,6 +24,8 @@ import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
+import static android.view.View.VISIBLE;
+
 /**
  * Created by janisharali on 26/08/16.
  */
@@ -599,6 +601,16 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                     return false;
                 }
             });
+
+            if (isSwipeIn) {
+                if (getSwipeInMsgView() != null) {
+                    getSwipeInMsgView().setVisibility(VISIBLE);
+                }
+            } else {
+                if (getSwipeOutMsgView() != null) {
+                    getSwipeOutMsgView().setVisibility(VISIBLE);
+                }
+            }
 
             DisplayMetrics displayMetrics = mLayoutView.getResources().getDisplayMetrics();
             ViewPropertyAnimator animator = mLayoutView.animate();

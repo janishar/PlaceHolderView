@@ -34,6 +34,8 @@ public class ActivityTinder extends AppCompatActivity {
 
         mSwipView.getBuilder()
                 .setDisplayViewCount(3)
+                .setWidthSwipeDistFactor(3)
+                .setHeightSwipeDistFactor(5)
                 .setSwipeDecor(new SwipeDecor()
                         .setPaddingTop(20)
                         .setRelativeScale(0.01f)
