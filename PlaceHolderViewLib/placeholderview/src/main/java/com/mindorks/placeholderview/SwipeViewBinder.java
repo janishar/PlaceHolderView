@@ -266,10 +266,12 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             private int activePointerId = SwipeDecor.PRIMITIVE_NULL;
             private boolean resetDone = false;
             private PointF pointerCurrentPoint = new PointF();
+            private PointF pointerStartingPoint = new PointF();
             @Override
             public boolean onTouch(final View v, MotionEvent event) {
 
                 if(!hasInterceptedEvent){
+                    pointerStartingPoint.set(event.getRawX(), event.getRawY());
                     pointerCurrentPoint.set(event.getRawX(), event.getRawY());
                     activePointerId = event.getPointerId(0);
                     resetDone = false;
@@ -302,26 +304,37 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                 mLayoutView.setOnTouchListener(new View.OnTouchListener() {
                                     @Override
                                     public boolean onTouch(View v, MotionEvent rawEvent) {
-                                        return false;
+                                        return true;
                                     }
                                 });
 
                                 float transX = displayMetrics.widthPixels;
                                 float transY = displayMetrics.heightPixels;
 
-                                if (pointerCurrentPoint.x > displayMetrics.widthPixels / 2
-                                        && pointerCurrentPoint.y > displayMetrics.heightPixels / 2) {
+                                if (pointerCurrentPoint.x > pointerStartingPoint.x
+                                        && pointerCurrentPoint.y > pointerStartingPoint.y) {
                                     bindSwipeIn(getResolver());
-                                } else if (pointerCurrentPoint.x > displayMetrics.widthPixels / 2
-                                        && pointerCurrentPoint.y < displayMetrics.heightPixels / 2) {
+                                } else if (pointerCurrentPoint.x > pointerStartingPoint.x
+                                        && pointerCurrentPoint.y < pointerStartingPoint.y) {
                                     transY = -v.getHeight();
                                     bindSwipeIn(getResolver());
-                                } else if (pointerCurrentPoint.x < displayMetrics.widthPixels / 2
-                                        && pointerCurrentPoint.y > displayMetrics.heightPixels / 2) {
+                                } else if (pointerCurrentPoint.x < pointerStartingPoint.x
+                                        && pointerCurrentPoint.y > pointerStartingPoint.y) {
                                     transX = -v.getWidth();
                                     bindSwipeOut(getResolver());
-                                } else if (pointerCurrentPoint.x < displayMetrics.widthPixels / 2
-                                        && pointerCurrentPoint.y < displayMetrics.heightPixels / 2) {
+                                } else if (pointerCurrentPoint.x < pointerStartingPoint.x
+                                        && pointerCurrentPoint.y < pointerStartingPoint.y) {
+                                    transY = -v.getHeight();
+                                    transX = -v.getWidth();
+                                    bindSwipeOut(getResolver());
+                                } else if(pointerCurrentPoint.x > pointerStartingPoint.x){
+                                    bindSwipeIn(getResolver());
+                                } else if(pointerCurrentPoint.y > pointerStartingPoint.y){
+                                    bindSwipeIn(getResolver());
+                                } else if(pointerCurrentPoint.x < pointerStartingPoint.x){
+                                    transX = -v.getWidth();
+                                    bindSwipeOut(getResolver());
+                                } else if(pointerCurrentPoint.y < pointerStartingPoint.y){
                                     transY = -v.getHeight();
                                     transX = -v.getWidth();
                                     bindSwipeOut(getResolver());
@@ -370,6 +383,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         serAnimatorListener();
         final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
         view.setOnTouchListener(new View.OnTouchListener() {
+            private float xStart;
             private float x;
             private float dx;
             int originalLeftMargin;
@@ -379,6 +393,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             public boolean onTouch(View v, MotionEvent event) {
 
                 if(!hasInterceptedEvent){
+                    xStart = event.getRawX();
                     x = event.getRawX();
                     activePointerId = event.getPointerId(0);
                     resetDone = false;
@@ -404,12 +419,12 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                 mLayoutView.setOnTouchListener(new View.OnTouchListener() {
                                     @Override
                                     public boolean onTouch(View v, MotionEvent rawEvent) {
-                                        return false;
+                                        return true;
                                     }
                                 });
 
                                 float transX = displayMetrics.widthPixels;
-                                if (x < displayMetrics.widthPixels / 2) {
+                                if (x < xStart) {
                                     transX = -v.getWidth();
                                     bindSwipeOut(getResolver());
                                 } else {
@@ -454,6 +469,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         serAnimatorListener();
         final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
         view.setOnTouchListener(new View.OnTouchListener() {
+            private float yStart;
             private float y;
             private float dy;
             int originalTopMargin;
@@ -463,6 +479,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             public boolean onTouch(View v, MotionEvent event) {
 
                 if(!hasInterceptedEvent){
+                    yStart = event.getRawY();
                     y = event.getRawY();
                     activePointerId = event.getPointerId(0);
                     resetDone = false;
@@ -488,12 +505,12 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                 mLayoutView.setOnTouchListener(new View.OnTouchListener() {
                                     @Override
                                     public boolean onTouch(View v, MotionEvent rawEvent) {
-                                        return false;
+                                        return true;
                                     }
                                 });
 
                                 float transY = displayMetrics.heightPixels;
-                                if (y < displayMetrics.heightPixels / 2) {
+                                if (y < yStart) {
                                     transY = -v.getHeight();
                                     bindSwipeOut(getResolver());
                                 } else {
@@ -598,7 +615,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             mLayoutView.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent rawEvent) {
-                    return false;
+                    return true;
                 }
             });
 
