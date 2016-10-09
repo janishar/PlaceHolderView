@@ -40,7 +40,7 @@ public class SwipeDecor {
         mSwipeDistToDisplayMsg = 30;
         mSwipeAnimTime = 200;
         mSwipeAnimFactor = 0.75f;
-        mSwipeRotationAngle = 20;
+        mSwipeRotationAngle = 15;
     }
 
     public SwipeDecor setViewWidth(int width){

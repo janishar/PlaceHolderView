@@ -311,30 +311,19 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                                 float transX = displayMetrics.widthPixels;
                                 float transY = displayMetrics.heightPixels;
 
-                                if (pointerCurrentPoint.x > pointerStartingPoint.x
-                                        && pointerCurrentPoint.y > pointerStartingPoint.y) {
+                                if (pointerCurrentPoint.x >= pointerStartingPoint.x
+                                        && pointerCurrentPoint.y >= pointerStartingPoint.y) {
                                     bindSwipeIn(getResolver());
                                 } else if (pointerCurrentPoint.x > pointerStartingPoint.x
                                         && pointerCurrentPoint.y < pointerStartingPoint.y) {
                                     transY = -v.getHeight();
                                     bindSwipeIn(getResolver());
                                 } else if (pointerCurrentPoint.x < pointerStartingPoint.x
-                                        && pointerCurrentPoint.y > pointerStartingPoint.y) {
+                                        && pointerCurrentPoint.y >= pointerStartingPoint.y) {
                                     transX = -v.getWidth();
                                     bindSwipeOut(getResolver());
-                                } else if (pointerCurrentPoint.x < pointerStartingPoint.x
+                                } else if (pointerCurrentPoint.x <= pointerStartingPoint.x
                                         && pointerCurrentPoint.y < pointerStartingPoint.y) {
-                                    transY = -v.getHeight();
-                                    transX = -v.getWidth();
-                                    bindSwipeOut(getResolver());
-                                } else if(pointerCurrentPoint.x > pointerStartingPoint.x){
-                                    bindSwipeIn(getResolver());
-                                } else if(pointerCurrentPoint.y > pointerStartingPoint.y){
-                                    bindSwipeIn(getResolver());
-                                } else if(pointerCurrentPoint.x < pointerStartingPoint.x){
-                                    transX = -v.getWidth();
-                                    bindSwipeOut(getResolver());
-                                } else if(pointerCurrentPoint.y < pointerStartingPoint.y){
                                     transY = -v.getHeight();
                                     transX = -v.getWidth();
                                     bindSwipeOut(getResolver());
