@@ -146,7 +146,7 @@
 <li>
 <code>removeView()</code>: Removes the existing view</li>
 <li>
-<code>SmoothLinearLayoutManager</code>: This class is bundled with the library, and should be used for those view which has dynamic heavy contents. It reduces the screen flikering on bind</li>
+<code>SmoothLinearLayoutManager</code>: This class is bundled with the library, and should be used for those view which has dynamic heavy contents. It reduces the screen flickering on bind</li>
 </ol>
 
 <h2>
@@ -160,7 +160,7 @@
 <li>
 <code>@Click</code>: Bind the <code>OnClickListener</code> to a view.</li>
 <li>
-<code>@LongClick</code>: Bind the long click listerner to a view.</li>
+<code>@LongClick</code>: Bind the long click listener to a view.</li>
 <li>
 <code>@Resolve</code>: Any operation being performed on the view reference defined by <code>@View</code> should be annotated with this.</li>
 <li>
@@ -177,7 +177,7 @@
 <ol>
 <li>
 <code>PlaceHolderView</code> will recycle the viewItems and will try to use similar/same viewtype viewItem to populate the data of the current viewItem. So, the method annotated with <code>@Resolve</code> will be called everytime the viewItem is attached to the window. Meaning if you don't explicitly manage to populate the viewItem in method annotated with <code>@Resolve</code> then that viewItem may show history of the reused viewItem.</li>
-<li>Try to instantiate any class in the contructor rather than method annotated with <code>@Resolve</code>.</li>
+<li>Try to instantiate any class in the constructor rather than method annotated with <code>@Resolve</code>.</li>
 <li>If the itemView contains PlaceHolderView/ListViews and item are being adding through method annotated with <code>@Resolve</code>, then first make the list empty. This is required because duplicate viewitems may get added if the recycled view contains PlaceHolderView/ListViews of other itemView. For PlaceHolderView: call removeAllViews() before adding views in method annotated with <code>@Resolve</code>.</li>
 </ol>
 
@@ -254,7 +254,7 @@
 </h1>
 
 <h4>
-<a id="this-class-provides-a-machanism-to-load-the-data-in-bunches-for-infinite-loading-if-the-scroll-reaches-the-last-item-it-calls-for-loadmore-and-show-the-defined-loadmore-indicator-view-when-new-data-it-added-the-indication-is-removed-to-get-the-callback-for-loadmore-create-a-class-like-that-used-in-placeholderview-and-define-a-method-with-loadmore-annotation-this-method-should-be-used-to-do-network-calls-and-to-add-new-fetched-views" class="anchor" href="#this-class-provides-a-machanism-to-load-the-data-in-bunches-for-infinite-loading-if-the-scroll-reaches-the-last-item-it-calls-for-loadmore-and-show-the-defined-loadmore-indicator-view-when-new-data-it-added-the-indication-is-removed-to-get-the-callback-for-loadmore-create-a-class-like-that-used-in-placeholderview-and-define-a-method-with-loadmore-annotation-this-method-should-be-used-to-do-network-calls-and-to-add-new-fetched-views" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class provides a machanism to load the data in bunches for infinite loading. If the scroll reaches the last item, it calls for LoadMore and show the defined loadmore indicator view. When new data it added the indication is removed. To get the callback for loadmore create a class like that used in PlaceHolderView and define a method with <code>@LoadMore</code> annotation. This method should be used to do network calls and to add new fetched views.</h4>
+<a id="this-class-provides-a-mechanism-to-load-the-data-in-bunches-for-infinite-loading-if-the-scroll-reaches-the-last-item-it-calls-for-loadmore-and-show-the-defined-loadmore-indicator-view-when-new-data-it-added-the-indication-is-removed-to-get-the-callback-for-loadmore-create-a-class-like-that-used-in-placeholderview-and-define-a-method-with-loadmore-annotation-this-method-should-be-used-to-do-network-calls-and-to-add-new-fetched-views" class="anchor" href="#this-class-provides-a-mechanism-to-load-the-data-in-bunches-for-infinite-loading-if-the-scroll-reaches-the-last-item-it-calls-for-loadmore-and-show-the-defined-loadmore-indicator-view-when-new-data-it-added-the-indication-is-removed-to-get-the-callback-for-loadmore-create-a-class-like-that-used-in-placeholderview-and-define-a-method-with-loadmore-annotation-this-method-should-be-used-to-do-network-calls-and-to-add-new-fetched-views" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>This class provides a mechanism to load the data in bunches for infinite loading. If the scroll reaches the last item, it calls for LoadMore and show the defined loadmore indicator view. When new data it added the indication is removed. To get the callback for loadmore create a class like that used in PlaceHolderView and define a method with <code>@LoadMore</code> annotation. This method should be used to do network calls and to add new fetched views.</h4>
 
 <h1>
 <a id="methodsinfiniteplaceholderview" class="anchor" href="#methodsinfiniteplaceholderview" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Methods(<code>InfinitePlaceHolderView</code>)</h1>
@@ -275,10 +275,6 @@
 <li>
 <code>@LoadMore</code>: This annotation calls a method of the class provided in <code>setLoadMoreResolver</code> with callback when load more is required, i.e. when last item has been seen.</li>
 </ol>
-
-<h4>
-<a id="see-loadmore-example-here-infinite-list" class="anchor" href="#see-loadmore-example-here-infinite-list" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>See loadmore example here: <a href="https://github.com/janishar/Tutorials/tree/master/InfiniteList">Infinite List</a>
-</h4>
 
 <h6>
 <a id="the-full-documentation-is-in-the-process-of-writing-for-any-query-post-it-in-the-discussion-or-janisharaligmailcom" class="anchor" href="#the-full-documentation-is-in-the-process-of-writing-for-any-query-post-it-in-the-discussion-or-janisharaligmailcom" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>The Full Documentation is in the process of writing. For any query post it in the discussion or <a href="mailto:janishar.ali@gmail.com">janishar.ali@gmail.com</a>
@@ -324,6 +320,8 @@
 
 <p><a href="https://medium.com/@janishar.ali/android-tinder-swipe-view-example-3eca9b0d4794#.413dgor3o">Android Tinder Swipe</a></p>
 
+<p><a href="https://medium.com/@janishar.ali/android-infinite-list-with-load-more-example-3749ea7bc33#.e3juocg6s">Android Infinite List with Load More</a></p>
+
 <h1>
 <a id="recent-library-jpost" class="anchor" href="#recent-library-jpost" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Recent Library: <a href="https://github.com/janishar/JPost"><code>JPost</code></a>
 </h1>
@@ -338,8 +336,8 @@
 <li>In contrast to the existing pub-sub libraries, it hold the subscribers with weakreference. Thus it doesn't create memory leaks.</li>
 <li>Single message can be sent to selected subscribes. This avoids the problem of event getting received at undesirable places. Thus minimising the chances of abnormal application behaviour.</li>
 <li>The subscriber addition can be controlled by using private channels. It minimises the chances of adding subscribes by mistake to receive undesirable messages.</li>
-<li>It is a tiny library &lt; 55kb . Thus not effecting the application overall size.</li>
-<li>It facilicates synchronous as well as asynchronous message delivery and processing.</li>
+<li>It is a tiny library &lt; 55kb . Thus not affecting the application overall size.</li>
+<li>It facilitates synchronous as well as asynchronous message delivery and processing.</li>
 <li>It provides a mechanism to run code asynchronously.</li>
 </ol>
 
