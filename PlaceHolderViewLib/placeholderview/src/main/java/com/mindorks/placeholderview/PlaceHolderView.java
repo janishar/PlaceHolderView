@@ -200,7 +200,24 @@ public class PlaceHolderView extends RecyclerView {
      *
      * @return
      */
-    protected ViewAdapter<Object> getViewAdapter() {
+    public ViewAdapter<Object> getViewAdapter() {
         return mViewAdapter;
+    }
+
+    public <T>int getViewResolverPosition(T resolver){
+        return mViewAdapter.getViewResolverPosition(resolver);
+    }
+
+    public <T>void refreshView(T resolver){
+        int position = getViewResolverPosition(resolver);
+        if(position != -1){
+            mViewAdapter.notifyItemChanged(position);
+        }
+    }
+
+    public void refreshView(int position){
+        if(position >= 0){
+            mViewAdapter.notifyItemChanged(position);
+        }
     }
 }

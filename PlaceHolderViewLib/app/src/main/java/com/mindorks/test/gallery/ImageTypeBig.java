@@ -1,6 +1,7 @@
 package com.mindorks.test.gallery;
 
 import android.content.Context;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,6 +13,7 @@ import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.NonReusable;
+import com.mindorks.placeholderview.annotations.Position;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.test.R;
@@ -27,6 +29,9 @@ public class ImageTypeBig {
     @View(R.id.imageView)
     private ImageView imageView;
 
+    @Position
+    private int position;
+
     private String mUlr;
     private Context mContext;
     private PlaceHolderView mPlaceHolderView;
@@ -40,6 +45,7 @@ public class ImageTypeBig {
     @Resolve
     private void onResolved() {
         Glide.with(mContext).load(mUlr).into(imageView);
+        Log.d("DEBUG", "position " + position);
     }
 
     @LongClick(R.id.imageView)

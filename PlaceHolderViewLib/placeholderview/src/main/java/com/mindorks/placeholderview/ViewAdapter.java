@@ -190,6 +190,15 @@ public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
         return mViewBinderList.get(position).getResolver();
     }
 
+    protected  int getViewResolverPosition(T resolver){
+        for(int i = 0; i < mViewBinderList.size(); i++){
+            if(mViewBinderList.get(i).getResolver() == resolver){
+                return i;
+            }
+        }
+        return -1;
+    }
+
     /**
      *
      * @return
