@@ -114,6 +114,7 @@ public class ImageTypeBig {
 5. `@Resolve`: Any operation being performed on the view reference defined by `@View` should be annotated with this.
 6. `@Animate(Animation.ENTER_LEFT_DESC)`: Sets the defined animations in the Animation class on this item view.
 7. `@NonReusable`: Releases the view reference along with all the attached references in the view object. This view object should not be used again in the `addView()`.
+8. `@Position`: This annotation binds an int variable to the position of the item view after the item view is attached to the display.
 
 ## Important
 1. `PlaceHolderView` will recycle the viewItems and will try to use similar/same viewtype viewItem to populate the data of the current viewItem. So, the method annotated with `@Resolve` will be called everytime the viewItem is attached to the window. Meaning if you don't explicitly manage to populate the viewItem in method annotated with `@Resolve` then that viewItem may show history of the reused viewItem.
@@ -169,7 +170,7 @@ public class ImageTypeBig {
 # Gradle
 ```groovy
 dependencies {
-    compile 'com.mindorks:placeholderview:0.2.6'
+    compile 'com.mindorks:placeholderview:0.2.7'
 }
 ```
 # Dependency: It depends on the RecyclerView
