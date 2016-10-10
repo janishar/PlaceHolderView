@@ -163,8 +163,6 @@ public class ImageTypeBig {
 # Annotations(`InfinitePlaceHolderView`)
 1. `@LoadMore`: This annotation calls a method of the class provided in `setLoadMoreResolver` with callback when load more is required, i.e. when last item has been seen.
 
-#### See loadmore example here: [Infinite List](https://github.com/janishar/Tutorials/tree/master/InfiniteList)
-
 ###### The Full Documentation is in the process of writing. For any query post it in the discussion or [janishar.ali@gmail.com](mailto:janishar.ali@gmail.com)
 
 # Gradle
@@ -199,6 +197,8 @@ dependencies {
 [Android Expandable News Feed](https://medium.com/@janishar.ali/android-expandable-news-feed-example-4b4544e1fe7e#.3n9k18x2s)
 
 [Android Tinder Swipe](https://medium.com/@janishar.ali/android-tinder-swipe-view-example-3eca9b0d4794#.413dgor3o)
+
+[Android Infinite List with Load More](https://medium.com/@janishar.ali/android-infinite-list-with-load-more-example-3749ea7bc33#.e3juocg6s)
 
 # Recent Library: [`JPost`](https://github.com/janishar/JPost)
 #### `JPost` is a pubsub library based on massages over a channel. It's very efficient and much powerful than other pubsub libraries. It prevents memory leak and increases code control. Also, provide a mechanism to run code asynchronously.
