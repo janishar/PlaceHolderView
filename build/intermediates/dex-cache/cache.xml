@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/support-annotations-24.2.1_fc213dfe41d2d542f4e82e414de0214f17760add.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-24.2.1_2ac285e5ad5a01680894991bc84eb0c47b1e4989.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.7/751f548c85fa49f330cecbb1875893f971b33c4e/gson-2.7.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="751f548c85fa49f330cecbb1875893f971b33c4e">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/gson-2.7_8466dd44e156dc8dbb55e5ce753e23c06c50d2e5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_069ea5038eac336d6340d29f90725c958b89c6b0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/design/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-design-24.2.1_1c793a308271667ad657f1bfb0743308e9a25919.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-24.2.1_301d61342b3a1d83ba97c522b0f3a5ca09de7906.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_b0f597bcefb4f123b61dccabcf65de0f10095a70.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.mindorks/placeholderview/0.2.8/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="978c328ae6f3a834147ae5e65a2f85b0e9c1f469">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.mindorks-placeholderview-0.2.8_560b543ebeb56117b25fb38a206875b97586ba42.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-24.2.1_010753ac5a43e65eb76cacaf2bfc9ad44db1978b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-24.2.1_863f5b0de239dcb78e9c99bdfa0bfad7cf78e435.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-24.2.1_fcf52da1800c1d7f5b34e2bcd8094406a9d5cab7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_1ff6379f40ba64644e61cb3a1981ab74681b37ea.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/.gradle/caches/modules-2/files-2.1/com.github.bumptech.glide/glide/3.7.0/9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4/glide-3.7.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9e9eeaf9948ee4d6c3ab354e8dc14368f16994a4">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/glide-3.7.0_67358fde1489c38f57829b2cc5deaf6ff49b2eb4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-24.2.1_560aad793021111351617093beeafa6221fa553f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_41cd0c223f52813e469cadaa3bd3ec2dea93d900.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-recyclerview-v7-24.2.1_400e47c3fe4e0d6638dd01a515880ae5cf6645b7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c5e6490573cd2cc8018417f60ddd251138b6ed61">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-cardview-v7-24.2.1_2b0f4e05b59a1c9a9a284669bf984ec0ddc07f0a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-24.2.1_b057f2a1747270a50f6c5fff458e0172fc594dc5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-24.2.1_cdd3c771da995aaca900aaff2071eb23845448a0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.mindorks/butterknifelite/0.0.3/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="c3b79cad4f69424a2324c2f359396325d557fbe8">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.mindorks-butterknifelite-0.0.3_4c6111785d546847d6915f05909bc9449982ac6c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-24.2.1_5afe42891e157e91eabf3ecdb5e933e6fedab58f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/24.2.1/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="24.0.2"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/janisharali/Mindorks/android-library/PlaceHolderView/PlaceHolderViewLib/app/build/intermediates/pre-dexed/debug/internal_impl-24.2.1_3f40a7b37d6bf8fcc36a9f5ee63fe3e20d2b485e.jar" />
+    </item>
+
+</items>
