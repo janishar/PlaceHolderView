@@ -69,14 +69,19 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         mWidthSwipeDistFactor = widthSwipeDistFactor;
         mHeightSwipeDistFactor = heightSwipeDistFactor;
         mCallback = callback;
+
         bindSwipeView(promptsView);
-        super.bindView(promptsView, position);
+        bindViews(getResolver(), promptsView);
+        bindViewPosition(getResolver(), position);
+        resolveView(getResolver());
     }
 
     /**
      *
      */
     protected void setOnTouch(){
+        bindClick(getResolver(), getLayoutView());
+        bindLongPress(getResolver(), getLayoutView());
         switch (mSwipeType){
             case SwipePlaceHolderView.SWIPE_TYPE_DEFAULT:
                 setDefaultTouchListener(mLayoutView);

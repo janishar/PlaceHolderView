@@ -86,7 +86,7 @@ public class ViewBinder<T, V extends android.view.View> {
      * @param resolver
      * @param promptsView
      */
-    private void bindViews(final T resolver, V promptsView){
+    protected void bindViews(final T resolver, V promptsView){
         for(final Field field : resolver.getClass().getDeclaredFields()) {
             View viewAnnotation = field.getAnnotation(View.class);
             if(viewAnnotation != null) {
@@ -106,7 +106,7 @@ public class ViewBinder<T, V extends android.view.View> {
      * @param resolver
      * @param position
      */
-    private void bindViewPosition(final T resolver, int position){
+    protected void bindViewPosition(final T resolver, int position){
         mPosition = position;
         for(final Field field : resolver.getClass().getDeclaredFields()) {
             Position annotation = field.getAnnotation(Position.class);
@@ -125,7 +125,7 @@ public class ViewBinder<T, V extends android.view.View> {
      *
      * @param resolver
      */
-    private void resolveView(final T resolver){
+    protected void resolveView(final T resolver){
         for(final Method method : resolver.getClass().getDeclaredMethods()) {
             Resolve annotation = method.getAnnotation(Resolve.class);
             if(annotation != null) {
@@ -146,7 +146,7 @@ public class ViewBinder<T, V extends android.view.View> {
      * @param resolver
      * @param promptsView
      */
-    private void bindClick(final T resolver,final V promptsView){
+    protected void bindClick(final T resolver,final V promptsView){
         for(final Method method : resolver.getClass().getDeclaredMethods()){
             Click clickAnnotation = method.getAnnotation(Click.class);
             if(clickAnnotation != null) {
@@ -173,7 +173,7 @@ public class ViewBinder<T, V extends android.view.View> {
      * @param resolver
      * @param promptsView
      */
-    private void bindLongPress(final T resolver,final V promptsView){
+    protected void bindLongPress(final T resolver,final V promptsView){
         for(final Method method : resolver.getClass().getDeclaredMethods()){
             LongClick longClickAnnotation = method.getAnnotation(LongClick.class);
             if(longClickAnnotation != null) {
