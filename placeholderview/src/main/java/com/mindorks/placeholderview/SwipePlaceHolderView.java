@@ -270,7 +270,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }else{
             FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            layoutParams.gravity = Gravity.CENTER;
+            layoutParams.gravity = decor.getViewGravity();
             layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
             return layoutParams;
         }
