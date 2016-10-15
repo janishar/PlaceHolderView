@@ -9,7 +9,7 @@
 ###### Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!
 
 ## Few Implementations
-![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_tinder.gif)  ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/feed_vid.gif)  ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
+![](https://janishar.github.io/gifs/vid_tinder.gif)  ![](https://janishar.github.io/gifs/feed_vid.gif)  ![](https://janishar.github.io/gifs/vid_slides.gif)
 
 ![](https://janishar.github.io/gifs/vid_fade.gif)  ![](https://janishar.github.io/gifs/vid_drawer.gif)  ![](https://janishar.github.io/gifs/infinite_vid.gif)    
 
