@@ -390,7 +390,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         mSwipeDecor.setIsPutBackActive(false);
     }
 
-    public void setIsUndoEnabled(boolean isUndoEnabled) {
+    protected void setIsUndoEnabled(boolean isUndoEnabled) {
         this.mIsUndoEnabled = isUndoEnabled;
     }
 
