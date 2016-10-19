@@ -4,14 +4,14 @@
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
-![](https://github.com/janishar/janishar.github.io/blob/master/images/logo-phv.png)
+![](https://janishar.github.io/images/logo-phv.png)
 
 ###### Simple, Easy and Superfast dynamic view creation with Awesome animations prebuilt!
 
 ## Few Implementations
-![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_tinder.gif)  ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/feed_vid.gif)  ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_slides.gif)
+![](https://janishar.github.io/gifs/vid_tinder.gif)  ![](https://janishar.github.io/gifs/feed_vid.gif)  ![](https://janishar.github.io/gifs/vid_slides.gif)
 
-![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_fade.gif)  ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/vid_drawer.gif)  ![](https://github.com/janishar/janishar.github.io/blob/master/gifs/infinite_vid.gif)    
+![](https://janishar.github.io/gifs/vid_fade.gif)  ![](https://janishar.github.io/gifs/vid_drawer.gif)  ![](https://janishar.github.io/gifs/infinite_vid.gif)    
 
 ## STEP 1: Define a PlaceHolderView inside XML layout
 ```xml
@@ -168,7 +168,7 @@ public class ImageTypeBig {
 # Gradle
 ```groovy
 dependencies {
-    compile 'com.mindorks:placeholderview:0.2.8'
+    compile 'com.mindorks:placeholderview:0.2.9'
 }
 ```
 # Dependency: It depends on the RecyclerView
