@@ -265,13 +265,15 @@ public class SwipePlaceHolderView extends FrameLayout implements
         if(decor.getViewHeight() != 0 && decor.getViewWidth() != 0) {
             FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(decor.getViewWidth(), decor.getViewHeight());
             layoutParams.gravity = decor.getViewGravity();
-            layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
+            layoutParams.setMargins(decor.getMarginLeft() + decor.getPaddingLeft() * position,
+                    decor.getMarginTop() + decor.getPaddingTop() * position, 0, 0);
             return layoutParams;
         }else{
             FrameLayout.LayoutParams layoutParams = new FrameLayout.LayoutParams(
                     ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
             layoutParams.gravity = decor.getViewGravity();
-            layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
+            layoutParams.setMargins(decor.getMarginLeft() + decor.getPaddingLeft() * position,
+                    decor.getMarginTop() + decor.getPaddingTop() * position, 0, 0);
             return layoutParams;
         }
     }
@@ -285,7 +287,8 @@ public class SwipePlaceHolderView extends FrameLayout implements
      */
     protected <V extends  FrameLayout>void setLayoutParamsWithSwipeDecor(V frame, int position, SwipeDecor decor){
         FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams)frame.getLayoutParams();
-        layoutParams.setMargins(decor.getPaddingLeft() * position, decor.getPaddingTop() * position, 0, 0);
+        layoutParams.setMargins(decor.getMarginLeft() + decor.getPaddingLeft() * position,
+                decor.getMarginTop() + decor.getPaddingTop() * position, 0, 0);
         frame.setLayoutParams(layoutParams);
     }
 
@@ -321,7 +324,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
             if(swipeViewBinder != null){
                 swipeViewBinder.doSwipe(isSwipeIn);
             }
-            new CountDownTimer(2 * mSwipeDecor.getSwipeAnimTime(), mSwipeDecor.getSwipeAnimTime()) {
+            new CountDownTimer((int)(2.25 * mSwipeDecor.getSwipeAnimTime()), mSwipeDecor.getSwipeAnimTime()) {
                 public void onTick(long millisUntilFinished) {
                 }
                 public void onFinish() {
@@ -342,7 +345,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
                 mSwipeViewBinderList.get(0).doSwipe(isSwipeIn);
             }
 
-            new CountDownTimer(2 * mSwipeDecor.getSwipeAnimTime(), mSwipeDecor.getSwipeAnimTime()) {
+            new CountDownTimer((int)(2.25 * mSwipeDecor.getSwipeAnimTime()), mSwipeDecor.getSwipeAnimTime()) {
                 public void onTick(long millisUntilFinished) {
                 }
                 public void onFinish() {
@@ -350,6 +353,22 @@ public class SwipePlaceHolderView extends FrameLayout implements
                 }
             }.start();
         }
+    }
+
+    public void lockViews(){
+        mSwipeDecor.setIsViewLocked(true);
+    }
+
+    public void unlockViews(){
+        mSwipeDecor.setIsViewLocked(false);
+    }
+
+    public void activatePutBack(){
+        mSwipeDecor.setIsPutBackActive(true);
+    }
+
+    public void deActivatePutBack(){
+        mSwipeDecor.setIsPutBackActive(false);
     }
 
     /**
@@ -428,10 +447,12 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
                 FrameLayout.LayoutParams layoutParams =
                         (FrameLayout.LayoutParams) swipeViewBinderBelow.getLayoutView().getLayoutParams();
-                float value = (-mSwipeDecor.getPaddingTop() / finalDist) * distMoved + mSwipeDecor.getPaddingTop() * i;
+                float value = (-mSwipeDecor.getPaddingTop() / finalDist) * distMoved
+                        + (mSwipeDecor.getMarginTop()+ mSwipeDecor.getPaddingTop() * i);
                 layoutParams.topMargin = (int) value;
 
-                value = (-mSwipeDecor.getPaddingLeft() / finalDist) * distMoved + mSwipeDecor.getPaddingLeft() * i;
+                value = (-mSwipeDecor.getPaddingLeft() / finalDist) * distMoved
+                        + (mSwipeDecor.getMarginLeft() + mSwipeDecor.getPaddingLeft() * i);
                 layoutParams.leftMargin = (int) value;
 
                 swipeViewBinderBelow.getLayoutView().setLayoutParams(layoutParams);

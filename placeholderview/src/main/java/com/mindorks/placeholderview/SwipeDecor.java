@@ -2,6 +2,8 @@ package com.mindorks.placeholderview;
 
 import android.view.Gravity;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 /**
  * Created by janisharali on 26/08/16.
  */
@@ -14,6 +16,8 @@ public class SwipeDecor {
     private int mViewGravity;
     private int mPaddingTop;
     private int mPaddingLeft;
+    private int mMarginTop;
+    private int mMarginLeft;
     private float mRelativeScale;
     private boolean mAnimateScale;
     private int mSwipeInMsgLayoutId;
@@ -24,12 +28,17 @@ public class SwipeDecor {
     private int mSwipeAnimTime;
     private float mSwipeAnimFactor;
     private int mSwipeRotationAngle;
+    private AtomicBoolean mIsViewLocked;
+    private AtomicBoolean mIsPutBackActive;
+    private AtomicBoolean mIsViewToRestoredOnLock;
 
     public SwipeDecor() {
         mViewWidth = 0;
         mViewHeight = 0;
         mPaddingTop = 0;
         mPaddingLeft = 0;
+        mMarginTop = 0;
+        mMarginLeft = 0;
         mRelativeScale = 0.05f;
         mAnimateScale = true;
         mSwipeInMsgLayoutId = PRIMITIVE_NULL;
@@ -41,6 +50,9 @@ public class SwipeDecor {
         mSwipeAnimTime = 200;
         mSwipeAnimFactor = 0.75f;
         mSwipeRotationAngle = 15;
+        mIsViewLocked = new AtomicBoolean(false);
+        mIsPutBackActive = new AtomicBoolean(false);
+        mIsViewToRestoredOnLock = new AtomicBoolean(true);
     }
 
     public SwipeDecor setViewWidth(int width){
@@ -75,6 +87,16 @@ public class SwipeDecor {
      */
     public SwipeDecor setPaddingLeft(int padding){
         mPaddingLeft = padding;
+        return this;
+    }
+
+    public SwipeDecor setMarginLeft(int margin){
+        mMarginLeft = margin;
+        return this;
+    }
+
+    public SwipeDecor setMarginTop(int margin){
+        mMarginTop = margin;
         return this;
     }
 
@@ -205,6 +227,14 @@ public class SwipeDecor {
         return mPaddingLeft;
     }
 
+    public int getMarginLeft() {
+        return mMarginLeft;
+    }
+
+    public int getMarginTop() {
+        return mMarginTop;
+    }
+
     /**
      *
      * @return
@@ -295,5 +325,30 @@ public class SwipeDecor {
 
     public int getViewGravity() {
         return mViewGravity;
+    }
+
+    protected boolean getIsViewLocked() {
+        return mIsViewLocked.get();
+    }
+
+    protected void setIsViewLocked(boolean isViewLocked) {
+        this.mIsViewToRestoredOnLock.set(true);
+        this.mIsViewLocked.set(isViewLocked);
+    }
+
+    protected boolean getIsPutBackActive() {
+        return mIsPutBackActive.get();
+    }
+
+    protected void setIsPutBackActive(boolean isPutBackActive) {
+        this.mIsPutBackActive.set(isPutBackActive);
+    }
+
+    protected boolean getIsViewToRestoredOnLock() {
+        return mIsViewToRestoredOnLock.get();
+    }
+
+    protected void setIsViewToRestoredOnLock(boolean isViewToRestoredOnLock) {
+        this.mIsViewToRestoredOnLock.set(isViewToRestoredOnLock);
     }
 }
