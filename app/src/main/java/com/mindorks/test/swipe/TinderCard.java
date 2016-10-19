@@ -35,6 +35,8 @@ import com.mindorks.test.Utils;
 @Layout(R.layout.tinder_card_view)
 public class TinderCard {
 
+    private static int count;
+
     @View(R.id.profileImageView)
     private ImageView profileImageView;
 
@@ -47,6 +49,11 @@ public class TinderCard {
     @Click(R.id.profileImageView)
     private void onClick(){
         Log.d("DEBUG", "profileImageView");
+    }
+
+    @Resolve
+    private void onResolve(){
+        nameAgeTxt.setText("Name " + count++);
     }
 
     @SwipeOut

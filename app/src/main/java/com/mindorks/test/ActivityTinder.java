@@ -36,20 +36,21 @@ public class ActivityTinder extends AppCompatActivity {
         super.onPostCreate(savedInstanceState);
 
         mSwipView.getBuilder()
-//                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_VERTICAL)
+                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_VERTICAL)
                 .setDisplayViewCount(3)
+                .setIsUndoEnabled(true)
 //                .setWidthSwipeDistFactor(15)
 //                .setHeightSwipeDistFactor(20)
                 .setSwipeDecor(new SwipeDecor()
-//                        .setMarginTop(500)
-//                        .setMarginLeft(100)
-//                        .setViewGravity(Gravity.TOP)
+                        .setMarginTop(300)
+                        .setMarginLeft(100)
+                        .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)
                         .setRelativeScale(0.01f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));
 
-        mSwipView.activatePutBack();
+//        mSwipView.activatePutBack();
         mSwipView.addView(new TinderCard())
                 .addView(new TinderCard())
                 .addView(new TinderCard())
@@ -65,15 +66,14 @@ public class ActivityTinder extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.lockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.unlockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.lockViews();
                     Thread.currentThread().sleep(4000);
+//                    mSwipView.lockViews();
+//                    Thread.currentThread().sleep(4000);
 //                    mSwipView.unlockViews();
-//                    mSwipView.deActivatePutBack();
+//                    Thread.currentThread().sleep(4000);
+//                    mSwipView.lockViews();
+//                    Thread.currentThread().sleep(4000);
+//                    mSwipView.unlockViews();
                 }catch (InterruptedException e){
                     e.printStackTrace();
                 }
@@ -89,5 +89,10 @@ public class ActivityTinder extends AppCompatActivity {
     @OnClick(R.id.acceptBtn)
     private void onAcceptClick(){
         mSwipView.doSwipe(true);
+    }
+
+    @OnClick(R.id.undoBtn)
+    private void onUndoClick(){
+        mSwipView.undoLastSwipe();
     }
 }

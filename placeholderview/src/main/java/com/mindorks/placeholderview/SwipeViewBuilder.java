@@ -92,4 +92,9 @@ public class SwipeViewBuilder {
         }
         return this;
     }
+
+    public SwipeViewBuilder setIsUndoEnabled(boolean enabled) {
+        mSwipePlaceHolderView.setIsUndoEnabled(enabled);
+        return this;
+    }
 }

@@ -22,6 +22,12 @@
             android:layout_height="50dp"
             android:layout_marginLeft="30dp"
             android:background="@drawable/ic_heart"/>
+        <ImageButton
+            android:id="@+id/undoBtn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:background="@drawable/ic_book_black_18dp"/>
     </LinearLayout>
     <com.mindorks.placeholderview.SwipePlaceHolderView
         android:id="@+id/swipeView"

@@ -4,10 +4,7 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.os.CountDownTimer;
-import android.support.v4.view.MotionEventCompat;
-import android.text.Layout;
 import android.util.AttributeSet;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -39,6 +36,9 @@ public class SwipePlaceHolderView extends FrameLayout implements
     private boolean mIsReverse = false;
     private SwipeDecor mSwipeDecor;
     private boolean mIsBtnSwipeDone = true;
+    private boolean mIsUndoEnabled;
+    private Object mRestoreResolverOnUndo;
+    private int mRestoreResolverPosition;
 
     /**
      *
@@ -194,6 +194,25 @@ public class SwipePlaceHolderView extends FrameLayout implements
             }
         }
         return this;
+    }
+
+    private <T>void addView(T resolver, int position){
+        if(position >= 0 && position <= mDisplayViewCount){
+            SwipeViewBinder<Object, FrameView> swipeViewBinder = new SwipeViewBinder<>((Object)resolver);
+            mSwipeViewBinderList.add(position, swipeViewBinder);
+            int binderPosition = mSwipeViewBinderList.indexOf(swipeViewBinder);
+            FrameView frameView = new FrameView(getContext());
+            frameView.setLayoutParams(getLayoutParamsWithSwipeDecor(binderPosition, mSwipeDecor));
+            mLayoutInflater.inflate(swipeViewBinder.getLayoutId(), frameView, true);
+            attachSwipeInfoViews(frameView, swipeViewBinder, mSwipeDecor);
+            addView(frameView, position);
+            setRelativeScale(frameView, binderPosition, mSwipeDecor);
+            swipeViewBinder.bindView(frameView, binderPosition, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, mSwipeDecor, this);
+
+            if(mSwipeViewBinderList.indexOf(swipeViewBinder) == 0){
+                swipeViewBinder.setOnTouch();
+            }
+        }
     }
 
     /**
@@ -371,13 +390,16 @@ public class SwipePlaceHolderView extends FrameLayout implements
         mSwipeDecor.setIsPutBackActive(false);
     }
 
+    public void setIsUndoEnabled(boolean isUndoEnabled) {
+        this.mIsUndoEnabled = isUndoEnabled;
+    }
+
     /**
      *
      * @param swipeViewBinder
      */
     @Override
     public void onRemoveView(SwipeViewBinder<Object, FrameView> swipeViewBinder) {
-
         SwipeViewBinder<Object, FrameView> newSwipeViewBinder = null;
         int position = SwipeDecor.PRIMITIVE_NULL;
 
@@ -388,18 +410,22 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
         mSwipeViewBinderList.remove(swipeViewBinder);
         removeView(swipeViewBinder.getLayoutView());
-        swipeViewBinder.unbind();
-
         if(newSwipeViewBinder != null && position != SwipeDecor.PRIMITIVE_NULL){
             addPendingView(newSwipeViewBinder);
-            resetViewOrientation(position - 1, mSwipeDecor);
+            position -= 1;
         }else{
-            resetViewOrientation(mSwipeViewBinderList.size() - 1, mSwipeDecor);
+            position = mSwipeViewBinderList.size() - 1;
         }
+        resetViewOrientation(position, mSwipeDecor);
 
         if(mSwipeViewBinderList.size() > 0){
             mSwipeViewBinderList.get(0).setOnTouch();
         }
+        if(mIsUndoEnabled) {
+            mRestoreResolverOnUndo = swipeViewBinder.getResolver();
+            mRestoreResolverPosition = position;
+        }
+        swipeViewBinder.unbind();
     }
 
     /**
@@ -560,11 +586,32 @@ public class SwipePlaceHolderView extends FrameLayout implements
      * @param <T>
      */
     protected <T extends SwipeDecor>void resetViewOrientation(int lastPosition, T swipeDecor){
-        if(swipeDecor.isAnimateScale()) {
-            for (int i = 0; i <= lastPosition && mSwipeViewBinderList.get(i) != null; i++) {
-                SwipeViewBinder<Object, FrameView> swipeViewBinder = mSwipeViewBinderList.get(i);
-                setRelativeScale(swipeViewBinder.getLayoutView(), i, swipeDecor);
-                setLayoutParamsWithSwipeDecor(swipeViewBinder.getLayoutView(), i, swipeDecor);
+        if(swipeDecor.isAnimateScale() && lastPosition >= 0) {
+            for (int i = 0; i <= lastPosition; i++) {
+                if (mSwipeViewBinderList.get(i) != null) {
+                    SwipeViewBinder<Object, FrameView> swipeViewBinder = mSwipeViewBinderList.get(i);
+                    setRelativeScale(swipeViewBinder.getLayoutView(), i, swipeDecor);
+                    setLayoutParamsWithSwipeDecor(swipeViewBinder.getLayoutView(), i, swipeDecor);
+                }
+            }
+        }
+    }
+
+    public void undoLastSwipe(){
+        if(mIsUndoEnabled && mRestoreResolverOnUndo != null){
+            if(mRestoreResolverPosition >= 0 && mRestoreResolverPosition >= mDisplayViewCount - 1){
+                mSwipeViewBinderList.remove(mRestoreResolverPosition);
+                removeViewAt(mRestoreResolverPosition);
+            }
+            addView(mRestoreResolverOnUndo, 0);
+            mRestoreResolverOnUndo = null;
+            if(mSwipeViewBinderList.size() > 1){
+                mSwipeViewBinderList.get(1).blockTouch();
+            }
+            if(mRestoreResolverPosition >= 0 && mRestoreResolverPosition >= mDisplayViewCount - 1) {
+                resetViewOrientation(mRestoreResolverPosition, mSwipeDecor);
+            }else{
+                resetViewOrientation(mRestoreResolverPosition + 1, mSwipeDecor);
             }
         }
     }
