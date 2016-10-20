@@ -31,6 +31,8 @@ public class SwipeDecor {
     private AtomicBoolean mIsViewLocked;
     private AtomicBoolean mIsPutBackActive;
     private AtomicBoolean mIsViewToRestoreOnLock;
+    private AtomicBoolean mIsViewToRestoreOnTouchLock;
+    private AtomicBoolean mIsTouchSwipeLocked;
 
     public SwipeDecor() {
         mViewWidth = 0;
@@ -53,6 +55,8 @@ public class SwipeDecor {
         mIsViewLocked = new AtomicBoolean(false);
         mIsPutBackActive = new AtomicBoolean(false);
         mIsViewToRestoreOnLock = new AtomicBoolean(true);
+        mIsViewToRestoreOnTouchLock = new AtomicBoolean(true);
+        mIsTouchSwipeLocked = new AtomicBoolean(false);
     }
 
     public SwipeDecor setViewWidth(int width){
@@ -350,5 +354,22 @@ public class SwipeDecor {
 
     protected void setIsViewToRestoredOnLock(boolean isViewToRestoredOnLock) {
         this.mIsViewToRestoreOnLock.set(isViewToRestoredOnLock);
+    }
+
+    protected boolean getIsViewToRestoreOnTouchLock() {
+        return mIsViewToRestoreOnTouchLock.get();
+    }
+
+    protected void setIsViewToRestoreOnTouchLock(boolean isViewToRestoreOnTouchLock) {
+        this.mIsViewToRestoreOnTouchLock.set(isViewToRestoreOnTouchLock);
+    }
+
+    protected boolean getIsTouchSwipeLocked(){
+        return mIsTouchSwipeLocked.get();
+    }
+
+    protected void setIsTouchSwipeLocked(boolean locked){
+        this.mIsViewToRestoreOnTouchLock.set(true);
+        mIsTouchSwipeLocked.set(locked);
     }
 }

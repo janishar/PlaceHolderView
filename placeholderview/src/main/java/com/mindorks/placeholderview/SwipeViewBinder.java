@@ -310,6 +310,14 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             @Override
             public boolean onTouch(final View v, MotionEvent event) {
 
+                if(mSwipeDecor.getIsTouchSwipeLocked()){
+                    if(mSwipeDecor.getIsViewToRestoreOnTouchLock()){
+                        mSwipeDecor.setIsViewToRestoreOnTouchLock(false);
+                        animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
+                    }
+                    return true;
+                }
+
                 if(mSwipeDecor.getIsViewLocked()){
                     if(mSwipeDecor.getIsViewToRestoredOnLock()){
                         mSwipeDecor.setIsViewToRestoredOnLock(false);
@@ -430,6 +438,14 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
+                if(mSwipeDecor.getIsTouchSwipeLocked()){
+                    if(mSwipeDecor.getIsViewToRestoreOnTouchLock()){
+                        mSwipeDecor.setIsViewToRestoreOnTouchLock(false);
+                        animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
+                    }
+                    return true;
+                }
+
                 if(mSwipeDecor.getIsViewLocked()){
                     if(mSwipeDecor.getIsViewToRestoredOnLock()){
                         mSwipeDecor.setIsViewToRestoredOnLock(false);
@@ -526,6 +542,14 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             private boolean resetDone = false;
             @Override
             public boolean onTouch(View v, MotionEvent event) {
+
+                if(mSwipeDecor.getIsTouchSwipeLocked()){
+                    if(mSwipeDecor.getIsViewToRestoreOnTouchLock()){
+                        mSwipeDecor.setIsViewToRestoreOnTouchLock(false);
+                        animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
+                    }
+                    return true;
+                }
 
                 if(mSwipeDecor.getIsViewLocked()){
                     if(mSwipeDecor.getIsViewToRestoredOnLock()){
