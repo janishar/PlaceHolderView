@@ -168,7 +168,7 @@ public class ImageTypeBig {
 # Gradle
 ```groovy
 dependencies {
-    compile 'com.mindorks:placeholderview:0.5.0'
+    compile 'com.mindorks:placeholderview:0.5.1'
 }
 ```
 # Dependency: It depends on the RecyclerView
