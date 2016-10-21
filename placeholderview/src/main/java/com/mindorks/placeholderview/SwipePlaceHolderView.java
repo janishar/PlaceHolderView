@@ -14,6 +14,7 @@ import android.widget.FrameLayout;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 /**
  * Created by janisharali on 26/08/16.
@@ -31,10 +32,9 @@ public class SwipePlaceHolderView extends FrameLayout implements
     private LayoutInflater mLayoutInflater;
     private int mDisplayViewCount = DEFAULT_DISPLAY_VIEW_COUNT;
     private int mSwipeType = SWIPE_TYPE_DEFAULT;
-    private float mWidthSwipeDistFactor = 3f;
-    private float mHeightSwipeDistFactor = 3f;
     private boolean mIsReverse = false;
     private SwipeDecor mSwipeDecor;
+    private SwipeOption mSwipeOption;
     private boolean mIsBtnSwipeDone = true;
     private boolean mIsUndoEnabled;
     private Object mRestoreResolverOnUndo;
@@ -94,6 +94,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         mSwipeViewBuilder = swipeViewBuilder;
         mLayoutInflater =  LayoutInflater.from(getContext());
         mSwipeDecor = new SwipeDecor();
+        mSwipeOption = new SwipeOption();
         setChildrenDrawingOrderEnabled(true);
     }
 
@@ -156,10 +157,10 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
     /**
      *
-     * @param Factor
+     * @param factor
      */
-    protected void setWidthSwipeDistFactor(float Factor) {
-        mWidthSwipeDistFactor = Factor;
+    protected void setWidthSwipeDistFactor(float factor) {
+        mSwipeOption.setWidthSwipeDistFactor(factor);
     }
 
     /**
@@ -167,7 +168,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
      * @param factor
      */
     protected void setHeightSwipeDistFactor(float factor) {
-        mHeightSwipeDistFactor = factor;
+        mSwipeOption.setHeightSwipeDistFactor(factor);
     }
 
     /**
@@ -187,7 +188,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
             attachSwipeInfoViews(frameView, swipeViewBinder, mSwipeDecor);
             addView(frameView);
             setRelativeScale(frameView, position, mSwipeDecor);
-            swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, mSwipeDecor, this);
+            swipeViewBinder.bindView(frameView, position, mSwipeType, mSwipeDecor, mSwipeOption, this);
 
             if(mSwipeViewBinderList.indexOf(swipeViewBinder) == 0){
                 swipeViewBinder.setOnTouch();
@@ -207,7 +208,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
             attachSwipeInfoViews(frameView, swipeViewBinder, mSwipeDecor);
             addView(frameView, position);
             setRelativeScale(frameView, binderPosition, mSwipeDecor);
-            swipeViewBinder.bindView(frameView, binderPosition, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, mSwipeDecor, this);
+            swipeViewBinder.bindView(frameView, binderPosition, mSwipeType, mSwipeDecor, mSwipeOption, this);
 
             if(mSwipeViewBinderList.indexOf(swipeViewBinder) == 0){
                 swipeViewBinder.setOnTouch();
@@ -228,7 +229,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         attachSwipeInfoViews(frameView, swipeViewBinder, mSwipeDecor);
         addView(frameView);
         setRelativeScale(frameView, position, mSwipeDecor);
-        swipeViewBinder.bindView(frameView, position, mSwipeType, mWidthSwipeDistFactor, mHeightSwipeDistFactor, mSwipeDecor, this);
+        swipeViewBinder.bindView(frameView, position, mSwipeType, mSwipeDecor, mSwipeOption, this);
     }
 
     /**
@@ -375,27 +376,27 @@ public class SwipePlaceHolderView extends FrameLayout implements
     }
 
     public void lockViews(){
-        mSwipeDecor.setIsViewLocked(true);
+        mSwipeOption.setIsViewLocked(true);
     }
 
     public void unlockViews(){
-        mSwipeDecor.setIsViewLocked(false);
+        mSwipeOption.setIsViewLocked(false);
     }
 
     public void activatePutBack(){
-        mSwipeDecor.setIsPutBackActive(true);
+        mSwipeOption.setIsPutBackActive(true);
     }
 
-    public void deActivatePutBack(){
-        mSwipeDecor.setIsPutBackActive(false);
+    public void deactivatePutBack(){
+        mSwipeOption.setIsPutBackActive(false);
     }
 
     public void disableTouchSwipe() {
-        mSwipeDecor.setIsTouchSwipeLocked(true);
+        mSwipeOption.setIsTouchSwipeLocked(true);
     }
 
     public void enableTouchSwipe() {
-        mSwipeDecor.setIsTouchSwipeLocked(false);
+        mSwipeOption.setIsTouchSwipeLocked(false);
     }
 
     protected void setIsUndoEnabled(boolean isUndoEnabled) {
@@ -845,6 +846,82 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
         public void reset() {
             mIsBeingDragged = false;
+        }
+    }
+
+    protected class SwipeOption{
+        private float mWidthSwipeDistFactor = 3f;
+        private float mHeightSwipeDistFactor = 3f;
+        private AtomicBoolean mIsViewLocked;
+        private AtomicBoolean mIsPutBackActive;
+        private AtomicBoolean mIsViewToRestoreOnLock;
+        private AtomicBoolean mIsViewToRestoreOnTouchLock;
+        private AtomicBoolean mIsTouchSwipeLocked;
+
+        public SwipeOption() {
+            mIsViewLocked = new AtomicBoolean(false);
+            mIsPutBackActive = new AtomicBoolean(false);
+            mIsViewToRestoreOnLock = new AtomicBoolean(true);
+            mIsViewToRestoreOnTouchLock = new AtomicBoolean(true);
+            mIsTouchSwipeLocked = new AtomicBoolean(false);
+        }
+
+        protected boolean getIsViewLocked() {
+            return mIsViewLocked.get();
+        }
+
+        protected void setIsViewLocked(boolean isViewLocked) {
+            this.mIsViewToRestoreOnLock.set(true);
+            this.mIsViewLocked.set(isViewLocked);
+        }
+
+        protected boolean getIsPutBackActive() {
+            return mIsPutBackActive.get();
+        }
+
+        protected void setIsPutBackActive(boolean isPutBackActive) {
+            this.mIsPutBackActive.set(isPutBackActive);
+        }
+
+        protected boolean getIsViewToRestoredOnLock() {
+            return mIsViewToRestoreOnLock.get();
+        }
+
+        protected void setIsViewToRestoredOnLock(boolean isViewToRestoredOnLock) {
+            this.mIsViewToRestoreOnLock.set(isViewToRestoredOnLock);
+        }
+
+        protected boolean getIsViewToRestoreOnTouchLock() {
+            return mIsViewToRestoreOnTouchLock.get();
+        }
+
+        protected void setIsViewToRestoreOnTouchLock(boolean isViewToRestoreOnTouchLock) {
+            this.mIsViewToRestoreOnTouchLock.set(isViewToRestoreOnTouchLock);
+        }
+
+        protected boolean getIsTouchSwipeLocked(){
+            return mIsTouchSwipeLocked.get();
+        }
+
+        protected void setIsTouchSwipeLocked(boolean locked){
+            this.mIsViewToRestoreOnTouchLock.set(true);
+            mIsTouchSwipeLocked.set(locked);
+        }
+
+        public float getWidthSwipeDistFactor() {
+            return mWidthSwipeDistFactor;
+        }
+
+        public void setWidthSwipeDistFactor(float widthSwipeDistFactor) {
+            this.mWidthSwipeDistFactor = widthSwipeDistFactor;
+        }
+
+        public float getHeightSwipeDistFactor() {
+            return mHeightSwipeDistFactor;
+        }
+
+        public void setHeightSwipeDistFactor(float heightSwipeDistFactor) {
+            this.mHeightSwipeDistFactor = heightSwipeDistFactor;
         }
     }
 }

@@ -28,11 +28,6 @@ public class SwipeDecor {
     private int mSwipeAnimTime;
     private float mSwipeAnimFactor;
     private int mSwipeRotationAngle;
-    private AtomicBoolean mIsViewLocked;
-    private AtomicBoolean mIsPutBackActive;
-    private AtomicBoolean mIsViewToRestoreOnLock;
-    private AtomicBoolean mIsViewToRestoreOnTouchLock;
-    private AtomicBoolean mIsTouchSwipeLocked;
 
     public SwipeDecor() {
         mViewWidth = 0;
@@ -52,11 +47,6 @@ public class SwipeDecor {
         mSwipeAnimTime = 200;
         mSwipeAnimFactor = 0.75f;
         mSwipeRotationAngle = 15;
-        mIsViewLocked = new AtomicBoolean(false);
-        mIsPutBackActive = new AtomicBoolean(false);
-        mIsViewToRestoreOnLock = new AtomicBoolean(true);
-        mIsViewToRestoreOnTouchLock = new AtomicBoolean(true);
-        mIsTouchSwipeLocked = new AtomicBoolean(false);
     }
 
     public SwipeDecor setViewWidth(int width){
@@ -329,47 +319,5 @@ public class SwipeDecor {
 
     public int getViewGravity() {
         return mViewGravity;
-    }
-
-    protected boolean getIsViewLocked() {
-        return mIsViewLocked.get();
-    }
-
-    protected void setIsViewLocked(boolean isViewLocked) {
-        this.mIsViewToRestoreOnLock.set(true);
-        this.mIsViewLocked.set(isViewLocked);
-    }
-
-    protected boolean getIsPutBackActive() {
-        return mIsPutBackActive.get();
-    }
-
-    protected void setIsPutBackActive(boolean isPutBackActive) {
-        this.mIsPutBackActive.set(isPutBackActive);
-    }
-
-    protected boolean getIsViewToRestoredOnLock() {
-        return mIsViewToRestoreOnLock.get();
-    }
-
-    protected void setIsViewToRestoredOnLock(boolean isViewToRestoredOnLock) {
-        this.mIsViewToRestoreOnLock.set(isViewToRestoredOnLock);
-    }
-
-    protected boolean getIsViewToRestoreOnTouchLock() {
-        return mIsViewToRestoreOnTouchLock.get();
-    }
-
-    protected void setIsViewToRestoreOnTouchLock(boolean isViewToRestoreOnTouchLock) {
-        this.mIsViewToRestoreOnTouchLock.set(isViewToRestoreOnTouchLock);
-    }
-
-    protected boolean getIsTouchSwipeLocked(){
-        return mIsTouchSwipeLocked.get();
-    }
-
-    protected void setIsTouchSwipeLocked(boolean locked){
-        this.mIsViewToRestoreOnTouchLock.set(true);
-        mIsTouchSwipeLocked.set(locked);
     }
 }

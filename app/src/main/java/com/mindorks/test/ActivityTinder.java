@@ -34,13 +34,13 @@ public class ActivityTinder extends AppCompatActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-
+        mSwipView.disableTouchSwipe();
         mSwipView.getBuilder()
 //                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_VERTICAL)
                 .setDisplayViewCount(3)
                 .setIsUndoEnabled(true)
-//                .setWidthSwipeDistFactor(15)
-//                .setHeightSwipeDistFactor(20)
+                .setWidthSwipeDistFactor(15)
+                .setHeightSwipeDistFactor(20)
                 .setSwipeDecor(new SwipeDecor()
 //                        .setMarginTop(300)
 //                        .setMarginLeft(100)
@@ -65,7 +65,7 @@ public class ActivityTinder extends AppCompatActivity {
             public void run() {
                 try {
                     Thread.currentThread().sleep(8000);
-                    mSwipView.disableTouchSwipe();
+                    mSwipView.enableTouchSwipe();
 //                    mSwipView.lockViews();
 //                    Thread.currentThread().sleep(4000);
 //                    mSwipView.unlockViews();

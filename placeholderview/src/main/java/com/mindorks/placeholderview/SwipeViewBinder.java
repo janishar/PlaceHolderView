@@ -37,11 +37,10 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
     private Animator.AnimatorListener mViewRestoreAnimatorListener;
     private Animator.AnimatorListener mViewPutBackAnimatorListener;
     private int mSwipeType = SwipePlaceHolderView.SWIPE_TYPE_DEFAULT;
-    private float mWidthSwipeDistFactor;
-    private float mHeightSwipeDistFactor;
     private View mSwipeInMsgView;
     private View mSwipeOutMsgView;
     private SwipeDecor mSwipeDecor;
+    private SwipePlaceHolderView.SwipeOption mSwipeOption;
     private boolean mHasInterceptedEvent = false;
     private int mOriginalLeftMargin;
     private int mOriginalTopMargin;
@@ -61,18 +60,15 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      * @param promptsView
      * @param position
      * @param swipeType
-     * @param widthSwipeDistFactor
-     * @param heightSwipeDistFactor
      * @param decor
      * @param callback
      */
-    protected void bindView(V promptsView, int position, int swipeType, float widthSwipeDistFactor,
-                            float heightSwipeDistFactor, SwipeDecor decor, SwipeCallback callback) {
+    protected void bindView(V promptsView, int position, int swipeType, SwipeDecor decor,
+                            SwipePlaceHolderView.SwipeOption swipeOption, SwipeCallback callback) {
         mLayoutView = promptsView;
         mSwipeType = swipeType;
+        mSwipeOption = swipeOption;
         mSwipeDecor = decor;
-        mWidthSwipeDistFactor = widthSwipeDistFactor;
-        mHeightSwipeDistFactor = heightSwipeDistFactor;
         mCallback = callback;
 
         bindSwipeView(promptsView);
@@ -230,7 +226,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
             @Override
             public void onAnimationEnd(Animator animation) {
-                if(mSwipeDecor.getIsPutBackActive()){
+                if(mSwipeOption.getIsPutBackActive()){
                     mLayoutView.animate()
                             .translationX(mTransXToRestore)
                             .translationY(mTransYToRestore)
@@ -310,17 +306,17 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             @Override
             public boolean onTouch(final View v, MotionEvent event) {
 
-                if(mSwipeDecor.getIsTouchSwipeLocked()){
-                    if(mSwipeDecor.getIsViewToRestoreOnTouchLock()){
-                        mSwipeDecor.setIsViewToRestoreOnTouchLock(false);
+                if(mSwipeOption.getIsTouchSwipeLocked()){
+                    if(mSwipeOption.getIsViewToRestoreOnTouchLock()){
+                        mSwipeOption.setIsViewToRestoreOnTouchLock(false);
                         animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
                     }
                     return true;
                 }
 
-                if(mSwipeDecor.getIsViewLocked()){
-                    if(mSwipeDecor.getIsViewToRestoredOnLock()){
-                        mSwipeDecor.setIsViewToRestoredOnLock(false);
+                if(mSwipeOption.getIsViewLocked()){
+                    if(mSwipeOption.getIsViewToRestoredOnLock()){
+                        mSwipeOption.setIsViewToRestoredOnLock(false);
                         animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
                     }
                     return true;
@@ -350,12 +346,12 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
                             distSlideX = distSlideX < 0 ? -distSlideX : distSlideX;
                             distSlideY = distSlideY < 0 ? -distSlideY : distSlideY;
-                            if (distSlideX < displayMetrics.widthPixels / mWidthSwipeDistFactor
-                                    && distSlideY < displayMetrics.heightPixels / mHeightSwipeDistFactor) {
+                            if (distSlideX < displayMetrics.widthPixels / mSwipeOption.getWidthSwipeDistFactor()
+                                    && distSlideY < displayMetrics.heightPixels / mSwipeOption.getHeightSwipeDistFactor()) {
                                 animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
                             }
                             else {
-                                if(!mSwipeDecor.getIsPutBackActive()) {
+                                if(!mSwipeOption.getIsPutBackActive()) {
                                     blockTouch();
                                 }
 
@@ -405,8 +401,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
 
                             int distanceMovedTop = layoutParamsTemp.topMargin - mOriginalTopMargin;
                             int distanceMovedLeft = layoutParamsTemp.leftMargin - mOriginalLeftMargin;
-                            mCallback.onAnimateView(distanceMovedLeft, distanceMovedTop, displayMetrics.widthPixels / mWidthSwipeDistFactor,
-                                    displayMetrics.heightPixels / mHeightSwipeDistFactor, SwipeViewBinder.this);
+                            mCallback.onAnimateView(distanceMovedLeft, distanceMovedTop, displayMetrics.widthPixels / mSwipeOption.getWidthSwipeDistFactor(),
+                                    displayMetrics.heightPixels / mSwipeOption.getHeightSwipeDistFactor(), SwipeViewBinder.this);
                         }
                         break;
                 }
@@ -438,17 +434,17 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                if(mSwipeDecor.getIsTouchSwipeLocked()){
-                    if(mSwipeDecor.getIsViewToRestoreOnTouchLock()){
-                        mSwipeDecor.setIsViewToRestoreOnTouchLock(false);
+                if(mSwipeOption.getIsTouchSwipeLocked()){
+                    if(mSwipeOption.getIsViewToRestoreOnTouchLock()){
+                        mSwipeOption.setIsViewToRestoreOnTouchLock(false);
                         animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
                     }
                     return true;
                 }
 
-                if(mSwipeDecor.getIsViewLocked()){
-                    if(mSwipeDecor.getIsViewToRestoredOnLock()){
-                        mSwipeDecor.setIsViewToRestoredOnLock(false);
+                if(mSwipeOption.getIsViewLocked()){
+                    if(mSwipeOption.getIsViewToRestoredOnLock()){
+                        mSwipeOption.setIsViewToRestoredOnLock(false);
                         animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
                     }
                     return true;
@@ -474,10 +470,10 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                         if(!resetDone) {
                             float distSlideX = x - dx;
                             distSlideX = distSlideX < 0 ? -distSlideX : distSlideX;
-                            if (distSlideX < displayMetrics.widthPixels / mWidthSwipeDistFactor) {
+                            if (distSlideX < displayMetrics.widthPixels / mSwipeOption.getWidthSwipeDistFactor()) {
                                 animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
                             } else {
-                                if(!mSwipeDecor.getIsPutBackActive()) {
+                                if(!mSwipeOption.getIsPutBackActive()) {
                                     blockTouch();
                                 }
 
@@ -510,8 +506,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                             layoutParamsTemp.leftMargin = (int) (x - dx);
                             v.setLayoutParams(layoutParamsTemp);
                             int distanceMoved = layoutParamsTemp.leftMargin - mOriginalLeftMargin;
-                            mCallback.onAnimateView(distanceMoved, 0, displayMetrics.widthPixels / mWidthSwipeDistFactor,
-                                    displayMetrics.heightPixels / mHeightSwipeDistFactor, SwipeViewBinder.this);
+                            mCallback.onAnimateView(distanceMoved, 0, displayMetrics.widthPixels / mSwipeOption.getWidthSwipeDistFactor(),
+                                    displayMetrics.heightPixels / mSwipeOption.getHeightSwipeDistFactor(), SwipeViewBinder.this);
                         }
                         break;
                 }
@@ -543,17 +539,17 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
             @Override
             public boolean onTouch(View v, MotionEvent event) {
 
-                if(mSwipeDecor.getIsTouchSwipeLocked()){
-                    if(mSwipeDecor.getIsViewToRestoreOnTouchLock()){
-                        mSwipeDecor.setIsViewToRestoreOnTouchLock(false);
+                if(mSwipeOption.getIsTouchSwipeLocked()){
+                    if(mSwipeOption.getIsViewToRestoreOnTouchLock()){
+                        mSwipeOption.setIsViewToRestoreOnTouchLock(false);
                         animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
                     }
                     return true;
                 }
 
-                if(mSwipeDecor.getIsViewLocked()){
-                    if(mSwipeDecor.getIsViewToRestoredOnLock()){
-                        mSwipeDecor.setIsViewToRestoredOnLock(false);
+                if(mSwipeOption.getIsViewLocked()){
+                    if(mSwipeOption.getIsViewToRestoredOnLock()){
+                        mSwipeOption.setIsViewToRestoredOnLock(false);
                         animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
                     }
                     return true;
@@ -579,10 +575,10 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                         if(!resetDone) {
                             float distSlideY = y - dy;
                             distSlideY = distSlideY < 0 ? -distSlideY : distSlideY;
-                            if (distSlideY < displayMetrics.heightPixels / mHeightSwipeDistFactor) {
+                            if (distSlideY < displayMetrics.heightPixels / mSwipeOption.getHeightSwipeDistFactor()) {
                                 animateSwipeRestore(v, mOriginalTopMargin, mOriginalLeftMargin, mSwipeType);
                             } else {
-                                if(!mSwipeDecor.getIsPutBackActive()) {
+                                if(!mSwipeOption.getIsPutBackActive()) {
                                     blockTouch();
                                 }
 
@@ -616,8 +612,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
                             v.setLayoutParams(layoutParamsTemp);
 
                             int distanceMoved = layoutParamsTemp.topMargin - mOriginalTopMargin;
-                            mCallback.onAnimateView(0, distanceMoved, displayMetrics.widthPixels / mWidthSwipeDistFactor,
-                                    displayMetrics.heightPixels / mHeightSwipeDistFactor, SwipeViewBinder.this);
+                            mCallback.onAnimateView(0, distanceMoved, displayMetrics.widthPixels / mSwipeOption.getWidthSwipeDistFactor(),
+                                    displayMetrics.heightPixels / mSwipeOption.getHeightSwipeDistFactor(), SwipeViewBinder.this);
                         }
                         break;
                 }
@@ -697,8 +693,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      * @param isSwipeIn
      */
     protected void doSwipe(boolean isSwipeIn){
-        if(mLayoutView != null && mViewRemoveAnimatorListener != null && !mSwipeDecor.getIsViewLocked()) {
-            if(!mSwipeDecor.getIsPutBackActive()) {
+        if(mLayoutView != null && mViewRemoveAnimatorListener != null && !mSwipeOption.getIsViewLocked()) {
+            if(!mSwipeOption.getIsPutBackActive()) {
               blockTouch();
             }
 
