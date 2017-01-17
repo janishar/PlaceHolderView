@@ -173,7 +173,7 @@ dependencies {
 ```
 # Dependency: It depends on the RecyclerView
 ```groovy
-    com.android.support:recyclerview-v7:24.+
+    com.android.support:recyclerview-v7:25.+
 ```
 
 # Proguard Note:
@@ -202,14 +202,6 @@ dependencies {
 
 # Recent Library: [`JPost`](https://github.com/janishar/JPost)
 #### `JPost` is a pubsub library based on massages over a channel. It's very efficient and much powerful than other pubsub libraries. It prevents memory leak and increases code control. Also, provide a mechanism to run code asynchronously.
-
-#### Why should you use this library
-1. In contrast to the existing pub-sub libraries, it hold the subscribers with weakreference. Thus it doesn't create memory leaks.
-2. Single message can be sent to selected subscribes. This avoids the problem of event getting received at undesirable places. Thus minimising the chances of abnormal application behaviour.
-3. The subscriber addition can be controlled by using private channels. It minimises the chances of adding subscribes by mistake to receive undesirable messages.
-4. It is a tiny library < 55kb . Thus not affecting the application overall size.
-5. It facilitates synchronous as well as asynchronous message delivery and processing.
-6. It provides a mechanism to run code asynchronously.
 
 # License
 
