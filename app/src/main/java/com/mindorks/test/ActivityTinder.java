@@ -1,24 +1,21 @@
 package com.mindorks.test;
 
-import android.graphics.Point;
 import android.os.Bundle;
-import android.os.CountDownTimer;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
+import android.util.Log;
 
 import com.mindorks.butterknifelite.ButterKnifeLite;
 import com.mindorks.butterknifelite.annotations.BindView;
 import com.mindorks.butterknifelite.annotations.OnClick;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
-import com.mindorks.placeholderview.annotations.Click;
-import com.mindorks.placeholderview.annotations.expand.Expand;
-import com.mindorks.test.swipe.SwipeCard;
+import com.mindorks.placeholderview.listeners.ItemRemovedListener;
 import com.mindorks.test.swipe.TinderCard;
 
 public class ActivityTinder extends AppCompatActivity {
+
+    private static final String TAG = "ActivityTinder";
 
     @BindView(R.id.swipeView)
     private SwipePlaceHolderView mSwipView;
@@ -35,6 +32,25 @@ public class ActivityTinder extends AppCompatActivity {
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         mSwipView.disableTouchSwipe();
+        mSwipView.addItemRemoveListener(new ItemRemovedListener() {
+
+            @Override
+            public void onItemRemoved(int count) {
+                Log.d(TAG, "onItemRemoved: " + count);
+                if(count == 0){
+                    mSwipView.addView(new TinderCard())
+                            .addView(new TinderCard())
+                            .addView(new TinderCard())
+                            .addView(new TinderCard())
+                            .addView(new TinderCard())
+                            .addView(new TinderCard())
+                            .addView(new TinderCard())
+                            .addView(new TinderCard())
+                            .addView(new TinderCard())
+                            .addView(new TinderCard());
+                }
+            }
+        });
         mSwipView.getBuilder()
 //                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_VERTICAL)
                 .setDisplayViewCount(3)

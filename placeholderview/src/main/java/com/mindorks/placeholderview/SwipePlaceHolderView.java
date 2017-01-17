@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import com.mindorks.placeholderview.listeners.ItemRemovedListener;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -40,6 +41,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
     private boolean mIsUndoEnabled;
     private Object mRestoreResolverOnUndo;
     private int mRestoreResolverPosition;
+    private ItemRemovedListener mItemRemovedListener;
 
     /**
      *
@@ -436,6 +438,9 @@ public class SwipePlaceHolderView extends FrameLayout implements
             mRestoreResolverPosition = position;
         }
         swipeViewBinder.unbind();
+        if(mItemRemovedListener != null){
+            mItemRemovedListener.onItemRemoved(mSwipeViewBinderList.size());
+        }
     }
 
     /**
@@ -624,6 +629,10 @@ public class SwipePlaceHolderView extends FrameLayout implements
                 resetViewOrientation(mRestoreResolverPosition + 1, mSwipeDecor);
             }
         }
+    }
+
+    public void addItemRemoveListener(ItemRemovedListener listener){
+        mItemRemovedListener = listener;
     }
 
     /**
