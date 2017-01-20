@@ -37,7 +37,10 @@ public class SwipePlaceHolderView extends FrameLayout implements
     private boolean mIsReverse = false;
     private SwipeDecor mSwipeDecor;
     private SwipeOption mSwipeOption;
+
+    // TODO: Make mIsBtnSwipeDone a AtomicBoolean, to make it thread safe.
     private boolean mIsBtnSwipeDone = true;
+
     private boolean mIsUndoEnabled;
     private Object mRestoreResolverOnUndo;
     private int mRestoreResolverPosition;

@@ -41,6 +41,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
     private View mSwipeOutMsgView;
     private SwipeDecor mSwipeDecor;
     private SwipePlaceHolderView.SwipeOption mSwipeOption;
+
+//    TODO: Make mHasInterceptedEvent a AtomicBoolean, to make it thread safe.
     private boolean mHasInterceptedEvent = false;
     private int mOriginalLeftMargin;
     private int mOriginalTopMargin;
