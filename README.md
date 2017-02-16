@@ -1,6 +1,6 @@
 #**PlaceHolderView**
 [ ![Download](https://api.bintray.com/packages/janishar/mindorks/placeholderview/images/download.svg) ](https://bintray.com/janishar/mindorks/placeholderview/_latestVersion)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PlaceHolderView-green.svg?style=true)](https://android-arsenal.com/details/1/4414)
+[![Mindorks](https://img.shields.io/badge/mindorks-placeholderview-blue.svg)](https://mindorks.com/open-source-projects)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
