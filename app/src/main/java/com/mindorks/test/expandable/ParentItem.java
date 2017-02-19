@@ -6,16 +6,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.Resolve;
+import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.placeholderview.annotations.expand.Collapse;
 import com.mindorks.placeholderview.annotations.expand.Expand;
 import com.mindorks.placeholderview.annotations.expand.Parent;
-import com.mindorks.placeholderview.annotations.Position;
-import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.expand.ParentPosition;
 import com.mindorks.placeholderview.annotations.expand.SingleTop;
-import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.placeholderview.annotations.expand.Toggle;
 import com.mindorks.test.R;
 
@@ -73,12 +71,12 @@ public class ParentItem {
     }
 
     @Expand
-    private void onExpand(){
+    private void onExpand() {
         itemIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_white_24dp));
     }
 
     @Collapse
-    private void onCollapse(){
+    private void onCollapse() {
         itemIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_keyboard_arrow_up_white_24dp));
     }
 }

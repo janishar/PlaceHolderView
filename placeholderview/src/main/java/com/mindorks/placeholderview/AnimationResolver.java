@@ -1,34 +1,29 @@
 package com.mindorks.placeholderview;
 
-import android.content.Context;
 import android.view.View;
 
 import com.mindorks.placeholderview.annotations.Animate;
-
-import java.lang.annotation.Annotation;
 
 /**
  * Created by janisharali on 20/08/16.
  */
 
 /**
- *
  * @param <T>
  * @param <V>
  */
 public class AnimationResolver<T, V extends View> {
 
     /**
-     *
      * @param deviceWidth
      * @param deviceHeight
      * @param resolver
      * @param view
      */
-    protected void bindAnimation(int deviceWidth, int deviceHeight,T resolver, V view){
+    protected void bindAnimation(int deviceWidth, int deviceHeight, T resolver, V view) {
         Animate animate = resolver.getClass().getAnnotation(Animate.class);
-        if(animate != null) {
-            switch (animate.value()){
+        if (animate != null) {
+            switch (animate.value()) {
                 case Animation.ENTER_LEFT_DESC:
                     Animation.itemAnimFromXDesc(view, deviceWidth, view.getTranslationX(), animate.factor(), animate.duration());
                     break;

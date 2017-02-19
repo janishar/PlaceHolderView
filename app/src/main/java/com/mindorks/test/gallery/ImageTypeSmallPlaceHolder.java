@@ -2,14 +2,11 @@ package com.mindorks.test.gallery;
 
 import android.content.Context;
 import android.support.v7.widget.LinearLayoutManager;
-import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
 import com.mindorks.placeholderview.Animation;
 import com.mindorks.placeholderview.PlaceHolderView;
 import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
@@ -44,7 +41,7 @@ public class ImageTypeSmallPlaceHolder {
                 .setItemViewCacheSize(10)
                 .setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
 
-        for(Image image : mImageList) {
+        for (Image image : mImageList) {
             mPlaceHolderView.addView(new ImageTypeSmall(mContext, mPlaceHolderView, image.getUrl()));
         }
     }

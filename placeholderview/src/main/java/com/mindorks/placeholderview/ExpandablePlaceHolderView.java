@@ -2,11 +2,7 @@ package com.mindorks.placeholderview;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.view.View;
-
-import java.util.ArrayList;
 
 /**
  * Created by janisharali on 18/08/16.
@@ -14,7 +10,6 @@ import java.util.ArrayList;
 public class ExpandablePlaceHolderView extends PlaceHolderView {
 
     /**
-     *
      * @param context
      */
     public ExpandablePlaceHolderView(Context context) {
@@ -23,7 +18,6 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
     }
 
     /**
-     *
      * @param context
      * @param attrs
      */
@@ -33,7 +27,6 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
     }
 
     /**
-     *
      * @param context
      * @param attrs
      * @param defStyle
@@ -44,7 +37,6 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
     }
 
     /**
-     *
      * @param context
      * @param viewAdapter
      * @param builder
@@ -55,7 +47,6 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
     }
 
     /**
-     *
      * @param parentResolver
      * @param childResolver
      * @param <T>
@@ -63,12 +54,11 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
      * @throws Resources.NotFoundException
      */
     public <T> PlaceHolderView addChildView(T parentResolver, T childResolver) throws Resources.NotFoundException {
-        ((ExpandableViewAdapter<T>)getViewAdapter()).addChildView(parentResolver, childResolver);
+        ((ExpandableViewAdapter<T>) getViewAdapter()).addChildView(parentResolver, childResolver);
         return this;
     }
 
     /**
-     *
      * @param parentPosition
      * @param childResolver
      * @param <T>
@@ -76,12 +66,11 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
      * @throws Resources.NotFoundException
      */
     public <T> PlaceHolderView addChildView(int parentPosition, T childResolver) throws Resources.NotFoundException {
-        ((ExpandableViewAdapter<T>)getViewAdapter()).addChildView(parentPosition, childResolver);
+        ((ExpandableViewAdapter<T>) getViewAdapter()).addChildView(parentPosition, childResolver);
         return this;
     }
 
     /**
-     *
      * @param position
      * @param viewResolver
      * @param <T>
@@ -95,7 +84,6 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
     }
 
     /**
-     *
      * @param resolverOld
      * @param resolverNew
      * @param <T>
@@ -109,7 +97,6 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
     }
 
     /**
-     *
      * @param resolverOld
      * @param resolverNew
      * @param <T>

@@ -41,7 +41,7 @@ public class ImageTypeSmall {
     }
 
     @LongClick(R.id.imageView)
-    private void onLongClick(){
+    private void onLongClick() {
         mPlaceHolderView.removeView(this);
     }
 

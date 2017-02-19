@@ -3,17 +3,12 @@ package com.mindorks.test;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ScrollView;
 
-import com.mindorks.butterknifelite.ButterKnifeLite;
-import com.mindorks.butterknifelite.annotations.BindView;
-import com.mindorks.butterknifelite.annotations.OnClick;
 import com.mindorks.placeholderview.SwipeDecor;
 import com.mindorks.placeholderview.SwipePlaceHolderView;
-import com.mindorks.test.swipe.TinderCard;
 import com.mindorks.test.swipe.TinderCard2;
 
-public class ActivityTinderSwipeInScroll extends AppCompatActivity implements TinderCard2.CardCallback{
+public class ActivityTinderSwipeInScroll extends AppCompatActivity implements TinderCard2.CardCallback {
 
     private SwipePlaceHolderView mSwipView;
 

@@ -37,7 +37,7 @@ public class ActivityTinder extends AppCompatActivity {
             @Override
             public void onItemRemoved(int count) {
                 Log.d(TAG, "onItemRemoved: " + count);
-                if(count == 0){
+                if (count == 0) {
                     mSwipView.addView(new TinderCard())
                             .addView(new TinderCard())
                             .addView(new TinderCard())
@@ -76,7 +76,7 @@ public class ActivityTinder extends AppCompatActivity {
                 .addView(new TinderCard())
                 .addView(new TinderCard())
                 .addView(new TinderCard());
-        new Thread(new Runnable(){
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
@@ -89,7 +89,7 @@ public class ActivityTinder extends AppCompatActivity {
 //                    mSwipView.lockViews();
 //                    Thread.currentThread().sleep(4000);
 //                    mSwipView.unlockViews();
-                }catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
@@ -97,17 +97,17 @@ public class ActivityTinder extends AppCompatActivity {
     }
 
     @OnClick(R.id.rejectBtn)
-    private void onRejectClick(){
+    private void onRejectClick() {
         mSwipView.doSwipe(false);
     }
 
     @OnClick(R.id.acceptBtn)
-    private void onAcceptClick(){
+    private void onAcceptClick() {
         mSwipView.doSwipe(true);
     }
 
     @OnClick(R.id.undoBtn)
-    private void onUndoClick(){
+    private void onUndoClick() {
         mSwipView.undoLastSwipe();
     }
 }

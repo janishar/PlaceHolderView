@@ -35,47 +35,48 @@ public class TinderCard2 {
     @View(R.id.locationNameTxt)
     private TextView locationNameTxt;
 
-    @Click(R.id.profileImageView)
-    private void onClick(){
-        Log.d("DEBUG", "profileImageView");
-    }
-
     public TinderCard2(CardCallback callback) {
         this.callback = callback;
     }
 
+    @Click(R.id.profileImageView)
+    private void onClick() {
+        Log.d("DEBUG", "profileImageView");
+    }
+
     @Resolve
-    private void onResolve(){
+    private void onResolve() {
         nameAgeTxt.setText("Name " + count++);
     }
 
     @SwipeOut
-    private void onSwipedOut(){
+    private void onSwipedOut() {
         callback.onSwipingEnd();
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState(){
+    private void onSwipeCancelState() {
         callback.onSwipingEnd();
     }
 
     @SwipeIn
-    private void onSwipeIn(){
+    private void onSwipeIn() {
         callback.onSwipingEnd();
     }
 
     @SwipeInState
-    private void onSwipeInState(){
+    private void onSwipeInState() {
         callback.onSwiping();
     }
 
     @SwipeOutState
-    private void onSwipeOutState(){
+    private void onSwipeOutState() {
         callback.onSwiping();
     }
 
-    public interface CardCallback{
+    public interface CardCallback {
         void onSwiping();
+
         void onSwipingEnd();
     }
 }

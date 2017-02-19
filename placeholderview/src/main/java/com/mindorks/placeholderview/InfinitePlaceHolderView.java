@@ -6,12 +6,9 @@ import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 
-import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.infinite.LoadMore;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
@@ -45,7 +42,7 @@ public class InfinitePlaceHolderView extends PlaceHolderView {
                     public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                         super.onScrolled(recyclerView, dx, dy);
                         LayoutManager layoutManager = recyclerView.getLayoutManager();
-                        if(layoutManager instanceof LinearLayoutManager) {
+                        if (layoutManager instanceof LinearLayoutManager) {
                             LinearLayoutManager linearLayoutManager = (LinearLayoutManager) layoutManager;
                             int totalItemCount = linearLayoutManager.getItemCount();
                             int lastVisibleItem = linearLayoutManager.findLastVisibleItemPosition();
@@ -68,18 +65,18 @@ public class InfinitePlaceHolderView extends PlaceHolderView {
         addOnScrollListener(mOnScrollListener);
     }
 
-    public <T>void setLoadMoreResolver(T loadMoreResolver) {
+    public <T> void setLoadMoreResolver(T loadMoreResolver) {
         this.mLoadMoreResolver = loadMoreResolver;
         mNoMoreToLoad = false;
         setLoadMoreListener();
     }
 
-    public void noMoreToLoad(){
+    public void noMoreToLoad() {
         mNoMoreToLoad = true;
         removeOnScrollListener(mOnScrollListener);
     }
 
-    public void loadingDone(){
+    public void loadingDone() {
         new Handler(Looper.getMainLooper()).post(new Runnable() {
             @Override
             public void run() {
@@ -89,10 +86,10 @@ public class InfinitePlaceHolderView extends PlaceHolderView {
         });
     }
 
-    private <T>void bindLoadMore(final T resolver){
-        for(final Method method : resolver.getClass().getDeclaredMethods()) {
+    private <T> void bindLoadMore(final T resolver) {
+        for (final Method method : resolver.getClass().getDeclaredMethods()) {
             LoadMore annotation = method.getAnnotation(LoadMore.class);
-            if(annotation != null) {
+            if (annotation != null) {
                 try {
                     method.setAccessible(true);
                     method.invoke(resolver);
