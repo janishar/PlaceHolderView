@@ -145,15 +145,15 @@ public class ImageTypeBig {
 #### The stack structure and type configurations are done using builder class
 
 ## Annotations(`SwipePlaceHolderView`)
- 1. `@SwipeIn`: It binds a method and calls it when a view is swiped in/accepted
- 2. `@SwipeOut`: It binds a method and calls it when a view is swiped out/rejected.
- 3. `@SwipeCancelState`: It binds a method and calls it when a card is put back in the stack/canceled.
- 4. `@SwipeInState`: It binds a method and pings it till a card is moving in the direction of swiping in/accepted
- 5. `@SwipeOutState`: It binds a method and pings it till a card is moving in the direction of swiping out/rejected
- 6. `@SwipeView`: It binds the android.view.View reference to the tinder view
- 7. `@SwipeBottomLeft`: It binds a method and pings it till a card is moving in the bottom left direction of swiping out/rejected
- 8. `@SwipeBottomRight`: It binds a method and pings it till a card is moving in the bottom right direction of swiping in/accepted
- 9. `@SwipeTopLeft`: It binds a method and pings it till a card is moving in the top left direction of swiping out/rejected
+1. `@SwipeIn`: It binds a method and calls it when a view is swiped in/accepted
+2. `@SwipeOut`: It binds a method and calls it when a view is swiped out/rejected.
+3. `@SwipeCancelState`: It binds a method and calls it when a card is put back in the stack/canceled.
+4. `@SwipeInState`: It binds a method and pings it till a card is moving in the direction of swiping in/accepted
+5. `@SwipeOutState`: It binds a method and pings it till a card is moving in the direction of swiping out/rejected
+6. `@SwipeView`: It binds the android.view.View reference to the tinder view
+7. `@SwipeBottomLeft`: It binds a method and pings it till a card is moving in the bottom left direction of swiping out/rejected
+8. `@SwipeBottomRight`: It binds a method and pings it till a card is moving in the bottom right direction of swiping in/accepted
+9. `@SwipeTopLeft`: It binds a method and pings it till a card is moving in the top left direction of swiping out/rejected
 10. `@SwipeTopRight`: It binds a method and pings it till a card is moving in the top left direction of swiping in/accepted
 
 # `InfinitePlaceHolderView`
