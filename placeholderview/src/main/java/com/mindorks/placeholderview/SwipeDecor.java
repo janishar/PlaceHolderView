@@ -2,8 +2,6 @@ package com.mindorks.placeholderview;
 
 import android.view.Gravity;
 
-import java.util.concurrent.atomic.AtomicBoolean;
-
 /**
  * Created by janisharali on 26/08/16.
  */
@@ -40,115 +38,89 @@ public class SwipeDecor {
         mAnimateScale = true;
         mSwipeInMsgLayoutId = PRIMITIVE_NULL;
         mSwipeOutMsgLayoutId = PRIMITIVE_NULL;
-        mViewGravity = Gravity.CENTER ;
-        mSwipeInMsgGravity = Gravity.CENTER ;
-        mSwipeOutMsgGravity = Gravity.CENTER ;
+        mViewGravity = Gravity.CENTER;
+        mSwipeInMsgGravity = Gravity.CENTER;
+        mSwipeOutMsgGravity = Gravity.CENTER;
         mSwipeDistToDisplayMsg = 30;
         mSwipeAnimTime = 200;
         mSwipeAnimFactor = 0.75f;
         mSwipeRotationAngle = 15;
     }
 
-    public SwipeDecor setViewWidth(int width){
-        mViewWidth = width;
-        return this;
-    }
-
-    public SwipeDecor setViewHeight(int height){
-        mViewHeight = height;
-        return this;
-    }
-
-    public SwipeDecor setViewGravity(int gravity){
-        mViewGravity = gravity;
+    /**
+     * @param animate
+     * @return
+     */
+    public SwipeDecor isAnimateScale(boolean animate) {
+        mAnimateScale = animate;
         return this;
     }
 
     /**
-     *
+     * @return
+     */
+    public int getPaddingTop() {
+        return mPaddingTop;
+    }
+
+    /**
      * @param padding
      * @return
      */
-    public SwipeDecor setPaddingTop(int padding){
+    public SwipeDecor setPaddingTop(int padding) {
         mPaddingTop = padding;
         return this;
     }
 
     /**
-     *
+     * @return
+     */
+    public int getPaddingLeft() {
+        return mPaddingLeft;
+    }
+
+    /**
      * @param padding
      * @return
      */
-    public SwipeDecor setPaddingLeft(int padding){
+    public SwipeDecor setPaddingLeft(int padding) {
         mPaddingLeft = padding;
         return this;
     }
 
-    public SwipeDecor setMarginLeft(int margin){
+    public int getMarginLeft() {
+        return mMarginLeft;
+    }
+
+    public SwipeDecor setMarginLeft(int margin) {
         mMarginLeft = margin;
         return this;
     }
 
-    public SwipeDecor setMarginTop(int margin){
+    public int getMarginTop() {
+        return mMarginTop;
+    }
+
+    public SwipeDecor setMarginTop(int margin) {
         mMarginTop = margin;
         return this;
     }
 
     /**
-     *
-     * @param layoutId
      * @return
      */
-    public SwipeDecor setSwipeInMsgLayoutId(int layoutId){
-        if(layoutId < 0){
-            layoutId = PRIMITIVE_NULL;
-        }
-        mSwipeInMsgLayoutId = layoutId;
-        return this;
+    public float getRelativeScale() {
+        return mRelativeScale;
     }
 
     /**
-     *
-     * @param layoutId
-     * @return
-     */
-    public SwipeDecor setSwipeOutMsgLayoutId(int layoutId){
-        if(layoutId < 0){
-            layoutId = PRIMITIVE_NULL;
-        }
-        mSwipeOutMsgLayoutId = layoutId;
-        return this;
-    }
-
-    /**
-     *
-     * @param gravity
-     * @return
-     */
-    public SwipeDecor setSwipeInMsgGravity(int gravity){
-        mSwipeInMsgGravity = gravity;
-        return this;
-    }
-
-    /**
-     *
-     * @param gravity
-     * @return
-     */
-    public SwipeDecor setSwipeOutMsgGravity(int gravity){
-        mSwipeOutMsgGravity = gravity;
-        return this;
-    }
-
-    /**
-     *
      * @param scale
      * @return
      */
-    public SwipeDecor setRelativeScale(float scale){
-        if(scale > 1){
+    public SwipeDecor setRelativeScale(float scale) {
+        if (scale > 1) {
             scale = 1;
-        }else if(scale < 0){
+        } else if (scale < 0) {
             scale = 1;
         }
         mRelativeScale = scale;
@@ -156,17 +128,90 @@ public class SwipeDecor {
     }
 
     /**
-     *
-     * @param animate
      * @return
      */
-    public SwipeDecor isAnimateScale(boolean animate){
-        mAnimateScale = animate;
+    public boolean isAnimateScale() {
+        return mAnimateScale;
+    }
+
+    /**
+     * @return
+     */
+    public int getSwipeInMsgLayoutId() {
+        return mSwipeInMsgLayoutId;
+    }
+
+    /**
+     * @param layoutId
+     * @return
+     */
+    public SwipeDecor setSwipeInMsgLayoutId(int layoutId) {
+        if (layoutId < 0) {
+            layoutId = PRIMITIVE_NULL;
+        }
+        mSwipeInMsgLayoutId = layoutId;
         return this;
     }
 
     /**
-     *
+     * @return
+     */
+    public int getSwipeOutMsgLayoutId() {
+        return mSwipeOutMsgLayoutId;
+    }
+
+    /**
+     * @param layoutId
+     * @return
+     */
+    public SwipeDecor setSwipeOutMsgLayoutId(int layoutId) {
+        if (layoutId < 0) {
+            layoutId = PRIMITIVE_NULL;
+        }
+        mSwipeOutMsgLayoutId = layoutId;
+        return this;
+    }
+
+    /**
+     * @return
+     */
+    public int getSwipeInMsgGravity() {
+        return mSwipeInMsgGravity;
+    }
+
+    /**
+     * @param gravity
+     * @return
+     */
+    public SwipeDecor setSwipeInMsgGravity(int gravity) {
+        mSwipeInMsgGravity = gravity;
+        return this;
+    }
+
+    /**
+     * @return
+     */
+    public int getSwipeOutMsgGravity() {
+        return mSwipeOutMsgGravity;
+    }
+
+    /**
+     * @param gravity
+     * @return
+     */
+    public SwipeDecor setSwipeOutMsgGravity(int gravity) {
+        mSwipeOutMsgGravity = gravity;
+        return this;
+    }
+
+    /**
+     * @return
+     */
+    public int getSwipeDistToDisplayMsg() {
+        return mSwipeDistToDisplayMsg;
+    }
+
+    /**
      * @param swipeDistToDisplayMsg
      * @return
      */
@@ -176,17 +221,13 @@ public class SwipeDecor {
     }
 
     /**
-     *
-     * @param millis
      * @return
      */
-    public SwipeDecor setSwipeAnimTime(int millis) {
-        mSwipeAnimTime = millis;
-        return this;
+    public float getSwipeAnimFactor() {
+        return mSwipeAnimFactor;
     }
 
     /**
-     *
      * @param factor
      * @return
      */
@@ -196,7 +237,29 @@ public class SwipeDecor {
     }
 
     /**
-     *
+     * @return
+     */
+    public int getSwipeAnimTime() {
+        return mSwipeAnimTime;
+    }
+
+    /**
+     * @param millis
+     * @return
+     */
+    public SwipeDecor setSwipeAnimTime(int millis) {
+        mSwipeAnimTime = millis;
+        return this;
+    }
+
+    /**
+     * @return
+     */
+    public int getSwipeRotationAngle() {
+        return mSwipeRotationAngle;
+    }
+
+    /**
      * @param degree
      * @return
      */
@@ -205,119 +268,30 @@ public class SwipeDecor {
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
-    public int getPaddingTop() {
-        return mPaddingTop;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getPaddingLeft() {
-        return mPaddingLeft;
-    }
-
-    public int getMarginLeft() {
-        return mMarginLeft;
-    }
-
-    public int getMarginTop() {
-        return mMarginTop;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public float getRelativeScale() {
-        return mRelativeScale;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public boolean isAnimateScale() {
-        return mAnimateScale;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getSwipeInMsgLayoutId() {
-        return mSwipeInMsgLayoutId;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getSwipeOutMsgLayoutId() {
-        return mSwipeOutMsgLayoutId;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getSwipeInMsgGravity() {
-        return mSwipeInMsgGravity;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getSwipeOutMsgGravity() {
-        return mSwipeOutMsgGravity;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getSwipeDistToDisplayMsg() {
-        return mSwipeDistToDisplayMsg;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public float getSwipeAnimFactor() {
-        return mSwipeAnimFactor;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getSwipeAnimTime() {
-        return mSwipeAnimTime;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public int getSwipeRotationAngle() {
-        return mSwipeRotationAngle;
-    }
-
     public int getViewWidth() {
         return mViewWidth;
+    }
+
+    public SwipeDecor setViewWidth(int width) {
+        mViewWidth = width;
+        return this;
     }
 
     public int getViewHeight() {
         return mViewHeight;
     }
 
+    public SwipeDecor setViewHeight(int height) {
+        mViewHeight = height;
+        return this;
+    }
+
     public int getViewGravity() {
         return mViewGravity;
+    }
+
+    public SwipeDecor setViewGravity(int gravity) {
+        mViewGravity = gravity;
+        return this;
     }
 }

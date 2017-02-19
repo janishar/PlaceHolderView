@@ -37,7 +37,7 @@ public class ActivityTinder extends AppCompatActivity {
             @Override
             public void onItemRemoved(int count) {
                 Log.d(TAG, "onItemRemoved: " + count);
-                if(count == 0){
+                if (count == 0) {
                     mSwipView.addView(new TinderCard())
                             .addView(new TinderCard())
                             .addView(new TinderCard())
@@ -52,15 +52,11 @@ public class ActivityTinder extends AppCompatActivity {
             }
         });
         mSwipView.getBuilder()
-//                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_VERTICAL)
                 .setDisplayViewCount(3)
                 .setIsUndoEnabled(true)
                 .setWidthSwipeDistFactor(15)
                 .setHeightSwipeDistFactor(20)
                 .setSwipeDecor(new SwipeDecor()
-//                        .setMarginTop(300)
-//                        .setMarginLeft(100)
-//                        .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)
                         .setRelativeScale(0.01f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
@@ -76,20 +72,13 @@ public class ActivityTinder extends AppCompatActivity {
                 .addView(new TinderCard())
                 .addView(new TinderCard())
                 .addView(new TinderCard());
-        new Thread(new Runnable(){
+        new Thread(new Runnable() {
             @Override
             public void run() {
                 try {
-                    Thread.currentThread().sleep(8000);
+                    Thread.sleep(8000);
                     mSwipView.enableTouchSwipe();
-//                    mSwipView.lockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.unlockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.lockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.unlockViews();
-                }catch (InterruptedException e){
+                } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
@@ -97,17 +86,17 @@ public class ActivityTinder extends AppCompatActivity {
     }
 
     @OnClick(R.id.rejectBtn)
-    private void onRejectClick(){
+    private void onRejectClick() {
         mSwipView.doSwipe(false);
     }
 
     @OnClick(R.id.acceptBtn)
-    private void onAcceptClick(){
+    private void onAcceptClick() {
         mSwipView.doSwipe(true);
     }
 
     @OnClick(R.id.undoBtn)
-    private void onUndoClick(){
+    private void onUndoClick() {
         mSwipView.undoLastSwipe();
     }
 }

@@ -1,13 +1,11 @@
 package com.mindorks.test;
 
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import android.view.animation.DecelerateInterpolator;
 
 import com.mindorks.butterknifelite.ButterKnifeLite;
 import com.mindorks.butterknifelite.annotations.BindView;
@@ -15,7 +13,6 @@ import com.mindorks.placeholderview.PlaceHolderView;
 import com.mindorks.test.drawer.DrawerHeader;
 import com.mindorks.test.drawer.DrawerMenuItem;
 import com.mindorks.test.gallery.ImageTypeBig;
-import com.mindorks.test.gallery.ImageTypeSmall;
 import com.mindorks.test.gallery.ImageTypeSmallPlaceHolder;
 
 import java.util.ArrayList;
@@ -45,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         setupGallery();
     }
 
-    private void setupDrawer(){
+    private void setupDrawer() {
         mDrawerView
                 .addView(new DrawerHeader())
                 .addView(new DrawerMenuItem(this.getApplicationContext()))
@@ -57,11 +54,12 @@ public class MainActivity extends AppCompatActivity {
                 .addView(new DrawerMenuItem(this.getApplicationContext()))
                 .addView(new DrawerMenuItem(this.getApplicationContext()));
 
-        ActionBarDrawerToggle  drawerToggle = new ActionBarDrawerToggle(this, mDrawer, mToolbar, R.string.open_drawer, R.string.close_drawer){
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, mDrawer, mToolbar, R.string.open_drawer, R.string.close_drawer) {
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
             }
+
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
@@ -72,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         drawerToggle.syncState();
     }
 
-    private void setupGallery(){
+    private void setupGallery() {
 
 //        mGalleryView.getBuilder()
 //                .setHasFixedSize(false)
@@ -85,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 
         List<Image> imageList = Utils.loadImages(this.getApplicationContext());
         List<Image> newImageList = new ArrayList<>();
-        for (int i = 0; i <  (imageList.size() > 10 ? 10 : imageList.size()); i++) {
+        for (int i = 0; i < (imageList.size() > 10 ? 10 : imageList.size()); i++) {
             newImageList.add(imageList.get(i));
         }
         mGalleryView.addView(new ImageTypeSmallPlaceHolder(this.getApplicationContext(), newImageList));

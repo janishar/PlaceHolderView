@@ -29,55 +29,55 @@ public class Utils {
 
     private static final String TAG = "Utils";
 
-    public static List<Image> loadImages(Context context){
-        try{
+    public static List<Image> loadImages(Context context) {
+        try {
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             JSONArray array = new JSONArray(loadJSONFromAsset(context, "images.json"));
             List<Image> imageList = new ArrayList<>();
-            for(int i=0;i<array.length();i++){
+            for (int i = 0; i < array.length(); i++) {
                 Image image = gson.fromJson(array.getString(i), Image.class);
                 imageList.add(image);
             }
             return imageList;
-        }catch (Exception e){
-            Log.d(TAG,"seedGames parseException " + e);
+        } catch (Exception e) {
+            Log.d(TAG, "seedGames parseException " + e);
             e.printStackTrace();
             return null;
         }
     }
 
-    public static List<Feed> loadFeeds(Context context){
-        try{
+    public static List<Feed> loadFeeds(Context context) {
+        try {
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             JSONArray array = new JSONArray(loadJSONFromAsset(context, "news.json"));
             List<Feed> feedList = new ArrayList<>();
-            for(int i=0;i<array.length();i++){
+            for (int i = 0; i < array.length(); i++) {
                 Feed feed = gson.fromJson(array.getString(i), Feed.class);
                 feedList.add(feed);
             }
             return feedList;
-        }catch (Exception e){
-            Log.d(TAG,"seedGames parseException " + e);
+        } catch (Exception e) {
+            Log.d(TAG, "seedGames parseException " + e);
             e.printStackTrace();
             return null;
         }
     }
 
-    public static List<InfiniteFeedInfo> loadInfiniteFeeds(Context context){
-        try{
+    public static List<InfiniteFeedInfo> loadInfiniteFeeds(Context context) {
+        try {
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             JSONArray array = new JSONArray(loadJSONFromAsset(context, "infinite_news.json"));
             List<InfiniteFeedInfo> feedList = new ArrayList<>();
-            for(int i=0;i<array.length();i++){
+            for (int i = 0; i < array.length(); i++) {
                 InfiniteFeedInfo feed = gson.fromJson(array.getString(i), InfiniteFeedInfo.class);
                 feedList.add(feed);
             }
             return feedList;
-        }catch (Exception e){
-            Log.d(TAG,"seedGames parseException " + e);
+        } catch (Exception e) {
+            Log.d(TAG, "seedGames parseException " + e);
             e.printStackTrace();
             return null;
         }
@@ -85,10 +85,10 @@ public class Utils {
 
     private static String loadJSONFromAsset(Context context, String jsonFileName) {
         String json = null;
-        InputStream is=null;
+        InputStream is = null;
         try {
             AssetManager manager = context.getAssets();
-            Log.d(TAG,"path "+jsonFileName);
+            Log.d(TAG, "path " + jsonFileName);
             is = manager.open(jsonFileName);
             int size = is.available();
             byte[] buffer = new byte[size];
@@ -102,17 +102,17 @@ public class Utils {
         return json;
     }
 
-    public static Point getNavigationBarSize(WindowManager windowManager){
+    public static Point getNavigationBarSize(WindowManager windowManager) {
         try {
-            if(Build.VERSION.SDK_INT > 16) {
+            if (Build.VERSION.SDK_INT > 16) {
                 Display display = windowManager.getDefaultDisplay();
                 DisplayMetrics displayMetrics = new DisplayMetrics();
                 display.getMetrics(displayMetrics);
                 return new Point(displayMetrics.widthPixels, displayMetrics.heightPixels);
-            }else{
+            } else {
                 return new Point(0, 0);
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return new Point(0, 0);
         }

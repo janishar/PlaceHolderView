@@ -5,19 +5,15 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mindorks.placeholderview.Animation;
 import com.mindorks.placeholderview.ExpandablePlaceHolderView;
-import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.placeholderview.annotations.expand.ChildPosition;
-import com.mindorks.placeholderview.annotations.expand.Parent;
 import com.mindorks.placeholderview.annotations.expand.ParentPosition;
 import com.mindorks.test.R;
 
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -52,7 +48,7 @@ public class ChildItem {
         mExpandablePlaceHolderView = expandablePlaceHolderView;
 
         childTitleList = new ArrayList<>();
-        List<String>titleList1 = new ArrayList<>();
+        List<String> titleList1 = new ArrayList<>();
         titleList1.add("a");
         titleList1.add("b");
         titleList1.add("c");
@@ -65,7 +61,7 @@ public class ChildItem {
         titleList1.add("e");
         childTitleList.add(titleList1);
 
-        List<String>titleList2 = new ArrayList<>();
+        List<String> titleList2 = new ArrayList<>();
         titleList2.add("aa");
         titleList2.add("bb");
         titleList2.add("cc");
@@ -79,7 +75,7 @@ public class ChildItem {
         titleList2.add("ee");
         childTitleList.add(titleList2);
 
-        List<String>titleList3 = new ArrayList<>();
+        List<String> titleList3 = new ArrayList<>();
         titleList3.add("aaa");
         titleList3.add("bbb");
         titleList3.add("ccc");
@@ -92,7 +88,7 @@ public class ChildItem {
         titleList3.add("eee");
         childTitleList.add(titleList3);
 
-        List<String>titleList4 = new ArrayList<>();
+        List<String> titleList4 = new ArrayList<>();
         titleList4.add("aaaa");
         titleList4.add("bbbb");
         titleList4.add("cccc");
@@ -125,7 +121,7 @@ public class ChildItem {
     }
 
     @Click(R.id.mainView)
-    private void onItemClick(){
+    private void onItemClick() {
 //        mExpandablePlaceHolderView.addChildView(mParentPosition, new ChildItem(mExpandablePlaceHolderView));
         mExpandablePlaceHolderView.removeView(this);
     }

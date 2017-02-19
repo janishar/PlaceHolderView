@@ -3,13 +3,11 @@ package com.mindorks.test.gallery;
 import android.content.Context;
 import android.util.Log;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.mindorks.placeholderview.Animation;
 import com.mindorks.placeholderview.PlaceHolderView;
 import com.mindorks.placeholderview.annotations.Animate;
-import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.NonReusable;
@@ -49,7 +47,7 @@ public class ImageTypeBig {
     }
 
     @LongClick(R.id.imageView)
-    private void onLongClick(){
+    private void onLongClick() {
         mPlaceHolderView.removeView(this);
     }
 

@@ -9,14 +9,10 @@ import android.support.v7.widget.Toolbar;
 import com.mindorks.butterknifelite.ButterKnifeLite;
 import com.mindorks.butterknifelite.annotations.BindView;
 import com.mindorks.placeholderview.ExpandablePlaceHolderView;
-import com.mindorks.test.expandable.ChildItem;
-import com.mindorks.test.expandable.ParentItem;
 import com.mindorks.test.feed.HeadingView;
 import com.mindorks.test.feed.InfoView;
 import com.mindorks.test.feed.data.Feed;
 import com.mindorks.test.feed.data.Info;
-
-import java.util.List;
 
 
 public class FeedTestActivity extends AppCompatActivity {
@@ -41,9 +37,9 @@ public class FeedTestActivity extends AppCompatActivity {
     @Override
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
-        for(Feed feed : Utils.loadFeeds(this.getApplicationContext())){
+        for (Feed feed : Utils.loadFeeds(this.getApplicationContext())) {
             mExpandableView.addView(new HeadingView(mContext, feed.getHeading()));
-            for(Info info : feed.getInfoList()){
+            for (Info info : feed.getInfoList()) {
                 mExpandableView.addView(new InfoView(mContext, info));
             }
         }

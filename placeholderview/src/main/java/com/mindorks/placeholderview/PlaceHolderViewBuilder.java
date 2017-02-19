@@ -16,7 +16,6 @@ public class PlaceHolderViewBuilder {
     private RecyclerView mRecyclerView;
 
     /**
-     *
      * @param context
      * @param recyclerView
      */
@@ -26,27 +25,25 @@ public class PlaceHolderViewBuilder {
     }
 
     /**
-     *
      * @param layoutManager
      * @param <T>
      * @return
      */
-    public <T extends RecyclerView.LayoutManager>PlaceHolderViewBuilder setLayoutManager(T layoutManager){
+    public <T extends RecyclerView.LayoutManager> PlaceHolderViewBuilder setLayoutManager(T layoutManager) {
         mLayoutManager = layoutManager;
         mRecyclerView.setLayoutManager(layoutManager);
         return this;
     }
 
     /**
-     *
      * @param layoutManager
      * @param spanSizeLookup
      * @param <T>
      * @return
      */
-    public <T extends GridLayoutManager>PlaceHolderViewBuilder setLayoutManager(T layoutManager, final int spanSizeLookup){
+    public <T extends GridLayoutManager> PlaceHolderViewBuilder setLayoutManager(T layoutManager, final int spanSizeLookup) {
         mLayoutManager = layoutManager;
-        ((GridLayoutManager)mLayoutManager).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
+        ((GridLayoutManager) mLayoutManager).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
             @Override
             public int getSpanSize(int position) {
                 return spanSizeLookup;
@@ -57,21 +54,19 @@ public class PlaceHolderViewBuilder {
     }
 
     /**
-     *
      * @param viewCacheSize
      * @return
      */
-    public PlaceHolderViewBuilder setItemViewCacheSize(int viewCacheSize){
+    public PlaceHolderViewBuilder setItemViewCacheSize(int viewCacheSize) {
         mItemViewCacheSize = viewCacheSize;
         return this;
     }
 
     /**
-     *
      * @param val
      * @return
      */
-    public PlaceHolderViewBuilder setHasFixedSize(boolean val){
+    public PlaceHolderViewBuilder setHasFixedSize(boolean val) {
         mHasFixedSize = val;
         return this;
     }

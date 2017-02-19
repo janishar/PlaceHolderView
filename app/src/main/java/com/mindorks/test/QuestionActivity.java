@@ -77,7 +77,7 @@ public class QuestionActivity extends AppCompatActivity {
         }
 
         @Resolve
-        private void onResolved(){
+        private void onResolved() {
             mTextView.setText(this.question);
         }
     }

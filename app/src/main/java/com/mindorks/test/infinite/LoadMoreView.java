@@ -8,7 +8,6 @@ import com.mindorks.placeholderview.InfinitePlaceHolderView;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.infinite.LoadMore;
 import com.mindorks.test.R;
-import com.mindorks.test.gallery.ImageTypeBig;
 
 import java.util.List;
 
@@ -29,12 +28,12 @@ public class LoadMoreView {
     }
 
     @LoadMore
-    private void onLoadMore(){
+    private void onLoadMore() {
         Log.d("DEBUG", "onLoadMore");
         new ForcedWaitedLoading();
     }
 
-    class ForcedWaitedLoading implements Runnable{
+    class ForcedWaitedLoading implements Runnable {
 
         public ForcedWaitedLoading() {
             new Thread(this).start();
@@ -45,7 +44,7 @@ public class LoadMoreView {
 
             try {
                 Thread.currentThread().sleep(2000);
-            }catch (InterruptedException e){
+            } catch (InterruptedException e) {
                 e.printStackTrace();
             }
             new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -58,7 +57,7 @@ public class LoadMoreView {
                          i++) {
                         mLoadMoreView.addView(new ItemView(mLoadMoreView.getContext(), mFeedList.get(i)));
 
-                        if(i == mFeedList.size() - 1){
+                        if (i == mFeedList.size() - 1) {
                             mLoadMoreView.noMoreToLoad();
                             break;
                         }

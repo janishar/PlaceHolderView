@@ -5,13 +5,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.mindorks.placeholderview.Animation;
-import com.mindorks.placeholderview.PlaceHolderView;
-import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.LongClick;
-import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Position;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
@@ -50,7 +45,7 @@ public class DrawerMenuItem {
 
     @Resolve
     private void onResolved() {
-        switch (mMenuPosition){
+        switch (mMenuPosition) {
             case DRAWER_MENU_ITEM_PROFILE:
                 itemNameTxt.setText("Profile");
                 itemIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_account_circle_black_18dp));
@@ -87,39 +82,39 @@ public class DrawerMenuItem {
     }
 
     @Click(R.id.mainView)
-    private void onMenuItemClick(){
-        switch (mMenuPosition){
+    private void onMenuItemClick() {
+        switch (mMenuPosition) {
             case DRAWER_MENU_ITEM_PROFILE:
                 Toast.makeText(mContext, "Profile", Toast.LENGTH_SHORT).show();
-                if(mCallBack != null)mCallBack.onProfileMenuSelected();
+                if (mCallBack != null) mCallBack.onProfileMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_REQUESTS:
                 Toast.makeText(mContext, "Requests", Toast.LENGTH_SHORT).show();
-                if(mCallBack != null)mCallBack.onRequestMenuSelected();
+                if (mCallBack != null) mCallBack.onRequestMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_GROUPS:
                 Toast.makeText(mContext, "Groups", Toast.LENGTH_SHORT).show();
-                if(mCallBack != null)mCallBack.onGroupsMenuSelected();
+                if (mCallBack != null) mCallBack.onGroupsMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_MESSAGE:
                 Toast.makeText(mContext, "Messages", Toast.LENGTH_SHORT).show();
-                if(mCallBack != null)mCallBack.onMessagesMenuSelected();
+                if (mCallBack != null) mCallBack.onMessagesMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_NOTIFICATIONS:
                 Toast.makeText(mContext, "Notifications", Toast.LENGTH_SHORT).show();
-                if(mCallBack != null)mCallBack.onNotificationsMenuSelected();
+                if (mCallBack != null) mCallBack.onNotificationsMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_SETTINGS:
                 Toast.makeText(mContext, "Settings", Toast.LENGTH_SHORT).show();
-                if(mCallBack != null)mCallBack.onSettingsMenuSelected();
+                if (mCallBack != null) mCallBack.onSettingsMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_TERMS:
                 Toast.makeText(mContext, "Terms", Toast.LENGTH_SHORT).show();
-                if(mCallBack != null)mCallBack.onTermsMenuSelected();
+                if (mCallBack != null) mCallBack.onTermsMenuSelected();
                 break;
             case DRAWER_MENU_ITEM_LOGOUT:
                 Toast.makeText(mContext, "Logout", Toast.LENGTH_SHORT).show();
-                if(mCallBack != null)mCallBack.onLogoutMenuSelected();
+                if (mCallBack != null) mCallBack.onLogoutMenuSelected();
                 break;
         }
     }
@@ -128,14 +123,21 @@ public class DrawerMenuItem {
         mCallBack = callBack;
     }
 
-    public interface DrawerCallBack{
+    public interface DrawerCallBack {
         void onProfileMenuSelected();
+
         void onRequestMenuSelected();
+
         void onGroupsMenuSelected();
+
         void onMessagesMenuSelected();
+
         void onNotificationsMenuSelected();
+
         void onSettingsMenuSelected();
+
         void onTermsMenuSelected();
+
         void onLogoutMenuSelected();
     }
 }

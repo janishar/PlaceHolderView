@@ -14,6 +14,8 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 public @interface Animate {
     int value() default Animation.ENTER_LEFT_DESC;
+
     int duration() default Animation.ANIM_DURATION;
+
     float factor() default Animation.ANIM_INTERPOLATION_FACTOR;
 }

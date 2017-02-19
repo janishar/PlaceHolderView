@@ -11,10 +11,7 @@ import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.placeholderview.annotations.expand.ChildPosition;
 import com.mindorks.placeholderview.annotations.expand.ParentPosition;
 import com.mindorks.test.R;
-import com.mindorks.test.feed.data.Feed;
 import com.mindorks.test.feed.data.Info;
-
-import java.util.List;
 
 /**
  * Created by janisharali on 24/08/16.

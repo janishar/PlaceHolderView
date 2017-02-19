@@ -14,16 +14,14 @@ public class SmoothLinearLayoutManager extends LinearLayoutManager {
     private int mPreloadSize = 0;
 
     /**
-     *
      * @param context
      */
-    public SmoothLinearLayoutManager(Context context){
+    public SmoothLinearLayoutManager(Context context) {
         super(context, LinearLayoutManager.VERTICAL, false);
         mContext = context;
     }
 
     /**
-     *
      * @param context
      * @param orientation
      * @param reverseLayout
@@ -35,7 +33,6 @@ public class SmoothLinearLayoutManager extends LinearLayoutManager {
     }
 
     /**
-     *
      * @param context
      * @param attrs
      * @param defStyleAttr
@@ -48,7 +45,6 @@ public class SmoothLinearLayoutManager extends LinearLayoutManager {
     }
 
     /**
-     *
      * @param state
      * @return
      */
