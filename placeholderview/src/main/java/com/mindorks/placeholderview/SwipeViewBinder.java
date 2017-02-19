@@ -5,6 +5,7 @@ import android.animation.ValueAnimator;
 import android.graphics.PointF;
 import android.os.CountDownTimer;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewPropertyAnimator;
@@ -12,16 +13,21 @@ import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 
+import com.mindorks.placeholderview.annotations.swipe.SwipeBottomLeft;
+import com.mindorks.placeholderview.annotations.swipe.SwipeBottomRight;
 import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
 import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
+import com.mindorks.placeholderview.annotations.swipe.SwipeTopLeft;
+import com.mindorks.placeholderview.annotations.swipe.SwipeTopRight;
 import com.mindorks.placeholderview.annotations.swipe.SwipeView;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.Locale;
 
 import static android.view.View.VISIBLE;
 
@@ -116,6 +122,70 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V> 
     private void bindSwipeIn(final T resolver) {
         for (final Method method : resolver.getClass().getDeclaredMethods()) {
             SwipeIn annotation = method.getAnnotation(SwipeIn.class);
+            if (annotation != null) {
+                try {
+                    method.setAccessible(true);
+                    method.invoke(resolver);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void bindSwipeTopLeft(final T resolver) {
+        for (final Method method : resolver.getClass().getDeclaredMethods()) {
+            SwipeTopLeft annotation = method.getAnnotation(SwipeTopLeft.class);
+            if (annotation != null) {
+                try {
+                    method.setAccessible(true);
+                    method.invoke(resolver);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void bindSwipeTopRight(final T resolver) {
+        for (final Method method : resolver.getClass().getDeclaredMethods()) {
+            SwipeTopRight annotation = method.getAnnotation(SwipeTopRight.class);
+            if (annotation != null) {
+                try {
+                    method.setAccessible(true);
+                    method.invoke(resolver);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void bindSwipeBottomLeft(final T resolver) {
+        for (final Method method : resolver.getClass().getDeclaredMethods()) {
+            SwipeBottomLeft annotation = method.getAnnotation(SwipeBottomLeft.class);
+            if (annotation != null) {
+                try {
+                    method.setAccessible(true);
+                    method.invoke(resolver);
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    private void bindSwipeBottomRight(final T resolver) {
+        for (final Method method : resolver.getClass().getDeclaredMethods()) {
+            SwipeBottomRight annotation = method.getAnnotation(SwipeBottomRight.class);
             if (annotation != null) {
                 try {
                     method.setAccessible(true);
@@ -368,19 +438,23 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V> 
                                 if (pointerCurrentPoint.x >= pointerStartingPoint.x
                                         && pointerCurrentPoint.y >= pointerStartingPoint.y) {
                                     bindSwipeIn(getResolver());
+                                    bindSwipeBottomRight(getResolver());
                                 } else if (pointerCurrentPoint.x > pointerStartingPoint.x
                                         && pointerCurrentPoint.y < pointerStartingPoint.y) {
                                     transY = -v.getHeight();
                                     bindSwipeIn(getResolver());
+                                    bindSwipeTopRight(getResolver());
                                 } else if (pointerCurrentPoint.x < pointerStartingPoint.x
                                         && pointerCurrentPoint.y >= pointerStartingPoint.y) {
                                     transX = -v.getWidth();
                                     bindSwipeOut(getResolver());
+                                    bindSwipeBottomLeft(getResolver());
                                 } else if (pointerCurrentPoint.x <= pointerStartingPoint.x
                                         && pointerCurrentPoint.y < pointerStartingPoint.y) {
                                     transY = -v.getHeight();
                                     transX = -v.getWidth();
                                     bindSwipeOut(getResolver());
+                                    bindSwipeTopLeft(getResolver());
                                 }
 
                                 view.animate()
@@ -734,13 +808,16 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V> 
 
             float transX = displayMetrics.widthPixels;
             float transY = displayMetrics.heightPixels;
+
             switch (mSwipeType) {
                 case SwipePlaceHolderView.SWIPE_TYPE_DEFAULT:
                     if (isSwipeIn) {
                         bindSwipeIn(getResolver());
+                        bindSwipeBottomRight(getResolver());
                         animator.rotation(-mSwipeDecor.getSwipeRotationAngle());
                     } else {
                         bindSwipeOut(getResolver());
+                        bindSwipeBottomLeft(getResolver());
                         transX = -mLayoutView.getWidth();
                         animator.rotation(mSwipeDecor.getSwipeRotationAngle());
                     }

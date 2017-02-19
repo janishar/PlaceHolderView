@@ -52,15 +52,11 @@ public class ActivityTinder extends AppCompatActivity {
             }
         });
         mSwipView.getBuilder()
-//                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_VERTICAL)
                 .setDisplayViewCount(3)
                 .setIsUndoEnabled(true)
                 .setWidthSwipeDistFactor(15)
                 .setHeightSwipeDistFactor(20)
                 .setSwipeDecor(new SwipeDecor()
-//                        .setMarginTop(300)
-//                        .setMarginLeft(100)
-//                        .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)
                         .setRelativeScale(0.01f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
@@ -80,15 +76,8 @@ public class ActivityTinder extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Thread.currentThread().sleep(8000);
+                    Thread.sleep(8000);
                     mSwipView.enableTouchSwipe();
-//                    mSwipView.lockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.unlockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.lockViews();
-//                    Thread.currentThread().sleep(4000);
-//                    mSwipView.unlockViews();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
