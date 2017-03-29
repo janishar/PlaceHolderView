@@ -1,5 +1,6 @@
-#**PlaceHolderView**
-[ ![Download](https://api.bintray.com/packages/janishar/mindorks/placeholderview/images/download.svg) ](https://bintray.com/janishar/mindorks/placeholderview/_latestVersion)
+**PlaceHolderView**
+<!---Change the img.shields.io badge with https://api.bintray.com/packages/janishar/mindorks/placeholderview/images/download.svg once the bintray badge is fixed --->
+[![Download](https://img.shields.io/badge/placeholderview-0.6.2-brightgreen.svg)](https://bintray.com/janishar/mindorks/placeholderview/_latestVersion)
 [![Mindorks](https://img.shields.io/badge/mindorks-placeholderview-blue.svg)](https://mindorks.com/open-source-projects)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
@@ -168,7 +169,7 @@ public class ImageTypeBig {
 # Gradle
 ```groovy
 dependencies {
-    compile 'com.mindorks:placeholderview:0.6.1'
+    compile 'com.mindorks:placeholderview:0.6.2'
 }
 ```
 # Dependency: It depends on the RecyclerView
