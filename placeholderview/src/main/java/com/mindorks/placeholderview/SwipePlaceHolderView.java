@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewConfiguration;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+
 import com.mindorks.placeholderview.listeners.ItemRemovedListener;
 
 import java.util.ArrayList;
@@ -636,6 +637,17 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
     public void addItemRemoveListener(ItemRemovedListener listener){
         mItemRemovedListener = listener;
+    }
+
+    /**
+     * @return the list containing the view objects added into the swipe view
+     */
+    public List<Object> getAllResolvers() {
+        List<Object> resolverList = new ArrayList<>();
+        for (SwipeViewBinder<Object, FrameView> binder : mSwipeViewBinderList) {
+            resolverList.add(binder.getResolver());
+        }
+        return resolverList;
     }
 
     /**

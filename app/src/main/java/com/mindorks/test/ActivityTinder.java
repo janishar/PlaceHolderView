@@ -80,7 +80,7 @@ public class ActivityTinder extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    Thread.currentThread().sleep(8000);
+                    Thread.sleep(8000);
                     mSwipView.enableTouchSwipe();
 //                    mSwipView.lockViews();
 //                    Thread.currentThread().sleep(4000);
