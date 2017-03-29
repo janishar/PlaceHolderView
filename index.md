@@ -1,6 +1,7 @@
-#**PlaceHolderView**
-[ ![Download](https://api.bintray.com/packages/janishar/mindorks/placeholderview/images/download.svg) ](https://bintray.com/janishar/mindorks/placeholderview/_latestVersion)
-[![Android Arsenal](https://img.shields.io/badge/Android%20Arsenal-PlaceHolderView-green.svg?style=true)](https://android-arsenal.com/details/1/4414)
+**PlaceHolderView**
+<!---Change the img.shields.io badge with https://api.bintray.com/packages/janishar/mindorks/placeholderview/images/download.svg once the bintray badge is fixed --->
+[![Download](https://img.shields.io/badge/placeholderview-0.6.2-brightgreen.svg)](https://bintray.com/janishar/mindorks/placeholderview/_latestVersion)
+[![Mindorks](https://img.shields.io/badge/mindorks-placeholderview-blue.svg)](https://mindorks.com/open-source-projects)
 [![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://opensource.org/licenses/Apache-2.0)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
@@ -168,12 +169,12 @@ public class ImageTypeBig {
 # Gradle
 ```groovy
 dependencies {
-    compile 'com.mindorks:placeholderview:0.5.2'
+    compile 'com.mindorks:placeholderview:0.6.2'
 }
 ```
 # Dependency: It depends on the RecyclerView
 ```groovy
-    com.android.support:recyclerview-v7:24.+
+    com.android.support:recyclerview-v7:25.+
 ```
 
 # Proguard Note:
@@ -203,14 +204,6 @@ dependencies {
 # Recent Library: [`JPost`](https://github.com/janishar/JPost)
 #### `JPost` is a pubsub library based on massages over a channel. It's very efficient and much powerful than other pubsub libraries. It prevents memory leak and increases code control. Also, provide a mechanism to run code asynchronously.
 
-#### Why should you use this library
-1. In contrast to the existing pub-sub libraries, it hold the subscribers with weakreference. Thus it doesn't create memory leaks.
-2. Single message can be sent to selected subscribes. This avoids the problem of event getting received at undesirable places. Thus minimising the chances of abnormal application behaviour.
-3. The subscriber addition can be controlled by using private channels. It minimises the chances of adding subscribes by mistake to receive undesirable messages.
-4. It is a tiny library < 55kb . Thus not affecting the application overall size.
-5. It facilitates synchronous as well as asynchronous message delivery and processing.
-6. It provides a mechanism to run code asynchronously.
-
 # License
 
 ```
@@ -229,4 +222,3 @@ dependencies {
    limitations under the License
 
 ```
-
