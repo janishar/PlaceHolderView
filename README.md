@@ -56,19 +56,19 @@ public class ImageTypeBig {
     @View(R.id.imageView)
     private ImageView imageView;
 
-    private String mUlr;
+    private String mUrl;
     private Context mContext;
     private PlaceHolderView mPlaceHolderView;
 
-    public ImageTypeBig(Context context, PlaceHolderView placeHolderView, String ulr) {
+    public ImageTypeBig(Context context, PlaceHolderView placeHolderView, String url) {
         mContext = context;
         mPlaceHolderView = placeHolderView;
-        mUlr = ulr;
+        mUrl = url;
     }
 
     @Resolve
     private void onResolved() {
-        Glide.with(mContext).load(mUlr).into(imageView);
+        Glide.with(mContext).load(mUrl).into(imageView);
     }
 
     @LongClick(R.id.imageView)
