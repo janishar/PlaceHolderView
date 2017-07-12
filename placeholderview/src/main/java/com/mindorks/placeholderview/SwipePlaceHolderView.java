@@ -44,7 +44,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
     private boolean mIsUndoEnabled;
     private Object mRestoreResolverOnUndo;
-    private int mRestoreResolverPosition;
+    private int mRestoreResolverLastPosition;
     private ItemRemovedListener mItemRemovedListener;
 
     /**
@@ -439,7 +439,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }
         if(mIsUndoEnabled) {
             mRestoreResolverOnUndo = swipeViewBinder.getResolver();
-            mRestoreResolverPosition = position;
+            mRestoreResolverLastPosition = position;
         }
         swipeViewBinder.unbind();
         if(mItemRemovedListener != null){
@@ -618,9 +618,8 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
     public void undoLastSwipe(){
         if(mIsUndoEnabled && mRestoreResolverOnUndo != null){
-            if(mRestoreResolverPosition >= 0 && mRestoreResolverPosition >= mDisplayViewCount - 1){
-                mSwipeViewBinderList.remove(mRestoreResolverPosition);
-                removeViewAt(mRestoreResolverPosition);
+            if (mRestoreResolverLastPosition >= 0 && mRestoreResolverLastPosition >= mDisplayViewCount - 1) {
+                removeViewAt(mRestoreResolverLastPosition);
             }
             addView(mRestoreResolverOnUndo, 0);
             mRestoreResolverOnUndo = null;
@@ -631,10 +630,10 @@ public class SwipePlaceHolderView extends FrameLayout implements
                     lowerCard.blockTouch();
                 }
             }
-            if(mRestoreResolverPosition >= 0 && mRestoreResolverPosition >= mDisplayViewCount - 1) {
-                resetViewOrientation(mRestoreResolverPosition, mSwipeDecor);
+            if (mRestoreResolverLastPosition >= 0 && mRestoreResolverLastPosition >= mDisplayViewCount - 1) {
+                resetViewOrientation(mRestoreResolverLastPosition, mSwipeDecor);
             }else{
-                resetViewOrientation(mRestoreResolverPosition + 1, mSwipeDecor);
+                resetViewOrientation(mRestoreResolverLastPosition + 1, mSwipeDecor);
             }
         }
     }
