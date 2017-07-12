@@ -625,7 +625,11 @@ public class SwipePlaceHolderView extends FrameLayout implements
             addView(mRestoreResolverOnUndo, 0);
             mRestoreResolverOnUndo = null;
             if(mSwipeViewBinderList.size() > 1){
-                mSwipeViewBinderList.get(1).blockTouch();
+                SwipeViewBinder<Object, FrameView> lowerCard = mSwipeViewBinderList.get(1);
+                //for condition where only one card is in the display
+                if (lowerCard.getLayoutView() != null) {
+                    lowerCard.blockTouch();
+                }
             }
             if(mRestoreResolverPosition >= 0 && mRestoreResolverPosition >= mDisplayViewCount - 1) {
                 resetViewOrientation(mRestoreResolverPosition, mSwipeDecor);
