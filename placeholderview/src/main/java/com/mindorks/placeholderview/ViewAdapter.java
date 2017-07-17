@@ -216,5 +216,6 @@ public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
             viewBinder.unbind();
         }
         mViewBinderList.clear();
+        notifyDataSetChanged();
     }
 }
