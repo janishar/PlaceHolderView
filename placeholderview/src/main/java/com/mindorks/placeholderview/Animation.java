@@ -1,6 +1,5 @@
 package com.mindorks.placeholderview;
 
-import android.animation.TimeInterpolator;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;

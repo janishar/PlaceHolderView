@@ -1,7 +1,6 @@
 package com.mindorks.placeholderview;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.os.Build;
 
 /**

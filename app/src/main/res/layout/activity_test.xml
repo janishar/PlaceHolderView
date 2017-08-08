@@ -1,11 +1,22 @@
-<LinearLayout
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:orientation="vertical">
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar_home"/>
+
+    <Button
+        android:id="@+id/collapse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Collapse Random" />
+
+    <Button
+        android:id="@+id/expand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Expand Random" />
     <com.mindorks.placeholderview.ExpandablePlaceHolderView
         android:id="@+id/expandableView"
         android:layout_width="match_parent"

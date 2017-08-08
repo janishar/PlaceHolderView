@@ -1,7 +1,5 @@
 package com.mindorks.placeholderview;
 
-import android.view.View;
-
 /**
  * Created by janisharali on 26/08/16.
  */

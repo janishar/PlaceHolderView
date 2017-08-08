@@ -2,10 +2,7 @@ package com.mindorks.placeholderview;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -258,5 +255,24 @@ public class ExpandableViewAdapter<T> extends ViewAdapter<T>
             }
         }
         return null;
+    }
+
+    protected ExpandableViewBinder<T, View> getParentBinderAtPosition(int position) {
+
+        ExpandableViewBinder<T, View> parentBinder = null;
+
+        for (ViewBinder<T, View> viewBinder : getViewBinderList()) {
+
+            ExpandableViewBinder<T, View> expandableViewBinder =
+                    (ExpandableViewBinder<T, View>) viewBinder;
+
+            if (position >= 0
+                    && expandableViewBinder.isParent()
+                    && expandableViewBinder.getParentPosition() == position) {
+                parentBinder = expandableViewBinder;
+                break;
+            }
+        }
+        return parentBinder;
     }
 }

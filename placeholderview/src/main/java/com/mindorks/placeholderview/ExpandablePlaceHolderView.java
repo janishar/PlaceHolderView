@@ -2,11 +2,8 @@ package com.mindorks.placeholderview;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 import android.view.View;
-
-import java.util.ArrayList;
 
 /**
  * Created by janisharali on 18/08/16.
@@ -120,5 +117,55 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
     @Override
     public <T> PlaceHolderView addViewAfter(T resolverOld, T resolverNew) throws Resources.NotFoundException {
         return super.addViewAfter(resolverOld, resolverNew);
+    }
+
+    public <T> void expand(T resolver) throws Resources.NotFoundException {
+        toggle(resolver, true);
+    }
+
+    public void expand(int position) throws Resources.NotFoundException {
+        toggle(position, true);
+    }
+
+    public <T> void collapse(T resolver) throws Resources.NotFoundException {
+        toggle(resolver, false);
+    }
+
+    public void collapse(int position) throws Resources.NotFoundException {
+        toggle(position, false);
+    }
+
+    protected <T> void toggle(T resolver, boolean isToExpand) throws Resources.NotFoundException {
+        ExpandableViewBinder<T, View> binder = ((ExpandableViewAdapter<T>) getViewAdapter())
+                .getBinderForResolver(resolver);
+
+        if (resolver == null) {
+            throw new Resources.NotFoundException(
+                    "Parent view don't exists in the ExpandablePlaceHolderView");
+        }
+
+        if (isToExpand) {
+            binder.expand();
+        } else {
+            binder.collapse();
+        }
+    }
+
+    protected void toggle(int position, boolean isToExpand) throws Resources.NotFoundException {
+
+        ExpandableViewBinder<Object, View> binder =
+                ((ExpandableViewAdapter<Object>) getViewAdapter())
+                        .getParentBinderAtPosition(position);
+
+        if (binder == null) {
+            throw new Resources.NotFoundException(
+                    "Parent view don't exists in the ExpandablePlaceHolderView");
+        }
+
+        if (isToExpand) {
+            binder.expand();
+        } else {
+            binder.collapse();
+        }
     }
 }

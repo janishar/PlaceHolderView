@@ -10,7 +10,6 @@ import com.mindorks.placeholderview.annotations.expand.ParentPosition;
 import com.mindorks.placeholderview.annotations.expand.SingleTop;
 import com.mindorks.placeholderview.annotations.expand.Toggle;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -234,15 +233,6 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
 
     /**
      *
-     * @param <T>
-     */
-    protected interface ExpansionCallback<T>{
-        void onExpand(ExpandableViewBinder<T, View> parentBinder);
-        void onCollapse(ExpandableViewBinder<T, View> parentBinder);
-    }
-
-    /**
-     *
      */
     protected void collapse(){
         if(isParent && mCallback != null && isExpanded){
@@ -317,5 +307,14 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
      */
     protected void setParentViewBinder(ExpandableViewBinder<T, V> mParentViewBinder) {
         this.mParentViewBinder = mParentViewBinder;
+    }
+
+    /**
+     * @param <T>
+     */
+    protected interface ExpansionCallback<T> {
+        void onExpand(ExpandableViewBinder<T, View> parentBinder);
+
+        void onCollapse(ExpandableViewBinder<T, View> parentBinder);
     }
 }

@@ -1,11 +1,8 @@
 package com.mindorks.placeholderview;
 
-import android.content.Context;
 import android.view.View;
 
 import com.mindorks.placeholderview.annotations.Animate;
-
-import java.lang.annotation.Annotation;
 
 /**
  * Created by janisharali on 20/08/16.

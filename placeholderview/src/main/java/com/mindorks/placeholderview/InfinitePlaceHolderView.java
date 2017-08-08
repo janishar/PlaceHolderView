@@ -6,12 +6,9 @@ import android.os.Looper;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
-import android.view.LayoutInflater;
 
-import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.infinite.LoadMore;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
