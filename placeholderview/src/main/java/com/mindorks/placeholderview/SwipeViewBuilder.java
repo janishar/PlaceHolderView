@@ -3,15 +3,15 @@ package com.mindorks.placeholderview;
 /**
  * Created by janisharali on 26/08/16.
  */
-public class SwipeViewBuilder {
+public class SwipeViewBuilder<S extends SwipePlaceHolderView> {
 
-    private SwipePlaceHolderView mSwipePlaceHolderView;
+    protected S mSwipePlaceHolderView;
 
     /**
      *
      * @param swipePlaceHolderView
      */
-    public SwipeViewBuilder(SwipePlaceHolderView swipePlaceHolderView) {
+    public SwipeViewBuilder(S swipePlaceHolderView) {
         mSwipePlaceHolderView = swipePlaceHolderView;
     }
 
@@ -94,5 +94,9 @@ public class SwipeViewBuilder {
     public SwipeViewBuilder setIsUndoEnabled(boolean enabled) {
         mSwipePlaceHolderView.setIsUndoEnabled(enabled);
         return this;
+    }
+
+    public S getSwipePlaceHolderView() {
+        return mSwipePlaceHolderView;
     }
 }

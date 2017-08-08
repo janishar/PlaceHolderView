@@ -28,7 +28,11 @@ import static android.view.View.VISIBLE;
 /**
  * Created by janisharali on 26/08/16.
  */
-public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
+public class SwipeViewBinder<
+        T,
+        V extends FrameLayout,
+        P extends SwipePlaceHolderView.SwipeOption,
+        Q extends SwipeDecor> extends ViewBinder<T, V> {
 
     private V mLayoutView;
     private SwipeCallback mCallback;
@@ -38,8 +42,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
     private int mSwipeType = SwipePlaceHolderView.SWIPE_TYPE_DEFAULT;
     private View mSwipeInMsgView;
     private View mSwipeOutMsgView;
-    private SwipeDecor mSwipeDecor;
-    private SwipePlaceHolderView.SwipeOption mSwipeOption;
+    private P mSwipeOption;
+    private Q mSwipeDecor;
 
 //    TODO: Make mHasInterceptedEvent a AtomicBoolean, to make it thread safe.
     private boolean mHasInterceptedEvent = false;
@@ -64,8 +68,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      * @param decor
      * @param callback
      */
-    protected void bindView(V promptsView, int position, int swipeType, SwipeDecor decor,
-                            SwipePlaceHolderView.SwipeOption swipeOption, SwipeCallback callback) {
+    protected void bindView(V promptsView, int position, int swipeType, Q decor,
+                            P swipeOption, SwipeCallback callback) {
         mLayoutView = promptsView;
         mSwipeType = swipeType;
         mSwipeOption = swipeOption;
@@ -97,7 +101,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         }
     }
 
-    private void bindSwipeView(V promptsView){
+    protected void bindSwipeView(V promptsView) {
         T resolver = getResolver();
         for(final Field field : resolver.getClass().getDeclaredFields()) {
             SwipeView annotation = field.getAnnotation(SwipeView.class);
@@ -116,7 +120,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      *
      * @param resolver
      */
-    private void bindSwipeIn(final T resolver){
+    protected void bindSwipeIn(final T resolver) {
         for(final Method method : resolver.getClass().getDeclaredMethods()) {
             SwipeIn annotation = method.getAnnotation(SwipeIn.class);
             if(annotation != null) {
@@ -136,7 +140,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      *
      * @param resolver
      */
-    private void bindSwipeOut(final T resolver){
+    protected void bindSwipeOut(final T resolver) {
         for(final Method method : resolver.getClass().getDeclaredMethods()) {
             SwipeOut annotation = method.getAnnotation(SwipeOut.class);
             if(annotation != null) {
@@ -220,7 +224,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
     /**
      *
      */
-    private void serAnimatorListener(){
+    protected void setAnimatorListener() {
         mViewRemoveAnimatorListener = new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {}
@@ -286,8 +290,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      *
      * @param view
      */
-    private void setDefaultTouchListener(final V view){
-        serAnimatorListener();
+    protected void setDefaultTouchListener(final V view) {
+        setAnimatorListener();
         final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
 
         FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) view.getLayoutParams();
@@ -416,8 +420,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      *
      * @param view
      */
-    private void setHorizontalTouchListener(final V view){
-        serAnimatorListener();
+    protected void setHorizontalTouchListener(final V view) {
+        setAnimatorListener();
         final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
 
         FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) view.getLayoutParams();
@@ -521,8 +525,8 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      *
      * @param view
      */
-    private void setVerticalTouchListener(final V view){
-        serAnimatorListener();
+    protected void setVerticalTouchListener(final V view) {
+        setAnimatorListener();
         final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
 
         FrameLayout.LayoutParams layoutParamsOriginal = (FrameLayout.LayoutParams) view.getLayoutParams();
@@ -639,7 +643,7 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
      * @param originalLeftMargin
      * @param swipeType
      */
-    private void animateSwipeRestore(final View v, int originalTopMargin, int originalLeftMargin, int swipeType){
+    protected void animateSwipeRestore(final View v, int originalTopMargin, int originalLeftMargin, int swipeType) {
         final FrameLayout.LayoutParams layoutParamsFinal = (FrameLayout.LayoutParams) v.getLayoutParams();
 
         ValueAnimator animatorX = null;
@@ -793,11 +797,43 @@ public class SwipeViewBinder<T, V extends FrameLayout> extends ViewBinder<T, V>{
         return mLayoutView;
     }
 
+    protected SwipeCallback getCallback() {
+        return mCallback;
+    }
+
+    protected int getSwipeType() {
+        return mSwipeType;
+    }
+
+    protected P getSwipeOption() {
+        return mSwipeOption;
+    }
+
+    protected Q getSwipeDecor() {
+        return mSwipeDecor;
+    }
+
+    protected Animator.AnimatorListener getViewRemoveAnimatorListener() {
+        return mViewRemoveAnimatorListener;
+    }
+
+    protected Animator.AnimatorListener getViewRestoreAnimatorListener() {
+        return mViewRestoreAnimatorListener;
+    }
+
+    protected Animator.AnimatorListener getViewPutBackAnimatorListener() {
+        return mViewPutBackAnimatorListener;
+    }
+
     /**
      *
      * @param <T>
      */
-    protected interface SwipeCallback<T extends SwipeViewBinder<?, ? extends FrameLayout>>{
+    protected interface SwipeCallback<T extends
+            SwipeViewBinder<?,
+                    ? extends FrameLayout,
+                    ? extends SwipePlaceHolderView.SwipeOption,
+                    ? extends SwipeDecor>> {
         void onRemoveView(T swipeViewBinder);
         void onResetView(T swipeViewBinder);
         void onAnimateView(float distXMoved, float distYMoved, float finalXDist, float finalYDist, T swipeViewBinder);
