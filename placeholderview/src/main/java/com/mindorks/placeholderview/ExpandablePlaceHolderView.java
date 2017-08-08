@@ -5,6 +5,9 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by janisharali on 18/08/16.
  */
@@ -133,6 +136,20 @@ public class ExpandablePlaceHolderView extends PlaceHolderView {
 
     public void collapse(int position) throws Resources.NotFoundException {
         toggle(position, false);
+    }
+
+    public void collapseAll() {
+        List<ExpandableViewBinder> parentBinderList = new ArrayList<>();
+        for (ViewBinder viewBinder : getViewAdapter().getViewBinderList()) {
+            ExpandableViewBinder binder = (ExpandableViewBinder) viewBinder;
+            if (binder.isParent()) {
+                parentBinderList.add(binder);
+            }
+        }
+
+        for (ExpandableViewBinder binder : parentBinderList) {
+            binder.collapse();
+        }
     }
 
     protected <T> void toggle(T resolver, boolean isToExpand) throws Resources.NotFoundException {

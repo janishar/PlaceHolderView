@@ -13,7 +13,7 @@ import com.mindorks.test.expandable.ChildItem;
 import com.mindorks.test.expandable.ParentItem;
 
 
-public class TestActivity extends AppCompatActivity {
+public class ExpandableActivity extends AppCompatActivity {
 
     ParentItem parentItem;
     @BindView(R.id.toolbar)
