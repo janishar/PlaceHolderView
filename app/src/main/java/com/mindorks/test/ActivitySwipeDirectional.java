@@ -55,7 +55,6 @@ public class ActivitySwipeDirectional extends AppCompatActivity {
             }
         });
         mSwipeView.getBuilder()
-//                .setSwipeType(SwipePlaceHolderView.SWIPE_TYPE_VERTICAL)
                 .setDisplayViewCount(3)
                 .setIsUndoEnabled(true)
                 .setSwipeVerticalThreshold(Utils.dpToPx(50))

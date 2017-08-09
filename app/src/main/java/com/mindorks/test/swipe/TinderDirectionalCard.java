@@ -11,8 +11,9 @@ import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
-import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
+import com.mindorks.placeholderview.annotations.swipe.SwipeInDirectional;
+import com.mindorks.placeholderview.annotations.swipe.SwipeOutDirectional;
+import com.mindorks.placeholderview.annotations.swipe.SwipeTouch;
 import com.mindorks.placeholderview.annotations.swipe.SwipingDirection;
 import com.mindorks.test.R;
 
@@ -45,9 +46,9 @@ public class TinderDirectionalCard {
         nameAgeTxt.setText("Name " + count++);
     }
 
-    @SwipeOut
-    private void onSwipedOut(SwipeDirection direction) {
-        Log.d("DEBUG", "onSwipedOut " + direction.name());
+    @SwipeOutDirectional
+    private void onSwipeOutDirectional(SwipeDirection direction) {
+        Log.d("DEBUG", "SwipeOutDirectional " + direction.name());
     }
 
     @SwipeCancelState
@@ -55,13 +56,25 @@ public class TinderDirectionalCard {
         Log.d("DEBUG", "onSwipeCancelState");
     }
 
-    @SwipeIn
-    private void onSwipeIn(SwipeDirection direction) {
-        Log.d("DEBUG", "onSwipedIn " + direction.name());
+    @SwipeInDirectional
+    private void onSwipeInDirectional(SwipeDirection direction) {
+        Log.d("DEBUG", "SwipeInDirectional " + direction.name());
     }
 
     @SwipingDirection
     private void onSwipingDirection(SwipeDirection direction) {
         Log.d("DEBUG", "SwipingDirection " + direction.name());
+    }
+
+    @SwipeTouch
+    private void onSwipeTouch(float xStart, float yStart, float xCurrent, float yCurrent) {
+        Log.d("DEBUG", "onSwipeTouch "
+                + " xStart : " + xStart
+                + " yStart : " + yStart
+                + " xCurrent : " + xCurrent
+                + " yCurrent : " + yCurrent
+                + " distance : "
+                + Math.sqrt(Math.pow(xCurrent - xStart, 2) + (Math.pow(yCurrent - yStart, 2)))
+        );
     }
 }

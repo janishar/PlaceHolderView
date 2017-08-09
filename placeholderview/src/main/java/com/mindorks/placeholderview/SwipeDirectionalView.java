@@ -84,8 +84,8 @@ public class SwipeDirectionalView extends SwipePlaceHolderView {
 
         public SwipeDirectionalOption() {
             super();
-            mSwipeHorizontalThreshold = Utils.dpToPx(5);
-            mSwipeVerticalThreshold = Utils.dpToPx(5);
+            mSwipeHorizontalThreshold = Utils.dpToPx(30);
+            mSwipeVerticalThreshold = Utils.dpToPx(30);
         }
 
         protected int getSwipeHorizontalThreshold() {

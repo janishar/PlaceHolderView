@@ -194,6 +194,9 @@ public class SwipePlaceHolderView extends FrameLayout implements
         return mItemRemovedListener;
     }
 
+    /*
+     * This method make it possible to construct ViewBinder specific to the Swipe View
+     */
     protected <T,
             F extends FrameView,
             P extends SwipeOption,
@@ -204,8 +207,12 @@ public class SwipePlaceHolderView extends FrameLayout implements
     }
 
     public <T>SwipePlaceHolderView addView(T resolver){
+
         SwipeViewBinder<Object, FrameView, SwipeOption, SwipeDecor> swipeViewBinder =
-                getViewBinder(resolver);
+                this.<Object, FrameView, SwipeOption, SwipeDecor,
+                        SwipeViewBinder<Object, FrameView, SwipeOption, SwipeDecor>>
+                        getViewBinder(resolver);
+
         mSwipeViewBinderList.add(swipeViewBinder);
         if(mSwipeViewBinderList.size() <= mDisplayViewCount){
             int position = mSwipeViewBinderList.indexOf(swipeViewBinder);
@@ -226,8 +233,11 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
     protected <T> void addView(T resolver, int position) {
         if(position >= 0 && position <= mDisplayViewCount){
+
             SwipeViewBinder<Object, FrameView, SwipeOption, SwipeDecor> swipeViewBinder =
-                    getViewBinder(resolver);
+                    this.<Object, FrameView, SwipeOption, SwipeDecor,
+                            SwipeViewBinder<Object, FrameView, SwipeOption, SwipeDecor>>
+                            getViewBinder(resolver);
 
             mSwipeViewBinderList.add(position, swipeViewBinder);
             int binderPosition = mSwipeViewBinderList.indexOf(swipeViewBinder);
