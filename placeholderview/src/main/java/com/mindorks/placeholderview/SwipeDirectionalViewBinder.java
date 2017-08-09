@@ -20,7 +20,7 @@ import java.lang.reflect.Method;
  */
 
 public class SwipeDirectionalViewBinder<T, V extends FrameLayout,
-        P extends SwipeDirectionalPlaceHolderView.SwipeDirectionalOption,
+        P extends SwipeDirectionalView.SwipeDirectionalOption,
         Q extends SwipeDecor> extends SwipeViewBinder<T, V, P, Q> {
 
     //    TODO: Make mHasInterceptedEvent a AtomicBoolean, to make it thread safe.
@@ -34,6 +34,12 @@ public class SwipeDirectionalViewBinder<T, V extends FrameLayout,
         super(resolver);
     }
 
+    @Override
+    protected void setOnTouch() {
+        super.setOnTouch();
+    }
+
+    @Override
     protected void setDefaultTouchListener(final V view) {
         setAnimatorListener();
         final DisplayMetrics displayMetrics = view.getContext().getResources().getDisplayMetrics();
@@ -258,7 +264,8 @@ public class SwipeDirectionalViewBinder<T, V extends FrameLayout,
         }
     }
 
-    private void bindSwipeIn(final T resolver, SwipeDirection direction) {
+
+    protected void bindSwipeIn(final T resolver, SwipeDirection direction) {
         for (final Method method : resolver.getClass().getDeclaredMethods()) {
             SwipeIn annotation = method.getAnnotation(SwipeIn.class);
             if (annotation != null) {

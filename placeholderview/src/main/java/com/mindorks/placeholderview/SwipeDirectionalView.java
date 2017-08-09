@@ -11,53 +11,70 @@ import java.util.ArrayList;
  * Created by janisharali on 09/08/17.
  */
 
-public class SwipeDirectionalPlaceHolderView extends SwipePlaceHolderView {
+public class SwipeDirectionalView extends SwipePlaceHolderView {
 
-    public SwipeDirectionalPlaceHolderView(Context context) {
+    private ArrayList<SwipeDirectionalViewBinder
+            <Object, FrameView, SwipeDirectionalOption, SwipeDecor>> mSwipeViewBinderList;
+
+    public SwipeDirectionalView(Context context) {
         super(context);
-        setupView(new ArrayList<SwipeDirectionalViewBinder<
-                        Object, FrameView, SwipeDirectionalOption, SwipeDecor>>(),
-                new SwipeViewBuilder<>(this),
+        mSwipeViewBinderList = new ArrayList<>();
+        setupView(mSwipeViewBinderList,
+                new SwipeDirectionalViewBuilder<>(this),
                 new SwipeDirectionalOption(),
                 new SwipeDecor());
     }
 
-    public SwipeDirectionalPlaceHolderView(Context context, AttributeSet attrs) {
+    public SwipeDirectionalView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setupView(new ArrayList<SwipeDirectionalViewBinder<
-                        Object, FrameView, SwipeDirectionalOption, SwipeDecor>>(),
-                new SwipeViewBuilder<>(this),
+        mSwipeViewBinderList = new ArrayList<>();
+        setupView(mSwipeViewBinderList,
+                new SwipeDirectionalViewBuilder<>(this),
                 new SwipeDirectionalOption(),
                 new SwipeDecor());
     }
 
-    public SwipeDirectionalPlaceHolderView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public SwipeDirectionalView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setupView(new ArrayList<SwipeDirectionalViewBinder<
-                        Object, FrameView, SwipeDirectionalOption, SwipeDecor>>(),
-                new SwipeViewBuilder<>(this),
+        mSwipeViewBinderList = new ArrayList<>();
+        setupView(mSwipeViewBinderList,
+                new SwipeDirectionalViewBuilder<>(this),
                 new SwipeDirectionalOption(),
                 new SwipeDecor());
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    public SwipeDirectionalPlaceHolderView(
+    public SwipeDirectionalView(
             Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
         super(context, attrs, defStyleAttr, defStyleRes);
-        setupView(new ArrayList<SwipeDirectionalViewBinder<
-                        Object, FrameView, SwipeDirectionalOption, SwipeDecor>>(),
-                new SwipeViewBuilder<>(this),
+        mSwipeViewBinderList = new ArrayList<>();
+        setupView(mSwipeViewBinderList,
+                new SwipeDirectionalViewBuilder<>(this),
                 new SwipeDirectionalOption(),
                 new SwipeDecor());
     }
 
+    @Override
+    protected <T,
+            F extends FrameView,
+            P extends SwipeOption,
+            Q extends SwipeDecor,
+            V extends SwipeViewBinder<T, F, P, Q>>
+    V getViewBinder(T resolver) {
+        return (V) new SwipeDirectionalViewBinder<T, F, SwipeDirectionalOption, Q>(resolver);
+    }
 
     protected void setSwipeHorizontalThreshold(int threshold) {
-        ((SwipeDirectionalOption) mSwipeOption).setSwipeHorizontalThreshold(threshold);
+        ((SwipeDirectionalOption) getSwipeOption()).setSwipeHorizontalThreshold(threshold);
     }
 
     protected void setSwipeVerticalThreshold(int threshold) {
-        ((SwipeDirectionalOption) mSwipeOption).setSwipeVerticalThreshold(threshold);
+        ((SwipeDirectionalOption) getSwipeOption()).setSwipeVerticalThreshold(threshold);
+    }
+
+    @Override
+    public SwipeDirectionalViewBuilder<SwipeDirectionalView> getBuilder() {
+        return super.<SwipeDirectionalView, SwipeDirectionalViewBuilder<SwipeDirectionalView>>getBuilder();
     }
 
     protected static class SwipeDirectionalOption extends SwipeOption {
