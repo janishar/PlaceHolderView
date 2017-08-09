@@ -10,11 +10,13 @@ import java.lang.annotation.Target;
  */
 
 /**
- * This annotation should be used on method without any members variables
- * Example : @SwipeIn private void onSwipedIn(){//something here}
- * It is called when the card is either right swiped or bottom swiped
+ * This annotation is used with SwipeDirectionalView and
+ * has to be used on method with SwipeDirection members variables
+ * Example : @SwipeOutDirectional private void onSwipedOut(
+ * SwipeDirection direction) {//something here}
+ * It is called when the card is either left swiped or top swiped
  */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
-public @interface SwipeIn {
+public @interface SwipeOutDirectional {
 }
