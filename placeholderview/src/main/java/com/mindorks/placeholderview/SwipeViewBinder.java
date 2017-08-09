@@ -34,6 +34,8 @@ public class SwipeViewBinder<
         P extends SwipePlaceHolderView.SwipeOption,
         Q extends SwipeDecor> extends ViewBinder<T, V> {
 
+    private static int mFinalLeftMargin;
+    private static int mFinalTopMargin;
     private V mLayoutView;
     private SwipeCallback mCallback;
     private Animator.AnimatorListener mViewRemoveAnimatorListener;
@@ -44,7 +46,6 @@ public class SwipeViewBinder<
     private View mSwipeOutMsgView;
     private P mSwipeOption;
     private Q mSwipeDecor;
-
 //    TODO: Make mHasInterceptedEvent a AtomicBoolean, to make it thread safe.
     private boolean mHasInterceptedEvent = false;
     private int mOriginalLeftMargin;
@@ -643,13 +644,17 @@ public class SwipeViewBinder<
      * @param originalLeftMargin
      * @param swipeType
      */
-    protected void animateSwipeRestore(final View v, int originalTopMargin, int originalLeftMargin, int swipeType) {
-        final FrameLayout.LayoutParams layoutParamsFinal = (FrameLayout.LayoutParams) v.getLayoutParams();
+    protected void animateSwipeRestore(final View v, int originalTopMargin,
+                                       int originalLeftMargin, int swipeType) {
+
+        final FrameLayout.LayoutParams layoutParamsFinal =
+                (FrameLayout.LayoutParams) v.getLayoutParams();
 
         ValueAnimator animatorX = null;
         ValueAnimator animatorY = null;
         int animTime = mSwipeDecor.getSwipeAnimTime();
-        DecelerateInterpolator decelerateInterpolator = new DecelerateInterpolator(mSwipeDecor.getSwipeAnimFactor());
+        DecelerateInterpolator decelerateInterpolator =
+                new DecelerateInterpolator(mSwipeDecor.getSwipeAnimFactor());
         ViewPropertyAnimator animatorR = v.animate()
                 .rotation(0)
                 .setInterpolator(decelerateInterpolator)
@@ -823,6 +828,79 @@ public class SwipeViewBinder<
 
     protected Animator.AnimatorListener getViewPutBackAnimatorListener() {
         return mViewPutBackAnimatorListener;
+    }
+
+    public int getFinalLeftMargin() {
+        return mFinalLeftMargin;
+    }
+
+    public void setFinalLeftMargin(int finalLeftMargin) {
+        mFinalLeftMargin = finalLeftMargin;
+    }
+
+    public int getFinalTopMargin() {
+        return mFinalTopMargin;
+    }
+
+    public void setFinalTopMargin(int finalTopMargin) {
+        mFinalTopMargin = finalTopMargin;
+    }
+
+    protected void doUndoAnimation() {
+        if (mSwipeOption.isUndoEnabled()) {
+
+            final FrameLayout.LayoutParams layoutParamsFinal =
+                    (FrameLayout.LayoutParams) getLayoutView().getLayoutParams();
+
+            layoutParamsFinal.leftMargin = getFinalLeftMargin();
+            layoutParamsFinal.topMargin = getFinalTopMargin();
+
+            ValueAnimator animatorX = null;
+            ValueAnimator animatorY = null;
+            int animTime = mSwipeDecor.getSwipeAnimTime();
+            DecelerateInterpolator decelerateInterpolator =
+                    new DecelerateInterpolator(mSwipeDecor.getSwipeAnimFactor());
+            ViewPropertyAnimator animatorR = getLayoutView().animate()
+                    .rotation(0)
+                    .setInterpolator(decelerateInterpolator)
+                    .setDuration(animTime);
+
+            if (mSwipeType == SwipePlaceHolderView.SWIPE_TYPE_DEFAULT
+                    || mSwipeType == SwipePlaceHolderView.SWIPE_TYPE_HORIZONTAL) {
+                animatorX = ValueAnimator.ofInt(layoutParamsFinal.leftMargin, mOriginalLeftMargin);
+                animatorX.setInterpolator(decelerateInterpolator);
+                animatorX.setDuration(animTime);
+                animatorX.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                        layoutParamsFinal.leftMargin = (Integer) valueAnimator.getAnimatedValue();
+                        getLayoutView().setLayoutParams(layoutParamsFinal);
+                    }
+
+                });
+            }
+            if (mSwipeType == SwipePlaceHolderView.SWIPE_TYPE_DEFAULT
+                    || mSwipeType == SwipePlaceHolderView.SWIPE_TYPE_VERTICAL) {
+                animatorY = ValueAnimator.ofInt(layoutParamsFinal.topMargin, mOriginalTopMargin);
+                animatorY.setInterpolator(decelerateInterpolator);
+                animatorY.setDuration(animTime);
+                animatorY.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
+                    @Override
+                    public void onAnimationUpdate(ValueAnimator valueAnimator) {
+                        layoutParamsFinal.topMargin = (Integer) valueAnimator.getAnimatedValue();
+                        getLayoutView().setLayoutParams(layoutParamsFinal);
+                    }
+                });
+            }
+
+            if (animatorX != null) {
+                animatorX.start();
+            }
+            if (animatorY != null) {
+                animatorY.start();
+            }
+            animatorR.start();
+        }
     }
 
     /**

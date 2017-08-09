@@ -45,7 +45,6 @@ public class SwipePlaceHolderView extends FrameLayout implements
     // TODO: Make mIsBtnSwipeDone a AtomicBoolean, to make it thread safe.
     private boolean mIsBtnSwipeDone = true;
 
-    private boolean mIsUndoEnabled;
     private Object mRestoreResolverOnUndo;
     private int mRestoreResolverLastPosition;
     private ItemRemovedListener mItemRemovedListener;
@@ -166,12 +165,12 @@ public class SwipePlaceHolderView extends FrameLayout implements
         return mIsBtnSwipeDone;
     }
 
-    protected boolean isIsUndoEnabled() {
-        return mIsUndoEnabled;
+    protected boolean isUndoEnabled() {
+        return mSwipeOption.isUndoEnabled();
     }
 
     protected void setIsUndoEnabled(boolean isUndoEnabled) {
-        this.mIsUndoEnabled = isUndoEnabled;
+        mSwipeOption.setIsUndoEnabled(isUndoEnabled);
     }
 
     protected Object getRestoreResolverOnUndo() {
@@ -420,7 +419,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         if(mSwipeViewBinderList.size() > 0){
             mSwipeViewBinderList.get(0).setOnTouch();
         }
-        if(mIsUndoEnabled) {
+        if (mSwipeOption.isUndoEnabled()) {
             mRestoreResolverOnUndo = swipeViewBinder.getResolver();
             mRestoreResolverLastPosition = position;
         }
@@ -546,6 +545,13 @@ public class SwipePlaceHolderView extends FrameLayout implements
                 }
             }
         }
+
+        // stores the current margins for any operations later:
+        // Example: For undo animation
+        FrameLayout.LayoutParams layoutParams =
+                (FrameLayout.LayoutParams) swipeViewBinder.getLayoutView().getLayoutParams();
+        swipeViewBinder.setFinalLeftMargin(layoutParams.leftMargin);
+        swipeViewBinder.setFinalTopMargin(layoutParams.topMargin);
     }
 
     @Override
@@ -587,7 +593,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
     }
 
     public void undoLastSwipe(){
-        if(mIsUndoEnabled && mRestoreResolverOnUndo != null){
+        if (mSwipeOption.isUndoEnabled() && mRestoreResolverOnUndo != null) {
             if (mRestoreResolverLastPosition >= 0 && mRestoreResolverLastPosition >= mDisplayViewCount - 1) {
                 removeViewAt(mRestoreResolverLastPosition);
             }
@@ -601,6 +607,11 @@ public class SwipePlaceHolderView extends FrameLayout implements
                     lowerCard.blockTouch();
                 }
             }
+
+            SwipeViewBinder<Object, FrameView, SwipeOption, SwipeDecor> topCard
+                    = mSwipeViewBinderList.get(0);
+            topCard.doUndoAnimation();
+
             if (mRestoreResolverLastPosition >= 0 && mRestoreResolverLastPosition >= mDisplayViewCount - 1) {
                 resetViewOrientation(mRestoreResolverLastPosition, mSwipeDecor);
             }else{
@@ -789,6 +800,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         private AtomicBoolean mIsViewToRestoreOnLock;
         private AtomicBoolean mIsViewToRestoreOnTouchLock;
         private AtomicBoolean mIsTouchSwipeLocked;
+        private boolean mIsUndoEnabled = false;
 
         public SwipeOption() {
             mIsViewLocked = new AtomicBoolean(false);
@@ -854,6 +866,14 @@ public class SwipePlaceHolderView extends FrameLayout implements
 
         public void setHeightSwipeDistFactor(float heightSwipeDistFactor) {
             this.mHeightSwipeDistFactor = heightSwipeDistFactor;
+        }
+
+        public boolean isUndoEnabled() {
+            return mIsUndoEnabled;
+        }
+
+        public void setIsUndoEnabled(boolean isUndoEnabled) {
+            mIsUndoEnabled = isUndoEnabled;
         }
     }
 }
