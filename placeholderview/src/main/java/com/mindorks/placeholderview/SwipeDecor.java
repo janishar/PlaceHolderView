@@ -26,6 +26,7 @@ public class SwipeDecor {
     private int mSwipeAnimTime;
     private float mSwipeAnimFactor;
     private int mSwipeRotationAngle;
+    private float mSwipeMaxChangeAngle;
 
     public SwipeDecor() {
         mViewWidth = 0;
@@ -45,6 +46,7 @@ public class SwipeDecor {
         mSwipeAnimTime = 200;
         mSwipeAnimFactor = 0.75f;
         mSwipeRotationAngle = 15;
+        mSwipeMaxChangeAngle = 2;
     }
 
     /**
@@ -315,6 +317,15 @@ public class SwipeDecor {
 
     public SwipeDecor setViewGravity(int gravity) {
         mViewGravity = gravity;
+        return this;
+    }
+
+    public float getSwipeMaxChangeAngle() {
+        return mSwipeMaxChangeAngle;
+    }
+
+    public SwipeDecor setSwipeMaxChangeAngle(float maxChangeAngle) {
+        mSwipeMaxChangeAngle = maxChangeAngle;
         return this;
     }
 }

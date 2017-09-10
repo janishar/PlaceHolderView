@@ -48,6 +48,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
     private Object mRestoreResolverOnUndo;
     private int mRestoreResolverLastPosition;
     private ItemRemovedListener mItemRemovedListener;
+    private float mPreviousSwipeAngle = 0f;
 
     public SwipePlaceHolderView(Context context) {
         super(context);
@@ -496,7 +497,13 @@ public class SwipePlaceHolderView extends FrameLayout implements
             }
 
             float angle = angleMax / finalDist * distMoved;
-            swipeViewBinder.getLayoutView().setRotation(angle);
+
+            float deltaAngleSign = angle - mPreviousSwipeAngle > 0 ? 1 : -1;
+            float deltaAngle = Math.abs(angle - mPreviousSwipeAngle);
+            deltaAngle = Math.min(mSwipeDecor.getSwipeMaxChangeAngle(), deltaAngle);
+            float finalAngle = mPreviousSwipeAngle + deltaAngleSign * deltaAngle;
+            mPreviousSwipeAngle = finalAngle;
+            swipeViewBinder.getLayoutView().setRotation(finalAngle);
         }
 
         if((distXMovedAbs > mSwipeDecor.getSwipeDistToDisplayMsg()
@@ -590,6 +597,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
                 }
             }
         }
+        mPreviousSwipeAngle = 0f;
     }
 
     public void undoLastSwipe(){
@@ -678,6 +686,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
             iterator.remove();
         }
         mRestoreResolverOnUndo = null;
+        mPreviousSwipeAngle = 0f;
         super.removeAllViews();
     }
 
