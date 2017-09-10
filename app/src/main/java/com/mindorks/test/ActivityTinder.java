@@ -62,7 +62,7 @@ public class ActivityTinder extends AppCompatActivity {
 //                        .setMarginLeft(100)
 //                        .setViewGravity(Gravity.TOP)
                         .setPaddingTop(20)
-                        .setSwipeMaxChangeAngle(2)
+                        .setSwipeMaxChangeAngle(2f)
                         .setRelativeScale(0.01f)
                         .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
                         .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view));

@@ -46,7 +46,7 @@ public class SwipeDecor {
         mSwipeAnimTime = 200;
         mSwipeAnimFactor = 0.75f;
         mSwipeRotationAngle = 15;
-        mSwipeMaxChangeAngle = 2;
+        mSwipeMaxChangeAngle = 2f;
     }
 
     /**
