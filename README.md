@@ -153,6 +153,10 @@ public class ImageTypeBig {
 5. `@SwipeOutState`: It binds a method and pings it till a card is moving in the direction of swiping out/rejected
 6. `@SwipeView`: It binds the android.view.View reference to the tinder view 
 
+# `SwipeDirectionalView`
+#### This class is build on top on SwipePlaceHolderView and provided callback for swipe in all four directions.
+See Details [**Here**](https://github.com/janishar/PlaceHolderView/releases/tag/0.7.0)
+
 # `InfinitePlaceHolderView`
 #### This class provides a mechanism to load the data in bunches for infinite loading. If the scroll reaches the last item, it calls for LoadMore and show the defined loadmore indicator view. When new data it added the indication is removed. To get the callback for loadmore create a class like that used in PlaceHolderView and define a method with `@LoadMore` annotation. This method should be used to do network calls and to add new fetched views.
 
@@ -200,6 +204,11 @@ dependencies {
 [Android Tinder Swipe](https://medium.com/@janishar.ali/android-tinder-swipe-view-example-3eca9b0d4794#.413dgor3o)
 
 [Android Infinite List with Load More](https://medium.com/@janishar.ali/android-infinite-list-with-load-more-example-3749ea7bc33#.e3juocg6s)
+
+# TO-DOs
+- [ ] Update/Refresh the View already shown in the stack.
+- [ ] Callback when a card comes on top of the stack.
+- [ ] Provide Undo for the entire swipe history.
 
 # Recent Library: [`JPost`](https://github.com/janishar/JPost)
 #### `JPost` is a pubsub library based on massages over a channel. It's very efficient and much powerful than other pubsub libraries. It prevents memory leak and increases code control. Also, provide a mechanism to run code asynchronously.
