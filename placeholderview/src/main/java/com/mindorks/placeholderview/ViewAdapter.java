@@ -8,7 +8,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by janisharali on 18/08/16.
@@ -216,6 +220,24 @@ public class ViewAdapter<T> extends RecyclerView.Adapter<ViewHolder> {
             viewBinder.unbind();
         }
         mViewBinderList.clear();
+        notifyDataSetChanged();
+    }
+
+    protected void sort(List<T> sortedViewResolverList) {
+        final Map<T, Integer> indexMap = new HashMap<>();
+        for (int i = 0; i < sortedViewResolverList.size(); i++)
+            indexMap.put(sortedViewResolverList.get(i), i);
+
+        Collections.sort(mViewBinderList, new Comparator<ViewBinder<T, View>>() {
+            @Override
+            public int compare(ViewBinder<T, View> binder1, ViewBinder<T, View> binder2) {
+                int index1 = indexMap.get(binder1.getResolver());
+                int index2 = indexMap.get(binder2.getResolver());
+                if (index1 > index2) return 1;
+                if (index1 < index2) return -1;
+                return 0;
+            }
+        });
         notifyDataSetChanged();
     }
 }

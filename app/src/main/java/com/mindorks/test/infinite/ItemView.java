@@ -43,4 +43,8 @@ public class ItemView {
         timeTxt.setText(mInfo.getTime());
         Glide.with(mContext).load(mInfo.getImageUrl()).into(imageView);
     }
+
+    public InfiniteFeedInfo getInfo() {
+        return mInfo;
+    }
 }

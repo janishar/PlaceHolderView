@@ -1,18 +1,19 @@
 package com.mindorks.test;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.mindorks.butterknifelite.ButterKnifeLite;
 import com.mindorks.butterknifelite.annotations.BindView;
 import com.mindorks.placeholderview.InfinitePlaceHolderView;
-import com.mindorks.test.feed.HeadingView;
-import com.mindorks.test.gallery.ImageTypeBig;
 import com.mindorks.test.infinite.InfiniteFeedInfo;
 import com.mindorks.test.infinite.ItemView;
 import com.mindorks.test.infinite.LoadMoreView;
 
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -37,5 +38,23 @@ public class DemoLoadMoreActivity extends AppCompatActivity {
         for(int i = 0; i < LoadMoreView.LOAD_VIEW_SET_COUNT; i++){
             mLoadMoreView.addView(new ItemView(this.getApplicationContext(), feedList.get(i)));
         }
+
+        // Testing the sorting
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mLoadMoreView.sort(new Comparator<Object>() {
+                    @Override
+                    public int compare(Object o1, Object o2) {
+                        if (o1 instanceof ItemView && o2 instanceof ItemView) {
+                            ItemView view1 = (ItemView) o1;
+                            ItemView view2 = (ItemView) o2;
+                            return view1.getInfo().getTitle().compareTo(view2.getInfo().getTitle());
+                        }
+                        return 0;
+                    }
+                });
+            }
+        }, 8000);
     }
 }

@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -218,5 +220,16 @@ public class PlaceHolderView extends RecyclerView {
         if(position >= 0){
             mViewAdapter.notifyItemChanged(position);
         }
+    }
+
+    /**
+     * @param comparator Provide the Comparator that compares the ItemView Object added
+     *                   into the PlaceHolderView. Cast the ItemView into Class Reference
+     *                   by first checking with instanceof operator when making comparisons.
+     */
+    public void sort(Comparator<Object> comparator) {
+        List<Object> viewResolverList = getAllViewResolvers();
+        Collections.sort(viewResolverList, comparator);
+        mViewAdapter.sort(viewResolverList);
     }
 }

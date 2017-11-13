@@ -13,6 +13,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 
 import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
+import com.mindorks.placeholderview.annotations.swipe.SwipeHead;
 import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
 import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
@@ -89,6 +90,7 @@ public class SwipeViewBinder<
     protected void setOnTouch(){
         bindClick(getResolver(), getLayoutView());
         bindLongPress(getResolver(), getLayoutView());
+        bindSwipeHead(getResolver());
         switch (mSwipeType){
             case SwipePlaceHolderView.SWIPE_TYPE_DEFAULT:
                 setDefaultTouchListener(mLayoutView);
@@ -205,6 +207,22 @@ public class SwipeViewBinder<
                 try {
                     method.setAccessible(true);
                     method.invoke(getResolver());
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+
+    protected void bindSwipeHead(final T resolver) {
+        for (final Method method : resolver.getClass().getDeclaredMethods()) {
+            SwipeHead annotation = method.getAnnotation(SwipeHead.class);
+            if (annotation != null) {
+                try {
+                    method.setAccessible(true);
+                    method.invoke(resolver);
                 } catch (IllegalAccessException e) {
                     e.printStackTrace();
                 } catch (InvocationTargetException e) {
