@@ -207,8 +207,9 @@ dependencies {
 
 # TO-DOs
 - [ ] Update/Refresh the View already shown in the stack.
-- [ ] Callback when a card comes on top of the stack.
+- [X] Callback when a card comes on top of the stack.
 - [ ] Provide Undo for the entire swipe history.
+- [X] Provide Sort for the PlaceHolderView.
 
 # Recent Library: [`JPost`](https://github.com/janishar/JPost)
 #### `JPost` is a pubsub library based on massages over a channel. It's very efficient and much powerful than other pubsub libraries. It prevents memory leak and increases code control. Also, provide a mechanism to run code asynchronously.
