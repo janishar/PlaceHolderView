@@ -8,12 +8,12 @@ ext {
     libraryName = 'PlaceHolderView'
     artifact = 'placeholderview'
 
-    libraryDescription = 'A wrapper for android Recycler View'
+    libraryDescription = 'Views Built on RecyclerView and Swipe View'
 
     siteUrl = 'https://github.com/janishar/PlaceHolderView'
     gitUrl = 'https://github.com/janishar/PlaceHolderView.git'
 
-    libraryVersion = '0.7.1'
+    libraryVersion = '0.7.2'
 
     developerId = 'janishar.ali@gmail.com'
     developerName = 'Janishar Ali'
@@ -32,7 +32,7 @@ android {
         minSdkVersion 16
         targetSdkVersion 25
         versionCode 9
-        versionName "0.7.1"
+        versionName "0.7.2"
     }
     buildTypes {
         release {

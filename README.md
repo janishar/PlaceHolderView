@@ -173,11 +173,13 @@ See Details [**Here**](https://github.com/janishar/PlaceHolderView/releases/tag/
 # Gradle
 ```groovy
 dependencies {
-    compile 'com.mindorks:placeholderview:0.7.1'
+    compile 'com.mindorks:placeholderview:0.7.2'
 }
 ```
 # Dependency: It depends on the RecyclerView
+Add below lines in your app's build.gradle if recyclerview above v7:25 is being used
 ```groovy
+    // NOTE: change the version of recyclerview same as the your project's support library version
     com.android.support:recyclerview-v7:25.+
 ```
 
