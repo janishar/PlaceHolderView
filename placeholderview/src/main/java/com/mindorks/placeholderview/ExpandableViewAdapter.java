@@ -166,6 +166,7 @@ public class ExpandableViewAdapter<T> extends ViewAdapter<T>
         for(ExpandableViewBinder<T, View> viewBinder : parentBinder.getChildList()) {
             getViewBinderList().add(position, viewBinder);
             notifyItemInserted(position);
+            position++;
         }
         if(parentBinder.isSingleTop())
             collapseOthers(parentBinder);
