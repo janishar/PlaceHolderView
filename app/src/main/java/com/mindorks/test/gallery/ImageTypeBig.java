@@ -14,6 +14,7 @@ import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Position;
+import com.mindorks.placeholderview.annotations.Recycle;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.test.R;
@@ -45,7 +46,12 @@ public class ImageTypeBig {
     @Resolve
     private void onResolved() {
         Glide.with(mContext).load(mUlr).into(imageView);
-        Log.d("DEBUG", "position " + position);
+        Log.d("DEBUG", "onResolved position " + position);
+    }
+
+    @Recycle
+    private void onRecycled() {
+        Log.d("DEBUG", "onRecycled position " + position);
     }
 
     @LongClick(R.id.imageView)
