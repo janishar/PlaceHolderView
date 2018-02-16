@@ -173,7 +173,7 @@ See Details [**Here**](https://github.com/janishar/PlaceHolderView/releases/tag/
 # Gradle
 ```groovy
 dependencies {
-    compile 'com.mindorks:placeholderview:0.7.2'
+    compile 'com.mindorks:placeholderview:0.7.3'
 }
 ```
 # Dependency: It depends on the RecyclerView
