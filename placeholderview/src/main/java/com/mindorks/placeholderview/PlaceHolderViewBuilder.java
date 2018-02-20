@@ -15,35 +15,17 @@ public class PlaceHolderViewBuilder {
     private RecyclerView.LayoutManager mLayoutManager;
     private RecyclerView mRecyclerView;
 
-    /**
-     *
-     * @param context
-     * @param recyclerView
-     */
     public PlaceHolderViewBuilder(Context context, RecyclerView recyclerView) {
         mRecyclerView = recyclerView;
         mRecyclerView.setLayoutManager(new SmoothLinearLayoutManager(context));
     }
 
-    /**
-     *
-     * @param layoutManager
-     * @param <T>
-     * @return
-     */
     public <T extends RecyclerView.LayoutManager>PlaceHolderViewBuilder setLayoutManager(T layoutManager){
         mLayoutManager = layoutManager;
         mRecyclerView.setLayoutManager(layoutManager);
         return this;
     }
 
-    /**
-     *
-     * @param layoutManager
-     * @param spanSizeLookup
-     * @param <T>
-     * @return
-     */
     public <T extends GridLayoutManager>PlaceHolderViewBuilder setLayoutManager(T layoutManager, final int spanSizeLookup){
         mLayoutManager = layoutManager;
         ((GridLayoutManager)mLayoutManager).setSpanSizeLookup(new GridLayoutManager.SpanSizeLookup() {
@@ -56,21 +38,11 @@ public class PlaceHolderViewBuilder {
         return this;
     }
 
-    /**
-     *
-     * @param viewCacheSize
-     * @return
-     */
     public PlaceHolderViewBuilder setItemViewCacheSize(int viewCacheSize){
         mItemViewCacheSize = viewCacheSize;
         return this;
     }
 
-    /**
-     *
-     * @param val
-     * @return
-     */
     public PlaceHolderViewBuilder setHasFixedSize(boolean val){
         mHasFixedSize = val;
         return this;

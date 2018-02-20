@@ -49,46 +49,24 @@ public class SwipeDecor {
         mSwipeMaxChangeAngle = 2f;
     }
 
-    /**
-     * @param animate
-     * @return
-     */
     public SwipeDecor isAnimateScale(boolean animate) {
         mAnimateScale = animate;
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getPaddingTop() {
         return mPaddingTop;
     }
 
-    /**
-     *
-     * @param padding
-     * @return
-     */
     public SwipeDecor setPaddingTop(int padding){
         mPaddingTop = padding;
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getPaddingLeft() {
         return mPaddingLeft;
     }
 
-    /**
-     *
-     * @param padding
-     * @return
-     */
     public SwipeDecor setPaddingLeft(int padding){
         mPaddingLeft = padding;
         return this;
@@ -112,19 +90,10 @@ public class SwipeDecor {
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public float getRelativeScale() {
         return mRelativeScale;
     }
 
-    /**
-     *
-     * @param scale
-     * @return
-     */
     public SwipeDecor setRelativeScale(float scale){
         if(scale > 1){
             scale = 1;
@@ -135,27 +104,14 @@ public class SwipeDecor {
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public boolean isAnimateScale() {
         return mAnimateScale;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getSwipeInMsgLayoutId() {
         return mSwipeInMsgLayoutId;
     }
 
-    /**
-     *
-     * @param layoutId
-     * @return
-     */
     public SwipeDecor setSwipeInMsgLayoutId(int layoutId) {
         if (layoutId < 0) {
             layoutId = PRIMITIVE_NULL;
@@ -164,19 +120,10 @@ public class SwipeDecor {
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getSwipeOutMsgLayoutId() {
         return mSwipeOutMsgLayoutId;
     }
 
-    /**
-     *
-     * @param layoutId
-     * @return
-     */
     public SwipeDecor setSwipeOutMsgLayoutId(int layoutId) {
         if (layoutId < 0) {
             layoutId = PRIMITIVE_NULL;
@@ -185,109 +132,55 @@ public class SwipeDecor {
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getSwipeInMsgGravity() {
         return mSwipeInMsgGravity;
     }
 
-    /**
-     *
-     * @param gravity
-     * @return
-     */
     public SwipeDecor setSwipeInMsgGravity(int gravity) {
         mSwipeInMsgGravity = gravity;
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getSwipeOutMsgGravity() {
         return mSwipeOutMsgGravity;
     }
 
-    /**
-     *
-     * @param gravity
-     * @return
-     */
     public SwipeDecor setSwipeOutMsgGravity(int gravity) {
         mSwipeOutMsgGravity = gravity;
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getSwipeDistToDisplayMsg() {
         return mSwipeDistToDisplayMsg;
     }
 
-    /**
-     *
-     * @param swipeDistToDisplayMsg
-     * @return
-     */
     public SwipeDecor setSwipeDistToDisplayMsg(int swipeDistToDisplayMsg) {
         mSwipeDistToDisplayMsg = swipeDistToDisplayMsg;
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public float getSwipeAnimFactor() {
         return mSwipeAnimFactor;
     }
 
-    /**
-     *
-     * @param factor
-     * @return
-     */
     public SwipeDecor setSwipeAnimFactor(float factor) {
         mSwipeAnimFactor = factor;
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getSwipeAnimTime() {
         return mSwipeAnimTime;
     }
 
-    /**
-     *
-     * @param millis
-     * @return
-     */
     public SwipeDecor setSwipeAnimTime(int millis) {
         mSwipeAnimTime = millis;
         return this;
     }
 
-    /**
-     *
-     * @return
-     */
     public int getSwipeRotationAngle() {
         return mSwipeRotationAngle;
     }
 
-    /**
-     *
-     * @param degree
-     * @return
-     */
     public SwipeDecor setSwipeRotationAngle(int degree) {
         mSwipeRotationAngle = degree;
         return this;
