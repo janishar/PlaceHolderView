@@ -25,7 +25,6 @@ public class ActivityTinder extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tinder_swipe);
         ButterKnifeLite.bind(this);
-
     }
 
     @Override

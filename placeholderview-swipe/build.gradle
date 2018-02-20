@@ -1,9 +1,31 @@
 apply plugin: 'com.android.library'
 
+ext {
+    bintrayRepo = 'mindorks'
+    bintrayName = 'swipeplaceholderview-v2'
+
+    publishedGroupId = 'com.mindorks'
+    libraryName = 'SwipePlaceHolderView-v2'
+    artifact = 'swipeplaceholderview-v2'
+
+    libraryDescription = 'Swipe View'
+
+    siteUrl = 'https://github.com/janishar/PlaceHolderView'
+    gitUrl = 'https://github.com/janishar/PlaceHolderView.git'
+
+    libraryVersion = '0.0.1-alpha1'
+
+    developerId = 'janishar.ali@gmail.com'
+    developerName = 'Janishar Ali'
+    developerEmail = 'janishar.ali@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
 android {
     compileSdkVersion 25
-
-
 
     defaultConfig {
         minSdkVersion 16
@@ -12,7 +34,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
     }
 
     buildTypes {
@@ -26,9 +47,13 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    api project(':placeholderview-core')
 
     implementation 'com.android.support:appcompat-v7:25.4.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
 }
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'

@@ -2,18 +2,18 @@ apply plugin: 'com.android.library'
 
 ext {
     bintrayRepo = 'mindorks'
-    bintrayName = 'placeholderview'
+    bintrayName = 'placeholderview-v2'
 
     publishedGroupId = 'com.mindorks'
-    libraryName = 'PlaceHolderView'
-    artifact = 'placeholderview'
+    libraryName = 'PlaceHolderView-v2'
+    artifact = 'placeholderview-v2'
 
-    libraryDescription = 'Views Built on RecyclerView and Swipe View'
+    libraryDescription = 'Views Built on RecyclerView'
 
     siteUrl = 'https://github.com/janishar/PlaceHolderView'
     gitUrl = 'https://github.com/janishar/PlaceHolderView.git'
 
-    libraryVersion = '0.7.3'
+    libraryVersion = '0.0.1-alpha1'
 
     developerId = 'janishar.ali@gmail.com'
     developerName = 'Janishar Ali'
@@ -45,6 +45,8 @@ android {
 dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.android.support:recyclerview-v7:25.4.0'
+    api project(':placeholderview-core')
+    api project(':placeholderview-swipe')
 }
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
