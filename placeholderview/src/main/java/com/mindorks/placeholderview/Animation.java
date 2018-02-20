@@ -47,15 +47,6 @@ public class Animation {
     protected static final float ANIM_ALPHA_MIN = 0f;
     protected static final float ANIM_ALPHA_MAX = 1.0f;
 
-    /**
-     *
-     * @param view
-     * @param xInit
-     * @param xFinal
-     * @param factor
-     * @param duration
-     * @param <V>
-     */
     protected static <V extends View>void itemAnimFromXDesc(V view, float xInit, float xFinal, float factor, int duration){
         view.setTranslationX(xInit);
         view.animate()
@@ -65,15 +56,6 @@ public class Animation {
                 .start();
     }
 
-    /**
-     *
-     * @param view
-     * @param xInit
-     * @param xFinal
-     * @param factor
-     * @param duration
-     * @param <V>
-     */
     protected static <V extends View>void itemAnimFromXAsc(V view, float xInit, float xFinal, float factor, int duration){
         view.setTranslationX(xInit);
         view.animate()
@@ -83,15 +65,6 @@ public class Animation {
                 .start();
     }
 
-    /**
-     *
-     * @param view
-     * @param yInit
-     * @param yFinal
-     * @param factor
-     * @param duration
-     * @param <V>
-     */
     protected static <V extends View>void itemAnimFromYDesc(V view, float yInit, float yFinal, float factor, int duration){
         view.setTranslationY(yInit);
         view.animate()
@@ -101,15 +74,6 @@ public class Animation {
                 .start();
     }
 
-    /**
-     *
-     * @param view
-     * @param yInit
-     * @param yFinal
-     * @param factor
-     * @param duration
-     * @param <V>
-     */
     protected static <V extends View>void itemAnimFromYAsc(V view, float yInit, float yFinal, float factor, int duration){
         view.setTranslationY(yInit);
         view.animate()
@@ -119,15 +83,6 @@ public class Animation {
                 .start();
     }
 
-    /**
-     *
-     * @param view
-     * @param scaleInitial
-     * @param scaleFinal
-     * @param factor
-     * @param duration
-     * @param <V>
-     */
     protected static <V extends View>void itemAnimScaleDesc(V view, float scaleInitial, float scaleFinal, float factor, int duration){
         view.setScaleX(scaleInitial);
         view.setScaleY(scaleInitial);
@@ -139,15 +94,6 @@ public class Animation {
                 .start();
     }
 
-    /**
-     *
-     * @param view
-     * @param scaleInitial
-     * @param scaleFinal
-     * @param factor
-     * @param duration
-     * @param <V>
-     */
     protected static <V extends View>void itemAnimScaleAsc(V view, float scaleInitial, float scaleFinal, float factor, int duration){
         view.setScaleX(scaleInitial);
         view.setScaleY(scaleInitial);
@@ -159,15 +105,6 @@ public class Animation {
                 .start();
     }
 
-    /**
-     *
-     * @param view
-     * @param alphaInitial
-     * @param alphaFinal
-     * @param factor
-     * @param duration
-     * @param <V>
-     */
     protected static <V extends View>void itemAnimFadeDesc(V view, float alphaInitial, float alphaFinal, float factor, int duration){
         view.setAlpha(alphaInitial);
         view.animate()
@@ -177,15 +114,6 @@ public class Animation {
                 .start();
     }
 
-    /**
-     *
-     * @param view
-     * @param alphaInitial
-     * @param alphaFinal
-     * @param factor
-     * @param duration
-     * @param <V>
-     */
     protected static <V extends View>void itemAnimFadeAsc(V view, float alphaInitial, float alphaFinal, float factor, int duration){
         view.setAlpha(alphaInitial);
         view.animate()

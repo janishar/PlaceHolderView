@@ -24,9 +24,6 @@ public class ViewBinder<T, V extends android.view.View> {
     private AnimationResolver mAnimationResolver;
     private boolean isNullable = false;
 
-    /**
-     * @param resolver
-     */
     protected ViewBinder(final T resolver) {
         mResolver = resolver;
         bindLayout(resolver);
@@ -34,10 +31,6 @@ public class ViewBinder<T, V extends android.view.View> {
         mAnimationResolver = new AnimationResolver<>();
     }
 
-    /**
-     * @param promptsView
-     * @param position
-     */
     protected void bindView(V promptsView, int position) {
         bindViews(mResolver, promptsView);
         bindViewPosition(mResolver, position);
@@ -46,18 +39,10 @@ public class ViewBinder<T, V extends android.view.View> {
         resolveView(mResolver);
     }
 
-    /**
-     * @param deviceWidth
-     * @param deviceHeight
-     * @param view
-     */
     protected void bindAnimation(int deviceWidth, int deviceHeight, V view) {
         mAnimationResolver.bindAnimation(deviceWidth, deviceHeight, mResolver, view);
     }
 
-    /**
-     * @param resolver
-     */
     private void bindLayout(final T resolver) {
         Layout layout = resolver.getClass().getAnnotation(Layout.class);
         if (layout != null) {
@@ -65,9 +50,6 @@ public class ViewBinder<T, V extends android.view.View> {
         }
     }
 
-    /**
-     * @param resolver
-     */
     private void getNullable(final T resolver) {
         NonReusable nonReusable = resolver.getClass().getAnnotation(NonReusable.class);
         if (nonReusable != null) {
@@ -75,10 +57,6 @@ public class ViewBinder<T, V extends android.view.View> {
         }
     }
 
-    /**
-     * @param resolver
-     * @param promptsView
-     */
     protected void bindViews(final T resolver, V promptsView) {
         for (final Field field : resolver.getClass().getDeclaredFields()) {
             View viewAnnotation = field.getAnnotation(View.class);
@@ -94,10 +72,6 @@ public class ViewBinder<T, V extends android.view.View> {
         }
     }
 
-    /**
-     * @param resolver
-     * @param position
-     */
     protected void bindViewPosition(final T resolver, int position) {
         mPosition = position;
         for (final Field field : resolver.getClass().getDeclaredFields()) {
@@ -113,9 +87,6 @@ public class ViewBinder<T, V extends android.view.View> {
         }
     }
 
-    /**
-     * @param resolver
-     */
     protected void resolveView(final T resolver) {
         for (final Method method : resolver.getClass().getDeclaredMethods()) {
             Resolve annotation = method.getAnnotation(Resolve.class);
@@ -132,10 +103,6 @@ public class ViewBinder<T, V extends android.view.View> {
         }
     }
 
-    /**
-     * @param resolver
-     * @param promptsView
-     */
     protected void bindClick(final T resolver, final V promptsView) {
         for (final Method method : resolver.getClass().getDeclaredMethods()) {
             Click clickAnnotation = method.getAnnotation(Click.class);
@@ -158,10 +125,6 @@ public class ViewBinder<T, V extends android.view.View> {
         }
     }
 
-    /**
-     * @param resolver
-     * @param promptsView
-     */
     protected void bindLongPress(final T resolver, final V promptsView) {
         for (final Method method : resolver.getClass().getDeclaredMethods()) {
             LongClick longClickAnnotation = method.getAnnotation(LongClick.class);
@@ -205,16 +168,10 @@ public class ViewBinder<T, V extends android.view.View> {
         }
     }
 
-    /**
-     * @return
-     */
     protected int getLayoutId() {
         return mLayoutId;
     }
 
-    /**
-     * @return
-     */
     protected T getResolver() {
         return mResolver;
     }
