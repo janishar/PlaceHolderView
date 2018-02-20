@@ -1,1 +1,1 @@
-include ':app', ':placeholderview', ':placeholderview-core'
+include ':app', ':placeholderview', ':placeholderview-core', ':placeholderview-swipe'
