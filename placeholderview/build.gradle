@@ -26,7 +26,7 @@ ext {
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.1"
+    buildToolsVersion "27.0.0"
 
     defaultConfig {
         minSdkVersion 16
@@ -43,8 +43,8 @@ android {
 }
 
 dependencies {
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:recyclerview-v7:25.+'
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:recyclerview-v7:25.4.0'
 }
 
 apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
