@@ -34,6 +34,7 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.mindorks:butterknifelite:0.0.4'
     implementation project(":placeholderview")
+    implementation project(":placeholderview-swipe")
 
     testImplementation 'junit:junit:4.12'
 }
