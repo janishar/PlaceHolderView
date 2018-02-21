@@ -6,16 +6,16 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.mindorks.demo.R;
-import com.mindorks.placeholderview.Animation;
 import com.mindorks.placeholderview.PlaceHolderView;
-import com.mindorks.placeholderview.annotations.Animate;
-import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.LongClick;
-import com.mindorks.placeholderview.annotations.NonReusable;
-import com.mindorks.placeholderview.annotations.Position;
-import com.mindorks.placeholderview.annotations.Recycle;
-import com.mindorks.placeholderview.annotations.Resolve;
-import com.mindorks.placeholderview.annotations.View;
+import com.mindorks.placeholderview.core.Animation;
+import com.mindorks.placeholderview.core.annotations.Animate;
+import com.mindorks.placeholderview.core.annotations.Layout;
+import com.mindorks.placeholderview.core.annotations.LongClick;
+import com.mindorks.placeholderview.core.annotations.NonReusable;
+import com.mindorks.placeholderview.core.annotations.Position;
+import com.mindorks.placeholderview.core.annotations.Recycle;
+import com.mindorks.placeholderview.core.annotations.Resolve;
+import com.mindorks.placeholderview.core.annotations.View;
 
 /**
  * Created by janisharali on 19/08/16.

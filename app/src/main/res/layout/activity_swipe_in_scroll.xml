@@ -12,7 +12,8 @@
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:background="@color/colorAccent"/>
-        <com.mindorks.placeholderview.SwipePlaceHolderView
+
+        <com.mindorks.placeholderview.swipe.SwipePlaceHolderView
             android:id="@+id/swipeView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>

@@ -5,8 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.mindorks.demo.swipe.TinderCard2;
-import com.mindorks.placeholderview.SwipeDecor;
-import com.mindorks.placeholderview.SwipePlaceHolderView;
+import com.mindorks.placeholderview.swipe.SwipeDecor;
+import com.mindorks.placeholderview.swipe.SwipePlaceHolderView;
 
 public class ActivityTinderSwipeInScroll extends AppCompatActivity implements TinderCard2.CardCallback{
 

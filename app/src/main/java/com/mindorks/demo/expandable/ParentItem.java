@@ -7,15 +7,15 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mindorks.demo.R;
-import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.Resolve;
-import com.mindorks.placeholderview.annotations.View;
-import com.mindorks.placeholderview.annotations.expand.Collapse;
-import com.mindorks.placeholderview.annotations.expand.Expand;
-import com.mindorks.placeholderview.annotations.expand.Parent;
-import com.mindorks.placeholderview.annotations.expand.ParentPosition;
-import com.mindorks.placeholderview.annotations.expand.SingleTop;
-import com.mindorks.placeholderview.annotations.expand.Toggle;
+import com.mindorks.placeholderview.core.annotations.Layout;
+import com.mindorks.placeholderview.core.annotations.Resolve;
+import com.mindorks.placeholderview.core.annotations.View;
+import com.mindorks.placeholderview.core.annotations.expand.Collapse;
+import com.mindorks.placeholderview.core.annotations.expand.Expand;
+import com.mindorks.placeholderview.core.annotations.expand.Parent;
+import com.mindorks.placeholderview.core.annotations.expand.ParentPosition;
+import com.mindorks.placeholderview.core.annotations.expand.SingleTop;
+import com.mindorks.placeholderview.core.annotations.expand.Toggle;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -5,6 +5,8 @@ import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.view.View;
 
+import com.mindorks.placeholderview.core.ViewBinder;
+
 import java.util.ArrayList;
 import java.util.List;
 

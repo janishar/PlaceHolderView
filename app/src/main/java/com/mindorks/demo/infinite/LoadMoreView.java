@@ -6,8 +6,8 @@ import android.util.Log;
 
 import com.mindorks.demo.R;
 import com.mindorks.placeholderview.InfinitePlaceHolderView;
-import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.infinite.LoadMore;
+import com.mindorks.placeholderview.core.annotations.Layout;
+import com.mindorks.placeholderview.core.annotations.infinite.LoadMore;
 
 import java.util.List;
 

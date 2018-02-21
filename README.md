@@ -188,7 +188,7 @@ Add below lines in your app's build.gradle if recyclerview above v7:25 is being 
 ```groovy
   -keepattributes *Annotation*
   -keepclassmembers class ** {
-    @com.mindorks.placeholderview.annotations.** <methods>;
+    @com.mindorks.placeholderview.core.annotations.** <methods>;
   }
 ```
 

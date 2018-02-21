@@ -5,13 +5,13 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.mindorks.demo.Image;
 import com.mindorks.demo.R;
-import com.mindorks.placeholderview.Animation;
 import com.mindorks.placeholderview.PlaceHolderView;
-import com.mindorks.placeholderview.annotations.Animate;
-import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.NonReusable;
-import com.mindorks.placeholderview.annotations.Resolve;
-import com.mindorks.placeholderview.annotations.View;
+import com.mindorks.placeholderview.core.Animation;
+import com.mindorks.placeholderview.core.annotations.Animate;
+import com.mindorks.placeholderview.core.annotations.Layout;
+import com.mindorks.placeholderview.core.annotations.NonReusable;
+import com.mindorks.placeholderview.core.annotations.Resolve;
+import com.mindorks.placeholderview.core.annotations.View;
 
 import java.util.List;
 

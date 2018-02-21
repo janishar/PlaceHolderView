@@ -5,17 +5,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mindorks.demo.R;
-import com.mindorks.placeholderview.SwipeDirection;
-import com.mindorks.placeholderview.annotations.Click;
-import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.NonReusable;
-import com.mindorks.placeholderview.annotations.Resolve;
-import com.mindorks.placeholderview.annotations.View;
-import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
-import com.mindorks.placeholderview.annotations.swipe.SwipeInDirectional;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOutDirectional;
-import com.mindorks.placeholderview.annotations.swipe.SwipeTouch;
-import com.mindorks.placeholderview.annotations.swipe.SwipingDirection;
+import com.mindorks.placeholderview.core.annotations.Click;
+import com.mindorks.placeholderview.core.annotations.Layout;
+import com.mindorks.placeholderview.core.annotations.NonReusable;
+import com.mindorks.placeholderview.core.annotations.Resolve;
+import com.mindorks.placeholderview.core.annotations.View;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeCancelState;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeInDirectional;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeOutDirectional;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeTouch;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipingDirection;
+import com.mindorks.placeholderview.swipe.SwipeDirection;
 
 /**
  * Created by janisharali on 09/08/17.

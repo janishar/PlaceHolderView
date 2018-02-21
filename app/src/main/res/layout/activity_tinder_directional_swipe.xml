@@ -33,7 +33,7 @@
             android:background="@drawable/ic_book_black_18dp" />
     </LinearLayout>
 
-    <com.mindorks.placeholderview.SwipeDirectionalView
+    <com.mindorks.placeholderview.swipe.SwipeDirectionalView
         android:id="@+id/swipeView"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

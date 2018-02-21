@@ -7,11 +7,11 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.mindorks.demo.R;
 import com.mindorks.demo.feed.data.Info;
-import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.Resolve;
-import com.mindorks.placeholderview.annotations.View;
-import com.mindorks.placeholderview.annotations.expand.ChildPosition;
-import com.mindorks.placeholderview.annotations.expand.ParentPosition;
+import com.mindorks.placeholderview.core.annotations.Layout;
+import com.mindorks.placeholderview.core.annotations.Resolve;
+import com.mindorks.placeholderview.core.annotations.View;
+import com.mindorks.placeholderview.core.annotations.expand.ChildPosition;
+import com.mindorks.placeholderview.core.annotations.expand.ParentPosition;
 
 /**
  * Created by janisharali on 24/08/16.

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey">
+    android:background="@color/grey"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="80dp"
@@ -29,7 +29,8 @@
             android:layout_marginLeft="30dp"
             android:background="@drawable/ic_book_black_18dp"/>
     </LinearLayout>
-    <com.mindorks.placeholderview.SwipePlaceHolderView
+
+    <com.mindorks.placeholderview.swipe.SwipePlaceHolderView
         android:id="@+id/swipeView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

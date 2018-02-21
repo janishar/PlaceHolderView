@@ -6,17 +6,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mindorks.demo.R;
-import com.mindorks.placeholderview.annotations.Click;
-import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.NonReusable;
-import com.mindorks.placeholderview.annotations.Resolve;
-import com.mindorks.placeholderview.annotations.View;
-import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
-import com.mindorks.placeholderview.annotations.swipe.SwipeHead;
-import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
-import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
+import com.mindorks.placeholderview.core.annotations.Click;
+import com.mindorks.placeholderview.core.annotations.Layout;
+import com.mindorks.placeholderview.core.annotations.NonReusable;
+import com.mindorks.placeholderview.core.annotations.Resolve;
+import com.mindorks.placeholderview.core.annotations.View;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeCancelState;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeHead;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeIn;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeInState;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeOut;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeOutState;
 
 /**
  * Created by janisharali on 19/08/16.

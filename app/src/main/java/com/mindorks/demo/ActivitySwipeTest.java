@@ -5,8 +5,8 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
 import com.mindorks.demo.swipe.SwipeCard;
-import com.mindorks.placeholderview.SwipeDecor;
-import com.mindorks.placeholderview.SwipePlaceHolderView;
+import com.mindorks.placeholderview.swipe.SwipeDecor;
+import com.mindorks.placeholderview.swipe.SwipePlaceHolderView;
 
 public class ActivitySwipeTest extends AppCompatActivity {
 

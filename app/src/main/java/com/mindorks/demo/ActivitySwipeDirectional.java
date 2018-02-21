@@ -9,9 +9,9 @@ import com.mindorks.butterknifelite.ButterKnifeLite;
 import com.mindorks.butterknifelite.annotations.BindView;
 import com.mindorks.butterknifelite.annotations.OnClick;
 import com.mindorks.demo.swipe.TinderDirectionalCard;
-import com.mindorks.placeholderview.SwipeDecor;
-import com.mindorks.placeholderview.SwipeDirectionalView;
-import com.mindorks.placeholderview.listeners.ItemRemovedListener;
+import com.mindorks.placeholderview.swipe.SwipeDecor;
+import com.mindorks.placeholderview.swipe.SwipeDirectionalView;
+import com.mindorks.placeholderview.swipe.listeners.ItemRemovedListener;
 
 /**
  * Created by janisharali on 09/08/17.

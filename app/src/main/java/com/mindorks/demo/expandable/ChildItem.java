@@ -7,12 +7,12 @@ import android.widget.TextView;
 
 import com.mindorks.demo.R;
 import com.mindorks.placeholderview.ExpandablePlaceHolderView;
-import com.mindorks.placeholderview.annotations.Click;
-import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.Resolve;
-import com.mindorks.placeholderview.annotations.View;
-import com.mindorks.placeholderview.annotations.expand.ChildPosition;
-import com.mindorks.placeholderview.annotations.expand.ParentPosition;
+import com.mindorks.placeholderview.core.annotations.Click;
+import com.mindorks.placeholderview.core.annotations.Layout;
+import com.mindorks.placeholderview.core.annotations.Resolve;
+import com.mindorks.placeholderview.core.annotations.View;
+import com.mindorks.placeholderview.core.annotations.expand.ChildPosition;
+import com.mindorks.placeholderview.core.annotations.expand.ParentPosition;
 
 import java.util.ArrayList;
 import java.util.List;

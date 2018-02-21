@@ -3,16 +3,16 @@ package com.mindorks.demo.swipe;
 import android.util.Log;
 
 import com.mindorks.demo.R;
-import com.mindorks.placeholderview.SwipePlaceHolderView;
-import com.mindorks.placeholderview.annotations.Click;
-import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.NonReusable;
-import com.mindorks.placeholderview.annotations.Position;
-import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
-import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
-import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
+import com.mindorks.placeholderview.core.annotations.Click;
+import com.mindorks.placeholderview.core.annotations.Layout;
+import com.mindorks.placeholderview.core.annotations.NonReusable;
+import com.mindorks.placeholderview.core.annotations.Position;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeCancelState;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeIn;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeInState;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeOut;
+import com.mindorks.placeholderview.core.annotations.swipe.SwipeOutState;
+import com.mindorks.placeholderview.swipe.SwipePlaceHolderView;
 
 /**
  * Created by janisharali on 19/08/16.
