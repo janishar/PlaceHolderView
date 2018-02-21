@@ -12,8 +12,8 @@ install {
         pom.project {
             packaging 'aar'
 
-            name 'swipeplaceholderview'
-            description 'swipeplaceholderview'
+            name 'placeholderview-core'
+            description 'placeholderview-core'
 
             url siteUrl
 
@@ -74,7 +74,7 @@ if (project.rootProject.file("local.properties").exists()) {
 
         pkg {
             repo = "mindorks"
-            name = "swipeplaceholderview-v2"
+            name = "coreplaceholderview-v2"
             websiteUrl = siteUrl
             vcsUrl = gitUrl
             licenses = ["Apache-2.0"]

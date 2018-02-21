@@ -1,14 +1,14 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "27.0.0"
+    compileSdkVersion rootProject.ext.libCompileSdkVersion
+    buildToolsVersion rootProject.ext.libBuildToolsVersion
 
     defaultConfig {
-        minSdkVersion 16
-        targetSdkVersion 25
-        versionCode 11
-        versionName "0.7.3"
+        minSdkVersion rootProject.ext.libMinSdkVersion
+        targetSdkVersion rootProject.ext.libTargetSdkVersion
+        versionCode rootProject.ext.libPublishVersionCode
+        versionName rootProject.ext.libPublishVersionName
     }
     buildTypes {
         release {
@@ -20,7 +20,7 @@ android {
 
 dependencies {
     testImplementation 'junit:junit:4.12'
-    implementation 'com.android.support:recyclerview-v7:25.4.0'
+    implementation "com.android.support:recyclerview-v7:$rootProject.ext.libSupportVersion"
     api project(':placeholderview-core')
     api project(':placeholderview-swipe')
 }

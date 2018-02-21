@@ -4,8 +4,8 @@ apply plugin: "com.jfrog.bintray"
 def siteUrl = 'https://github.com/janishar/PlaceHolderView'
 def gitUrl = 'https://github.com/janishar/PlaceHolderView.git'
 
-group = "com.mindorks.android"
-version = '0.0.1-alpha1'
+group = rootProject.ext.libPublishGroupName
+version = rootProject.ext.libPublishVersionName
 
 install {
     repositories.mavenInstaller {
