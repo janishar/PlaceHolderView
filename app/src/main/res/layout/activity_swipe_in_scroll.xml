@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.mindorks.test.CustomScrollview
+<com.mindorks.demo.CustomScrollview
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scroll"
     android:layout_width="match_parent"
@@ -12,9 +12,10 @@
             android:layout_width="match_parent"
             android:layout_height="400dp"
             android:background="@color/colorAccent"/>
-        <com.mindorks.placeholderview.SwipePlaceHolderView
+
+        <com.mindorks.placeholderview.swipe.SwipePlaceHolderView
             android:id="@+id/swipeView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
-</com.mindorks.test.CustomScrollview>
+</com.mindorks.demo.CustomScrollview>

@@ -2,13 +2,14 @@ package com.mindorks.placeholderview;
 
 import android.view.View;
 
-import com.mindorks.placeholderview.annotations.expand.ChildPosition;
-import com.mindorks.placeholderview.annotations.expand.Collapse;
-import com.mindorks.placeholderview.annotations.expand.Expand;
-import com.mindorks.placeholderview.annotations.expand.Parent;
-import com.mindorks.placeholderview.annotations.expand.ParentPosition;
-import com.mindorks.placeholderview.annotations.expand.SingleTop;
-import com.mindorks.placeholderview.annotations.expand.Toggle;
+import com.mindorks.placeholderview.core.ViewBinder;
+import com.mindorks.placeholderview.core.annotations.expand.ChildPosition;
+import com.mindorks.placeholderview.core.annotations.expand.Collapse;
+import com.mindorks.placeholderview.core.annotations.expand.Expand;
+import com.mindorks.placeholderview.core.annotations.expand.Parent;
+import com.mindorks.placeholderview.core.annotations.expand.ParentPosition;
+import com.mindorks.placeholderview.core.annotations.expand.SingleTop;
+import com.mindorks.placeholderview.core.annotations.expand.Toggle;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -19,7 +20,7 @@ import java.util.List;
 /**
  * Created by janisharali on 18/08/16.
  */
-public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBinder<T, V>{
+public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBinder<T, V> {
 
     private boolean isParent = false;
     private boolean isExpanded = false;
@@ -85,7 +86,7 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
     }
 
     @Override
-    protected void bindView(V promptsView, int position) {
+    public void bindView(V promptsView, int position) {
         super.bindView(promptsView, position);
         if(isParent){
             bindToggle(getResolver(), promptsView);
@@ -162,11 +163,13 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
 
     @Override
     @Deprecated
-    protected void unbind() {}
+    public void unbind() {
+    }
 
     @Override
     @Deprecated
-    protected void bindAnimation(int deviceWidth, int deviceHeight, V view) {}
+    public void bindAnimation(int deviceWidth, int deviceHeight, V view) {
+    }
 
     protected void setCallback(ExpansionCallback callback) {
         mCallback = callback;

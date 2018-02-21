@@ -2,7 +2,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.mindorks.placeholderview.SwipePlaceHolderView
+    <com.mindorks.placeholderview.swipe.SwipePlaceHolderView
         android:id="@+id/cards_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />

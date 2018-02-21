@@ -7,7 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.AttributeSet;
 
-import com.mindorks.placeholderview.annotations.infinite.LoadMore;
+import com.mindorks.placeholderview.core.annotations.infinite.LoadMore;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

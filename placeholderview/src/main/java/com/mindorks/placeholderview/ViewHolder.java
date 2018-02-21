@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.mindorks.placeholderview.core.ViewBinder;
+
 /**
  * Created by janisharali on 18/08/16.
  */
