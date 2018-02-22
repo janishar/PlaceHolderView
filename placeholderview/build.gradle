@@ -21,6 +21,7 @@ android {
 dependencies {
     testImplementation 'junit:junit:4.12'
     implementation "com.android.support:recyclerview-v7:$rootProject.ext.libSupportVersion"
+    api project(':placeholderview-annotations')
 }
 
 apply from: 'publish.gradle'
