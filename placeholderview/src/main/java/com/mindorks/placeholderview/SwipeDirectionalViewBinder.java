@@ -8,19 +8,11 @@ import android.view.View;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.FrameLayout;
 
-import com.mindorks.placeholderview.annotations.swipe.SwipeInDirectional;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOutDirectional;
-import com.mindorks.placeholderview.annotations.swipe.SwipeTouch;
-import com.mindorks.placeholderview.annotations.swipe.SwipingDirection;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 /**
  * Created by janisharali on 09/08/17.
  */
 
-public class SwipeDirectionalViewBinder<T, V extends FrameLayout,
+public abstract class SwipeDirectionalViewBinder<T, V extends SwipePlaceHolderView.FrameView,
         P extends SwipeDirectionalView.SwipeDirectionalOption,
         Q extends SwipeDecor> extends SwipeViewBinder<T, V, P, Q> {
 
@@ -31,7 +23,7 @@ public class SwipeDirectionalViewBinder<T, V extends FrameLayout,
     private float mTransXToRestore;
     private float mTransYToRestore;
 
-    public SwipeDirectionalViewBinder(T resolver) {
+    protected SwipeDirectionalViewBinder(T resolver) {
         super(resolver);
     }
 
@@ -241,96 +233,14 @@ public class SwipeDirectionalViewBinder<T, V extends FrameLayout,
         });
     }
 
-    protected void bindSwipingDirection(SwipeDirection direction) {
-        for (final Method method : getResolver().getClass().getDeclaredMethods()) {
-            SwipingDirection annotation = method.getAnnotation(SwipingDirection.class);
-            if (annotation != null) {
-                Class<?>[] paramClass = method.getParameterTypes();
-                if (paramClass != null && paramClass.length > 0 && paramClass[0] == SwipeDirection.class) {
-                    try {
-                        method.setAccessible(true);
-                        method.invoke(getResolver(), direction);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
-    }
+    protected abstract void bindSwipingDirection(SwipeDirection direction);
 
 
-    protected void bindSwipeInDirectional(SwipeDirection direction) {
-        for (final Method method : getResolver().getClass().getDeclaredMethods()) {
-            SwipeInDirectional annotation = method.getAnnotation(SwipeInDirectional.class);
-            if (annotation != null) {
-                try {
-                    Class<?>[] paramClass = method.getParameterTypes();
-                    if (paramClass == null || paramClass.length == 0 || paramClass[0] != SwipeDirection.class) {
-                        method.setAccessible(true);
-                        method.invoke(getResolver());
-                    } else {
-                        method.setAccessible(true);
-                        method.invoke(getResolver(), direction);
-                    }
+    protected abstract void bindSwipeInDirectional(SwipeDirection direction);
 
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+    protected abstract void bindSwipeOutDirectional(SwipeDirection direction);
 
-    private void bindSwipeOutDirectional(SwipeDirection direction) {
-        for (final Method method : getResolver().getClass().getDeclaredMethods()) {
-            SwipeOutDirectional annotation = method.getAnnotation(SwipeOutDirectional.class);
-            if (annotation != null) {
-                try {
-                    Class<?>[] paramClass = method.getParameterTypes();
-                    if (paramClass == null
-                            || paramClass.length == 0
-                            || paramClass[0] != SwipeDirection.class) {
-                        method.setAccessible(true);
-                        method.invoke(getResolver());
-                    } else {
-                        method.setAccessible(true);
-                        method.invoke(getResolver(), direction);
-                    }
-
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    private void bindSwipeTouch(float xStart, float yStart, float xCurrent, float yCurrent) {
-        for (final Method method : getResolver().getClass().getDeclaredMethods()) {
-            SwipeTouch annotation = method.getAnnotation(SwipeTouch.class);
-            if (annotation != null) {
-                try {
-                    Class<?>[] paramClass = method.getParameterTypes();
-                    if (paramClass != null && paramClass.length == 4
-                            && paramClass[0].equals(Float.TYPE)
-                            && paramClass[1].equals(Float.TYPE)
-                            && paramClass[2].equals(Float.TYPE)
-                            && paramClass[3].equals(Float.TYPE)) {
-                        method.setAccessible(true);
-                        method.invoke(getResolver(), xStart, yStart, xCurrent, yCurrent);
-                    }
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+    protected abstract void bindSwipeTouch(float xStart, float yStart, float xCurrent, float yCurrent);
 
     private void broadcastMoveDirection(float xCurrent, float yCurrent, float xStart, float yStart) {
 

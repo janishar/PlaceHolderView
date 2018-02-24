@@ -203,7 +203,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
             Q extends SwipeDecor,
             V extends SwipeViewBinder<T, F, P, Q>>
     V getViewBinder(T resolver) {
-        return (V) new SwipeViewBinder<T, F, P, Q>(resolver);
+        return (V) Binding.bindSwipeViewResolver(resolver);
     }
 
     public <T>SwipePlaceHolderView addView(T resolver){

@@ -19,7 +19,7 @@ import java.util.List;
 /**
  * Created by janisharali on 18/08/16.
  */
-public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBinder<T, V>{
+public abstract class ExpandableViewBinder<T, V extends android.view.View> extends ViewBinder<T, V> {
 
     private boolean isParent = false;
     private boolean isExpanded = false;
@@ -30,59 +30,19 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
     private int mParentPosition;
     private ExpandableViewBinder<T,V> mParentViewBinder;
 
-    public ExpandableViewBinder(T resolver) {
+    protected ExpandableViewBinder(T resolver) {
         super(resolver);
         bindCollapseProperty(resolver);
         mChildList = new ArrayList<>();
     }
 
-    protected boolean bindViewType(){
-        T resolver = getResolver();
-        Parent parent = resolver.getClass().getAnnotation(Parent.class);
-        if(parent != null) {
-            isParent = parent.value();
-        }
-        return isParent;
-    }
+    protected abstract boolean bindViewType();
 
-    protected void bindCollapseProperty(final T resolver){
-        SingleTop singleTop = resolver.getClass().getAnnotation(SingleTop.class);
-        if(singleTop != null) {
-            isSingleTop = singleTop.value();
-        }
-    }
+    protected abstract void bindCollapseProperty(final T resolver);
 
-    protected void bindParentPosition(int position){
-        mParentPosition = position;
-        T resolver = getResolver();
-        for(final Field field : resolver.getClass().getDeclaredFields()) {
-            ParentPosition annotation = field.getAnnotation(ParentPosition.class);
-            if(annotation != null) {
-                try {
-                    field.setAccessible(true);
-                    field.set(resolver, position);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+    protected abstract void bindParentPosition(int position);
 
-    protected void bindChildPosition(int position){
-        mChildPosition = position;
-        T resolver = getResolver();
-        for(final Field field : resolver.getClass().getDeclaredFields()) {
-            ChildPosition annotation = field.getAnnotation(ChildPosition.class);
-            if(annotation != null) {
-                try {
-                    field.setAccessible(true);
-                    field.set(resolver, position);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+    protected abstract void bindChildPosition(int position);
 
     @Override
     protected void bindView(V promptsView, int position) {
@@ -92,73 +52,11 @@ public class ExpandableViewBinder<T, V extends android.view.View> extends ViewBi
         }
     }
 
-    private void bindToggle(final T resolver,final V promptsView){
-        boolean toggleSet = false;
-        for(final Field field : resolver.getClass().getDeclaredFields()){
-            Toggle toggle = field.getAnnotation(Toggle.class);
-            if(toggle != null) {
-                android.view.View view = promptsView.findViewById(toggle.value());
-                view.setOnClickListener(new android.view.View.OnClickListener() {
-                    @Override
-                    public void onClick(android.view.View v) {
-                        try {
-                            if (isExpanded) {collapse();}
-                            else {expand();}
-                        }catch (Exception e){
-                            e.printStackTrace();
-                        }
-                    }
-                });
-                toggleSet = true;
-            }
-        }
+    protected abstract void bindToggle(final T resolver, final V promptsView);
 
-        if(!toggleSet){
-            promptsView.setOnClickListener(new android.view.View.OnClickListener() {
-                @Override
-                public void onClick(android.view.View v) {
-                    try {
-                        if (isExpanded) {collapse();}
-                        else {expand();}
-                    }catch (Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            });
-        }
-    }
+    protected abstract void bindCollapse(final T resolver);
 
-    private void bindCollapse(final T resolver){
-        for(final Method method : resolver.getClass().getDeclaredMethods()){
-            Collapse annotation = method.getAnnotation(Collapse.class);
-            if(annotation != null) {
-                try {
-                    method.setAccessible(true);
-                    method.invoke(resolver);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
-
-    private void bindExpand(final T resolver){
-        for(final Method method : resolver.getClass().getDeclaredMethods()){
-            Expand annotation = method.getAnnotation(Expand.class);
-            if(annotation != null) {
-                try {
-                    method.setAccessible(true);
-                    method.invoke(resolver);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+    protected abstract void bindExpand(final T resolver);
 
     @Override
     @Deprecated

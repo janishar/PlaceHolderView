@@ -61,7 +61,7 @@ public class SwipeDirectionalView extends SwipePlaceHolderView {
             Q extends SwipeDecor,
             V extends SwipeViewBinder<T, F, P, Q>>
     V getViewBinder(T resolver) {
-        return (V) new SwipeDirectionalViewBinder<T, F, SwipeDirectionalOption, Q>(resolver);
+        return (V) Binding.bindSwipeDirectionalViewResolver(resolver);
     }
 
     protected void setSwipeHorizontalThreshold(int threshold) {

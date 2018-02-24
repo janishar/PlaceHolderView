@@ -22,7 +22,7 @@ public class ExpandableViewAdapter<T> extends ViewAdapter<T>
 
     @Override
     protected void addView(T viewResolver) throws IndexOutOfBoundsException {
-        ExpandableViewBinder<T, View> expandableViewBinder = new ExpandableViewBinder<>(viewResolver);
+        ExpandableViewBinder<T, View> expandableViewBinder = Binding.bindExpandableViewResolver(viewResolver);
         if(expandableViewBinder.bindViewType()){
             expandableViewBinder.setCallback(this);
             mParentBinder = expandableViewBinder;
@@ -46,7 +46,7 @@ public class ExpandableViewAdapter<T> extends ViewAdapter<T>
     protected void addChildView(T parentResolver, T childResolver) throws Resources.NotFoundException {
         ExpandableViewBinder<T, View> parentBinder = getBinderForResolver(parentResolver);
         if(parentBinder != null && parentBinder.isParent()){
-            ExpandableViewBinder<T, View> childViewBinder = new ExpandableViewBinder<>(childResolver);
+            ExpandableViewBinder<T, View> childViewBinder = Binding.bindExpandableViewResolver(childResolver);
             parentBinder.getChildList().add(childViewBinder);
             if(parentBinder.isExpanded()){
                 int position;
@@ -64,7 +64,7 @@ public class ExpandableViewAdapter<T> extends ViewAdapter<T>
         for(ViewBinder<T, View> viewBinder : getViewBinderList()){
             ExpandableViewBinder<T, View> parentBinder = (ExpandableViewBinder<T, View>)viewBinder;
             if(parentBinder.isParent() && parentBinder.getParentPosition() == parentPosition){
-                ExpandableViewBinder<T, View> childViewBinder = new ExpandableViewBinder<>(childResolver);
+                ExpandableViewBinder<T, View> childViewBinder = Binding.bindExpandableViewResolver(childResolver);
                 parentBinder.getChildList().add(childViewBinder);
                 if(parentBinder.isExpanded()){
                     int position;

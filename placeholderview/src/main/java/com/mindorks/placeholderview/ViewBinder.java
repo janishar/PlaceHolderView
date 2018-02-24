@@ -1,22 +1,9 @@
 package com.mindorks.placeholderview;
 
-import com.mindorks.placeholderview.annotations.Click;
-import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.LongClick;
-import com.mindorks.placeholderview.annotations.NonReusable;
-import com.mindorks.placeholderview.annotations.Position;
-import com.mindorks.placeholderview.annotations.Recycle;
-import com.mindorks.placeholderview.annotations.Resolve;
-import com.mindorks.placeholderview.annotations.View;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 /**
  * Created by janisharali on 18/08/16.
  */
-public class ViewBinder<T, V extends android.view.View> {
+public abstract class ViewBinder<T, V extends android.view.View> {
 
     private int mLayoutId;
     private int mPosition;
@@ -43,130 +30,26 @@ public class ViewBinder<T, V extends android.view.View> {
         mAnimationResolver.bindAnimation(deviceWidth, deviceHeight, mResolver, view);
     }
 
-    private void bindLayout(final T resolver) {
-        Layout layout = resolver.getClass().getAnnotation(Layout.class);
-        if (layout != null) {
-            mLayoutId = layout.value();
-        }
-    }
+    protected abstract void bindLayout(final T resolver);
 
-    private void getNullable(final T resolver) {
-        NonReusable nonReusable = resolver.getClass().getAnnotation(NonReusable.class);
-        if (nonReusable != null) {
-            isNullable = nonReusable.value();
-        }
-    }
+    protected abstract void getNullable(final T resolver);
 
-    protected void bindViews(final T resolver, V promptsView) {
-        for (final Field field : resolver.getClass().getDeclaredFields()) {
-            View viewAnnotation = field.getAnnotation(View.class);
-            if (viewAnnotation != null) {
-                android.view.View view = promptsView.findViewById(viewAnnotation.value());
-                try {
-                    field.setAccessible(true);
-                    field.set(resolver, view);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+    protected abstract void bindViews(final T resolver, V promptsView);
 
-    protected void bindViewPosition(final T resolver, int position) {
-        mPosition = position;
-        for (final Field field : resolver.getClass().getDeclaredFields()) {
-            Position annotation = field.getAnnotation(Position.class);
-            if (annotation != null) {
-                try {
-                    field.setAccessible(true);
-                    field.set(resolver, position);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+    protected abstract void bindViewPosition(final T resolver, int position);
 
-    protected void resolveView(final T resolver) {
-        for (final Method method : resolver.getClass().getDeclaredMethods()) {
-            Resolve annotation = method.getAnnotation(Resolve.class);
-            if (annotation != null) {
-                try {
-                    method.setAccessible(true);
-                    method.invoke(resolver);
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+    protected abstract void resolveView(final T resolver);
 
-    protected void bindClick(final T resolver, final V promptsView) {
-        for (final Method method : resolver.getClass().getDeclaredMethods()) {
-            Click clickAnnotation = method.getAnnotation(Click.class);
-            if (clickAnnotation != null) {
-                android.view.View view = promptsView.findViewById(clickAnnotation.value());
-                view.setOnClickListener(new android.view.View.OnClickListener() {
-                    @Override
-                    public void onClick(android.view.View v) {
-                        try {
-                            method.setAccessible(true);
-                            method.invoke(resolver);
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        } catch (InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        }
-    }
+    protected abstract void bindClick(final T resolver, final V promptsView);
 
-    protected void bindLongPress(final T resolver, final V promptsView) {
-        for (final Method method : resolver.getClass().getDeclaredMethods()) {
-            LongClick longClickAnnotation = method.getAnnotation(LongClick.class);
-            if (longClickAnnotation != null) {
-                android.view.View view = promptsView.findViewById(longClickAnnotation.value());
-                view.setOnLongClickListener(new android.view.View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(android.view.View v) {
-                        try {
-                            method.setAccessible(true);
-                            method.invoke(resolver);
-                        } catch (IllegalAccessException e) {
-                            e.printStackTrace();
-                        } catch (InvocationTargetException e) {
-                            e.printStackTrace();
-                        }
-                        return true;
-                    }
-                });
-            }
-        }
-    }
+    protected abstract void bindLongPress(final T resolver, final V promptsView);
+
+    protected abstract void recycleView();
 
     /**
      * Remove all the references in the original class
      */
-    protected void unbind() {
-        if (mResolver != null && isNullable) {
-            for (final Field field : mResolver.getClass().getDeclaredFields()) {
-                try {
-                    if (!field.getType().isPrimitive()) {
-                        field.setAccessible(true);
-                        field.set(mResolver, null);
-                    }
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-            }
-            mResolver = null;
-            mAnimationResolver = null;
-        }
-    }
+    protected abstract void unbind();
 
     protected int getLayoutId() {
         return mLayoutId;
@@ -178,23 +61,5 @@ public class ViewBinder<T, V extends android.view.View> {
 
     protected int getPosition() {
         return mPosition;
-    }
-
-    protected void recycleView() {
-        if (mResolver != null) {
-            for (final Method method : mResolver.getClass().getDeclaredMethods()) {
-                Recycle annotation = method.getAnnotation(Recycle.class);
-                if (annotation != null) {
-                    try {
-                        method.setAccessible(true);
-                        method.invoke(mResolver);
-                    } catch (IllegalAccessException e) {
-                        e.printStackTrace();
-                    } catch (InvocationTargetException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }
     }
 }
