@@ -23,7 +23,7 @@ import java.util.List;
 public class ImageTypeSmallPlaceHolder {
 
     @View(R.id.placeholderview)
-    private PlaceHolderView mPlaceHolderView;
+    PlaceHolderView mPlaceHolderView;
 
     private Context mContext;
     private List<Image> mImageList;
@@ -34,7 +34,7 @@ public class ImageTypeSmallPlaceHolder {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         mPlaceHolderView.getBuilder()
                 .setHasFixedSize(false)
                 .setItemViewCacheSize(10)

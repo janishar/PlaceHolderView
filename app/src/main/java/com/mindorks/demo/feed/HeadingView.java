@@ -26,16 +26,16 @@ import com.mindorks.placeholderview.annotations.expand.Toggle;
 public class HeadingView {
 
     @View(R.id.headingTxt)
-    private TextView headingTxt;
+    TextView headingTxt;
 
     @View(R.id.toggleIcon)
-    private ImageView toggleIcon;
+    ImageView toggleIcon;
 
     @Toggle(R.id.toggleView)
-    private LinearLayout toggleView;
+    LinearLayout toggleView;
 
     @ParentPosition
-    private int mParentPosition;
+    int mParentPosition;
 
     private Context mContext;
     private String mHeading;
@@ -46,18 +46,18 @@ public class HeadingView {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         toggleIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_keyboard_arrow_up_white_24dp));
         headingTxt.setText(mHeading);
     }
 
     @Expand
-    private void onExpand(){
+    public void onExpand() {
         toggleIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_white_24dp));
     }
 
     @Collapse
-    private void onCollapse(){
+    public void onCollapse() {
         toggleIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_keyboard_arrow_up_white_24dp));
     }
 

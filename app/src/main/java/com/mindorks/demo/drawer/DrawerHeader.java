@@ -17,16 +17,16 @@ import com.mindorks.placeholderview.annotations.View;
 public class DrawerHeader {
 
     @View(R.id.profileImageView)
-    private ImageView profileImage;
+    ImageView profileImage;
 
     @View(R.id.nameTxt)
-    private TextView nameTxt;
+    TextView nameTxt;
 
     @View(R.id.emailTxt)
-    private TextView emailTxt;
+    TextView emailTxt;
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         nameTxt.setText("Janishar Ali");
         emailTxt.setText("janishar.ali@gmail.com");
     }

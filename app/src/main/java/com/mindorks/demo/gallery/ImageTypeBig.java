@@ -25,10 +25,10 @@ import com.mindorks.placeholderview.annotations.View;
 public class ImageTypeBig {
 
     @View(R.id.imageView)
-    private ImageView imageView;
+    ImageView imageView;
 
     @Position
-    private int position;
+    int position;
 
     private String mUlr;
     private Context mContext;
@@ -41,18 +41,18 @@ public class ImageTypeBig {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         Glide.with(mContext).load(mUlr).into(imageView);
         Log.d("DEBUG", "onResolved position " + position);
     }
 
     @Recycle
-    private void onRecycled() {
+    public void onRecycled() {
         Log.d("DEBUG", "onRecycled position " + position);
     }
 
     @LongClick(R.id.imageView)
-    private void onLongClick(){
+    public void onLongClick() {
         mPlaceHolderView.removeView(this);
     }
 

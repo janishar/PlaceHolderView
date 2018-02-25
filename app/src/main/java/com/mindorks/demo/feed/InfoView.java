@@ -20,22 +20,22 @@ import com.mindorks.placeholderview.annotations.expand.ParentPosition;
 public class InfoView {
 
     @ParentPosition
-    private int mParentPosition;
+    int mParentPosition;
 
     @ChildPosition
-    private int mChildPosition;
+    int mChildPosition;
 
     @View(R.id.titleTxt)
-    private TextView titleTxt;
+    TextView titleTxt;
 
     @View(R.id.captionTxt)
-    private TextView captionTxt;
+    TextView captionTxt;
 
     @View(R.id.timeTxt)
-    private TextView timeTxt;
+    TextView timeTxt;
 
     @View(R.id.imageView)
-    private ImageView imageView;
+    ImageView imageView;
 
     private Info mInfo;
     private Context mContext;
@@ -46,7 +46,7 @@ public class InfoView {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         titleTxt.setText(mInfo.getTitle());
         captionTxt.setText(mInfo.getCaption());
         timeTxt.setText(mInfo.getTime());

@@ -22,7 +22,7 @@ import com.mindorks.placeholderview.annotations.View;
 public class ImageTypeSmall {
 
     @View(R.id.imageView)
-    private ImageView imageView;
+    ImageView imageView;
 
     private String mUlr;
     private Context mContext;
@@ -35,12 +35,12 @@ public class ImageTypeSmall {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         Glide.with(mContext).load(mUlr).into(imageView);
     }
 
     @LongClick(R.id.imageView)
-    private void onLongClick(){
+    public void onLongClick() {
         mPlaceHolderView.removeView(this);
     }
 
