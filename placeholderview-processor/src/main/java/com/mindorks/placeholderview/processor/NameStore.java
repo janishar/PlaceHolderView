@@ -31,6 +31,7 @@ public class NameStore {
     public static class Class {
         public static final String VIEW_BINDER = "ViewBinder";
         public static final String ANDROID_VIEW = "View";
+        public static final String ANDROID_VIEW_ON_CLICK_LISTENER = "OnClickListener";
         public static final String PLACE_HOLDER_VIEW = "PlaceHolderView";
 
     }
@@ -43,12 +44,15 @@ public class NameStore {
         public static final String UNBIND = "unbind";
         public static final String RESOLVE_VIEW = "resolveView";
         public static final String RECYCLE_VIEW = "recycleView";
+
+        public static final String ANDROID_VIEW_ON_CLICK = "onClick";
     }
 
     public static class Variable {
         public static final String RESOLVER = "resolver";
         public static final String ITEM_VIEW = "itemView";
         public static final String POSITION = "position";
+        public static final String ANDROID_VIEW = "view";
 
         public static final String LAYOUT_ID = "layoutId";
         public static final String ANIMATION_RESOLVER = "AnimationResolver";
