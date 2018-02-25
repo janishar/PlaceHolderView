@@ -23,8 +23,8 @@ public abstract class SwipeDirectionalViewBinder<T, V extends SwipePlaceHolderVi
     private float mTransXToRestore;
     private float mTransYToRestore;
 
-    protected SwipeDirectionalViewBinder(T resolver) {
-        super(resolver);
+    protected SwipeDirectionalViewBinder(T resolver, int layoutId, boolean nullable) {
+        super(resolver, layoutId, nullable);
     }
 
     @Override

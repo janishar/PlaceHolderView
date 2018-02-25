@@ -2,6 +2,8 @@ package com.mindorks.placeholderview.processor;
 
 import com.google.common.collect.ImmutableSet;
 import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.NonReusable;
+import com.mindorks.placeholderview.annotations.Position;
 import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
 import com.squareup.javapoet.ClassName;
 import com.squareup.javapoet.JavaFile;
@@ -11,6 +13,7 @@ import com.squareup.javapoet.TypeSpec;
 import com.squareup.javapoet.TypeVariableName;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.processing.AbstractProcessor;
@@ -23,6 +26,8 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
+import javax.lang.model.element.VariableElement;
+import javax.lang.model.util.ElementFilter;
 import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 
@@ -63,6 +68,9 @@ public class ViewBinderProcessor extends AbstractProcessor {
                 return true;
             }
 
+            NonReusable nonReusable = element.getAnnotation(NonReusable.class);
+            boolean nullable = nonReusable != null;
+
             ClassName viewBinderClassName = ClassName.get(NameStore.Package.PLACE_HOLDER_VIEW, NameStore.Class.VIEW_BINDER);
             ClassName androidViewClassName = ClassName.get(NameStore.Package.ANDROID_VIEW, NameStore.Class.ANDROID_VIEW);
 
@@ -77,27 +85,12 @@ public class ViewBinderProcessor extends AbstractProcessor {
             MethodSpec classBinderConstructor = MethodSpec.constructorBuilder()
                     .addModifiers(Modifier.PROTECTED)
                     .addParameter(className, NameStore.Variable.RESOLVER)
-                    .addStatement("super($N)", NameStore.Variable.RESOLVER)
+                    .addStatement("super($N, $L, $L)",
+                            NameStore.Variable.RESOLVER,
+                            layout.value(),
+                            nullable)
                     .build();
             classBinder.addMethod(classBinderConstructor);
-
-            MethodSpec bindLayoutMethod = MethodSpec
-                    .methodBuilder(NameStore.Method.BIND_LAYOUT)
-                    .addAnnotation(Override.class)
-                    .addModifiers(Modifier.PROTECTED)
-                    .returns(void.class)
-                    .addParameter(className, NameStore.Variable.RESOLVER)
-                    .build();
-            classBinder.addMethod(bindLayoutMethod);
-
-            MethodSpec getNullableMethod = MethodSpec
-                    .methodBuilder(NameStore.Method.GET_NULLABLE)
-                    .addAnnotation(Override.class)
-                    .addModifiers(Modifier.PROTECTED)
-                    .returns(void.class)
-                    .addParameter(className, NameStore.Variable.RESOLVER)
-                    .build();
-            classBinder.addMethod(getNullableMethod);
 
             MethodSpec bindViewMethod = MethodSpec
                     .methodBuilder(NameStore.Method.BIND_VIEWS)
@@ -110,16 +103,6 @@ public class ViewBinderProcessor extends AbstractProcessor {
 //                    .addStatement("$N.$N=$N", "resolver", variableElement.getSimpleName(), "view")
                     .build();
             classBinder.addMethod(bindViewMethod);
-
-            MethodSpec bindViewPositionMethod = MethodSpec
-                    .methodBuilder(NameStore.Method.BIND_VIEW_POSITION)
-                    .addAnnotation(Override.class)
-                    .addModifiers(Modifier.PROTECTED)
-                    .returns(void.class)
-                    .addParameter(className, NameStore.Variable.RESOLVER)
-                    .addParameter(int.class, NameStore.Variable.POSITION)
-                    .build();
-            classBinder.addMethod(bindViewPositionMethod);
 
             MethodSpec resolveViewMethod = MethodSpec
                     .methodBuilder(NameStore.Method.RESOLVE_VIEW)
@@ -166,6 +149,27 @@ public class ViewBinderProcessor extends AbstractProcessor {
                     .build();
             classBinder.addMethod(unbindMethod);
 
+
+            MethodSpec.Builder bindViewPositionMethodBuilder = MethodSpec
+                    .methodBuilder(NameStore.Method.BIND_VIEW_POSITION)
+                    .addAnnotation(Override.class)
+                    .addModifiers(Modifier.PROTECTED)
+                    .returns(void.class)
+                    .addParameter(className, NameStore.Variable.RESOLVER)
+                    .addParameter(int.class, NameStore.Variable.POSITION);
+
+            List<VariableElement> variableElements = ElementFilter.fieldsIn(typeElement.getEnclosedElements());
+            for (VariableElement variableElement : variableElements) {
+                Position position = variableElement.getAnnotation(Position.class);
+                if (position != null) {
+                    bindViewPositionMethodBuilder.addStatement("$N.$N = $L",
+                            NameStore.Variable.RESOLVER,
+                            variableElement.getSimpleName(),
+                            NameStore.Variable.POSITION);
+                }
+            }
+            classBinder.addMethod(bindViewPositionMethodBuilder.build());
+
             try {
                 JavaFile.builder(packageName, classBinder.build())
                         .build()
@@ -179,7 +183,10 @@ public class ViewBinderProcessor extends AbstractProcessor {
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-        return ImmutableSet.of(Layout.class.getCanonicalName());
+        return ImmutableSet.of(
+                Layout.class.getCanonicalName(),
+                NonReusable.class.getCanonicalName(),
+                Position.class.getCanonicalName());
     }
 
     @Override

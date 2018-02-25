@@ -42,8 +42,8 @@ public abstract class SwipeViewBinder<
     private float mTransXToRestore;
     private float mTransYToRestore;
 
-    public SwipeViewBinder(T resolver) {
-        super(resolver);
+    protected SwipeViewBinder(T resolver, int layoutId, boolean nullable) {
+        super(resolver, layoutId, nullable);
     }
 
     protected void bindView(V promptsView, int position, int swipeType, Q decor,
@@ -79,9 +79,9 @@ public abstract class SwipeViewBinder<
 
     protected abstract void bindSwipeView(V promptsView);
 
-    protected abstract void bindSwipeIn(final T resolver);
+    protected abstract void bindSwipeIn(T resolver);
 
-    protected abstract void bindSwipeOut(final T resolver);
+    protected abstract void bindSwipeOut(T resolver);
 
     protected abstract void bindSwipeInState();
 
@@ -89,7 +89,7 @@ public abstract class SwipeViewBinder<
 
     protected abstract void bindSwipeCancelState();
 
-    protected abstract void bindSwipeHead(final T resolver);
+    protected abstract void bindSwipeHead(T resolver);
 
     protected void setAnimatorListener() {
         mViewRemoveAnimatorListener = new Animator.AnimatorListener() {

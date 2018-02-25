@@ -8,13 +8,13 @@ public abstract class ViewBinder<T, V extends android.view.View> {
     private int mLayoutId;
     private int mPosition;
     private T mResolver;
-    private AnimationResolver mAnimationResolver;
-    private boolean isNullable = false;
+    private AnimationResolver<T, V> mAnimationResolver;
+    private boolean mNullable = false;
 
-    protected ViewBinder(final T resolver) {
+    protected ViewBinder(final T resolver, int layoutId, boolean nullable) {
         mResolver = resolver;
-        bindLayout(resolver);
-        getNullable(resolver);
+        mLayoutId = layoutId;
+        mNullable = nullable;
         mAnimationResolver = new AnimationResolver<>();
     }
 
@@ -30,19 +30,15 @@ public abstract class ViewBinder<T, V extends android.view.View> {
         mAnimationResolver.bindAnimation(deviceWidth, deviceHeight, mResolver, view);
     }
 
-    protected abstract void bindLayout(final T resolver);
+    protected abstract void bindViews(T resolver, V promptsView);
 
-    protected abstract void getNullable(final T resolver);
+    protected abstract void bindViewPosition(T resolver, int position);
 
-    protected abstract void bindViews(final T resolver, V promptsView);
+    protected abstract void resolveView(T resolver);
 
-    protected abstract void bindViewPosition(final T resolver, int position);
+    protected abstract void bindClick(T resolver, V promptsView);
 
-    protected abstract void resolveView(final T resolver);
-
-    protected abstract void bindClick(final T resolver, final V promptsView);
-
-    protected abstract void bindLongPress(final T resolver, final V promptsView);
+    protected abstract void bindLongPress(T resolver, V promptsView);
 
     protected abstract void recycleView();
 
@@ -61,5 +57,13 @@ public abstract class ViewBinder<T, V extends android.view.View> {
 
     protected int getPosition() {
         return mPosition;
+    }
+
+    protected AnimationResolver getAnimationResolver() {
+        return mAnimationResolver;
+    }
+
+    protected boolean isNullable() {
+        return mNullable;
     }
 }

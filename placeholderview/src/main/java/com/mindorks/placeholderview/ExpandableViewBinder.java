@@ -2,17 +2,6 @@ package com.mindorks.placeholderview;
 
 import android.view.View;
 
-import com.mindorks.placeholderview.annotations.expand.ChildPosition;
-import com.mindorks.placeholderview.annotations.expand.Collapse;
-import com.mindorks.placeholderview.annotations.expand.Expand;
-import com.mindorks.placeholderview.annotations.expand.Parent;
-import com.mindorks.placeholderview.annotations.expand.ParentPosition;
-import com.mindorks.placeholderview.annotations.expand.SingleTop;
-import com.mindorks.placeholderview.annotations.expand.Toggle;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,8 +19,8 @@ public abstract class ExpandableViewBinder<T, V extends android.view.View> exten
     private int mParentPosition;
     private ExpandableViewBinder<T,V> mParentViewBinder;
 
-    protected ExpandableViewBinder(T resolver) {
-        super(resolver);
+    protected ExpandableViewBinder(T resolver, int layoutId, boolean nullable) {
+        super(resolver, layoutId, nullable);
         bindCollapseProperty(resolver);
         mChildList = new ArrayList<>();
     }
@@ -52,11 +41,11 @@ public abstract class ExpandableViewBinder<T, V extends android.view.View> exten
         }
     }
 
-    protected abstract void bindToggle(final T resolver, final V promptsView);
+    protected abstract void bindToggle(T resolver, V promptsView);
 
-    protected abstract void bindCollapse(final T resolver);
+    protected abstract void bindCollapse(T resolver);
 
-    protected abstract void bindExpand(final T resolver);
+    protected abstract void bindExpand(T resolver);
 
     @Override
     @Deprecated
