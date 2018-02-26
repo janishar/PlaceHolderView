@@ -17,16 +17,16 @@ import com.mindorks.placeholderview.annotations.View;
 public class ItemView {
 
     @View(R.id.titleTxt)
-    private TextView titleTxt;
+    TextView titleTxt;
 
     @View(R.id.captionTxt)
-    private TextView captionTxt;
+    TextView captionTxt;
 
     @View(R.id.timeTxt)
-    private TextView timeTxt;
+    TextView timeTxt;
 
     @View(R.id.imageView)
-    private ImageView imageView;
+    ImageView imageView;
 
     private InfiniteFeedInfo mInfo;
     private Context mContext;
@@ -37,7 +37,7 @@ public class ItemView {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         titleTxt.setText(mInfo.getTitle());
         captionTxt.setText(mInfo.getCaption());
         timeTxt.setText(mInfo.getTime());

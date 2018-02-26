@@ -6,7 +6,6 @@ import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
 import com.mindorks.demo.R;
-import com.mindorks.placeholderview.Animation;
 import com.mindorks.placeholderview.PlaceHolderView;
 import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Layout;
@@ -20,16 +19,16 @@ import com.mindorks.placeholderview.annotations.View;
 /**
  * Created by janisharali on 19/08/16.
  */
-@Animate(Animation.ENTER_LEFT_DESC)
+@Animate(Animate.ENTER_LEFT_DESC)
 @NonReusable
 @Layout(R.layout.gallery_item_big)
 public class ImageTypeBig {
 
     @View(R.id.imageView)
-    private ImageView imageView;
+    ImageView imageView;
 
     @Position
-    private int position;
+    int position;
 
     private String mUlr;
     private Context mContext;
@@ -42,18 +41,18 @@ public class ImageTypeBig {
     }
 
     @Resolve
-    private void onResolved() {
+    protected void onResolved() {
         Glide.with(mContext).load(mUlr).into(imageView);
         Log.d("DEBUG", "onResolved position " + position);
     }
 
     @Recycle
-    private void onRecycled() {
+    public void onRecycled() {
         Log.d("DEBUG", "onRecycled position " + position);
     }
 
     @LongClick(R.id.imageView)
-    private void onLongClick(){
+    public void onLongClick() {
         mPlaceHolderView.removeView(this);
     }
 

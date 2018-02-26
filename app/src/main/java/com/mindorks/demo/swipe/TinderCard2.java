@@ -24,53 +24,50 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 public class TinderCard2 {
 
     private static int count;
-    private CardCallback callback;
-
     @View(R.id.profileImageView)
-    private ImageView profileImageView;
-
+    ImageView profileImageView;
     @View(R.id.nameAgeTxt)
-    private TextView nameAgeTxt;
-
+    TextView nameAgeTxt;
     @View(R.id.locationNameTxt)
-    private TextView locationNameTxt;
+    TextView locationNameTxt;
+    private CardCallback callback;
 
     public TinderCard2(CardCallback callback) {
         this.callback = callback;
     }
 
     @Click(R.id.profileImageView)
-    private void onClick(){
+    public void onClick() {
         Log.d("DEBUG", "profileImageView");
     }
 
     @Resolve
-    private void onResolve(){
+    public void onResolve() {
         nameAgeTxt.setText("Name " + count++);
     }
 
     @SwipeOut
-    private void onSwipedOut(){
+    public void onSwipedOut() {
         callback.onSwipingEnd();
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState(){
+    public void onSwipeCancelState() {
         callback.onSwipingEnd();
     }
 
     @SwipeIn
-    private void onSwipeIn(){
+    public void onSwipeIn() {
         callback.onSwipingEnd();
     }
 
     @SwipeInState
-    private void onSwipeInState(){
+    public void onSwipeInState() {
         callback.onSwiping();
     }
 
     @SwipeOutState
-    private void onSwipeOutState(){
+    public void onSwipeOutState() {
         callback.onSwiping();
     }
 

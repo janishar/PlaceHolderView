@@ -28,51 +28,51 @@ public class TinderCard {
     private static int count;
 
     @View(R.id.profileImageView)
-    private ImageView profileImageView;
+    ImageView profileImageView;
 
     @View(R.id.nameAgeTxt)
-    private TextView nameAgeTxt;
+    TextView nameAgeTxt;
 
     @View(R.id.locationNameTxt)
-    private TextView locationNameTxt;
+    TextView locationNameTxt;
 
     @Click(R.id.profileImageView)
-    private void onClick(){
+    public void onClick() {
         Log.d("DEBUG", "profileImageView");
     }
 
     @Resolve
-    private void onResolve(){
+    public void onResolve() {
         nameAgeTxt.setText("Name " + count++);
     }
 
     @SwipeOut
-    private void onSwipedOut(){
+    public void onSwipedOut() {
         Log.d("DEBUG", "onSwipedOut");
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState(){
+    public void onSwipeCancelState() {
         Log.d("DEBUG", "onSwipeCancelState");
     }
 
     @SwipeIn
-    private void onSwipeIn(){
+    public void onSwipeIn() {
         Log.d("DEBUG", "onSwipedIn");
     }
 
     @SwipeInState
-    private void onSwipeInState(){
+    public void onSwipeInState() {
         Log.d("DEBUG", "onSwipeInState");
     }
 
     @SwipeOutState
-    private void onSwipeOutState(){
+    public void onSwipeOutState() {
         Log.d("DEBUG", "onSwipeOutState");
     }
 
     @SwipeHead
-    private void onSwipeHead() {
+    public void onSwipeHead() {
         profileImageView.setBackgroundColor(Color.BLUE);
         Log.d("DEBUG", "onSwipeHead");
     }

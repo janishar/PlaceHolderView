@@ -25,7 +25,7 @@ public class SwipeCard {
 //    private LinearLayout mainView;
 
     @Position
-    private int mPosition;
+    int mPosition;
 
     private SwipePlaceHolderView mSwipePlaceHolderView;
 
@@ -34,39 +34,39 @@ public class SwipeCard {
     }
 
     @Click(R.id.rejectBtn)
-    private void rejectBtnClick(){
+    public void rejectBtnClick() {
         mSwipePlaceHolderView.doSwipe(this, false);
         Log.d("DEBUG", "rejectBtn");
     }
 
     @Click(R.id.acceptBtn)
-    private void acceptBtnClick(){
+    public void acceptBtnClick() {
         mSwipePlaceHolderView.doSwipe(this, true);
         Log.d("DEBUG", "acceptBtn");
     }
 
     @SwipeOut
-    private void onSwipedOut(){
+    public void onSwipedOut() {
         Log.d("DEBUG", "onSwipedOut");
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState(){
+    public void onSwipeCancelState() {
         Log.d("DEBUG", "onSwipeCancelState");
     }
 
     @SwipeIn
-    private void onSwipeIn(){
+    public void onSwipeIn() {
         Log.d("DEBUG", "onSwipedIn");
     }
 
     @SwipeInState
-    private void onSwipeInState(){
+    public void onSwipeInState() {
         Log.d("DEBUG", "onSwipeInState");
     }
 
     @SwipeOutState
-    private void onSwipeOutState(){
+    public void onSwipeOutState() {
         Log.d("DEBUG", "onSwipeOutState");
     }
 }

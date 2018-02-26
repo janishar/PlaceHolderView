@@ -28,21 +28,16 @@ import java.util.List;
 @Layout(R.layout.drawer_item)
 public class ParentItem {
 
-    private List<String> titleList;
-
     @ParentPosition
-    private int mParentPosition;
-
+    int mParentPosition;
     @View(R.id.itemNameTxt)
-    private TextView itemNameTxt;
-
+    TextView itemNameTxt;
     @Toggle(R.id.itemIcon)
     @View(R.id.itemIcon)
-    private ImageView itemIcon;
-
+    ImageView itemIcon;
     @View(R.id.mainView)
-    private LinearLayout mainView;
-
+    LinearLayout mainView;
+    private List<String> titleList;
     private Context mContext;
 
     public ParentItem(Context context) {
@@ -64,19 +59,19 @@ public class ParentItem {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         itemIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_keyboard_arrow_up_white_24dp));
         mainView.setBackgroundColor(Color.RED);
         itemNameTxt.setText(titleList.get(mParentPosition));
     }
 
     @Expand
-    private void onExpand(){
+    public void onExpand() {
         itemIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_keyboard_arrow_down_white_24dp));
     }
 
     @Collapse
-    private void onCollapse(){
+    public void onCollapse() {
         itemIcon.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_keyboard_arrow_up_white_24dp));
     }
 }

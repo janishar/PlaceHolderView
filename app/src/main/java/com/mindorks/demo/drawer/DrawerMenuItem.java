@@ -28,23 +28,20 @@ public class DrawerMenuItem {
     public static final int DRAWER_MENU_ITEM_LOGOUT = 8;
 
     @Position
-    private int mMenuPosition;
-
+    int mMenuPosition;
+    @View(R.id.itemNameTxt)
+    TextView itemNameTxt;
+    @View(R.id.itemIcon)
+    ImageView itemIcon;
     private Context mContext;
     private DrawerCallBack mCallBack;
-
-    @View(R.id.itemNameTxt)
-    private TextView itemNameTxt;
-
-    @View(R.id.itemIcon)
-    private ImageView itemIcon;
 
     public DrawerMenuItem(Context context) {
         mContext = context;
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         switch (mMenuPosition){
             case DRAWER_MENU_ITEM_PROFILE:
                 itemNameTxt.setText("Profile");
@@ -82,7 +79,7 @@ public class DrawerMenuItem {
     }
 
     @Click(R.id.mainView)
-    private void onMenuItemClick(){
+    public void onMenuItemClick() {
         switch (mMenuPosition){
             case DRAWER_MENU_ITEM_PROFILE:
                 Toast.makeText(mContext, "Profile", Toast.LENGTH_SHORT).show();

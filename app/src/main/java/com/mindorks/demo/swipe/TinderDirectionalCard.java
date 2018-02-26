@@ -28,46 +28,46 @@ public class TinderDirectionalCard {
     private static int count;
 
     @View(R.id.profileImageView)
-    private ImageView profileImageView;
+    ImageView profileImageView;
 
     @View(R.id.nameAgeTxt)
-    private TextView nameAgeTxt;
+    TextView nameAgeTxt;
 
     @View(R.id.locationNameTxt)
-    private TextView locationNameTxt;
+    TextView locationNameTxt;
 
     @Click(R.id.profileImageView)
-    private void onClick() {
+    public void onClick() {
         Log.d("DEBUG", "profileImageView");
     }
 
     @Resolve
-    private void onResolve() {
+    public void onResolve() {
         nameAgeTxt.setText("Name " + count++);
     }
 
     @SwipeOutDirectional
-    private void onSwipeOutDirectional(SwipeDirection direction) {
+    public void onSwipeOutDirectional(SwipeDirection direction) {
         Log.d("DEBUG", "SwipeOutDirectional " + direction.name());
     }
 
     @SwipeCancelState
-    private void onSwipeCancelState() {
+    public void onSwipeCancelState() {
         Log.d("DEBUG", "onSwipeCancelState");
     }
 
     @SwipeInDirectional
-    private void onSwipeInDirectional(SwipeDirection direction) {
+    public void onSwipeInDirectional(SwipeDirection direction) {
         Log.d("DEBUG", "SwipeInDirectional " + direction.name());
     }
 
     @SwipingDirection
-    private void onSwipingDirection(SwipeDirection direction) {
+    public void onSwipingDirection(SwipeDirection direction) {
         Log.d("DEBUG", "SwipingDirection " + direction.name());
     }
 
     @SwipeTouch
-    private void onSwipeTouch(float xStart, float yStart, float xCurrent, float yCurrent) {
+    public void onSwipeTouch(float xStart, float yStart, float xCurrent, float yCurrent) {
         Log.d("DEBUG", "onSwipeTouch "
                 + " xStart : " + xStart
                 + " yStart : " + yStart

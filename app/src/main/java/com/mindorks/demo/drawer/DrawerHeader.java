@@ -1,11 +1,13 @@
 package com.mindorks.demo.drawer;
 
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.mindorks.demo.R;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
+import com.mindorks.placeholderview.annotations.Recycle;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 
@@ -17,18 +19,22 @@ import com.mindorks.placeholderview.annotations.View;
 public class DrawerHeader {
 
     @View(R.id.profileImageView)
-    private ImageView profileImage;
+    ImageView profileImage;
 
     @View(R.id.nameTxt)
-    private TextView nameTxt;
+    TextView nameTxt;
 
     @View(R.id.emailTxt)
-    private TextView emailTxt;
+    TextView emailTxt;
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         nameTxt.setText("Janishar Ali");
         emailTxt.setText("janishar.ali@gmail.com");
     }
 
+    @Recycle
+    public void onRecycled() {
+        Log.i("DEBUG", "onRecycled");
+    }
 }

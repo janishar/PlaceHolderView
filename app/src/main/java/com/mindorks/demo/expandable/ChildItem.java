@@ -24,23 +24,17 @@ import java.util.List;
 @Layout(R.layout.drawer_item)
 public class ChildItem {
 
-    private List<List<String>> childTitleList;
-
     @ParentPosition
-    private int mParentPosition;
-
+    int mParentPosition;
     @ChildPosition
-    private int mChildPosition;
-
+    int mChildPosition;
     @View(R.id.itemNameTxt)
-    private TextView itemNameTxt;
-
+    TextView itemNameTxt;
     @View(R.id.itemIcon)
-    private ImageView itemIcon;
-
+    ImageView itemIcon;
     @View(R.id.mainView)
-    private LinearLayout mainView;
-
+    LinearLayout mainView;
+    private List<List<String>> childTitleList;
     private ExpandablePlaceHolderView mExpandablePlaceHolderView;
 
     public ChildItem(ExpandablePlaceHolderView expandablePlaceHolderView) {
@@ -114,14 +108,14 @@ public class ChildItem {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         mainView.setBackgroundColor(Color.GRAY);
         itemNameTxt.setText(childTitleList.get(mParentPosition).get(mChildPosition));
         itemIcon.setImageDrawable(mExpandablePlaceHolderView.getResources().getDrawable(R.drawable.ic_book_black_18dp));
     }
 
     @Click(R.id.mainView)
-    private void onItemClick(){
+    public void onItemClick() {
 //        mExpandablePlaceHolderView.addChildView(mParentPosition, new ChildItem(mExpandablePlaceHolderView));
         mExpandablePlaceHolderView.removeView(this);
     }

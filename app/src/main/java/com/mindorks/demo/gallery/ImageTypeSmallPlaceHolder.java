@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager;
 
 import com.mindorks.demo.Image;
 import com.mindorks.demo.R;
-import com.mindorks.placeholderview.Animation;
 import com.mindorks.placeholderview.PlaceHolderView;
 import com.mindorks.placeholderview.annotations.Animate;
 import com.mindorks.placeholderview.annotations.Layout;
@@ -18,13 +17,13 @@ import java.util.List;
 /**
  * Created by janisharali on 19/08/16.
  */
-@Animate(Animation.CARD_TOP_IN_DESC)
+@Animate(Animate.CARD_TOP_IN_DESC)
 @NonReusable
 @Layout(R.layout.gallery_item_small_placeholder)
 public class ImageTypeSmallPlaceHolder {
 
     @View(R.id.placeholderview)
-    private PlaceHolderView mPlaceHolderView;
+    PlaceHolderView mPlaceHolderView;
 
     private Context mContext;
     private List<Image> mImageList;
@@ -35,7 +34,7 @@ public class ImageTypeSmallPlaceHolder {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         mPlaceHolderView.getBuilder()
                 .setHasFixedSize(false)
                 .setItemViewCacheSize(10)
