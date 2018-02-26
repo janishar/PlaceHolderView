@@ -41,7 +41,7 @@ public class ImageTypeBig {
     }
 
     @Resolve
-    public void onResolved() {
+    protected void onResolved() {
         Glide.with(mContext).load(mUlr).into(imageView);
         Log.d("DEBUG", "onResolved position " + position);
     }

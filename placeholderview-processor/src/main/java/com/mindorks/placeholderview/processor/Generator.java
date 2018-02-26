@@ -86,7 +86,7 @@ public class Generator {
             return this;
         }
 
-        public ClassStructure addResolveViewMethod() throws InvalidUseException {
+        public ClassStructure addResolveViewMethod() throws IllegalUseException {
             MethodSpec.Builder bindResolveMethodBuilder = MethodSpec.methodBuilder(NameStore.Method.RESOLVE_VIEW)
                     .addAnnotation(Override.class)
                     .addModifiers(Modifier.PROTECTED)
@@ -106,12 +106,15 @@ public class Generator {
             return this;
         }
 
-        public ClassStructure addRecycleViewMethod() throws InvalidUseException {
+        public ClassStructure addRecycleViewMethod() throws IllegalUseException {
             MethodSpec.Builder bindRecycleMethodBuilder = MethodSpec.methodBuilder(NameStore.Method.RECYCLE_VIEW)
                     .addAnnotation(Override.class)
                     .addModifiers(Modifier.PROTECTED)
-                    .returns(void.class)
-                    .addParameter(classDetail.getClassName(), NameStore.Variable.RESOLVER);
+                    .addStatement("$T $N = $N()",
+                            classDetail.getClassName(),
+                            NameStore.Variable.RESOLVER,
+                            NameStore.Method.GET_RESOLVER)
+                    .returns(void.class);
 
             for (ExecutableElement executableElement : classDetail.getExecutableElements()) {
                 Recycle recycle = executableElement.getAnnotation(Recycle.class);
@@ -126,16 +129,7 @@ public class Generator {
             return this;
         }
 
-        public ClassStructure addUnbindMethod() {
-            classBinder.addMethod(MethodSpec.methodBuilder(NameStore.Method.UNBIND)
-                    .addAnnotation(Override.class)
-                    .addModifiers(Modifier.PROTECTED)
-                    .returns(void.class)
-                    .build());
-            return this;
-        }
-
-        public ClassStructure addBindViewPositionMethod() {
+        public ClassStructure addBindViewPositionMethod() throws IllegalUseException {
             MethodSpec.Builder bindViewPositionMethodBuilder = MethodSpec
                     .methodBuilder(NameStore.Method.BIND_VIEW_POSITION)
                     .addAnnotation(Override.class)
@@ -147,6 +141,7 @@ public class Generator {
             for (VariableElement variableElement : classDetail.getVariableElements()) {
                 Position position = variableElement.getAnnotation(Position.class);
                 if (position != null) {
+                    Validator.validatePosition(variableElement);
                     bindViewPositionMethodBuilder.addStatement("$N.$N = $L",
                             NameStore.Variable.RESOLVER,
                             variableElement.getSimpleName(),
@@ -157,7 +152,7 @@ public class Generator {
             return this;
         }
 
-        public ClassStructure addBindViewMethod() throws InvalidUseException {
+        public ClassStructure addBindViewMethod() throws IllegalUseException {
             MethodSpec.Builder bindViewMethodBuilder = MethodSpec
                     .methodBuilder(NameStore.Method.BIND_VIEWS)
                     .addAnnotation(Override.class)
@@ -169,7 +164,7 @@ public class Generator {
             for (VariableElement variableElement : classDetail.getVariableElements()) {
                 View view = variableElement.getAnnotation(View.class);
                 if (view != null) {
-                    Validator.validateView(view);
+                    Validator.validateView(variableElement, view);
                     bindViewMethodBuilder.addStatement("$N.$N = ($T)$N.findViewById($L)",
                             NameStore.Variable.RESOLVER,
                             variableElement.getSimpleName(),
@@ -182,7 +177,7 @@ public class Generator {
             return this;
         }
 
-        public ClassStructure addBindClickMethod() throws InvalidUseException {
+        public ClassStructure addBindClickMethod() throws IllegalUseException {
             MethodSpec.Builder bindClickMethodBuilder = MethodSpec
                     .methodBuilder(NameStore.Method.BIND_CLICK)
                     .addAnnotation(Override.class)
@@ -194,7 +189,7 @@ public class Generator {
             for (ExecutableElement executableElement : classDetail.getExecutableElements()) {
                 Click click = executableElement.getAnnotation(Click.class);
                 if (click != null) {
-                    Validator.validateClick(click);
+                    Validator.validateClick(executableElement, click);
                     TypeSpec OnClickListenerClass = TypeSpec.anonymousClassBuilder("")
                             .addSuperinterface(classDetail.getAndroidOnClickListenerClassName())
                             .addMethod(MethodSpec.methodBuilder(NameStore.Method.ANDROID_VIEW_ON_CLICK)
@@ -215,7 +210,7 @@ public class Generator {
             return this;
         }
 
-        public ClassStructure addBindLongClickMethod() throws InvalidUseException {
+        public ClassStructure addBindLongClickMethod() throws IllegalUseException {
             MethodSpec.Builder bindLongClickMethodBuilder = MethodSpec
                     .methodBuilder(NameStore.Method.BIND_LONG_CLICK)
                     .addAnnotation(Override.class)
@@ -227,7 +222,7 @@ public class Generator {
             for (ExecutableElement executableElement : classDetail.getExecutableElements()) {
                 LongClick longClick = executableElement.getAnnotation(LongClick.class);
                 if (longClick != null) {
-                    Validator.validateLongClick(longClick);
+                    Validator.validateLongClick(executableElement, longClick);
                     TypeSpec OnClickListenerClass = TypeSpec.anonymousClassBuilder("")
                             .addSuperinterface(classDetail.getAndroidOnLongClickListenerClassName())
                             .addMethod(MethodSpec.methodBuilder(NameStore.Method.ANDROID_VIEW_ON_LONG_CLICK)
@@ -246,6 +241,40 @@ public class Generator {
                 }
             }
             classBinder.addMethod(bindLongClickMethodBuilder.build());
+            return this;
+        }
+
+        public ClassStructure addUnbindMethod() {
+            MethodSpec.Builder bindViewPositionMethodBuilder = MethodSpec
+                    .methodBuilder(NameStore.Method.UNBIND)
+                    .addAnnotation(Override.class)
+                    .addModifiers(Modifier.PROTECTED)
+                    .addStatement("$T $N = $N()",
+                            classDetail.getClassName(),
+                            NameStore.Variable.RESOLVER,
+                            NameStore.Method.GET_RESOLVER)
+                    .addStatement("$L $N = $N()",
+                            boolean.class,
+                            NameStore.Variable.NULLABLE,
+                            NameStore.Method.IS_NULLABLE)
+                    .beginControlFlow("if ($N != $L && $N)",
+                            NameStore.Variable.RESOLVER,
+                            null,
+                            NameStore.Variable.NULLABLE);
+
+            for (VariableElement variableElement : classDetail.getVariableElements()) {
+                if (!variableElement.asType().getKind().isPrimitive()
+                        && !variableElement.getModifiers().contains(Modifier.PRIVATE)) {
+                    bindViewPositionMethodBuilder.addStatement("$N.$N = $L",
+                            NameStore.Variable.RESOLVER,
+                            variableElement.getSimpleName(),
+                            null);
+                }
+            }
+            bindViewPositionMethodBuilder
+                    .endControlFlow()
+                    .returns(void.class);
+            classBinder.addMethod(bindViewPositionMethodBuilder.build());
             return this;
         }
 

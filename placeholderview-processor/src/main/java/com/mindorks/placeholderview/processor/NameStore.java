@@ -45,6 +45,10 @@ public class NameStore {
         public static final String UNBIND = "unbind";
         public static final String RESOLVE_VIEW = "resolveView";
         public static final String RECYCLE_VIEW = "recycleView";
+        public static final String GET_RESOLVER = "getResolver";
+        public static final String IS_NULLABLE = "isNullable";
+        public static final String SET_RESOLVER = "setResolver";
+        public static final String SET_ANIMATION_RESOLVER = "setAnimationResolver";
 
         public static final String ANDROID_VIEW_ON_CLICK = "onClick";
         public static final String ANDROID_VIEW_ON_LONG_CLICK = "onLongClick";

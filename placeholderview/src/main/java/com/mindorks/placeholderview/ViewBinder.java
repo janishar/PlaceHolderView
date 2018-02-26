@@ -26,10 +26,6 @@ public abstract class ViewBinder<T, V extends android.view.View> {
         resolveView(mResolver);
     }
 
-    protected void recycle() {
-        recycleView(mResolver);
-    }
-
     protected void bindAnimation(int deviceWidth, int deviceHeight, V view) {
         mAnimationResolver.bindAnimation(deviceWidth, deviceHeight, mResolver, view);
     }
@@ -44,7 +40,7 @@ public abstract class ViewBinder<T, V extends android.view.View> {
 
     protected abstract void bindLongClick(T resolver, V promptsView);
 
-    protected abstract void recycleView(T resolver);
+    protected abstract void recycleView();
 
     /**
      * Remove all the references in the original class
@@ -59,12 +55,20 @@ public abstract class ViewBinder<T, V extends android.view.View> {
         return mResolver;
     }
 
+    public void setResolver(T resolver) {
+        mResolver = resolver;
+    }
+
     protected int getPosition() {
         return mPosition;
     }
 
     protected AnimationResolver getAnimationResolver() {
         return mAnimationResolver;
+    }
+
+    public void setAnimationResolver(AnimationResolver<T, V> animationResolver) {
+        mAnimationResolver = animationResolver;
     }
 
     protected boolean isNullable() {

@@ -8,6 +8,11 @@ import java.lang.annotation.Target;
 /**
  * Created by janisharali on 18/08/16.
  */
+
+/**
+ * It will set the public fields to null
+ * when the view is removed from the Adapter
+ */
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
 public @interface NonReusable {
