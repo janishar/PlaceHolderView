@@ -7,7 +7,7 @@ package com.mindorks.placeholderview.processor;
 public class NameStore {
 
     private NameStore() {
-        // not to be instantiated in public
+        // not to be instantiated
     }
 
     public static String getClassNameWithPackage(String pkgName, String clsName) {
