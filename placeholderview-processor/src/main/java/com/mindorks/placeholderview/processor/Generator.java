@@ -2,8 +2,11 @@ package com.mindorks.placeholderview.processor;
 
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Position;
+import com.mindorks.placeholderview.annotations.Recycle;
+import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 import com.squareup.javapoet.JavaFile;
 import com.squareup.javapoet.MethodSpec;
@@ -83,33 +86,43 @@ public class Generator {
             return this;
         }
 
-        public ClassStructure addResolveViewMethod() {
-            classBinder.addMethod(MethodSpec.methodBuilder(NameStore.Method.RESOLVE_VIEW)
+        public ClassStructure addResolveViewMethod() throws InvalidUseException {
+            MethodSpec.Builder bindResolveMethodBuilder = MethodSpec.methodBuilder(NameStore.Method.RESOLVE_VIEW)
                     .addAnnotation(Override.class)
                     .addModifiers(Modifier.PROTECTED)
                     .returns(void.class)
-                    .addParameter(classDetail.getClassName(), NameStore.Variable.RESOLVER)
-                    .build());
+                    .addParameter(classDetail.getClassName(), NameStore.Variable.RESOLVER);
+
+            for (ExecutableElement executableElement : classDetail.getExecutableElements()) {
+                Resolve resolve = executableElement.getAnnotation(Resolve.class);
+                if (resolve != null) {
+                    Validator.validateResolve(executableElement);
+                    bindResolveMethodBuilder.addStatement("$N.$N()",
+                            NameStore.Variable.RESOLVER,
+                            executableElement.getSimpleName());
+                }
+            }
+            classBinder.addMethod(bindResolveMethodBuilder.build());
             return this;
         }
 
-        public ClassStructure addBindLongPressMethod() {
-            classBinder.addMethod(MethodSpec.methodBuilder(NameStore.Method.BIND_LONG_PRESS)
+        public ClassStructure addRecycleViewMethod() throws InvalidUseException {
+            MethodSpec.Builder bindRecycleMethodBuilder = MethodSpec.methodBuilder(NameStore.Method.RECYCLE_VIEW)
                     .addAnnotation(Override.class)
                     .addModifiers(Modifier.PROTECTED)
                     .returns(void.class)
-                    .addParameter(classDetail.getClassName(), NameStore.Variable.RESOLVER)
-                    .addParameter(classDetail.getAndroidViewClassName(), NameStore.Variable.ITEM_VIEW)
-                    .build());
-            return this;
-        }
+                    .addParameter(classDetail.getClassName(), NameStore.Variable.RESOLVER);
 
-        public ClassStructure addRecycleViewMethod() {
-            classBinder.addMethod(MethodSpec.methodBuilder(NameStore.Method.RECYCLE_VIEW)
-                    .addAnnotation(Override.class)
-                    .addModifiers(Modifier.PROTECTED)
-                    .returns(void.class)
-                    .build());
+            for (ExecutableElement executableElement : classDetail.getExecutableElements()) {
+                Recycle recycle = executableElement.getAnnotation(Recycle.class);
+                if (recycle != null) {
+                    Validator.validateRecycle(executableElement);
+                    bindRecycleMethodBuilder.addStatement("$N.$N()",
+                            NameStore.Variable.RESOLVER,
+                            executableElement.getSimpleName());
+                }
+            }
+            classBinder.addMethod(bindRecycleMethodBuilder.build());
             return this;
         }
 
@@ -183,7 +196,7 @@ public class Generator {
                 if (click != null) {
                     Validator.validateClick(click);
                     TypeSpec OnClickListenerClass = TypeSpec.anonymousClassBuilder("")
-                            .addSuperinterface(classDetail.getOnClickListenerClassName())
+                            .addSuperinterface(classDetail.getAndroidOnClickListenerClassName())
                             .addMethod(MethodSpec.methodBuilder(NameStore.Method.ANDROID_VIEW_ON_CLICK)
                                     .addModifiers(Modifier.PUBLIC)
                                     .addAnnotation(Override.class)
@@ -199,6 +212,40 @@ public class Generator {
                 }
             }
             classBinder.addMethod(bindClickMethodBuilder.build());
+            return this;
+        }
+
+        public ClassStructure addBindLongClickMethod() throws InvalidUseException {
+            MethodSpec.Builder bindLongClickMethodBuilder = MethodSpec
+                    .methodBuilder(NameStore.Method.BIND_LONG_CLICK)
+                    .addAnnotation(Override.class)
+                    .addModifiers(Modifier.PROTECTED)
+                    .returns(void.class)
+                    .addParameter(classDetail.getClassName(), NameStore.Variable.RESOLVER, Modifier.FINAL)
+                    .addParameter(classDetail.getAndroidViewClassName(), NameStore.Variable.ITEM_VIEW);
+
+            for (ExecutableElement executableElement : classDetail.getExecutableElements()) {
+                LongClick longClick = executableElement.getAnnotation(LongClick.class);
+                if (longClick != null) {
+                    Validator.validateLongClick(longClick);
+                    TypeSpec OnClickListenerClass = TypeSpec.anonymousClassBuilder("")
+                            .addSuperinterface(classDetail.getAndroidOnLongClickListenerClassName())
+                            .addMethod(MethodSpec.methodBuilder(NameStore.Method.ANDROID_VIEW_ON_LONG_CLICK)
+                                    .addModifiers(Modifier.PUBLIC)
+                                    .addAnnotation(Override.class)
+                                    .addParameter(classDetail.getAndroidViewClassName(), NameStore.Variable.ANDROID_VIEW)
+                                    .addStatement("$N.$N()", NameStore.Variable.RESOLVER, executableElement.getSimpleName())
+                                    .addStatement("$N $L", "return", true)
+                                    .returns(boolean.class)
+                                    .build())
+                            .build();
+                    bindLongClickMethodBuilder.addStatement("$N.findViewById($L).setOnLongClickListener($L)",
+                            NameStore.Variable.ITEM_VIEW,
+                            longClick.value(),
+                            OnClickListenerClass);
+                }
+            }
+            classBinder.addMethod(bindLongClickMethodBuilder.build());
             return this;
         }
 

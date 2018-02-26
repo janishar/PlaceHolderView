@@ -21,11 +21,13 @@ public class ClassDetail {
     private ClassName binderClassName;
     private ClassName viewBinderClassName;
     private ClassName androidViewClassName;
-    private ClassName onClickListenerClassName;
+    private ClassName androidOnClickListenerClassName;
+    private ClassName androidOnLongClickListenerClassName;
     private List<VariableElement> variableElements;
     private List<ExecutableElement> executableElements;
 
     private ClassDetail() {
+        // to be accessed by build
     }
 
     public static ClassDetail build(TypeElement typeElement, String packageName, String classNameSuffix) {
@@ -33,17 +35,34 @@ public class ClassDetail {
         detail.typeElement = typeElement;
         detail.packageName = packageName;
         detail.typeName = typeElement.getSimpleName().toString();
+
         detail.className = ClassName.get(packageName, detail.typeName);
-        detail.binderClassName = ClassName.get(packageName,
+
+        detail.binderClassName = ClassName.get(
+                packageName,
                 detail.typeName + classNameSuffix);
-        detail.viewBinderClassName = ClassName.get(NameStore.Package.PLACE_HOLDER_VIEW, NameStore.Class.VIEW_BINDER);
-        detail.androidViewClassName = ClassName.get(NameStore.Package.ANDROID_VIEW, NameStore.Class.ANDROID_VIEW);
-        detail.variableElements = ElementFilter.fieldsIn(typeElement.getEnclosedElements());
-        detail.executableElements = ElementFilter.methodsIn(typeElement.getEnclosedElements());
-        detail.onClickListenerClassName = ClassName.get(
+
+        detail.viewBinderClassName = ClassName.get(
+                NameStore.Package.PLACE_HOLDER_VIEW,
+                NameStore.Class.VIEW_BINDER);
+
+        detail.androidViewClassName = ClassName.get(
+                NameStore.Package.ANDROID_VIEW,
+                NameStore.Class.ANDROID_VIEW);
+
+        detail.androidOnClickListenerClassName = ClassName.get(
                 NameStore.Package.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW_ON_CLICK_LISTENER);
+
+        detail.androidOnLongClickListenerClassName = ClassName.get(
+                NameStore.Package.ANDROID_VIEW,
+                NameStore.Class.ANDROID_VIEW,
+                NameStore.Class.ANDROID_VIEW_ON_LONG_CLICK_LISTENER);
+
+        detail.variableElements = ElementFilter.fieldsIn(typeElement.getEnclosedElements());
+        detail.executableElements = ElementFilter.methodsIn(typeElement.getEnclosedElements());
+
         return detail;
     }
 
@@ -83,7 +102,11 @@ public class ClassDetail {
         return executableElements;
     }
 
-    public ClassName getOnClickListenerClassName() {
-        return onClickListenerClassName;
+    public ClassName getAndroidOnClickListenerClassName() {
+        return androidOnClickListenerClassName;
+    }
+
+    public ClassName getAndroidOnLongClickListenerClassName() {
+        return androidOnLongClickListenerClassName;
     }
 }

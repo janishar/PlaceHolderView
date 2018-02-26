@@ -2,10 +2,12 @@ package com.mindorks.placeholderview.processor;
 
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.View;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
+import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.TypeElement;
 
 /**
@@ -45,6 +47,27 @@ public class Validator {
     public static void validateClick(Click click) throws InvalidUseException {
         if (click != null && click.value() <= 0) {
             String msg = "@Click should have positive value passed";
+            throw new InvalidUseException(msg);
+        }
+    }
+
+    public static void validateLongClick(LongClick longClick) throws InvalidUseException {
+        if (longClick != null && longClick.value() <= 0) {
+            String msg = "@LongClick should have positive value passed";
+            throw new InvalidUseException(msg);
+        }
+    }
+
+    public static void validateResolve(ExecutableElement element) throws InvalidUseException {
+        if (element.getParameters().size() > 0) {
+            String msg = "@Resolve should have no parameters";
+            throw new InvalidUseException(msg);
+        }
+    }
+
+    public static void validateRecycle(ExecutableElement element) throws InvalidUseException {
+        if (element.getParameters().size() > 0) {
+            String msg = "@Recycle should have no parameters";
             throw new InvalidUseException(msg);
         }
     }

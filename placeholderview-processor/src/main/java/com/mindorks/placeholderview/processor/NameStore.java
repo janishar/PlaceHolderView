@@ -32,6 +32,7 @@ public class NameStore {
         public static final String VIEW_BINDER = "ViewBinder";
         public static final String ANDROID_VIEW = "View";
         public static final String ANDROID_VIEW_ON_CLICK_LISTENER = "OnClickListener";
+        public static final String ANDROID_VIEW_ON_LONG_CLICK_LISTENER = "OnLongClickListener";
         public static final String PLACE_HOLDER_VIEW = "PlaceHolderView";
 
     }
@@ -40,12 +41,13 @@ public class NameStore {
         public static final String BIND_VIEWS = "bindViews";
         public static final String BIND_VIEW_POSITION = "bindViewPosition";
         public static final String BIND_CLICK = "bindClick";
-        public static final String BIND_LONG_PRESS = "bindLongPress";
+        public static final String BIND_LONG_CLICK = "bindLongClick";
         public static final String UNBIND = "unbind";
         public static final String RESOLVE_VIEW = "resolveView";
         public static final String RECYCLE_VIEW = "recycleView";
 
         public static final String ANDROID_VIEW_ON_CLICK = "onClick";
+        public static final String ANDROID_VIEW_ON_LONG_CLICK = "onLongClick";
     }
 
     public static class Variable {

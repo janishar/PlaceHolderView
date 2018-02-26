@@ -22,8 +22,12 @@ public abstract class ViewBinder<T, V extends android.view.View> {
         bindViews(mResolver, promptsView);
         bindViewPosition(mResolver, position);
         bindClick(mResolver, promptsView);
-        bindLongPress(mResolver, promptsView);
+        bindLongClick(mResolver, promptsView);
         resolveView(mResolver);
+    }
+
+    protected void recycle() {
+        recycleView(mResolver);
     }
 
     protected void bindAnimation(int deviceWidth, int deviceHeight, V view) {
@@ -38,9 +42,9 @@ public abstract class ViewBinder<T, V extends android.view.View> {
 
     protected abstract void bindClick(T resolver, V promptsView);
 
-    protected abstract void bindLongPress(T resolver, V promptsView);
+    protected abstract void bindLongClick(T resolver, V promptsView);
 
-    protected abstract void recycleView();
+    protected abstract void recycleView(T resolver);
 
     /**
      * Remove all the references in the original class

@@ -51,7 +51,7 @@ public class ViewBinderProcessor extends AbstractProcessor {
                         .addBindViewPositionMethod()
                         .addBindViewMethod()
                         .addBindClickMethod()
-                        .addBindLongPressMethod()
+                        .addBindLongClickMethod()
                         .prepare()
                         .generate();
             } catch (IOException e) {

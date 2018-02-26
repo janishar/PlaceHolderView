@@ -22,7 +22,7 @@ public class ViewHolder<T, B extends ViewBinder<T, View>> extends RecyclerView.V
 
     public void recycle() {
         if (mBinder != null) {
-            mBinder.recycleView();
+            mBinder.recycle();
             mBinder = null;
         }
     }

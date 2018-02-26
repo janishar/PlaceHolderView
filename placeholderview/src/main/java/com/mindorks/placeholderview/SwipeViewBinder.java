@@ -62,7 +62,7 @@ public abstract class SwipeViewBinder<
 
     protected void setOnTouch(){
         bindClick(getResolver(), getLayoutView());
-        bindLongPress(getResolver(), getLayoutView());
+        bindLongClick(getResolver(), getLayoutView());
         bindSwipeHead(getResolver());
         switch (mSwipeType){
             case SwipePlaceHolderView.SWIPE_TYPE_DEFAULT:

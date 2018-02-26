@@ -55,7 +55,7 @@ public class CardPresenter {
     }
 
     @Resolve
-    private void onResolved() {
+    public void onResolved() {
         mTextView.setText(this.question);
     }
 }
