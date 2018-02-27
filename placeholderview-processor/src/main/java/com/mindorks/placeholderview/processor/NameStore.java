@@ -30,6 +30,7 @@ public class NameStore {
 
     public static class Class {
         public static final String VIEW_BINDER = "ViewBinder";
+        public static final String EXPANDABLE_VIEW_BINDER = "ExpandableViewBinder";
         public static final String ANDROID_VIEW = "View";
         public static final String ANDROID_VIEW_ON_CLICK_LISTENER = "OnClickListener";
         public static final String ANDROID_VIEW_ON_LONG_CLICK_LISTENER = "OnLongClickListener";

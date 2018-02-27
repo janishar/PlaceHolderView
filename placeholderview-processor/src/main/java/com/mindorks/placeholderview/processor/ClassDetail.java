@@ -18,52 +18,46 @@ public class ClassDetail {
     private String packageName;
     private String typeName;
     private ClassName className;
-    private ClassName binderClassName;
-    private ClassName viewBinderClassName;
+    private ClassName generatedClassName;
+    private ClassName superClassName;
     private ClassName androidViewClassName;
     private ClassName androidOnClickListenerClassName;
     private ClassName androidOnLongClickListenerClassName;
     private List<VariableElement> variableElements;
     private List<ExecutableElement> executableElements;
 
-    private ClassDetail() {
-        // to be accessed by build
-    }
+    protected ClassDetail(TypeElement typeElement, String packageName,
+                          String baseClassName, String generatedClassNameSuffix) {
+        this.typeElement = typeElement;
+        this.packageName = packageName;
+        typeName = typeElement.getSimpleName().toString();
 
-    public static ClassDetail build(TypeElement typeElement, String packageName, String classNameSuffix) {
-        ClassDetail detail = new ClassDetail();
-        detail.typeElement = typeElement;
-        detail.packageName = packageName;
-        detail.typeName = typeElement.getSimpleName().toString();
+        className = ClassName.get(packageName, typeName);
 
-        detail.className = ClassName.get(packageName, detail.typeName);
-
-        detail.binderClassName = ClassName.get(
+        generatedClassName = ClassName.get(
                 packageName,
-                detail.typeName + classNameSuffix);
+                typeName + generatedClassNameSuffix);
 
-        detail.viewBinderClassName = ClassName.get(
+        superClassName = ClassName.get(
                 NameStore.Package.PLACE_HOLDER_VIEW,
-                NameStore.Class.VIEW_BINDER);
+                baseClassName);
 
-        detail.androidViewClassName = ClassName.get(
+        androidViewClassName = ClassName.get(
                 NameStore.Package.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW);
 
-        detail.androidOnClickListenerClassName = ClassName.get(
+        androidOnClickListenerClassName = ClassName.get(
                 NameStore.Package.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW_ON_CLICK_LISTENER);
 
-        detail.androidOnLongClickListenerClassName = ClassName.get(
+        androidOnLongClickListenerClassName = ClassName.get(
                 NameStore.Package.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW_ON_LONG_CLICK_LISTENER);
 
-        detail.variableElements = ElementFilter.fieldsIn(typeElement.getEnclosedElements());
-        detail.executableElements = ElementFilter.methodsIn(typeElement.getEnclosedElements());
-
-        return detail;
+        variableElements = ElementFilter.fieldsIn(typeElement.getEnclosedElements());
+        executableElements = ElementFilter.methodsIn(typeElement.getEnclosedElements());
     }
 
     public TypeElement getTypeElement() {
@@ -82,12 +76,12 @@ public class ClassDetail {
         return className;
     }
 
-    public ClassName getBinderClassName() {
-        return binderClassName;
+    public ClassName getGeneratedClassName() {
+        return generatedClassName;
     }
 
-    public ClassName getViewBinderClassName() {
-        return viewBinderClassName;
+    public ClassName getSuperClassName() {
+        return superClassName;
     }
 
     public ClassName getAndroidViewClassName() {
