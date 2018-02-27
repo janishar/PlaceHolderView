@@ -26,44 +26,37 @@ public class ClassDetail {
     private List<VariableElement> variableElements;
     private List<ExecutableElement> executableElements;
 
-    private ClassDetail() {
-        // to be accessed by build
-    }
+    protected ClassDetail(TypeElement typeElement, String packageName, String classNameSuffix) {
+        this.typeElement = typeElement;
+        this.packageName = packageName;
+        typeName = typeElement.getSimpleName().toString();
 
-    public static ClassDetail build(TypeElement typeElement, String packageName, String classNameSuffix) {
-        ClassDetail detail = new ClassDetail();
-        detail.typeElement = typeElement;
-        detail.packageName = packageName;
-        detail.typeName = typeElement.getSimpleName().toString();
+        className = ClassName.get(packageName, typeName);
 
-        detail.className = ClassName.get(packageName, detail.typeName);
-
-        detail.binderClassName = ClassName.get(
+        binderClassName = ClassName.get(
                 packageName,
-                detail.typeName + classNameSuffix);
+                typeName + classNameSuffix);
 
-        detail.viewBinderClassName = ClassName.get(
+        viewBinderClassName = ClassName.get(
                 NameStore.Package.PLACE_HOLDER_VIEW,
                 NameStore.Class.VIEW_BINDER);
 
-        detail.androidViewClassName = ClassName.get(
+        androidViewClassName = ClassName.get(
                 NameStore.Package.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW);
 
-        detail.androidOnClickListenerClassName = ClassName.get(
+        androidOnClickListenerClassName = ClassName.get(
                 NameStore.Package.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW_ON_CLICK_LISTENER);
 
-        detail.androidOnLongClickListenerClassName = ClassName.get(
+        androidOnLongClickListenerClassName = ClassName.get(
                 NameStore.Package.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW_ON_LONG_CLICK_LISTENER);
 
-        detail.variableElements = ElementFilter.fieldsIn(typeElement.getEnclosedElements());
-        detail.executableElements = ElementFilter.methodsIn(typeElement.getEnclosedElements());
-
-        return detail;
+        variableElements = ElementFilter.fieldsIn(typeElement.getEnclosedElements());
+        executableElements = ElementFilter.methodsIn(typeElement.getEnclosedElements());
     }
 
     public TypeElement getTypeElement() {

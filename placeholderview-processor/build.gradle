@@ -4,7 +4,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':placeholderview-annotations')
     implementation 'com.squareup:javapoet:1.10.0'
-    implementation 'com.google.guava:guava:24.0-jre'
 }
 
 sourceCompatibility = "1.7"

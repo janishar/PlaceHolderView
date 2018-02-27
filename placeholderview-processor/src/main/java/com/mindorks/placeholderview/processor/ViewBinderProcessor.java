@@ -1,15 +1,18 @@
 package com.mindorks.placeholderview.processor;
 
-import com.google.common.collect.ImmutableSet;
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
+import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.Position;
+import com.mindorks.placeholderview.annotations.Recycle;
+import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
-import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Set;
+import java.util.TreeSet;
 
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
@@ -40,10 +43,9 @@ public class ViewBinderProcessor extends AbstractProcessor {
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (Element element : roundEnv.getElementsAnnotatedWith(Layout.class)) {
             try {
-                Generator.create(elementUtils, filer)
-                        .classStructure(
-                                Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
-                                BindingSuffix.CLASS_VIEW_BINDER_SUFFIX)
+                ViewBinderClassStructure
+                        .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
+                                getElementUtils())
                         .addConstructor()
                         .addResolveViewMethod()
                         .addRecycleViewMethod()
@@ -53,9 +55,9 @@ public class ViewBinderProcessor extends AbstractProcessor {
                         .addBindClickMethod()
                         .addBindLongClickMethod()
                         .prepare()
-                        .generate();
+                        .generate(getFiler());
             } catch (IOException e) {
-                messager.printMessage(Diagnostic.Kind.ERROR, e.toString(), element);
+                getMessager().printMessage(Diagnostic.Kind.ERROR, e.toString(), element);
                 return true;
             }
         }
@@ -64,12 +66,15 @@ public class ViewBinderProcessor extends AbstractProcessor {
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
-        return ImmutableSet.of(
+        return new TreeSet<>(Arrays.asList(
                 Layout.class.getCanonicalName(),
                 NonReusable.class.getCanonicalName(),
                 Position.class.getCanonicalName(),
                 View.class.getCanonicalName(),
-                Click.class.getCanonicalName());
+                Resolve.class.getCanonicalName(),
+                Recycle.class.getCanonicalName(),
+                Click.class.getCanonicalName(),
+                LongClick.class.getCanonicalName()));
     }
 
     @Override
@@ -77,5 +82,16 @@ public class ViewBinderProcessor extends AbstractProcessor {
         return SourceVersion.latestSupported();
     }
 
+    public Filer getFiler() {
+        return filer;
+    }
+
+    public Messager getMessager() {
+        return messager;
+    }
+
+    public Elements getElementUtils() {
+        return elementUtils;
+    }
 }
 
