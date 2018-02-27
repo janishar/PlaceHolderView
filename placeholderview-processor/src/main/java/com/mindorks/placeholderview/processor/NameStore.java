@@ -35,7 +35,6 @@ public class NameStore {
         public static final String ANDROID_VIEW_ON_CLICK_LISTENER = "OnClickListener";
         public static final String ANDROID_VIEW_ON_LONG_CLICK_LISTENER = "OnLongClickListener";
         public static final String PLACE_HOLDER_VIEW = "PlaceHolderView";
-
     }
 
     public static class Method {
