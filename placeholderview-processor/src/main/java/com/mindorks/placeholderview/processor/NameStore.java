@@ -31,10 +31,17 @@ public class NameStore {
     public static class Class {
         public static final String VIEW_BINDER = "ViewBinder";
         public static final String EXPANDABLE_VIEW_BINDER = "ExpandableViewBinder";
+        public static final String SWIPE_VIEW_BINDER = "SwipeViewBinder";
+        public static final String SWIPE_DIRECTIONAL_VIEW_BINDER = "SwipeDirectionalViewBinder";
         public static final String ANDROID_VIEW = "View";
         public static final String ANDROID_VIEW_ON_CLICK_LISTENER = "OnClickListener";
         public static final String ANDROID_VIEW_ON_LONG_CLICK_LISTENER = "OnLongClickListener";
         public static final String PLACE_HOLDER_VIEW = "PlaceHolderView";
+
+        public static final String SWIPE_PLACE_HOLDER_VIEW = "SwipePlaceHolderView";
+        public static final String FRAME_VIEW = "FrameView";
+        public static final String SWIPE_OPTION = "SwipeOption";
+        public static final String SWIPE_DECOR = "SwipeDecor";
     }
 
     public static class Method {
@@ -67,6 +74,15 @@ public class NameStore {
         public static final String IS_EXPANDED = "isExpanded";
         public static final String BIND_EXPAND = "bindExpand";
         public static final String BIND_COLLAPSE = "bindCollapse";
+
+        // SwipeView
+        public static final String BIND_SWIPE_VIEW = "bindSwipeView";
+        public static final String BIND_SWIPE_IN = "bindSwipeIn";
+        public static final String BIND_SWIPE_OUT = "bindSwipeOut";
+        public static final String BIND_SWIPE_IN_STATE = "bindSwipeInState";
+        public static final String BIND_SWIPE_OUT_STATE = "bindSwipeOutState";
+        public static final String BIND_SWIPE_CANCEL_STATE = "bindSwipeCancelState";
+        public static final String BIND_SWIPE_HEAD = "bindSwipeHead";
     }
 
     public static class Variable {

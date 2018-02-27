@@ -26,7 +26,7 @@ public abstract class SwipeViewBinder<
     private static int mFinalLeftMargin;
     private static int mFinalTopMargin;
     private V mLayoutView;
-    private SwipeCallback mCallback;
+    private SwipeCallback<SwipeViewBinder<T, V, P, Q>> mCallback;
     private Animator.AnimatorListener mViewRemoveAnimatorListener;
     private Animator.AnimatorListener mViewRestoreAnimatorListener;
     private Animator.AnimatorListener mViewPutBackAnimatorListener;
@@ -47,7 +47,7 @@ public abstract class SwipeViewBinder<
     }
 
     protected void bindView(V promptsView, int position, int swipeType, Q decor,
-                            P swipeOption, SwipeCallback callback) {
+                            P swipeOption, SwipeCallback<SwipeViewBinder<T, V, P, Q>> callback) {
         mLayoutView = promptsView;
         mSwipeType = swipeType;
         mSwipeOption = swipeOption;
@@ -76,20 +76,6 @@ public abstract class SwipeViewBinder<
                 break;
         }
     }
-
-    protected abstract void bindSwipeView(V promptsView);
-
-    protected abstract void bindSwipeIn(T resolver);
-
-    protected abstract void bindSwipeOut(T resolver);
-
-    protected abstract void bindSwipeInState();
-
-    protected abstract void bindSwipeOutState();
-
-    protected abstract void bindSwipeCancelState();
-
-    protected abstract void bindSwipeHead(T resolver);
 
     protected void setAnimatorListener() {
         mViewRemoveAnimatorListener = new Animator.AnimatorListener() {
@@ -725,6 +711,20 @@ public abstract class SwipeViewBinder<
             animatorR.start();
         }
     }
+
+    protected abstract void bindSwipeView(V promptsView);
+
+    protected abstract void bindSwipeIn(T resolver);
+
+    protected abstract void bindSwipeOut(T resolver);
+
+    protected abstract void bindSwipeInState();
+
+    protected abstract void bindSwipeOutState();
+
+    protected abstract void bindSwipeCancelState();
+
+    protected abstract void bindSwipeHead(T resolver);
 
     protected interface SwipeCallback<T extends
             SwipeViewBinder<?,

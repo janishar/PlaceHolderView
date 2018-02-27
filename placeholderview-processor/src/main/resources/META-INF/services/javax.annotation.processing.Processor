@@ -1,2 +1,3 @@
 com.mindorks.placeholderview.processor.ViewBinderProcessor
 com.mindorks.placeholderview.processor.ExpandableViewBinderProcessor
+com.mindorks.placeholderview.processor.SwipeViewBinderProcessor

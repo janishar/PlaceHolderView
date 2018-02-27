@@ -17,6 +17,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
 import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
+import com.mindorks.placeholderview.annotations.swipe.SwipeView;
 
 /**
  * Created by janisharali on 19/08/16.
@@ -35,6 +36,9 @@ public class TinderCard {
 
     @View(R.id.locationNameTxt)
     TextView locationNameTxt;
+
+    @SwipeView
+    android.view.View view;
 
     @Click(R.id.profileImageView)
     public void onClick() {
