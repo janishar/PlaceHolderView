@@ -3,6 +3,8 @@ package com.mindorks.placeholderview.processor;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;
 import com.mindorks.placeholderview.annotations.expand.ChildPosition;
+import com.mindorks.placeholderview.annotations.expand.Collapse;
+import com.mindorks.placeholderview.annotations.expand.Expand;
 import com.mindorks.placeholderview.annotations.expand.Parent;
 import com.mindorks.placeholderview.annotations.expand.ParentPosition;
 import com.mindorks.placeholderview.annotations.expand.SingleTop;
@@ -11,6 +13,7 @@ import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.TypeSpec;
 
+import javax.lang.model.element.ExecutableElement;
 import javax.lang.model.element.Modifier;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
@@ -205,6 +208,46 @@ public class ExpandableViewBinderClassStructure extends ViewBinderClassStructure
                             OnClickListenerClass);
         }
         getClassBuilder().addMethod(bindToggleMethodBuilder.build());
+        return this;
+    }
+
+    public ExpandableViewBinderClassStructure addBindExpandMethod() throws IllegalUseException {
+        MethodSpec.Builder bindExpandMethodBuilder = MethodSpec.methodBuilder(NameStore.Method.BIND_EXPAND)
+                .addAnnotation(Override.class)
+                .addModifiers(Modifier.PROTECTED)
+                .returns(void.class)
+                .addParameter(getClassDetail().getClassName(), NameStore.Variable.RESOLVER);
+
+        for (ExecutableElement executableElement : getClassDetail().getExecutableElements()) {
+            Expand expand = executableElement.getAnnotation(Expand.class);
+            if (expand != null) {
+                Validator.validateExpand(executableElement);
+                bindExpandMethodBuilder.addStatement("$N.$N()",
+                        NameStore.Variable.RESOLVER,
+                        executableElement.getSimpleName());
+            }
+        }
+        getClassBuilder().addMethod(bindExpandMethodBuilder.build());
+        return this;
+    }
+
+    public ExpandableViewBinderClassStructure addBindCollapseMethod() throws IllegalUseException {
+        MethodSpec.Builder bindCollapseMethodBuilder = MethodSpec.methodBuilder(NameStore.Method.BIND_COLLAPSE)
+                .addAnnotation(Override.class)
+                .addModifiers(Modifier.PROTECTED)
+                .returns(void.class)
+                .addParameter(getClassDetail().getClassName(), NameStore.Variable.RESOLVER);
+
+        for (ExecutableElement executableElement : getClassDetail().getExecutableElements()) {
+            Collapse collapse = executableElement.getAnnotation(Collapse.class);
+            if (collapse != null) {
+                Validator.validateCollapse(executableElement);
+                bindCollapseMethodBuilder.addStatement("$N.$N()",
+                        NameStore.Variable.RESOLVER,
+                        executableElement.getSimpleName());
+            }
+        }
+        getClassBuilder().addMethod(bindCollapseMethodBuilder.build());
         return this;
     }
 }

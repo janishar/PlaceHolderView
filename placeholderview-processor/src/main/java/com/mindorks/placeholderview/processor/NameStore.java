@@ -65,6 +65,8 @@ public class NameStore {
         public static final String COLLAPSE = "collapse";
         public static final String EXPAND = "expand";
         public static final String IS_EXPANDED = "isExpanded";
+        public static final String BIND_EXPAND = "bindExpand";
+        public static final String BIND_COLLAPSE = "bindCollapse";
     }
 
     public static class Variable {

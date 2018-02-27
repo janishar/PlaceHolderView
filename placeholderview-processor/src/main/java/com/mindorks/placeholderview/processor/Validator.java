@@ -105,4 +105,20 @@ public class Validator {
             throw new IllegalUseException(msg);
         }
     }
+
+    public static void validateExpand(ExecutableElement element) throws IllegalUseException {
+        validateNonPrivateModifier(element);
+        if (element.getParameters().size() > 0) {
+            String msg = "@Expand should have no parameters";
+            throw new IllegalUseException(msg);
+        }
+    }
+
+    public static void validateCollapse(ExecutableElement element) throws IllegalUseException {
+        validateNonPrivateModifier(element);
+        if (element.getParameters().size() > 0) {
+            String msg = "@Collapse should have no parameters";
+            throw new IllegalUseException(msg);
+        }
+    }
 }
