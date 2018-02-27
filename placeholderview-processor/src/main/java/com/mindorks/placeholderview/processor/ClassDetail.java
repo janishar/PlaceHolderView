@@ -23,6 +23,10 @@ public class ClassDetail {
     private ClassName androidViewClassName;
     private ClassName androidOnClickListenerClassName;
     private ClassName androidOnLongClickListenerClassName;
+    private ClassName frameViewClassName;
+    private ClassName swipeOptionClassName;
+    private ClassName swipeDecorClassName;
+    private ClassName viewTypeParameterClassName;
     private List<VariableElement> variableElements;
     private List<ExecutableElement> executableElements;
 
@@ -56,6 +60,22 @@ public class ClassDetail {
                 NameStore.Class.ANDROID_VIEW,
                 NameStore.Class.ANDROID_VIEW_ON_LONG_CLICK_LISTENER);
 
+        frameViewClassName = ClassName.get(
+                NameStore.Package.PLACE_HOLDER_VIEW,
+                NameStore.Class.SWIPE_PLACE_HOLDER_VIEW,
+                NameStore.Class.FRAME_VIEW);
+
+        swipeOptionClassName = ClassName.get(
+                NameStore.Package.PLACE_HOLDER_VIEW,
+                NameStore.Class.SWIPE_PLACE_HOLDER_VIEW,
+                NameStore.Class.SWIPE_OPTION);
+
+        swipeDecorClassName = ClassName.get(
+                NameStore.Package.PLACE_HOLDER_VIEW,
+                NameStore.Class.SWIPE_DECOR);
+
+        viewTypeParameterClassName = androidViewClassName;
+
         variableElements = ElementFilter.fieldsIn(typeElement.getEnclosedElements());
         executableElements = ElementFilter.methodsIn(typeElement.getEnclosedElements());
     }
@@ -88,19 +108,39 @@ public class ClassDetail {
         return androidViewClassName;
     }
 
-    public List<VariableElement> getVariableElements() {
-        return variableElements;
-    }
-
-    public List<ExecutableElement> getExecutableElements() {
-        return executableElements;
-    }
-
     public ClassName getAndroidOnClickListenerClassName() {
         return androidOnClickListenerClassName;
     }
 
     public ClassName getAndroidOnLongClickListenerClassName() {
         return androidOnLongClickListenerClassName;
+    }
+
+    public ClassName getFrameViewClassName() {
+        return frameViewClassName;
+    }
+
+    public ClassName getSwipeOptionClassName() {
+        return swipeOptionClassName;
+    }
+
+    public ClassName getSwipeDecorClassName() {
+        return swipeDecorClassName;
+    }
+
+    public ClassName getViewTypeParameterClassName() {
+        return viewTypeParameterClassName;
+    }
+
+    public void changeViewTypeParameterClassName(ClassName viewTypeParameterClassName) {
+        this.viewTypeParameterClassName = viewTypeParameterClassName;
+    }
+
+    public List<VariableElement> getVariableElements() {
+        return variableElements;
+    }
+
+    public List<ExecutableElement> getExecutableElements() {
+        return executableElements;
     }
 }

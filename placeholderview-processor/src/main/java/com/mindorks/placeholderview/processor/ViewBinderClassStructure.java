@@ -44,7 +44,7 @@ public class ViewBinderClassStructure extends ClassStructure {
                 .superclass(ParameterizedTypeName.get(
                         getClassDetail().getSuperClassName(),
                         TypeVariableName.get(getClassDetail().getTypeElement().asType()),
-                        TypeVariableName.get(getClassDetail().getAndroidViewClassName().simpleName())))
+                        TypeVariableName.get(getClassDetail().getViewTypeParameterClassName().simpleName())))
                 .addModifiers(Modifier.PUBLIC);
     }
 
@@ -134,7 +134,7 @@ public class ViewBinderClassStructure extends ClassStructure {
                 .addModifiers(Modifier.PROTECTED)
                 .returns(void.class)
                 .addParameter(getClassDetail().getClassName(), NameStore.Variable.RESOLVER)//TODO: Support inner classes import
-                .addParameter(getClassDetail().getAndroidViewClassName(), NameStore.Variable.ITEM_VIEW);
+                .addParameter(getClassDetail().getViewTypeParameterClassName(), NameStore.Variable.ITEM_VIEW);
 
         for (VariableElement variableElement : getClassDetail().getVariableElements()) {
             View view = variableElement.getAnnotation(View.class);
@@ -159,7 +159,7 @@ public class ViewBinderClassStructure extends ClassStructure {
                 .addModifiers(Modifier.PROTECTED)
                 .returns(void.class)
                 .addParameter(getClassDetail().getClassName(), NameStore.Variable.RESOLVER, Modifier.FINAL)
-                .addParameter(getClassDetail().getAndroidViewClassName(), NameStore.Variable.ITEM_VIEW);
+                .addParameter(getClassDetail().getViewTypeParameterClassName(), NameStore.Variable.ITEM_VIEW);
 
         for (ExecutableElement executableElement : getClassDetail().getExecutableElements()) {
             Click click = executableElement.getAnnotation(Click.class);
@@ -192,7 +192,7 @@ public class ViewBinderClassStructure extends ClassStructure {
                 .addModifiers(Modifier.PROTECTED)
                 .returns(void.class)
                 .addParameter(getClassDetail().getClassName(), NameStore.Variable.RESOLVER, Modifier.FINAL)
-                .addParameter(getClassDetail().getAndroidViewClassName(), NameStore.Variable.ITEM_VIEW);
+                .addParameter(getClassDetail().getViewTypeParameterClassName(), NameStore.Variable.ITEM_VIEW);
 
         for (ExecutableElement executableElement : getClassDetail().getExecutableElements()) {
             LongClick longClick = executableElement.getAnnotation(LongClick.class);

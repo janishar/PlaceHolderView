@@ -233,15 +233,6 @@ public abstract class SwipeDirectionalViewBinder<T, V extends SwipePlaceHolderVi
         });
     }
 
-    protected abstract void bindSwipingDirection(SwipeDirection direction);
-
-
-    protected abstract void bindSwipeInDirectional(SwipeDirection direction);
-
-    protected abstract void bindSwipeOutDirectional(SwipeDirection direction);
-
-    protected abstract void bindSwipeTouch(float xStart, float yStart, float xCurrent, float yCurrent);
-
     private void broadcastMoveDirection(float xCurrent, float yCurrent, float xStart, float yStart) {
 
         // send the touch points
@@ -318,4 +309,13 @@ public abstract class SwipeDirectionalViewBinder<T, V extends SwipePlaceHolderVi
             }
         }
     }
+
+    protected abstract void bindSwipingDirection(SwipeDirection direction);
+
+    protected abstract void bindSwipeInDirectional(SwipeDirection direction);
+
+    protected abstract void bindSwipeOutDirectional(SwipeDirection direction);
+
+    protected abstract void bindSwipeTouch(float xStart, float yStart, float xCurrent, float yCurrent);
+
 }

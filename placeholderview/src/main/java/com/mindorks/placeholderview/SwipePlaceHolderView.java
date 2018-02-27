@@ -747,7 +747,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
     /**
      * Frame layout custom view to control the touch event propagation
      */
-    protected static class FrameView extends FrameLayout {
+    public static class FrameView extends FrameLayout {
 
         private int mTouchSlop;
         private boolean mIsBeingDragged = false;
@@ -801,7 +801,7 @@ public class SwipePlaceHolderView extends FrameLayout implements
         }
     }
 
-    protected static class SwipeOption {
+    public static class SwipeOption {
         private float mWidthSwipeDistFactor = 3f;
         private float mHeightSwipeDistFactor = 3f;
         private AtomicBoolean mIsViewLocked;
