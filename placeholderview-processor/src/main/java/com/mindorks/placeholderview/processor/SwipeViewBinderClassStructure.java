@@ -96,7 +96,7 @@ public class SwipeViewBinderClassStructure extends ViewBinderClassStructure {
         for (VariableElement variableElement : getClassDetail().getVariableElements()) {
             SwipeView swipeView = variableElement.getAnnotation(SwipeView.class);
             if (swipeView != null) {
-                Validator.validateNonPrivateModifier(variableElement);
+                Validator.validateSwipeView(variableElement);
                 bindSwipeViewMethodBuilder.addStatement("$N().$N = $L",
                         NameStore.Method.GET_RESOLVER,
                         variableElement.getSimpleName(),

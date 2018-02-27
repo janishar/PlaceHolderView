@@ -121,4 +121,12 @@ public class Validator {
             throw new IllegalUseException(msg);
         }
     }
+
+    public static void validateSwipeView(VariableElement element) throws IllegalUseException {
+        validateNonPrivateModifier(element);
+        if (!element.asType().toString().equals("android.view.View")) {
+            String msg = "@SwipeView should be used only on android.view.View";
+            throw new IllegalUseException(msg);
+        }
+    }
 }
