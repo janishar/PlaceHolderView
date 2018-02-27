@@ -18,11 +18,11 @@ public abstract class ViewBinder<T, V extends android.view.View> {
         mAnimationResolver = new AnimationResolver<>();
     }
 
-    protected void bindView(V promptsView, int position) {
-        bindViews(mResolver, promptsView);
+    protected void bindView(V itemView, int position) {
+        bindViews(mResolver, itemView);
         bindViewPosition(mResolver, position);
-        bindClick(mResolver, promptsView);
-        bindLongClick(mResolver, promptsView);
+        bindClick(mResolver, itemView);
+        bindLongClick(mResolver, itemView);
         resolveView(mResolver);
     }
 
@@ -30,15 +30,15 @@ public abstract class ViewBinder<T, V extends android.view.View> {
         mAnimationResolver.bindAnimation(deviceWidth, deviceHeight, mResolver, view);
     }
 
-    protected abstract void bindViews(T resolver, V promptsView);
+    protected abstract void bindViews(T resolver, V itemView);
 
     protected abstract void bindViewPosition(T resolver, int position);
 
     protected abstract void resolveView(T resolver);
 
-    protected abstract void bindClick(T resolver, V promptsView);
+    protected abstract void bindClick(T resolver, V itemView);
 
-    protected abstract void bindLongClick(T resolver, V promptsView);
+    protected abstract void bindLongClick(T resolver, V itemView);
 
     protected abstract void recycleView();
 

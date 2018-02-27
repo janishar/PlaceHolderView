@@ -30,14 +30,19 @@ public class NameStore {
 
     public static class Class {
         public static final String VIEW_BINDER = "ViewBinder";
+        public static final String EXPANDABLE_VIEW_BINDER = "ExpandableViewBinder";
         public static final String ANDROID_VIEW = "View";
         public static final String ANDROID_VIEW_ON_CLICK_LISTENER = "OnClickListener";
         public static final String ANDROID_VIEW_ON_LONG_CLICK_LISTENER = "OnLongClickListener";
         public static final String PLACE_HOLDER_VIEW = "PlaceHolderView";
-
     }
 
     public static class Method {
+        // Android
+        public static final String ANDROID_VIEW_ON_CLICK = "onClick";
+        public static final String ANDROID_VIEW_ON_LONG_CLICK = "onLongClick";
+
+        // ViewBinder
         public static final String BIND_VIEWS = "bindViews";
         public static final String BIND_VIEW_POSITION = "bindViewPosition";
         public static final String BIND_CLICK = "bindClick";
@@ -50,8 +55,18 @@ public class NameStore {
         public static final String SET_RESOLVER = "setResolver";
         public static final String SET_ANIMATION_RESOLVER = "setAnimationResolver";
 
-        public static final String ANDROID_VIEW_ON_CLICK = "onClick";
-        public static final String ANDROID_VIEW_ON_LONG_CLICK = "onLongClick";
+        // ExpandableViewBinder
+        public static final String BIND_PARENT_POSITION = "bindParentPosition";
+        public static final String BIND_CHILD_POSITION = "bindChildPosition";
+        public static final String SET_PARENT_POSITION = "setParentPosition";
+        public static final String SET_CHILD_POSITION = "setChildPosition";
+        public static final String BIND_ANIMATION = "bindAnimation";
+        public static final String BIND_TOGGLE = "bindToggle";
+        public static final String COLLAPSE = "collapse";
+        public static final String EXPAND = "expand";
+        public static final String IS_EXPANDED = "isExpanded";
+        public static final String BIND_EXPAND = "bindExpand";
+        public static final String BIND_COLLAPSE = "bindCollapse";
     }
 
     public static class Variable {

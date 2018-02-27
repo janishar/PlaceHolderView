@@ -12,7 +12,7 @@ import java.util.List;
  */
 
 public class ExpandableViewAdapter<T> extends ViewAdapter<T>
-        implements ExpandableViewBinder.ExpansionCallback<T>{
+        implements ExpandableViewBinder.ExpansionCallback<T, View> {
 
     private ExpandableViewBinder<T, View> mParentBinder;
 
@@ -23,7 +23,7 @@ public class ExpandableViewAdapter<T> extends ViewAdapter<T>
     @Override
     protected void addView(T viewResolver) throws IndexOutOfBoundsException {
         ExpandableViewBinder<T, View> expandableViewBinder = Binding.bindExpandableViewResolver(viewResolver);
-        if(expandableViewBinder.bindViewType()){
+        if (expandableViewBinder.isParent()) {
             expandableViewBinder.setCallback(this);
             mParentBinder = expandableViewBinder;
             getViewBinderList().add(mParentBinder);
