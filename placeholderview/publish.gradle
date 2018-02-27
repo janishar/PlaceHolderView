@@ -74,7 +74,7 @@ if (project.rootProject.file("local.properties").exists()) {
 
         pkg {
             repo = "mindorks"
-            name = "placeholderview"
+            name = "placeholderview-2"
             websiteUrl = siteUrl
             vcsUrl = gitUrl
             licenses = ["Apache-2.0"]

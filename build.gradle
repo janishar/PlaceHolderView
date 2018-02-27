@@ -35,6 +35,6 @@ ext {
     libBuildToolsVersion = "27.0.2"
     libSupportVersion = '25.4.0'
     libPublishVersionCode = 20
-    libPublishVersionName = '0.0.1-alpha7'
+    libPublishVersionName = '1.0.0-alpha1'
     libPublishGroupName = 'com.mindorks.android'
 }
