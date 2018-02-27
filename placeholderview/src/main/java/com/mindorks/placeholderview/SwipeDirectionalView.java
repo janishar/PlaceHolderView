@@ -77,7 +77,7 @@ public class SwipeDirectionalView extends SwipePlaceHolderView {
         return super.<SwipeDirectionalView, SwipeDirectionalViewBuilder<SwipeDirectionalView>>getBuilder();
     }
 
-    protected static class SwipeDirectionalOption extends SwipeOption {
+    public static class SwipeDirectionalOption extends SwipeOption {
 
         private int mSwipeHorizontalThreshold;
         private int mSwipeVerticalThreshold;

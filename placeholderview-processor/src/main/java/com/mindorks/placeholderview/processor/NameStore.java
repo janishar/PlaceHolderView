@@ -29,19 +29,23 @@ public class NameStore {
     }
 
     public static class Class {
+        // Android
+        public static final String ANDROID_VIEW = "View";
+        public static final String ANDROID_VIEW_ON_CLICK_LISTENER = "OnClickListener";
+        public static final String ANDROID_VIEW_ON_LONG_CLICK_LISTENER = "OnLongClickListener";
+
         public static final String VIEW_BINDER = "ViewBinder";
         public static final String EXPANDABLE_VIEW_BINDER = "ExpandableViewBinder";
         public static final String SWIPE_VIEW_BINDER = "SwipeViewBinder";
         public static final String SWIPE_DIRECTIONAL_VIEW_BINDER = "SwipeDirectionalViewBinder";
-        public static final String ANDROID_VIEW = "View";
-        public static final String ANDROID_VIEW_ON_CLICK_LISTENER = "OnClickListener";
-        public static final String ANDROID_VIEW_ON_LONG_CLICK_LISTENER = "OnLongClickListener";
-        public static final String PLACE_HOLDER_VIEW = "PlaceHolderView";
 
         public static final String SWIPE_PLACE_HOLDER_VIEW = "SwipePlaceHolderView";
+        public static final String SWIPE_DIRECTIONAL_VIEW = "SwipeDirectionalView";
         public static final String FRAME_VIEW = "FrameView";
         public static final String SWIPE_OPTION = "SwipeOption";
         public static final String SWIPE_DECOR = "SwipeDecor";
+        public static final String SWIPE_DIRECTIONAL_OPTION = "SwipeDirectionalOption";
+        public static final String SWIPE_DIRECTION = "SwipeDirection";
     }
 
     public static class Method {
@@ -75,7 +79,7 @@ public class NameStore {
         public static final String BIND_EXPAND = "bindExpand";
         public static final String BIND_COLLAPSE = "bindCollapse";
 
-        // SwipeView
+        // SwipeViewBinder
         public static final String BIND_SWIPE_VIEW = "bindSwipeView";
         public static final String BIND_SWIPE_IN = "bindSwipeIn";
         public static final String BIND_SWIPE_OUT = "bindSwipeOut";
@@ -83,6 +87,12 @@ public class NameStore {
         public static final String BIND_SWIPE_OUT_STATE = "bindSwipeOutState";
         public static final String BIND_SWIPE_CANCEL_STATE = "bindSwipeCancelState";
         public static final String BIND_SWIPE_HEAD = "bindSwipeHead";
+
+        // SwipeDirectionalViewBinder
+        public static final String BIND_SWIPING_DIRECTION = "bindSwipingDirection";
+        public static final String BIND_SWIPE_IN_DIRECTION = "bindSwipeInDirectional";
+        public static final String BIND_SWIPE_OUT_DIRECTION = "bindSwipeOutDirectional";
+        public static final String BIND_SWIPE_TOUCH = "bindSwipeTouch";
     }
 
     public static class Variable {
@@ -94,5 +104,10 @@ public class NameStore {
         public static final String LAYOUT_ID = "layoutId";
         public static final String ANIMATION_RESOLVER = "AnimationResolver";
         public static final String NULLABLE = "nullable";
+        public static final String DIRECTION = "direction";
+        public static final String X_START = "xStart";
+        public static final String Y_START = "yStart";
+        public static final String X_CURRENT = "xCurrent";
+        public static final String Y_CURRENT = "yCurrent";
     }
 }

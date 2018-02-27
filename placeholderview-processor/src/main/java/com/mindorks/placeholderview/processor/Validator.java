@@ -124,9 +124,46 @@ public class Validator {
 
     public static void validateSwipeView(VariableElement element) throws IllegalUseException {
         validateNonPrivateModifier(element);
-        if (!element.asType().toString().equals("android.view.View")) {
-            String msg = "@SwipeView should be used only on android.view.View";
+        String androidViewCanonicalName = NameStore.getClassNameWithPackage(
+                NameStore.Package.ANDROID_VIEW,
+                NameStore.Class.ANDROID_VIEW);
+        if (!element.asType().toString().equals(androidViewCanonicalName)) {
+            String msg = "@SwipeView should be used only on " + androidViewCanonicalName;
             throw new IllegalUseException(msg);
+        }
+    }
+
+    public static void validateSwipeDirection(ExecutableElement element, String annotation) throws IllegalUseException {
+        validateNonPrivateModifier(element);
+        if (element.getParameters().size() == 0) {
+            String msg = "@" + annotation + " must have SwipeDirection parameter";
+            throw new IllegalUseException(msg);
+        }
+
+        if (element.getParameters().size() > 1) {
+            String msg = "@" + annotation + " must have only one parameter i.e. SwipeDirection";
+            throw new IllegalUseException(msg);
+        }
+
+        if (!element.getParameters().get(0).asType().toString().equals(NameStore.getClassNameWithPackage(
+                NameStore.Package.PLACE_HOLDER_VIEW, NameStore.Class.SWIPE_DIRECTION))) {
+            String msg = "@" + annotation + " must have only have SwipeDirection parameter";
+            throw new IllegalUseException(msg);
+        }
+    }
+
+    public static void validateSwipeTouch(ExecutableElement element) throws IllegalUseException {
+        validateNonPrivateModifier(element);
+        if (element.getParameters().size() != 4) {
+            String msg = "@SwipeTouch must be used on the method with (float, float, float, float) signature";
+            throw new IllegalUseException(msg);
+        }
+
+        for (VariableElement variableElement : element.getParameters()) {
+            if (variableElement.asType().getKind() != TypeKind.FLOAT) {
+                String msg = "@SwipeTouch used with method that do not have all 4 float parameters";
+                throw new IllegalUseException(msg);
+            }
         }
     }
 }

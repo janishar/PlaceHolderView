@@ -25,8 +25,10 @@ public class ClassDetail {
     private ClassName androidOnLongClickListenerClassName;
     private ClassName frameViewClassName;
     private ClassName swipeOptionClassName;
+    private ClassName swipeDirectionalOptionClassName;
     private ClassName swipeDecorClassName;
     private ClassName viewTypeParameterClassName;
+    private ClassName swipeDirectionClassName;
     private List<VariableElement> variableElements;
     private List<ExecutableElement> executableElements;
 
@@ -70,9 +72,18 @@ public class ClassDetail {
                 NameStore.Class.SWIPE_PLACE_HOLDER_VIEW,
                 NameStore.Class.SWIPE_OPTION);
 
+        swipeDirectionalOptionClassName = ClassName.get(
+                NameStore.Package.PLACE_HOLDER_VIEW,
+                NameStore.Class.SWIPE_DIRECTIONAL_VIEW,
+                NameStore.Class.SWIPE_DIRECTIONAL_OPTION);
+
         swipeDecorClassName = ClassName.get(
                 NameStore.Package.PLACE_HOLDER_VIEW,
                 NameStore.Class.SWIPE_DECOR);
+
+        swipeDirectionClassName = ClassName.get(
+                NameStore.Package.PLACE_HOLDER_VIEW,
+                NameStore.Class.SWIPE_DIRECTION);
 
         viewTypeParameterClassName = androidViewClassName;
 
@@ -124,6 +135,10 @@ public class ClassDetail {
         return swipeOptionClassName;
     }
 
+    public ClassName getSwipeDirectionalOptionClassName() {
+        return swipeDirectionalOptionClassName;
+    }
+
     public ClassName getSwipeDecorClassName() {
         return swipeDecorClassName;
     }
@@ -134,6 +149,10 @@ public class ClassDetail {
 
     public void changeViewTypeParameterClassName(ClassName viewTypeParameterClassName) {
         this.viewTypeParameterClassName = viewTypeParameterClassName;
+    }
+
+    public ClassName getSwipeDirectionClassName() {
+        return swipeDirectionClassName;
     }
 
     public List<VariableElement> getVariableElements() {
