@@ -32,10 +32,14 @@ public class ExpandableViewBinderProcessor extends ViewBinderProcessor {
                         .addResolveViewMethod()
                         .addRecycleViewMethod()
                         .addUnbindMethod()
+                        .addBindAnimationMethod()
                         .addBindViewPositionMethod()
                         .addBindViewMethod()
                         .addBindClickMethod()
                         .addBindLongClickMethod()
+                        .addBindParentPositionMethod()
+                        .addBindChildPositionMethod()
+                        .addBindToggleMethod()
                         .prepare()
                         .generate(getFiler());
             } catch (IOException e) {

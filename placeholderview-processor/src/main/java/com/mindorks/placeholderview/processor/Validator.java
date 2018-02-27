@@ -4,6 +4,7 @@ import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.View;
+import com.mindorks.placeholderview.annotations.expand.Toggle;
 
 import javax.lang.model.element.Element;
 import javax.lang.model.element.ElementKind;
@@ -93,6 +94,14 @@ public class Validator {
         validateNonPrivateModifier(element);
         if (element.asType().getKind() != TypeKind.INT) {
             String msg = "@Position should only be used for int";
+            throw new IllegalUseException(msg);
+        }
+    }
+
+    public static void validateToggle(Element element, Toggle toggle) throws IllegalUseException {
+        validateNonPrivateModifier(element);
+        if (toggle != null && toggle.value() <= 0) {
+            String msg = "@Toggle should have positive value passed";
             throw new IllegalUseException(msg);
         }
     }

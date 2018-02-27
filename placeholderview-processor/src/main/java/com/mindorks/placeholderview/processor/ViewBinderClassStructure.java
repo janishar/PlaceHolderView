@@ -220,7 +220,7 @@ public class ViewBinderClassStructure extends ClassStructure {
     }
 
     public ViewBinderClassStructure addUnbindMethod() {
-        MethodSpec.Builder bindViewPositionMethodBuilder = MethodSpec
+        MethodSpec.Builder unbindMethodBuilder = MethodSpec
                 .methodBuilder(NameStore.Method.UNBIND)
                 .addAnnotation(Override.class)
                 .addModifiers(Modifier.PROTECTED)
@@ -240,16 +240,18 @@ public class ViewBinderClassStructure extends ClassStructure {
         for (VariableElement variableElement : getClassDetail().getVariableElements()) {
             if (!variableElement.asType().getKind().isPrimitive()
                     && !variableElement.getModifiers().contains(Modifier.PRIVATE)) {
-                bindViewPositionMethodBuilder.addStatement("$N.$N = $L",
+                unbindMethodBuilder.addStatement("$N.$N = $L",
                         NameStore.Variable.RESOLVER,
                         variableElement.getSimpleName(),
                         null);
             }
         }
-        bindViewPositionMethodBuilder
+        unbindMethodBuilder
+                .addStatement("$N($L)", NameStore.Method.SET_RESOLVER, null)
+                .addStatement("$N($L)", NameStore.Method.SET_ANIMATION_RESOLVER, null)
                 .endControlFlow()
                 .returns(void.class);
-        getClassBuilder().addMethod(bindViewPositionMethodBuilder.build());
+        getClassBuilder().addMethod(unbindMethodBuilder.build());
         return this;
     }
 }

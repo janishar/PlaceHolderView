@@ -10,42 +10,30 @@ import java.util.List;
  */
 public abstract class ExpandableViewBinder<T, V extends android.view.View> extends ViewBinder<T, V> {
 
-    private boolean isParent = false;
-    private boolean isExpanded = false;
-    private boolean isSingleTop = false;
+    private boolean mParent = false;
+    private boolean mExpanded = false;
+    private boolean mSingleTop = false;
     private List<ExpandableViewBinder<T, V>> mChildList;
-    private ExpansionCallback mCallback;
+    private ExpansionCallback<T, V> mCallback;
     private int mChildPosition;
     private int mParentPosition;
     private ExpandableViewBinder<T,V> mParentViewBinder;
 
-    protected ExpandableViewBinder(T resolver, int layoutId, boolean nullable) {
+    protected ExpandableViewBinder(T resolver, int layoutId, boolean nullable,
+                                   boolean parent, boolean singleTop) {
         super(resolver, layoutId, nullable);
-        bindCollapseProperty(resolver);
+        mParent = parent;
+        mSingleTop = singleTop;
         mChildList = new ArrayList<>();
     }
 
-    protected abstract boolean bindViewType();
-
-    protected abstract void bindCollapseProperty(final T resolver);
-
-    protected abstract void bindParentPosition(int position);
-
-    protected abstract void bindChildPosition(int position);
-
     @Override
-    protected void bindView(V promptsView, int position) {
-        super.bindView(promptsView, position);
-        if(isParent){
-            bindToggle(getResolver(), promptsView);
+    protected void bindView(V itemView, int position) {
+        super.bindView(itemView, position);
+        if (mParent) {
+            bindToggle(getResolver(), itemView);
         }
     }
-
-    protected abstract void bindToggle(T resolver, V promptsView);
-
-    protected abstract void bindCollapse(T resolver);
-
-    protected abstract void bindExpand(T resolver);
 
     @Override
     @Deprecated
@@ -64,39 +52,47 @@ public abstract class ExpandableViewBinder<T, V extends android.view.View> exten
     }
 
     protected void collapse(){
-        if(isParent && mCallback != null && isExpanded){
+        if (mParent && mCallback != null && mExpanded) {
             mCallback.onCollapse(this);
             bindCollapse(getResolver());
         }
-        isExpanded = false;
+        mExpanded = false;
     }
 
     protected void expand(){
-        if(isParent && mCallback != null && !isExpanded){
+        if (mParent && mCallback != null && !mExpanded) {
             mCallback.onExpand(this);
             bindExpand(getResolver());
         }
-        isExpanded = true;
+        mExpanded = true;
     }
 
     protected boolean isParent() {
-        return isParent;
+        return mParent;
     }
 
     protected boolean isExpanded() {
-        return isExpanded;
+        return mExpanded;
     }
 
     protected boolean isSingleTop() {
-        return isSingleTop;
+        return mSingleTop;
     }
 
     protected int getChildPosition() {
         return mChildPosition;
     }
 
+    public void setChildPosition(int position) {
+        mChildPosition = position;
+    }
+
     protected int getParentPosition() {
         return mParentPosition;
+    }
+
+    public void setParentPosition(int position) {
+        mParentPosition = position;
     }
 
     protected ExpandableViewBinder<T, V> getParentViewBinder() {
@@ -107,9 +103,19 @@ public abstract class ExpandableViewBinder<T, V extends android.view.View> exten
         this.mParentViewBinder = mParentViewBinder;
     }
 
-    protected interface ExpansionCallback<T> {
-        void onExpand(ExpandableViewBinder<T, View> parentBinder);
+    protected abstract void bindParentPosition(int position);
 
-        void onCollapse(ExpandableViewBinder<T, View> parentBinder);
+    protected abstract void bindChildPosition(int position);
+
+    protected abstract void bindToggle(T resolver, V itemView);
+
+    protected abstract void bindCollapse(T resolver);
+
+    protected abstract void bindExpand(T resolver);
+
+    protected interface ExpansionCallback<T, V extends View> {
+        void onExpand(ExpandableViewBinder<T, V> parentBinder);
+
+        void onCollapse(ExpandableViewBinder<T, V> parentBinder);
     }
 }
