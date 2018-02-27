@@ -34,14 +34,15 @@ public class ViewBinderClassStructure extends ClassStructure {
         return new ViewBinderClassStructure(new ClassDetail(
                 typeElement,
                 packageName,
+                NameStore.Class.VIEW_BINDER,
                 BindingSuffix.CLASS_VIEW_BINDER_SUFFIX));
     }
 
     @Override
     protected TypeSpec.Builder createClassBuilder() {
-        return TypeSpec.classBuilder(getClassDetail().getBinderClassName())
+        return TypeSpec.classBuilder(getClassDetail().getGeneratedClassName())
                 .superclass(ParameterizedTypeName.get(
-                        getClassDetail().getViewBinderClassName(),
+                        getClassDetail().getSuperClassName(),
                         TypeVariableName.get(getClassDetail().getTypeElement().asType()),
                         TypeVariableName.get(getClassDetail().getAndroidViewClassName().simpleName())))
                 .addModifiers(Modifier.PUBLIC);

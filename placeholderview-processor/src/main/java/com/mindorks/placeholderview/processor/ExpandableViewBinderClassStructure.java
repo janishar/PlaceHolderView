@@ -20,6 +20,7 @@ public class ExpandableViewBinderClassStructure extends ViewBinderClassStructure
         return new ExpandableViewBinderClassStructure(new ClassDetail(
                 typeElement,
                 packageName,
+                NameStore.Class.EXPANDABLE_VIEW_BINDER,
                 BindingSuffix.CLASS_EXPANDABLE_VIEW_BINDER_SUFFIX));
     }
 }

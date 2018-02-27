@@ -18,28 +18,29 @@ public class ClassDetail {
     private String packageName;
     private String typeName;
     private ClassName className;
-    private ClassName binderClassName;
-    private ClassName viewBinderClassName;
+    private ClassName generatedClassName;
+    private ClassName superClassName;
     private ClassName androidViewClassName;
     private ClassName androidOnClickListenerClassName;
     private ClassName androidOnLongClickListenerClassName;
     private List<VariableElement> variableElements;
     private List<ExecutableElement> executableElements;
 
-    protected ClassDetail(TypeElement typeElement, String packageName, String classNameSuffix) {
+    protected ClassDetail(TypeElement typeElement, String packageName,
+                          String baseClassName, String generatedClassNameSuffix) {
         this.typeElement = typeElement;
         this.packageName = packageName;
         typeName = typeElement.getSimpleName().toString();
 
         className = ClassName.get(packageName, typeName);
 
-        binderClassName = ClassName.get(
+        generatedClassName = ClassName.get(
                 packageName,
-                typeName + classNameSuffix);
+                typeName + generatedClassNameSuffix);
 
-        viewBinderClassName = ClassName.get(
+        superClassName = ClassName.get(
                 NameStore.Package.PLACE_HOLDER_VIEW,
-                NameStore.Class.VIEW_BINDER);
+                baseClassName);
 
         androidViewClassName = ClassName.get(
                 NameStore.Package.ANDROID_VIEW,
@@ -75,12 +76,12 @@ public class ClassDetail {
         return className;
     }
 
-    public ClassName getBinderClassName() {
-        return binderClassName;
+    public ClassName getGeneratedClassName() {
+        return generatedClassName;
     }
 
-    public ClassName getViewBinderClassName() {
-        return viewBinderClassName;
+    public ClassName getSuperClassName() {
+        return superClassName;
     }
 
     public ClassName getAndroidViewClassName() {
