@@ -37,6 +37,12 @@ public class SwipeViewBinderProcessor extends ViewBinderProcessor {
                         .addBindClickMethod()
                         .addBindLongClickMethod()
                         .addBindSwipeViewMethod()
+                        .addBindSwipeInMethod()
+                        .addBindSwipeOutMethod()
+                        .addBindSwipeInStateMethod()
+                        .addBindSwipeOutStateMethod()
+                        .addBindSwipeCancelStateMethod()
+                        .addBindSwipeHeadStateMethod()
                         .prepare()
                         .generate(getFiler());
             } catch (IOException e) {
