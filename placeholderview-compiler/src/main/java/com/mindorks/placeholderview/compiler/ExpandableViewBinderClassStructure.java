@@ -1,4 +1,4 @@
-package com.mindorks.placeholderview.processor;
+package com.mindorks.placeholderview.compiler;
 
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.NonReusable;

@@ -1,10 +1,13 @@
-package com.mindorks.placeholderview.processor;
+package com.mindorks.placeholderview.compiler;
 
 import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.swipe.SwipeInDirectional;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOutDirectional;
-import com.mindorks.placeholderview.annotations.swipe.SwipeTouch;
-import com.mindorks.placeholderview.annotations.swipe.SwipingDirection;
+import com.mindorks.placeholderview.annotations.expand.ChildPosition;
+import com.mindorks.placeholderview.annotations.expand.Collapse;
+import com.mindorks.placeholderview.annotations.expand.Expand;
+import com.mindorks.placeholderview.annotations.expand.Parent;
+import com.mindorks.placeholderview.annotations.expand.ParentPosition;
+import com.mindorks.placeholderview.annotations.expand.SingleTop;
+import com.mindorks.placeholderview.annotations.expand.Toggle;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -16,34 +19,29 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 
-public class SwipeDirectionalViewBinderProcessor extends ViewBinderProcessor {
+public class ExpandableViewBinderProcessor extends ViewBinderProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (Element element : roundEnv.getElementsAnnotatedWith(Layout.class)) {
             try {
-                SwipeDirectionalViewBinderClassStructure
+                ExpandableViewBinderClassStructure
                         .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
                                 getElementUtils())
                         .addConstructor()
                         .addResolveViewMethod()
                         .addRecycleViewMethod()
                         .addUnbindMethod()
+                        .addBindAnimationMethod()
                         .addBindViewPositionMethod()
                         .addBindViewMethod()
                         .addBindClickMethod()
                         .addBindLongClickMethod()
-                        .addBindSwipeViewMethod()
-                        .addBindSwipeInMethod()
-                        .addBindSwipeOutMethod()
-                        .addBindSwipeInStateMethod()
-                        .addBindSwipeOutStateMethod()
-                        .addBindSwipeCancelStateMethod()
-                        .addBindSwipeHeadStateMethod()
-                        .addBindSwipingDirectionMethod()
-                        .addBindSwipeInDirectionMethod()
-                        .addBindSwipeOutDirectionMethod()
-                        .addBindSwipeTouchMethod()
+                        .addBindParentPositionMethod()
+                        .addBindChildPositionMethod()
+                        .addBindToggleMethod()
+                        .addBindExpandMethod()
+                        .addBindCollapseMethod()
                         .prepare()
                         .generate(getFiler());
             } catch (IOException e) {
@@ -57,10 +55,13 @@ public class SwipeDirectionalViewBinderProcessor extends ViewBinderProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> annotations = new TreeSet<>(Arrays.asList(
-                SwipeInDirectional.class.getCanonicalName(),
-                SwipeOutDirectional.class.getCanonicalName(),
-                SwipeTouch.class.getCanonicalName(),
-                SwipingDirection.class.getCanonicalName()));
+                ChildPosition.class.getCanonicalName(),
+                ParentPosition.class.getCanonicalName(),
+                Collapse.class.getCanonicalName(),
+                Expand.class.getCanonicalName(),
+                Parent.class.getCanonicalName(),
+                Toggle.class.getCanonicalName(),
+                SingleTop.class.getCanonicalName()));
         annotations.addAll(super.getSupportedAnnotationTypes());
         return annotations;
     }

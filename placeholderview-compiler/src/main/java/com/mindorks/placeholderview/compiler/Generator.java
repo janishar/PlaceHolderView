@@ -1,4 +1,4 @@
-package com.mindorks.placeholderview.processor;
+package com.mindorks.placeholderview.compiler;
 
 import com.squareup.javapoet.JavaFile;
 

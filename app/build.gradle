@@ -36,5 +36,5 @@ dependencies {
     implementation project(":placeholderview")
     implementation 'com.android.support:recyclerview-v7:27.0.2'
     testImplementation 'junit:junit:4.12'
-    annotationProcessor project(':placeholderview-processor')
+    annotationProcessor project(':placeholderview-compiler')
 }

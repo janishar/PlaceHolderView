@@ -1,1 +1,1 @@
-include ':app', ':placeholderview', ':placeholderview-annotations', ':placeholderview-processor'
+include ':app', ':placeholderview', ':placeholderview-annotations', ':placeholderview-compiler'

@@ -1,13 +1,10 @@
-package com.mindorks.placeholderview.processor;
+package com.mindorks.placeholderview.compiler;
 
 import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
-import com.mindorks.placeholderview.annotations.swipe.SwipeHead;
-import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
-import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
-import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
-import com.mindorks.placeholderview.annotations.swipe.SwipeView;
+import com.mindorks.placeholderview.annotations.swipe.SwipeInDirectional;
+import com.mindorks.placeholderview.annotations.swipe.SwipeOutDirectional;
+import com.mindorks.placeholderview.annotations.swipe.SwipeTouch;
+import com.mindorks.placeholderview.annotations.swipe.SwipingDirection;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -19,13 +16,13 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 
-public class SwipeViewBinderProcessor extends ViewBinderProcessor {
+public class SwipeDirectionalViewBinderProcessor extends ViewBinderProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (Element element : roundEnv.getElementsAnnotatedWith(Layout.class)) {
             try {
-                SwipeViewBinderClassStructure
+                SwipeDirectionalViewBinderClassStructure
                         .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
                                 getElementUtils())
                         .addConstructor()
@@ -43,6 +40,10 @@ public class SwipeViewBinderProcessor extends ViewBinderProcessor {
                         .addBindSwipeOutStateMethod()
                         .addBindSwipeCancelStateMethod()
                         .addBindSwipeHeadStateMethod()
+                        .addBindSwipingDirectionMethod()
+                        .addBindSwipeInDirectionMethod()
+                        .addBindSwipeOutDirectionMethod()
+                        .addBindSwipeTouchMethod()
                         .prepare()
                         .generate(getFiler());
             } catch (IOException e) {
@@ -56,13 +57,10 @@ public class SwipeViewBinderProcessor extends ViewBinderProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> annotations = new TreeSet<>(Arrays.asList(
-                SwipeView.class.getCanonicalName(),
-                SwipeIn.class.getCanonicalName(),
-                SwipeOut.class.getCanonicalName(),
-                SwipeInState.class.getCanonicalName(),
-                SwipeOutState.class.getCanonicalName(),
-                SwipeCancelState.class.getCanonicalName(),
-                SwipeHead.class.getCanonicalName()));
+                SwipeInDirectional.class.getCanonicalName(),
+                SwipeOutDirectional.class.getCanonicalName(),
+                SwipeTouch.class.getCanonicalName(),
+                SwipingDirection.class.getCanonicalName()));
         annotations.addAll(super.getSupportedAnnotationTypes());
         return annotations;
     }

@@ -1,13 +1,13 @@
-package com.mindorks.placeholderview.processor;
+package com.mindorks.placeholderview.compiler;
 
 import com.mindorks.placeholderview.annotations.Layout;
-import com.mindorks.placeholderview.annotations.expand.ChildPosition;
-import com.mindorks.placeholderview.annotations.expand.Collapse;
-import com.mindorks.placeholderview.annotations.expand.Expand;
-import com.mindorks.placeholderview.annotations.expand.Parent;
-import com.mindorks.placeholderview.annotations.expand.ParentPosition;
-import com.mindorks.placeholderview.annotations.expand.SingleTop;
-import com.mindorks.placeholderview.annotations.expand.Toggle;
+import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
+import com.mindorks.placeholderview.annotations.swipe.SwipeHead;
+import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
+import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
+import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
+import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
+import com.mindorks.placeholderview.annotations.swipe.SwipeView;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -19,29 +19,30 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
 import javax.tools.Diagnostic;
 
-public class ExpandableViewBinderProcessor extends ViewBinderProcessor {
+public class SwipeViewBinderProcessor extends ViewBinderProcessor {
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
         for (Element element : roundEnv.getElementsAnnotatedWith(Layout.class)) {
             try {
-                ExpandableViewBinderClassStructure
+                SwipeViewBinderClassStructure
                         .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
                                 getElementUtils())
                         .addConstructor()
                         .addResolveViewMethod()
                         .addRecycleViewMethod()
                         .addUnbindMethod()
-                        .addBindAnimationMethod()
                         .addBindViewPositionMethod()
                         .addBindViewMethod()
                         .addBindClickMethod()
                         .addBindLongClickMethod()
-                        .addBindParentPositionMethod()
-                        .addBindChildPositionMethod()
-                        .addBindToggleMethod()
-                        .addBindExpandMethod()
-                        .addBindCollapseMethod()
+                        .addBindSwipeViewMethod()
+                        .addBindSwipeInMethod()
+                        .addBindSwipeOutMethod()
+                        .addBindSwipeInStateMethod()
+                        .addBindSwipeOutStateMethod()
+                        .addBindSwipeCancelStateMethod()
+                        .addBindSwipeHeadStateMethod()
                         .prepare()
                         .generate(getFiler());
             } catch (IOException e) {
@@ -55,13 +56,13 @@ public class ExpandableViewBinderProcessor extends ViewBinderProcessor {
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> annotations = new TreeSet<>(Arrays.asList(
-                ChildPosition.class.getCanonicalName(),
-                ParentPosition.class.getCanonicalName(),
-                Collapse.class.getCanonicalName(),
-                Expand.class.getCanonicalName(),
-                Parent.class.getCanonicalName(),
-                Toggle.class.getCanonicalName(),
-                SingleTop.class.getCanonicalName()));
+                SwipeView.class.getCanonicalName(),
+                SwipeIn.class.getCanonicalName(),
+                SwipeOut.class.getCanonicalName(),
+                SwipeInState.class.getCanonicalName(),
+                SwipeOutState.class.getCanonicalName(),
+                SwipeCancelState.class.getCanonicalName(),
+                SwipeHead.class.getCanonicalName()));
         annotations.addAll(super.getSupportedAnnotationTypes());
         return annotations;
     }

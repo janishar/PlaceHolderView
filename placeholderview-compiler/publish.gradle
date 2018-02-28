@@ -12,7 +12,7 @@ install {
         pom.project {
             packaging 'jar'
 
-            name 'placeholderview-processor'
+            name 'placeholderview-compiler'
             description 'Annotation Processor for PlaceHolderView'
 
             url siteUrl
@@ -68,7 +68,7 @@ if (project.rootProject.file("local.properties").exists()) {
 
         pkg {
             repo = "mindorks"
-            name = "placeholderview-processor"
+            name = "placeholderview-compiler"
             websiteUrl = siteUrl
             vcsUrl = gitUrl
             licenses = ["Apache-2.0"]
