@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * Example : @SwipeOut private void onSwipedOut(){//something here}
  * It is called when the card is either left swiped or top swiped
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
 public @interface SwipeOut {
 }

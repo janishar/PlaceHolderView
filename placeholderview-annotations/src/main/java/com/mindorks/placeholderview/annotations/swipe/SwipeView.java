@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Created by janisharali on 07/10/16.
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.FIELD)
 public @interface SwipeView {
 }

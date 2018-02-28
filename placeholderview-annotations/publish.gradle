@@ -10,10 +10,10 @@ version = rootProject.ext.libPublishVersionName
 install {
     repositories.mavenInstaller {
         pom.project {
-            packaging 'aar'
+            packaging 'jar'
 
             name 'placeholderview-annotations'
-            description 'Views Built on RecyclerView and Swipe View'
+            description 'Anotations for PlaceHolderView'
 
             url siteUrl
 
@@ -42,14 +42,8 @@ install {
 }
 
 task sourcesJar(type: Jar) {
-    from android.sourceSets.main.java.srcDirs
+    from sourceSets.main.java.srcDirs
     classifier = 'sources'
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-    classpath += configurations.compile
 }
 
 task javadocJar(type: Jar, dependsOn: javadoc) {

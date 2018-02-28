@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Created by janisharali on 16/02/18.
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
 public @interface Recycle {
 }

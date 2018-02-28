@@ -15,7 +15,7 @@ import java.lang.annotation.Target;
  * {//something here}
  * It is called when the card is swiping with direction
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
 public @interface SwipingDirection {
 }

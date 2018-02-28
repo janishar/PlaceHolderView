@@ -2,6 +2,7 @@ apply plugin: 'java-library'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+    compileOnly 'com.android.support:support-annotations:27.1.0'
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_7

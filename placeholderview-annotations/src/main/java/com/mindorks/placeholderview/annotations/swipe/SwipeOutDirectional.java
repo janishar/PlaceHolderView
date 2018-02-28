@@ -16,7 +16,7 @@ import java.lang.annotation.Target;
  * SwipeDirection direction) {//something here}
  * It is called when the card is either left swiped or top swiped
  */
-@Retention(RetentionPolicy.RUNTIME)
+@Retention(RetentionPolicy.CLASS)
 @Target(ElementType.METHOD)
 public @interface SwipeOutDirectional {
 }

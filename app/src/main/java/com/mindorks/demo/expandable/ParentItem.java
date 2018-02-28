@@ -30,13 +30,17 @@ public class ParentItem {
 
     @ParentPosition
     int mParentPosition;
+
     @View(R.id.itemNameTxt)
     TextView itemNameTxt;
+
     @Toggle(R.id.itemIcon)
     @View(R.id.itemIcon)
     ImageView itemIcon;
+
     @View(R.id.mainView)
     LinearLayout mainView;
+
     private List<String> titleList;
     private Context mContext;
 
