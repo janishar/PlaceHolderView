@@ -41,10 +41,11 @@ public class Binding {
                 throw new RuntimeException("Unable to create instance.", cause);
             }
         } catch (ClassNotFoundException e) {
+            throw new RuntimeException("Unable to find Class for " + className + "\n" +
+                    "PLEASE ADD >> annotationProcessor 'com.mindorks.android:placeholderview-compiler:<LATEST-VERSION>' << in build.gradle", e);
         } catch (NoSuchMethodException e) {
             throw new RuntimeException("Unable to find constructor for " + className, e);
         }
-        return null;
     }
 
     protected static <T, V extends android.view.View> ViewBinder<T, V> bindViewResolver(T resolver) {
