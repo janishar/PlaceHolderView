@@ -23,10 +23,11 @@ import javax.lang.model.util.Elements;
 
 public class PlaceHolderViewProcessor extends AbstractProcessor {
 
-    private ViewBinderCompiler mViewBinderCompiler;
-    private ExpandableViewBinderCompiler mExpandableViewBinderCompiler;
-    private SwipeViewBinderCompiler mSwipeViewBinderCompiler;
-    private SwipeDirectionalViewBinderCompiler mSwipeDirectionalViewBinderCompiler;
+    private ViewBinderCompiler viewBinderCompiler;
+    private ExpandableViewBinderCompiler expandableViewBinderCompiler;
+    private SwipeViewBinderCompiler swipeViewBinderCompiler;
+    private SwipeDirectionalViewBinderCompiler swipeDirectionalViewBinderCompiler;
+    private RClassBuilder rClassBuilder;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
@@ -36,30 +37,48 @@ public class PlaceHolderViewProcessor extends AbstractProcessor {
         Messager messager = processingEnv.getMessager();
         Elements elementUtils = processingEnv.getElementUtils();
 
-        mViewBinderCompiler = new ViewBinderCompiler(filer, messager, elementUtils);
-        mExpandableViewBinderCompiler = new ExpandableViewBinderCompiler(filer, messager, elementUtils);
-        mSwipeViewBinderCompiler = new SwipeViewBinderCompiler(filer, messager, elementUtils);
-        mSwipeDirectionalViewBinderCompiler = new SwipeDirectionalViewBinderCompiler(filer, messager, elementUtils);
+        rClassBuilder = RClassBuilder.create(filer, messager);
+
+        viewBinderCompiler = new ViewBinderCompiler(
+                filer,
+                messager,
+                elementUtils,
+                rClassBuilder);
+        expandableViewBinderCompiler = new ExpandableViewBinderCompiler(
+                filer,
+                messager,
+                elementUtils,
+                rClassBuilder);
+        swipeViewBinderCompiler = new SwipeViewBinderCompiler(
+                filer,
+                messager,
+                elementUtils,
+                rClassBuilder);
+        swipeDirectionalViewBinderCompiler = new SwipeDirectionalViewBinderCompiler(
+                filer,
+                messager,
+                elementUtils,
+                rClassBuilder);
 
     }
 
     @Override
     public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
-        return mViewBinderCompiler.compile(roundEnv)
-                && mExpandableViewBinderCompiler.compile(roundEnv)
-                && mSwipeViewBinderCompiler.compile(roundEnv)
-                && mSwipeDirectionalViewBinderCompiler.compile(roundEnv);
+        return viewBinderCompiler.compile(roundEnv)
+                && expandableViewBinderCompiler.compile(roundEnv)
+                && swipeViewBinderCompiler.compile(roundEnv)
+                && swipeDirectionalViewBinderCompiler.compile(roundEnv)
+                && rClassBuilder.build().compile();
     }
 
     @Override
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> annotations = new TreeSet<>();
-        annotations.addAll(mViewBinderCompiler.getSupportedAnnotationTypes());
-        annotations.addAll(mExpandableViewBinderCompiler.getSupportedAnnotationTypes());
-        annotations.addAll(mSwipeViewBinderCompiler.getSupportedAnnotationTypes());
-        annotations.addAll(mSwipeDirectionalViewBinderCompiler.getSupportedAnnotationTypes());
+        annotations.addAll(viewBinderCompiler.getSupportedAnnotationTypes());
+        annotations.addAll(expandableViewBinderCompiler.getSupportedAnnotationTypes());
+        annotations.addAll(swipeViewBinderCompiler.getSupportedAnnotationTypes());
+        annotations.addAll(swipeDirectionalViewBinderCompiler.getSupportedAnnotationTypes());
         return annotations;
-
     }
 
     @Override

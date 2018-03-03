@@ -9,6 +9,7 @@ import com.mindorks.placeholderview.annotations.Recycle;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
+import com.mindorks.placeholderview.compiler.RClassBuilder;
 import com.mindorks.placeholderview.compiler.core.ClassDetail;
 import com.mindorks.placeholderview.compiler.core.ClassStructure;
 import com.mindorks.placeholderview.compiler.core.IllegalUseException;
@@ -30,17 +31,23 @@ import javax.lang.model.util.Elements;
  */
 public class ViewBinderClassStructure extends ClassStructure {
 
-    protected ViewBinderClassStructure(ClassDetail classDetail) {
+    private RClassBuilder rClassBuilder;
+
+    public ViewBinderClassStructure(ClassDetail classDetail, RClassBuilder rClassBuilder) {
         super(classDetail);
+        this.rClassBuilder = rClassBuilder;
     }
 
-    public static ViewBinderClassStructure create(TypeElement typeElement, Elements elementUtils) {
+    public static ViewBinderClassStructure create(TypeElement typeElement,
+                                                  Elements elementUtils,
+                                                  RClassBuilder rClassBuilder) {
         String packageName = elementUtils.getPackageOf(typeElement).getQualifiedName().toString();
         return new ViewBinderClassStructure(new ClassDetail(
                 typeElement,
                 packageName,
                 NameStore.Class.VIEW_BINDER,
-                BindingSuffix.CLASS_VIEW_BINDER_SUFFIX));
+                BindingSuffix.CLASS_VIEW_BINDER_SUFFIX),
+                rClassBuilder);
     }
 
     @Override
@@ -61,7 +68,11 @@ public class ViewBinderClassStructure extends ClassStructure {
                 .addMethod(MethodSpec.constructorBuilder()
                         .addModifiers(Modifier.PROTECTED)
                         .addParameter(getClassDetail().getClassName(), NameStore.Variable.RESOLVER)
-                        .addStatement("super($N, $L, $L)", NameStore.Variable.RESOLVER, layout.value(), nullable)
+                        .addStatement("super($N, $T.$L, $L)",
+                                NameStore.Variable.RESOLVER,
+                                getRClassBuilder().getLayoutClassName(),
+                                getRClassBuilder().addLayoutId(getClassDetail().getTypeElement(), layout.value()),
+                                nullable)
                         .build());
         return this;
     }
@@ -258,5 +269,9 @@ public class ViewBinderClassStructure extends ClassStructure {
                 .returns(void.class);
         getClassBuilder().addMethod(unbindMethodBuilder.build());
         return this;
+    }
+
+    public RClassBuilder getRClassBuilder() {
+        return rClassBuilder;
     }
 }

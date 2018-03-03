@@ -9,6 +9,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeView;
 import com.mindorks.placeholderview.compiler.core.Validator;
+import com.mindorks.placeholderview.compiler.RClassBuilder;
 import com.mindorks.placeholderview.compiler.structures.SwipeViewBinderClassStructure;
 
 import java.io.IOException;
@@ -26,8 +27,11 @@ import javax.tools.Diagnostic;
 
 public class SwipeViewBinderCompiler extends ViewBinderCompiler {
 
-    public SwipeViewBinderCompiler(Filer filer, Messager messager, Elements elementUtils) {
-        super(filer, messager, elementUtils);
+    public SwipeViewBinderCompiler(Filer filer,
+                                   Messager messager,
+                                   Elements elementUtils,
+                                   RClassBuilder rClassBuilder) {
+        super(filer, messager, elementUtils, rClassBuilder);
     }
 
     @Override
@@ -36,7 +40,8 @@ public class SwipeViewBinderCompiler extends ViewBinderCompiler {
             try {
                 SwipeViewBinderClassStructure
                         .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
-                                getElementUtils())
+                                getElementUtils(),
+                                getRClassStructure())
                         .addConstructor()
                         .addResolveViewMethod()
                         .addRecycleViewMethod()

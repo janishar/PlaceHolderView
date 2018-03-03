@@ -7,6 +7,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeView;
+import com.mindorks.placeholderview.compiler.RClassBuilder;
 import com.mindorks.placeholderview.compiler.core.ClassDetail;
 import com.mindorks.placeholderview.compiler.core.IllegalUseException;
 import com.mindorks.placeholderview.compiler.core.NameStore;
@@ -28,11 +29,13 @@ import javax.lang.model.util.Elements;
 
 public class SwipeViewBinderClassStructure extends ViewBinderClassStructure {
 
-    public SwipeViewBinderClassStructure(ClassDetail classDetail) {
-        super(classDetail);
+    public SwipeViewBinderClassStructure(ClassDetail classDetail, RClassBuilder rClassBuilder) {
+        super(classDetail, rClassBuilder);
     }
 
-    public static SwipeViewBinderClassStructure create(TypeElement typeElement, Elements elementUtils) {
+    public static SwipeViewBinderClassStructure create(TypeElement typeElement,
+                                                       Elements elementUtils,
+                                                       RClassBuilder rClassBuilder) {
         String packageName = elementUtils.getPackageOf(typeElement).getQualifiedName().toString();
         ClassDetail classDetail = new ClassDetail(
                 typeElement,
@@ -40,7 +43,7 @@ public class SwipeViewBinderClassStructure extends ViewBinderClassStructure {
                 NameStore.Class.SWIPE_VIEW_BINDER,
                 BindingSuffix.CLASS_SWIPE_VIEW_BINDER_SUFFIX);
         classDetail.changeViewTypeParameterClassName(classDetail.getFrameViewClassName());
-        return new SwipeViewBinderClassStructure(classDetail);
+        return new SwipeViewBinderClassStructure(classDetail, rClassBuilder);
     }
 
     @Override

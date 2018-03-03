@@ -4,7 +4,7 @@ package com.mindorks.placeholderview.compiler.core;
  * Created by janisharali on 25/02/18.
  */
 
-public class NameStore {
+public final class NameStore {
 
     private NameStore() {
         // not to be instantiated
@@ -26,6 +26,7 @@ public class NameStore {
     public static class Package {
         public static final String PLACE_HOLDER_VIEW = "com.mindorks.placeholderview";
         public static final String ANDROID_VIEW = "android.view";
+        public static final String R = "com.mindorks.placeholderview.$";
     }
 
     public static class Class {
@@ -46,6 +47,11 @@ public class NameStore {
         public static final String SWIPE_DECOR = "SwipeDecor";
         public static final String SWIPE_DIRECTIONAL_OPTION = "SwipeDirectionalOption";
         public static final String SWIPE_DIRECTION = "SwipeDirection";
+
+        // R
+        public static final String R = "R";
+        public static final String LAYOUT = "layout";
+        public static final String ID = "id";
     }
 
     public static class Method {

@@ -10,6 +10,7 @@ import com.mindorks.placeholderview.annotations.expand.SingleTop;
 import com.mindorks.placeholderview.annotations.expand.Toggle;
 import com.mindorks.placeholderview.compiler.core.Validator;
 import com.mindorks.placeholderview.compiler.structures.ExpandableViewBinderClassStructure;
+import com.mindorks.placeholderview.compiler.RClassBuilder;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -26,8 +27,11 @@ import javax.tools.Diagnostic;
 
 public class ExpandableViewBinderCompiler extends ViewBinderCompiler {
 
-    public ExpandableViewBinderCompiler(Filer filer, Messager messager, Elements elementUtils) {
-        super(filer, messager, elementUtils);
+    public ExpandableViewBinderCompiler(Filer filer,
+                                        Messager messager,
+                                        Elements elementUtils,
+                                        RClassBuilder rClassBuilder) {
+        super(filer, messager, elementUtils, rClassBuilder);
     }
 
     @Override
@@ -36,7 +40,8 @@ public class ExpandableViewBinderCompiler extends ViewBinderCompiler {
             try {
                 ExpandableViewBinderClassStructure
                         .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
-                                getElementUtils())
+                                getElementUtils(),
+                                getRClassStructure())
                         .addConstructor()
                         .addResolveViewMethod()
                         .addRecycleViewMethod()

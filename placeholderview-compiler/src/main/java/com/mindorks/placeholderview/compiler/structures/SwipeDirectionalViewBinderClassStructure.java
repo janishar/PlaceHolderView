@@ -5,6 +5,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeInDirectional;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutDirectional;
 import com.mindorks.placeholderview.annotations.swipe.SwipeTouch;
 import com.mindorks.placeholderview.annotations.swipe.SwipingDirection;
+import com.mindorks.placeholderview.compiler.RClassBuilder;
 import com.mindorks.placeholderview.compiler.core.ClassDetail;
 import com.mindorks.placeholderview.compiler.core.IllegalUseException;
 import com.mindorks.placeholderview.compiler.core.NameStore;
@@ -25,11 +26,13 @@ import javax.lang.model.util.Elements;
 
 public class SwipeDirectionalViewBinderClassStructure extends SwipeViewBinderClassStructure {
 
-    public SwipeDirectionalViewBinderClassStructure(ClassDetail classDetail) {
-        super(classDetail);
+    public SwipeDirectionalViewBinderClassStructure(ClassDetail classDetail, RClassBuilder rClassBuilder) {
+        super(classDetail, rClassBuilder);
     }
 
-    public static SwipeDirectionalViewBinderClassStructure create(TypeElement typeElement, Elements elementUtils) {
+    public static SwipeDirectionalViewBinderClassStructure create(TypeElement typeElement,
+                                                                  Elements elementUtils,
+                                                                  RClassBuilder rClassBuilder) {
         String packageName = elementUtils.getPackageOf(typeElement).getQualifiedName().toString();
         ClassDetail classDetail = new ClassDetail(
                 typeElement,
@@ -37,7 +40,7 @@ public class SwipeDirectionalViewBinderClassStructure extends SwipeViewBinderCla
                 NameStore.Class.SWIPE_DIRECTIONAL_VIEW_BINDER,
                 BindingSuffix.CLASS_SWIPE_DIRECTIONAL_VIEW_BINDER_SUFFIX);
         classDetail.changeViewTypeParameterClassName(classDetail.getFrameViewClassName());
-        return new SwipeDirectionalViewBinderClassStructure(classDetail);
+        return new SwipeDirectionalViewBinderClassStructure(classDetail, rClassBuilder);
     }
 
     @Override

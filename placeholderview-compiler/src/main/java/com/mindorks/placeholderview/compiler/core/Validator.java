@@ -18,7 +18,7 @@ import javax.lang.model.type.TypeKind;
  * Created by ali on 26/02/18.
  */
 
-public class Validator {
+public final class Validator {
 
     private Validator() {
         // Not to be instantiated

@@ -10,6 +10,7 @@ import com.mindorks.placeholderview.annotations.expand.ParentPosition;
 import com.mindorks.placeholderview.annotations.expand.SingleTop;
 import com.mindorks.placeholderview.annotations.expand.Toggle;
 import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
+import com.mindorks.placeholderview.compiler.RClassBuilder;
 import com.mindorks.placeholderview.compiler.core.ClassDetail;
 import com.mindorks.placeholderview.compiler.core.IllegalUseException;
 import com.mindorks.placeholderview.compiler.core.NameStore;
@@ -29,17 +30,19 @@ import javax.lang.model.util.Elements;
 
 public class ExpandableViewBinderClassStructure extends ViewBinderClassStructure {
 
-    public ExpandableViewBinderClassStructure(ClassDetail classDetail) {
-        super(classDetail);
+    public ExpandableViewBinderClassStructure(ClassDetail classDetail, RClassBuilder rClassBuilder) {
+        super(classDetail, rClassBuilder);
     }
 
-    public static ExpandableViewBinderClassStructure create(TypeElement typeElement, Elements elementUtils) {
+    public static ExpandableViewBinderClassStructure create(TypeElement typeElement,
+                                                            Elements elementUtils,
+                                                            RClassBuilder rClassBuilder) {
         String packageName = elementUtils.getPackageOf(typeElement).getQualifiedName().toString();
         return new ExpandableViewBinderClassStructure(new ClassDetail(
                 typeElement,
                 packageName,
                 NameStore.Class.EXPANDABLE_VIEW_BINDER,
-                BindingSuffix.CLASS_EXPANDABLE_VIEW_BINDER_SUFFIX));
+                BindingSuffix.CLASS_EXPANDABLE_VIEW_BINDER_SUFFIX), rClassBuilder);
     }
 
     @Override

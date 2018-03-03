@@ -6,6 +6,7 @@ import com.mindorks.placeholderview.annotations.swipe.SwipeOutDirectional;
 import com.mindorks.placeholderview.annotations.swipe.SwipeTouch;
 import com.mindorks.placeholderview.annotations.swipe.SwipingDirection;
 import com.mindorks.placeholderview.compiler.core.Validator;
+import com.mindorks.placeholderview.compiler.RClassBuilder;
 import com.mindorks.placeholderview.compiler.structures.SwipeDirectionalViewBinderClassStructure;
 
 import java.io.IOException;
@@ -23,8 +24,11 @@ import javax.tools.Diagnostic;
 
 public class SwipeDirectionalViewBinderCompiler extends ViewBinderCompiler {
 
-    public SwipeDirectionalViewBinderCompiler(Filer filer, Messager messager, Elements elementUtils) {
-        super(filer, messager, elementUtils);
+    public SwipeDirectionalViewBinderCompiler(Filer filer,
+                                              Messager messager,
+                                              Elements elementUtils,
+                                              RClassBuilder rClassBuilder) {
+        super(filer, messager, elementUtils, rClassBuilder);
     }
 
     @Override
@@ -33,7 +37,8 @@ public class SwipeDirectionalViewBinderCompiler extends ViewBinderCompiler {
             try {
                 SwipeDirectionalViewBinderClassStructure
                         .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
-                                getElementUtils())
+                                getElementUtils(),
+                                getRClassStructure())
                         .addConstructor()
                         .addResolveViewMethod()
                         .addRecycleViewMethod()
