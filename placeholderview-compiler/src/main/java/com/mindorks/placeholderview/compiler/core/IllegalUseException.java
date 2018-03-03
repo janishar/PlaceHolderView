@@ -1,4 +1,4 @@
-package com.mindorks.placeholderview.compiler;
+package com.mindorks.placeholderview.compiler.core;
 
 import java.io.IOException;
 

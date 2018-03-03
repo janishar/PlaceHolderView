@@ -1,4 +1,4 @@
-package com.mindorks.placeholderview.compiler;
+package com.mindorks.placeholderview.compiler.structures;
 
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
@@ -9,6 +9,11 @@ import com.mindorks.placeholderview.annotations.Recycle;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
 import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
+import com.mindorks.placeholderview.compiler.core.ClassDetail;
+import com.mindorks.placeholderview.compiler.core.ClassStructure;
+import com.mindorks.placeholderview.compiler.core.IllegalUseException;
+import com.mindorks.placeholderview.compiler.core.NameStore;
+import com.mindorks.placeholderview.compiler.core.Validator;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeSpec;

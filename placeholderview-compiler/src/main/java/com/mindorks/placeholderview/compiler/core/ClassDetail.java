@@ -1,4 +1,4 @@
-package com.mindorks.placeholderview.compiler;
+package com.mindorks.placeholderview.compiler.core;
 
 import com.squareup.javapoet.ClassName;
 
@@ -32,8 +32,8 @@ public class ClassDetail {
     private List<VariableElement> variableElements;
     private List<ExecutableElement> executableElements;
 
-    protected ClassDetail(TypeElement typeElement, String packageName,
-                          String baseClassName, String generatedClassNameSuffix) {
+    public ClassDetail(TypeElement typeElement, String packageName,
+                       String baseClassName, String generatedClassNameSuffix) {
         this.typeElement = typeElement;
         this.packageName = packageName;
         typeName = typeElement.getSimpleName().toString();

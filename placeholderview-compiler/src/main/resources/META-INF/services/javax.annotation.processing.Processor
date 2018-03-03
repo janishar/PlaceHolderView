@@ -1,4 +1,1 @@
-com.mindorks.placeholderview.compiler.ViewBinderProcessor
-com.mindorks.placeholderview.compiler.ExpandableViewBinderProcessor
-com.mindorks.placeholderview.compiler.SwipeViewBinderProcessor
-com.mindorks.placeholderview.compiler.SwipeDirectionalViewBinderProcessor
+com.mindorks.placeholderview.compiler.PlaceHolderViewProcessor

@@ -1,4 +1,4 @@
-package com.mindorks.placeholderview.compiler;
+package com.mindorks.placeholderview.compiler.compilers;
 
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.expand.ChildPosition;
@@ -8,21 +8,30 @@ import com.mindorks.placeholderview.annotations.expand.Parent;
 import com.mindorks.placeholderview.annotations.expand.ParentPosition;
 import com.mindorks.placeholderview.annotations.expand.SingleTop;
 import com.mindorks.placeholderview.annotations.expand.Toggle;
+import com.mindorks.placeholderview.compiler.core.Validator;
+import com.mindorks.placeholderview.compiler.structures.ExpandableViewBinderClassStructure;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.annotation.processing.Filer;
+import javax.annotation.processing.Messager;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.TypeElement;
+import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 
-public class ExpandableViewBinderProcessor extends ViewBinderProcessor {
+public class ExpandableViewBinderCompiler extends ViewBinderCompiler {
+
+    public ExpandableViewBinderCompiler(Filer filer, Messager messager, Elements elementUtils) {
+        super(filer, messager, elementUtils);
+    }
 
     @Override
-    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+    public boolean compile(RoundEnvironment roundEnv) {
         for (Element element : roundEnv.getElementsAnnotatedWith(Layout.class)) {
             try {
                 ExpandableViewBinderClassStructure
@@ -46,7 +55,7 @@ public class ExpandableViewBinderProcessor extends ViewBinderProcessor {
                         .generate(getFiler());
             } catch (IOException e) {
                 getMessager().printMessage(Diagnostic.Kind.ERROR, e.toString(), element);
-                return true;
+                return false;
             }
         }
         return true;

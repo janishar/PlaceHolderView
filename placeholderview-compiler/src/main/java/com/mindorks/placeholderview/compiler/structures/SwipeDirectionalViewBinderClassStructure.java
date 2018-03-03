@@ -1,10 +1,14 @@
-package com.mindorks.placeholderview.compiler;
+package com.mindorks.placeholderview.compiler.structures;
 
 import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
 import com.mindorks.placeholderview.annotations.swipe.SwipeInDirectional;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutDirectional;
 import com.mindorks.placeholderview.annotations.swipe.SwipeTouch;
 import com.mindorks.placeholderview.annotations.swipe.SwipingDirection;
+import com.mindorks.placeholderview.compiler.core.ClassDetail;
+import com.mindorks.placeholderview.compiler.core.IllegalUseException;
+import com.mindorks.placeholderview.compiler.core.NameStore;
+import com.mindorks.placeholderview.compiler.core.Validator;
 import com.squareup.javapoet.MethodSpec;
 import com.squareup.javapoet.ParameterizedTypeName;
 import com.squareup.javapoet.TypeSpec;

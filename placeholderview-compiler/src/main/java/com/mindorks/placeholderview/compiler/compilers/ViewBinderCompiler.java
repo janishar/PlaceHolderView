@@ -1,4 +1,4 @@
-package com.mindorks.placeholderview.compiler;
+package com.mindorks.placeholderview.compiler.compilers;
 
 import com.mindorks.placeholderview.annotations.Click;
 import com.mindorks.placeholderview.annotations.Layout;
@@ -8,16 +8,16 @@ import com.mindorks.placeholderview.annotations.Position;
 import com.mindorks.placeholderview.annotations.Recycle;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
+import com.mindorks.placeholderview.compiler.core.Validator;
+import com.mindorks.placeholderview.compiler.structures.ViewBinderClassStructure;
 
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Set;
 import java.util.TreeSet;
 
-import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.Messager;
-import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.SourceVersion;
 import javax.lang.model.element.Element;
@@ -25,22 +25,19 @@ import javax.lang.model.element.TypeElement;
 import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 
-public class ViewBinderProcessor extends AbstractProcessor {
+public class ViewBinderCompiler {
 
     private Filer filer;
     private Messager messager;
     private Elements elementUtils;
 
-    @Override
-    public synchronized void init(ProcessingEnvironment processingEnv) {
-        super.init(processingEnv);
-        filer = processingEnv.getFiler();
-        messager = processingEnv.getMessager();
-        elementUtils = processingEnv.getElementUtils();
+    public ViewBinderCompiler(Filer filer, Messager messager, Elements elementUtils) {
+        this.filer = filer;
+        this.messager = messager;
+        this.elementUtils = elementUtils;
     }
 
-    @Override
-    public boolean process(Set<? extends TypeElement> annotations, RoundEnvironment roundEnv) {
+    public boolean compile(RoundEnvironment roundEnv) {
         for (Element element : roundEnv.getElementsAnnotatedWith(Layout.class)) {
             try {
                 ViewBinderClassStructure
@@ -58,13 +55,12 @@ public class ViewBinderProcessor extends AbstractProcessor {
                         .generate(getFiler());
             } catch (IOException e) {
                 getMessager().printMessage(Diagnostic.Kind.ERROR, e.toString(), element);
-                return true;
+                return false;
             }
         }
         return true;
     }
 
-    @Override
     public Set<String> getSupportedAnnotationTypes() {
         return new TreeSet<>(Arrays.asList(
                 Layout.class.getCanonicalName(),
@@ -77,7 +73,6 @@ public class ViewBinderProcessor extends AbstractProcessor {
                 LongClick.class.getCanonicalName()));
     }
 
-    @Override
     public SourceVersion getSupportedSourceVersion() {
         return SourceVersion.latestSupported();
     }

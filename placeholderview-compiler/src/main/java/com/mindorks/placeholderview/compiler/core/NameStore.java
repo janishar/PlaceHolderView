@@ -1,4 +1,4 @@
-package com.mindorks.placeholderview.compiler;
+package com.mindorks.placeholderview.compiler.core;
 
 /**
  * Created by janisharali on 25/02/18.
