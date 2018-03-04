@@ -42,7 +42,7 @@ public class ViewBinderCompiler extends Compiler {
                 ViewBinderClassStructure
                         .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
                                 getElementUtils(),
-                                getRClassStructure())
+                                getRClassBuilder())
                         .addConstructor()
                         .addResolveViewMethod()
                         .addRecycleViewMethod()

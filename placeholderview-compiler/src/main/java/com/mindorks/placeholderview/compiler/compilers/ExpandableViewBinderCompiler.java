@@ -41,7 +41,7 @@ public class ExpandableViewBinderCompiler extends ViewBinderCompiler {
                 ExpandableViewBinderClassStructure
                         .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
                                 getElementUtils(),
-                                getRClassStructure())
+                                getRClassBuilder())
                         .addConstructor()
                         .addResolveViewMethod()
                         .addRecycleViewMethod()

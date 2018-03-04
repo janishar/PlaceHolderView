@@ -41,7 +41,7 @@ public class SwipeViewBinderCompiler extends ViewBinderCompiler {
                 SwipeViewBinderClassStructure
                         .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
                                 getElementUtils(),
-                                getRClassStructure())
+                                getRClassBuilder())
                         .addConstructor()
                         .addResolveViewMethod()
                         .addRecycleViewMethod()

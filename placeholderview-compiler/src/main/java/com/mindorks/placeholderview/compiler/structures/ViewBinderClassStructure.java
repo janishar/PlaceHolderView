@@ -156,12 +156,13 @@ public class ViewBinderClassStructure extends ClassStructure {
             View view = variableElement.getAnnotation(View.class);
             if (view != null) {
                 Validator.validateView(variableElement, view);
-                bindViewMethodBuilder.addStatement("$N.$N = ($T)$N.findViewById($L)",
+                bindViewMethodBuilder.addStatement("$N.$N = ($T)$N.findViewById($T.$L)",
                         NameStore.Variable.RESOLVER,
                         variableElement.getSimpleName(),
                         variableElement,
                         NameStore.Variable.ITEM_VIEW,
-                        view.value());
+                        getRClassBuilder().getIdClassName(),
+                        getRClassBuilder().addViewId(variableElement, view.value()));
             }
         }
         getClassBuilder().addMethod(bindViewMethodBuilder.build());
@@ -191,9 +192,10 @@ public class ViewBinderClassStructure extends ClassStructure {
                                 .returns(void.class)
                                 .build())
                         .build();
-                bindClickMethodBuilder.addStatement("$N.findViewById($L).setOnClickListener($L)",
+                bindClickMethodBuilder.addStatement("$N.findViewById($T.$L).setOnClickListener($L)",
                         NameStore.Variable.ITEM_VIEW,
-                        click.value(),
+                        getRClassBuilder().getIdClassName(),
+                        getRClassBuilder().addViewId(executableElement, click.value()),
                         OnClickListenerClass);
             }
         }
@@ -225,9 +227,10 @@ public class ViewBinderClassStructure extends ClassStructure {
                                 .returns(boolean.class)
                                 .build())
                         .build();
-                bindLongClickMethodBuilder.addStatement("$N.findViewById($L).setOnLongClickListener($L)",
+                bindLongClickMethodBuilder.addStatement("$N.findViewById($T.$L).setOnLongClickListener($L)",
                         NameStore.Variable.ITEM_VIEW,
-                        longClick.value(),
+                        getRClassBuilder().getIdClassName(),
+                        getRClassBuilder().addViewId(executableElement, longClick.value()),
                         OnClickListenerClass);
             }
         }

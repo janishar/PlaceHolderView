@@ -38,7 +38,7 @@ public class SwipeDirectionalViewBinderCompiler extends ViewBinderCompiler {
                 SwipeDirectionalViewBinderClassStructure
                         .create(Validator.validateLayout((TypeElement) Validator.validateTypeElement(element)),
                                 getElementUtils(),
-                                getRClassStructure())
+                                getRClassBuilder())
                         .addConstructor()
                         .addResolveViewMethod()
                         .addRecycleViewMethod()

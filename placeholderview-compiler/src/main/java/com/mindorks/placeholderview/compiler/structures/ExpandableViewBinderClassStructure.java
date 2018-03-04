@@ -110,9 +110,10 @@ public class ExpandableViewBinderClassStructure extends ViewBinderClassStructure
                 .addMethod(MethodSpec.constructorBuilder()
                         .addModifiers(Modifier.PROTECTED)
                         .addParameter(getClassDetail().getClassName(), NameStore.Variable.RESOLVER)
-                        .addStatement("super($N, $L, $L, $L, $L)",
+                        .addStatement("super($N, $T.$L, $L, $L, $L)",
                                 NameStore.Variable.RESOLVER,
-                                layout.value(),
+                                getRClassBuilder().getLayoutClassName(),
+                                getRClassBuilder().addLayoutId(getClassDetail().getTypeElement(), layout.value()),
                                 nullable,
                                 parent,
                                 singleTop)
@@ -202,9 +203,10 @@ public class ExpandableViewBinderClassStructure extends ViewBinderClassStructure
                 }
                 Validator.validateToggle(variableElement, toggle);
                 bindToggleMethodBuilder
-                        .addStatement("$N.findViewById($L).setOnClickListener($L)",
+                        .addStatement("$N.findViewById($T.$L).setOnClickListener($L)",
                                 NameStore.Variable.ITEM_VIEW,
-                                toggle.value(),
+                                getRClassBuilder().getIdClassName(),
+                                getRClassBuilder().addViewId(variableElement, toggle.value()),
                                 OnClickListenerClass);
             }
         }

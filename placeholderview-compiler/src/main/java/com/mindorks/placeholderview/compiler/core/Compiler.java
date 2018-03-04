@@ -31,10 +31,6 @@ public abstract class Compiler {
 
     public abstract Set<String> getSupportedAnnotationTypes();
 
-    public SourceVersion getSupportedSourceVersion() {
-        return SourceVersion.latestSupported();
-    }
-
     public Filer getFiler() {
         return filer;
     }
@@ -47,7 +43,7 @@ public abstract class Compiler {
         return elementUtils;
     }
 
-    public RClassBuilder getRClassStructure() {
+    public RClassBuilder getRClassBuilder() {
         return rClassBuilder;
     }
 }

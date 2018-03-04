@@ -1,6 +1,7 @@
 package com.mindorks.placeholderview.compiler;
 
 import com.mindorks.placeholderview.compiler.compilers.ExpandableViewBinderCompiler;
+import com.mindorks.placeholderview.compiler.compilers.RClassCompiler;
 import com.mindorks.placeholderview.compiler.compilers.SwipeDirectionalViewBinderCompiler;
 import com.mindorks.placeholderview.compiler.compilers.SwipeViewBinderCompiler;
 import com.mindorks.placeholderview.compiler.compilers.ViewBinderCompiler;
@@ -27,7 +28,7 @@ public class PlaceHolderViewProcessor extends AbstractProcessor {
     private ExpandableViewBinderCompiler expandableViewBinderCompiler;
     private SwipeViewBinderCompiler swipeViewBinderCompiler;
     private SwipeDirectionalViewBinderCompiler swipeDirectionalViewBinderCompiler;
-    private RClassBuilder rClassBuilder;
+    private RClassCompiler rClassCompiler;
 
     @Override
     public synchronized void init(ProcessingEnvironment processingEnv) {
@@ -37,28 +38,18 @@ public class PlaceHolderViewProcessor extends AbstractProcessor {
         Messager messager = processingEnv.getMessager();
         Elements elementUtils = processingEnv.getElementUtils();
 
-        rClassBuilder = RClassBuilder.create(filer, messager);
+        RClassBuilder rClassBuilder = RClassBuilder.create(filer, messager);
 
+        rClassCompiler = new RClassCompiler(
+                filer, messager, elementUtils, rClassBuilder);
         viewBinderCompiler = new ViewBinderCompiler(
-                filer,
-                messager,
-                elementUtils,
-                rClassBuilder);
+                filer, messager, elementUtils, rClassBuilder);
         expandableViewBinderCompiler = new ExpandableViewBinderCompiler(
-                filer,
-                messager,
-                elementUtils,
-                rClassBuilder);
+                filer, messager, elementUtils, rClassBuilder);
         swipeViewBinderCompiler = new SwipeViewBinderCompiler(
-                filer,
-                messager,
-                elementUtils,
-                rClassBuilder);
+                filer, messager, elementUtils, rClassBuilder);
         swipeDirectionalViewBinderCompiler = new SwipeDirectionalViewBinderCompiler(
-                filer,
-                messager,
-                elementUtils,
-                rClassBuilder);
+                filer, messager, elementUtils, rClassBuilder);
 
     }
 
@@ -68,7 +59,7 @@ public class PlaceHolderViewProcessor extends AbstractProcessor {
                 && expandableViewBinderCompiler.compile(roundEnv)
                 && swipeViewBinderCompiler.compile(roundEnv)
                 && swipeDirectionalViewBinderCompiler.compile(roundEnv)
-                && rClassBuilder.build().compile();
+                && rClassCompiler.compile(roundEnv);
     }
 
     @Override
