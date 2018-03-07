@@ -1,16 +1,16 @@
 /* List of projects/orgs using your project for the users page */
 const users = [
-  {
-    caption: 'User1',
-    image: '/test-site/img/docusaurus.svg',
-    infoLink: 'http://janishar.com',
-    pinned: true,
-  },
+  // {
+  //   caption: 'User1',
+  //   image: '/test-site/img/docusaurus.svg',
+  //   infoLink: 'http://janishar.com',
+  //   pinned: true,
+  // },
 ];
 
 const siteConfig = {
-  title: 'Test Site' /* title for your website */,
-  tagline: 'A website for testing',
+  title: 'PlaceHolderView' /* title for your website */,
+  tagline: 'A different and powerful way to build list and stack views',
   url: 'http://janishar.com' /* your website url */,
   baseUrl: '/PlaceHolderView/' /* base url for your project */,
   projectName: 'PlaceHolderView',
@@ -27,8 +27,8 @@ const siteConfig = {
   favicon: 'img/favicon.png',
   /* colors for website */
   colors: {
-    primaryColor: '#2E8555',
-    secondaryColor: '#205C3B',
+    primaryColor: '#3E4551',
+    secondaryColor: '#4B515D',
   },
   /* custom fonts for website */
   /*fonts: {
