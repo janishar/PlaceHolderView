@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://janishar.com/PlaceHolderView/blog</id>
-    <title>Test Site Blog</title>
+    <title>PlaceHolderView Blog</title>
     <updated>2017-10-24T06:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="http://janishar.com/PlaceHolderView/blog"/>
-    <subtitle>The best place to stay up-to-date with the latest Test Site news and events.</subtitle>
-    <logo>http://janishar.com/PlaceHolderView/img/docusaurus.svg</logo>
+    <subtitle>The best place to stay up-to-date with the latest PlaceHolderView news and events.</subtitle>
+    <logo>http://janishar.com/PlaceHolderView/img/logo.svg</logo>
     <rights>Copyright © 2018 Janishar Ali Anwar</rights>
     <entry>
         <title type="html"><![CDATA[New Version 1.0.0]]></title>
