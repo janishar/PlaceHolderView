@@ -22,13 +22,13 @@ const siteConfig = {
   ],
   users,
   /* path to images for header/footer */
-  headerIcon: 'img/docusaurus.svg',
-  footerIcon: 'img/docusaurus.svg',
+  headerIcon: 'img/logo.svg',
+  footerIcon: 'img/logo.svg',
   favicon: 'img/favicon.png',
   /* colors for website */
   colors: {
-    primaryColor: '#3E4551',
-    secondaryColor: '#4B515D',
+    primaryColor: '#31404C',
+    secondaryColor: '#7ED321',
   },
   /* custom fonts for website */
   /*fonts: {

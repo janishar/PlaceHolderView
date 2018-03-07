@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1000px" height="1000px" viewBox="0 0 1000 1000" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>placeholderview-logo</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <polygon id="path-1" points="513.662109 0.423828125 598.867188 0.423828125 636.464844 224.300781 675.283203 0.423828125 761.708984 0.423828125 675.283203 341 596.669922 341"></polygon>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="20" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="50" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.49415046   0 0 0 0 0.826234102   0 0 0 0 0.129877269  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <polygon id="path-3" points="255 0 333.857422 0 333.857422 131.591797 396.845703 131.591797 396.845703 0 476.435547 0 476.435547 340.576172 396.845703 340.576172 396.845703 197.998047 333.857422 197.998047 333.857422 340.576172 255 340.576172"></polygon>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-4">
+            <feOffset dx="20" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="75" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.49415046   0 0 0 0 0.826234102   0 0 0 0 0.129877269  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <path d="M0.728515625,0.423828125 L122.066406,0.423828125 C153.479324,0.423828125 177.811763,8.84659546 195.064453,25.6923828 C212.317144,42.5381702 220.943359,66.4230225 220.943359,97.3476562 C220.943359,113.461018 218.095081,129.614828 212.398438,145.80957 C206.701794,162.004313 194.698334,176.082948 176.387695,188.045898 C158.077057,200.008849 135.087378,205.990234 107.417969,205.990234 L80.5625,205.990234 L80.5625,341 L0.728515625,341 L0.728515625,0.423828125 Z M80.5625,66.0976562 L80.5625,139.095703 L98.140625,139.095703 C111.161523,139.095703 121.537396,135.718458 129.268555,128.963867 C136.999713,122.209276 140.865234,112.728577 140.865234,100.521484 C140.865234,88.965437 137.894886,80.3392212 131.954102,74.6425781 C126.013317,68.9459351 117.102273,66.0976562 105.220703,66.0976562 L80.5625,66.0976562 Z" id="path-5"></path>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="20" dy="20" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="50" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.49415046   0 0 0 0 0.826234102   0 0 0 0 0.129877269  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="placeholderview-logo">
+            <circle id="Oval" fill="#31404C" cx="500" cy="500" r="500"></circle>
+            <g id="PHV" transform="translate(121.000000, 308.000000)">
+                <g id="V">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <g id="H">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-4)" xlink:href="#path-3"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-3"></use>
+                </g>
+                <g id="P">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                    <use fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-5"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
