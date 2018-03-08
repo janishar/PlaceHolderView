@@ -1,10 +1,3 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
 const React = require('react');
 
 class Footer extends React.Component {
@@ -34,36 +27,64 @@ class Footer extends React.Component {
             )}
           </a>
           <div>
-            <h5>Docs</h5>
+            <h5>Sections</h5>
             <a href={this.docUrl('doc1.html', this.props.language)}>
-              Getting Started (or other categories)
+              Library Basic Overview
             </a>
             <a href={this.docUrl('doc2.html', this.props.language)}>
-              Guides (or other categories)
+              PlaceHolderView
             </a>
-            <a href={this.docUrl('doc3.html', this.props.language)}>
-              API Reference (or other categories)
+            <a href={this.docUrl('doc2.html', this.props.language)}>
+              InfinitePlaceHolderView
+            </a>
+            <a href={this.docUrl('doc2.html', this.props.language)}>
+              ExpandablePlaceHolderView
+            </a>
+            <a href={this.docUrl('doc2.html', this.props.language)}>
+              SwipePlaceHolderView
+            </a>
+            <a href={this.docUrl('doc2.html', this.props.language)}>
+              DirectionalPlaceHolderView
+            </a>
+            <a href={this.docUrl('doc2.html', this.props.language)}>
+              Compiler
+            </a>
+            <a href={this.docUrl('doc2.html', this.props.language)}>
+              Contributing
             </a>
           </div>
           <div>
-            <h5>Community</h5>
-            <a href={this.pageUrl('users.html', this.props.language)}>
-              User Showcase
+            <h5>Connect with me</h5>
+            <a
+              href="https://twitter.com/janisharali"
+              target="_blank">
+              Twitter
             </a>
             <a
-              href="http://stackoverflow.com/questions/tagged/"
+              href="https://github.com/janishar"
               target="_blank">
-              Stack Overflow
+              GitHub
             </a>
-            <a href="https://discordapp.com/">Project Chat</a>
-            <a href="https://twitter.com/" target="_blank">
-              Twitter
+            <a
+              href="https://www.linkedin.com/in/janishar-ali-8135a451/"
+              target="_blank">
+              LinkedIn
+            </a>
+            <a
+              href="https://www.facebook.com/janishar.ali"
+              target="_blank">
+              Facebook
+            </a>
+            <a
+              href="https://plus.google.com/+JanisharAli"
+              target="_blank">
+              Google Plus
             </a>
           </div>
           <div>
             <h5>More</h5>
-            <a href={this.props.config.baseUrl + 'blog'}>Blog</a>
-            <a href="https://github.com/">GitHub</a>
+            <a href={this.props.config.baseUrl + 'blog'}>Examples</a>
+            <a href="https://github.com/janishar/PlaceHolderView">GitHub Repo</a>
             <a
               className="github-button"
               href={this.props.config.repoUrl}
@@ -74,22 +95,12 @@ class Footer extends React.Component {
               aria-label="Star this project on GitHub">
               Star
             </a>
+            <a href="https://mindorks.com/join-community">Join Community</a>
           </div>
         </section>
 
-        <a
-          href="https://code.facebook.com/projects/"
-          target="_blank"
-          className="fbOpenSource">
-          <img
-            src={this.props.config.baseUrl + 'img/oss_logo.png'}
-            alt="Facebook Open Source"
-            width="170"
-            height="45"
-          />
-        </a>
         <section className="copyright">
-          Copyright &copy; {currentYear} Facebook Inc.
+          Copyright &copy; 2016 Janishar Ali Anwar.
         </section>
       </footer>
     );
