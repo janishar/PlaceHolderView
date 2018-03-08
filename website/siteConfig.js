@@ -25,8 +25,8 @@ const siteConfig = {
   favicon: 'img/favicon.png',
   /* colors for website */
   colors: {
-    primaryColor: '#31404C',
-    secondaryColor: '#7ED321',
+    primaryColor: '#6200ea',
+    secondaryColor: '#64dd17',
   },
   //search
   algolia: {
