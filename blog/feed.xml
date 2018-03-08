@@ -4,7 +4,7 @@
         <title>PlaceHolderView Blog</title>
         <link>http://janishar.com/PlaceHolderView/blog</link>
         <description>The best place to stay up-to-date with the latest PlaceHolderView news and events.</description>
-        <lastBuildDate>Tue, 24 Oct 2017 06:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 24 Mar 2018 06:00:00 GMT</lastBuildDate>
         <docs>http://blogs.law.harvard.edu/tech/rss</docs>
         <generator>Feed for Node.js</generator>
         <image>
@@ -12,7 +12,15 @@
             <url>http://janishar.com/PlaceHolderView/img/logo.svg</url>
             <link>http://janishar.com/PlaceHolderView/blog</link>
         </image>
-        <copyright>Copyright © 2018 Janishar Ali Anwar</copyright>
+        <copyright>Copyright © 2016 Janishar Ali Anwar</copyright>
+        <item>
+            <title><![CDATA[Gallery Example]]></title>
+            <link>http://janishar.com/PlaceHolderView/blog/2018/03/24/placeholderview-gallery.html</link>
+            <guid>http://janishar.com/PlaceHolderView/blog/2018/03/24/placeholderview-gallery.html</guid>
+            <pubDate>Sat, 24 Mar 2018 06:00:00 GMT</pubDate>
+            <description><![CDATA[<p>This example demonstrate creation of a list of images with animation using PlaceHolderView. For the sake of this example we will be placing our images in the drawable folder.</p>
+]]></description>
+        </item>
         <item>
             <title><![CDATA[New Version 1.0.0]]></title>
             <link>http://janishar.com/PlaceHolderView/blog/2017/10/24/new-version-1.0.0.html</link>
