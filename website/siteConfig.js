@@ -1,13 +1,11 @@
-/* List of projects/orgs using your project for the users page */
-const users = [
-  // {
-  //   caption: 'User1',
-  //   image: '/test-site/img/docusaurus.svg',
-  //   infoLink: 'http://janishar.com',
-  //   pinned: true,
-  // },
-];
-
+// const users = [
+//   {
+//     caption: "User1",
+//     image: "/test-site/img/docusaurus.svg",
+//     infoLink: "https://www.example.com",
+//     pinned: true
+//   }
+// ];
 const siteConfig = {
   title: 'PlaceHolderView' /* title for your website */,
   tagline: 'A different and powerful way to build list and stack views',
@@ -15,12 +13,12 @@ const siteConfig = {
   baseUrl: '/PlaceHolderView/' /* base url for your project */,
   projectName: 'PlaceHolderView',
   headerLinks: [
-    {doc: 'doc1', label: 'Docs'},
-    {doc: 'doc4', label: 'API'},
-    {page: 'help', label: 'Help'},
-    {blog: true, label: 'Blog'},
+    { doc: 'doc1', label: 'Docs' },
+    { doc: 'doc4', label: 'API' },
+    { page: 'help', label: 'Help' },
+    { blog: true, label: 'Examples' },
+    { search: true },
   ],
-  users,
   /* path to images for header/footer */
   headerIcon: 'img/logo.svg',
   footerIcon: 'img/logo.svg',
@@ -30,6 +28,14 @@ const siteConfig = {
     primaryColor: '#31404C',
     secondaryColor: '#7ED321',
   },
+  //search
+  algolia: {
+    apiKey: "my-search-only-api-key-1234",
+    indexName: "my-index-name"
+  },
+  gaTrackingId: 'UA-115371900-1',
+  facebookAppId: '100001054239147',
+  twitter: 'true',
   /* custom fonts for website */
   /*fonts: {
     myFont: [
@@ -41,6 +47,7 @@ const siteConfig = {
       "system-ui"
     ]
   },*/
+  blogSidebarCount: 'ALL',
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright:
     'Copyright © ' +
@@ -51,7 +58,7 @@ const siteConfig = {
 
   highlight: {
     // Highlight.js theme to use for syntax highlighting in code blocks
-    theme: 'default',
+    theme: 'routeros',
   },
   scripts: ['https://buttons.github.io/buttons.js'],
   // You may provide arbitrary config keys to be used as needed by your template.
