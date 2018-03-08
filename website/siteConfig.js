@@ -1,11 +1,11 @@
-// const users = [
-//   {
-//     caption: "User1",
-//     image: "/test-site/img/docusaurus.svg",
-//     infoLink: "https://www.example.com",
-//     pinned: true
-//   }
-// ];
+const users = [
+  // {
+  //   caption: "User1",
+  //   image: "/test-site/img/docusaurus.svg",
+  //   infoLink: "https://www.example.com",
+  //   pinned: true
+  // }
+];
 const siteConfig = {
   title: 'PlaceHolderView' /* title for your website */,
   tagline: 'Advanced List and Stack Views',
@@ -18,6 +18,7 @@ const siteConfig = {
     { page: 'help', label: 'Help' },    
     { search: true },
   ],
+  users,
   /* path to images for header/footer */
   headerIcon: 'img/logo.svg',
   footerIcon: 'img/logo.svg',
