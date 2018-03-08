@@ -80,9 +80,9 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <Button href="#try">Try It Out</Button>
-            <Button href={docUrl('doc1.html', language)}>Example Link</Button>
-            <Button href={docUrl('doc2.html', language)}>Example Link 2</Button>
+            <Button href="https://github.com/janishar/PlaceHolderView" target='_blank'>GitHub</Button>
+            <Button href={docUrl('doc1.html', language)}>Getting Started</Button>
+            <Button href={docUrl('doc2.html', language)}>Docs</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -103,17 +103,29 @@ const Features = props => (
   <Block layout="fourColumn">
     {[
       {
-        content: 'This is the content of my feature',
-        image: imgUrl('logo.svg'),
+        content: 'A vide variety of stacked card views.',
+        image: 'https://janishar.github.io/gifs/vid_tinder.gif',
         imageAlign: 'top',
-        title: 'Feature One',
+        title: 'SwipePlaceHolderView',
       },
       {
-        content: 'The content of my second feature',
-        image: imgUrl('logo.svg'),
+        content: 'ExpandableListView build with RecyclerView.',
+        image: 'https://janishar.github.io/gifs/feed_vid.gif',
         imageAlign: 'top',
-        title: 'Feature Two',
+        title: 'ExpandablePlaceHolderView',
       },
+      {
+        content: 'Building nested list views with much ease.',
+        image: 'https://janishar.github.io/gifs/vid_slides.gif',
+        imageAlign: 'top',
+        title: 'PlaceHolderView',
+      },
+      {
+        content: 'List views with load more functionality.',
+        image: 'https://janishar.github.io/gifs/infinite_vid.gif',
+        imageAlign: 'top',
+        title: 'InfinitePlaceHolderView',
+      }
     ]}
   </Block>
 );
@@ -121,9 +133,12 @@ const Features = props => (
 const FeatureCallout = props => (
   <div
     className="productShowcaseSection paddingBottom"
-    style={{textAlign: 'center'}}>
-    <h2>Feature Callout</h2>
-    <MarkdownBlock>These are features of this project</MarkdownBlock>
+    style={{ textAlign: 'center' }}>
+    <h2>Annotation Processing</h2>
+    <p>
+      PlaceHolderView development has now moved to 2.x branch. Earlier versions used Java Reflections, which has been replaced with Annotaiton Processing. Read the Docs for further details.
+    </p>
+    <br />
   </div>
 );
 
@@ -206,10 +221,6 @@ class Index extends React.Component {
         <div className="mainContainer">
           <Features />
           <FeatureCallout />
-          <LearnHow />
-          <TryOut />
-          <Description />
-          <Showcase language={language} />
         </div>
       </div>
     );

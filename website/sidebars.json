@@ -1,10 +1,19 @@
 {
   "docs": {
-    "Docusaurus": ["doc1"],
-    "First Category": ["doc2"],
-    "Second Category": ["doc3"]
-  },
-  "docs-other": {
-    "First Category": ["doc4", "doc5"]
+    "Getting Started": [
+      "introduction",
+      "migration",
+      "terminology"
+    ],
+    "PlaceHolderView": [
+      "pvh-view-definition"
+    ],
+    "InfinitePlaceHolderView": [],
+    "ExpandablePlaceHolderView": [],
+    "ExpandablePlaceHolderView": [],
+    "SwipePlaceHolderView": [
+      "sphv-intro"
+    ],
+    "DirectionalPlaceHolderView": []
   }
 }

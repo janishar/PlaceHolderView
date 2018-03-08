@@ -29,7 +29,7 @@ class Footer extends React.Component {
           <div>
             <h5>Sections</h5>
             <a href={this.docUrl('doc1.html', this.props.language)}>
-              Library Basic Overview
+              Getting Started
             </a>
             <a href={this.docUrl('doc2.html', this.props.language)}>
               PlaceHolderView

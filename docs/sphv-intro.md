@@ -1,7 +1,7 @@
 ---
-id: doc1
-title: Latin-ish
-sidebar_label: Example Page
+id: sphv-intro
+title: Introduction
+sidebar_label: Introduction
 ---
 
 Check the [documentation](https://docusaurus.io) for how to use Docusaurus.

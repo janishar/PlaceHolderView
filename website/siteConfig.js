@@ -8,15 +8,14 @@
 // ];
 const siteConfig = {
   title: 'PlaceHolderView' /* title for your website */,
-  tagline: 'A different and powerful way to build list and stack views',
+  tagline: 'Advanced List and Stack Views',
   url: 'http://janishar.com' /* your website url */,
   baseUrl: '/PlaceHolderView/' /* base url for your project */,
   projectName: 'PlaceHolderView',
   headerLinks: [
-    { doc: 'doc1', label: 'Docs' },
-    { doc: 'doc4', label: 'API' },
-    { page: 'help', label: 'Help' },
+    { doc: 'introduction', label: 'docs' },
     { blog: true, label: 'Examples' },
+    { page: 'help', label: 'Help' },    
     { search: true },
   ],
   /* path to images for header/footer */
@@ -50,9 +49,7 @@ const siteConfig = {
   blogSidebarCount: 'ALL',
   // This copyright info is used in /core/Footer.js and blog rss/atom feeds.
   copyright:
-    'Copyright © ' +
-    new Date().getFullYear() +
-    ' Janishar Ali Anwar',
+    'Copyright © 2016 Janishar Ali Anwar',
   organizationName: 'janishar', // or set an env variable ORGANIZATION_NAME
   projectName: 'PlaceHolderView', // or set an env variable PROJECT_NAME
 
