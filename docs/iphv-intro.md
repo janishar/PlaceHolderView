@@ -1,10 +1,10 @@
 ---
 id: iphv-intro
-title: Introduction
-sidebar_label: Introduction
+title: Load More View
+sidebar_label: Load More View
 ---
 
-This class provides support for load more view and callback when the last item is scrolled by the user. The callback can be used to fetch and show more data from server or other data source into the item view list.
+InfinitePlaceHolderView class provides support for load more view and callback when the last item is scrolled by the user. The callback can be used to fetch and show more data from server or other data source into the item view list.
 
 ## Load more item view class definition
 All the properties of item view for PlaceHoldeView is available in load more view. [Refer docs](terminology.md)
@@ -14,28 +14,52 @@ Use this callback to fetch more data from the server or some data store.
 
 Example:
 ```java
-@NonReusable
 @Layout(R.layout.load_more_view)
 public class LoadMoreView {
 
-    private InfinitePlaceHolderView feedListView;
+    private Callback callback;
 
-    public LoadMoreView(InfinitePlaceHolderView feedListView) {
-        this.feedListView = feedListView;
+    public LoadMoreView(Callback callback) {
+        this.callback = callback;
     }
 
     @LoadMore
     public void onLoadMore() {
-        /*
-         * fetch more data and 
-         * then call feedListView.loadingDone();
-         * if all the data is fetch 
-         * then call feedListView.noMoreToLoad();
-         */
+         callback.onShowMore();
+    }
+
+    public interface Callback{
+        void onShowMore();
     }
 }
-
 ```
+## Attach load more view to InfinitePlaceHolderView
+```java
+public class FeedActivity extends AppCompatActivity {
+
+    private InfinitePlaceHolderView feedView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_feed);
+        feedView = findViewById(R.id.iphv_feed);
+        ...
+        feedView.setLoadMoreResolver(new LoadMoreView(new LoadMoreView.Callback{
+            @Override
+            void onShowMore(){
+                //fetch more data and then call
+                feedView.loadingDone();
+
+                //if all the data is fetch then call 
+                feedView.noMoreToLoad();
+            }
+        }));
+        ...
+    }
+}
+```
+
 
 ## Define load more view in XML
 Example:
@@ -52,6 +76,3 @@ Example:
         android:layout_height="wrap_content"/>
 </LinearLayout>
 ```
-
-
-

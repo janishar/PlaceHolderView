@@ -15,7 +15,9 @@
     "InfinitePlaceHolderView": [
       "iphv-intro"
     ],
-    "ExpandablePlaceHolderView": [],
+    "ExpandablePlaceHolderView": [
+      "ephv-intro"
+    ],
     "SwipePlaceHolderView": [
       "sphv-intro"
     ],
