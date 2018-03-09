@@ -166,4 +166,12 @@ public final class Validator {
             }
         }
     }
+
+    public static void validateLoadMore(ExecutableElement element) throws IllegalUseException {
+        validateNonPrivateModifier(element);
+        if (element.getParameters().size() > 0) {
+            String msg = "@LoadMore should have no parameters";
+            throw new IllegalUseException(msg);
+        }
+    }
 }

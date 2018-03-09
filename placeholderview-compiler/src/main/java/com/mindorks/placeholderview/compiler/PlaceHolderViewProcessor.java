@@ -1,6 +1,7 @@
 package com.mindorks.placeholderview.compiler;
 
 import com.mindorks.placeholderview.compiler.compilers.ExpandableViewBinderCompiler;
+import com.mindorks.placeholderview.compiler.compilers.LoadMoreViewBinderCompiler;
 import com.mindorks.placeholderview.compiler.compilers.RClassCompiler;
 import com.mindorks.placeholderview.compiler.compilers.SwipeDirectionalViewBinderCompiler;
 import com.mindorks.placeholderview.compiler.compilers.SwipeViewBinderCompiler;
@@ -28,6 +29,7 @@ public class PlaceHolderViewProcessor extends AbstractProcessor {
     private ExpandableViewBinderCompiler expandableViewBinderCompiler;
     private SwipeViewBinderCompiler swipeViewBinderCompiler;
     private SwipeDirectionalViewBinderCompiler swipeDirectionalViewBinderCompiler;
+    private LoadMoreViewBinderCompiler loadMoreViewBinderCompiler;
     private RClassCompiler rClassCompiler;
 
     @Override
@@ -50,7 +52,8 @@ public class PlaceHolderViewProcessor extends AbstractProcessor {
                 filer, messager, elementUtils, rClassBuilder);
         swipeDirectionalViewBinderCompiler = new SwipeDirectionalViewBinderCompiler(
                 filer, messager, elementUtils, rClassBuilder);
-
+        loadMoreViewBinderCompiler = new LoadMoreViewBinderCompiler(
+                filer, messager, elementUtils, rClassBuilder);
     }
 
     @Override
@@ -59,6 +62,7 @@ public class PlaceHolderViewProcessor extends AbstractProcessor {
                 && expandableViewBinderCompiler.compile(roundEnv)
                 && swipeViewBinderCompiler.compile(roundEnv)
                 && swipeDirectionalViewBinderCompiler.compile(roundEnv)
+                && loadMoreViewBinderCompiler.compile(roundEnv)
                 && rClassCompiler.compile(roundEnv);
     }
 

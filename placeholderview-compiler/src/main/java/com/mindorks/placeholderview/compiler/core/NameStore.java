@@ -36,6 +36,7 @@ public final class NameStore {
         public static final String ANDROID_VIEW_ON_LONG_CLICK_LISTENER = "OnLongClickListener";
 
         public static final String VIEW_BINDER = "ViewBinder";
+        public static final String LOAD_MORE_CALLBACK_BINDER = "LoadMoreCallbackBinder";
         public static final String EXPANDABLE_VIEW_BINDER = "ExpandableViewBinder";
         public static final String SWIPE_VIEW_BINDER = "SwipeViewBinder";
         public static final String SWIPE_DIRECTIONAL_VIEW_BINDER = "SwipeDirectionalViewBinder";
@@ -71,6 +72,9 @@ public final class NameStore {
         public static final String IS_NULLABLE = "isNullable";
         public static final String SET_RESOLVER = "setResolver";
         public static final String SET_ANIMATION_RESOLVER = "setAnimationResolver";
+
+        //InfiniteViewBinder
+        public static final String BIND_LOAD_MORE = "bindLoadMore";
 
         // ExpandableViewBinder
         public static final String BIND_PARENT_POSITION = "bindParentPosition";

@@ -52,6 +52,10 @@ public class Binding {
         return getBinderInstance(resolver, BindingSuffix.CLASS_VIEW_BINDER_SUFFIX);
     }
 
+    protected static <T> LoadMoreCallbackBinder bindLoadMoreCallback(T resolver) {
+        return getBinderInstance(resolver, BindingSuffix.CLASS_LOAD_MORE_VIEW_BINDER_SUFFIX);
+    }
+
     protected static <T, V extends android.view.View> ExpandableViewBinder<T, V> bindExpandableViewResolver(T resolver) {
         return getBinderInstance(resolver, BindingSuffix.CLASS_EXPANDABLE_VIEW_BINDER_SUFFIX);
     }
