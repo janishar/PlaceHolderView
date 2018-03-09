@@ -3,7 +3,11 @@ id: introduction
 title: Introduction
 sidebar_label: Introduction
 ---
-PlaceHolderView is build on top of RecyclerView. There are two verison available for use.
+Some views in PlaceHolderView library is build on top of RecyclerView and other are written in its own.
+
+**All the annotations are processed during build time to generate the binding classes**
+
+There are two verison available for use.
 1. Old version (branch 1.x): Uses Java reflection
 2. New version (branch 2.x): Uses Annotation Processing.
 

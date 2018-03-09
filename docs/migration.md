@@ -57,6 +57,9 @@ public void onResolved() {
 ```
 * Inner classes are not supported for view classes
 
+* `Animation.<Type>` is replaced with `Animate.<Type>`<br/>
+Example: `Animation.ENTER_LEFT_DESC` -> `Animate.ENTER_LEFT_DESC`
+
 * Proguard rule is not required now.
 
 **Remove below proguard rule if added**
