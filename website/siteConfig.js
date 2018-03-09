@@ -30,8 +30,8 @@ const siteConfig = {
   },
   //search
   algolia: {
-    apiKey: "my-search-only-api-key-1234",
-    indexName: "my-index-name"
+    apiKey: "af9ff9a3f177c235c14cfc9fc4621894",
+    indexName: "TC3I1BHQWW"
   },
   gaTrackingId: 'UA-115371900-1',
   facebookAppId: '100001054239147',
