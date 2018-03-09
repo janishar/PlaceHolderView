@@ -6,10 +6,13 @@
       "terminology"
     ],
     "PlaceHolderView": [
-      "pvh-view-definition"
+      "phv-view-definition",
+      "phv-view-builder",
+      "phv-view-adapter",
+      "phv-view-operations",
+      "phv-view-sort"
     ],
     "InfinitePlaceHolderView": [],
-    "ExpandablePlaceHolderView": [],
     "ExpandablePlaceHolderView": [],
     "SwipePlaceHolderView": [
       "sphv-intro"

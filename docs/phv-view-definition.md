@@ -1,5 +1,5 @@
 ---
-id: pvh-view-definition
+id: phv-view-definition
 title: View Definition
 sidebar_label: View Definition
 ---
@@ -11,6 +11,8 @@ sidebar_label: View Definition
  * item_gallery_image is defined in the XML 
  * This class gets binded with the item_gallery_image.xml
  */
+@NonReusable
+@Animate(Animate.CARD_TOP_IN_DESC)
 @Layout(R.layout.item_gallery_image)
 public class GalleryImage {
 
@@ -19,6 +21,9 @@ public class GalleryImage {
 
     @View(R.id.image_view)
     ImageView imageView;
+
+    @Position
+    int position;
 
     private Context context;
     private String url;    
@@ -34,8 +39,18 @@ public class GalleryImage {
      */
     @Resolve
     public void onResolved() {
-        // do something
-        // load imageView with url image
+        // do something here
+        // example: load imageView with url image
+    }
+
+    /*
+     * This method is called when the view holder is recycled 
+     * and used to display view for the next data set
+     */
+    @Recycle
+    public void onRecycled(){
+        // do something here
+        // Example: clear some references used by earlier rendering
     }
 
     /*
@@ -47,8 +62,15 @@ public class GalleryImage {
         // do something
     }
 
+    @LongClick(R.id.image_view)
+    public void onImageViewLongClick() {
+        // do something
+    }
+
 }
 ```
+
+> The various annotations used here can be found in [terminology docs](terminology.md)
 
 **item_gallery_image.xml**
 

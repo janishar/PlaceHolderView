@@ -3,10 +3,13 @@ id: terminology
 title: Terminology
 sidebar_label: Terminology
 ---
-## PlaceHolderView supplies Annotations that does three functions:
+## PlaceHolderView annotations does three functions:
 1. Define configuration through annotation on the class.
 2. Bind the object references to the annotated global variables.
 3. Bind callbacks to the defined class methods.
+
+## Resolver
+In the PlaceHolderView a resolver implies the item view class object added to the list.
 
 ## Item View Configuration
 A class that serves as the item view defines the properties and actions on ballback. Some common annotations are provided for the view configuration.
@@ -46,7 +49,21 @@ public class ItemView {
 }
 ```
 
-## Binding click listeners to a view
+## Getting item view position
+The position of the view in the rendered list can be obtained using `@Position` 
+
+Example:
+```java
+@Layout(R.layout.gallery_item_big)
+public class ItemView {
+...
+    @Position
+    int position;
+...
+}
+```
+
+## Binding click listener to a view
 Any view defined in the layout can be provided with `View.OnClickListener` using `@Click` annotation:
 
 Example:
@@ -57,6 +74,22 @@ public class ItemView {
     @Click(R.id.profile_image_view)
     public void onProfileImageViewClick() {
         Log.d("DEBUG", "profileImageView clicked");
+    }
+...
+}
+```
+
+## Binding long click listerner to a view
+Any view defined in the layout can be provided with `View.OnLongClickListener` using `@LongClick` annotation:
+
+Example:
+```java
+@Layout(R.layout.gallery_item_big)
+public class ItemView {
+...
+    @LongClick(R.id.profile_image_view)
+    public void onProfileImageViewLongClick() {
+       Log.d("DEBUG", "profileImageView long clicked");
     }
 ...
 }
