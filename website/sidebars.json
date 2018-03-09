@@ -12,7 +12,9 @@
       "phv-view-operations",
       "phv-view-sort"
     ],
-    "InfinitePlaceHolderView": [],
+    "InfinitePlaceHolderView": [
+      "iphv-intro"
+    ],
     "ExpandablePlaceHolderView": [],
     "SwipePlaceHolderView": [
       "sphv-intro"
