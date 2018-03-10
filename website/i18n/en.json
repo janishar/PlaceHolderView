@@ -26,7 +26,14 @@
     "phv-view-operations": "View Operations",
     "phv-view-sort": "Sort Views",
     "Sort Views": "Sort Views",
+    "sdv-intro": "Introduction",
     "sphv-intro": "Introduction",
+    "sphv-view-builder": "SwipeViewBuilder",
+    "SwipeViewBuilder": "SwipeViewBuilder",
+    "sphv-view-decor": "SwipeDecor",
+    "SwipeDecor": "SwipeDecor",
+    "sphv-view-definition": "View Definition",
+    "sphv-view-operations": "View Operations",
     "terminology": "Terminology",
     "Terminology": "Terminology",
     "docs": "docs",
@@ -37,7 +44,7 @@
     "InfinitePlaceHolderView": "InfinitePlaceHolderView",
     "ExpandablePlaceHolderView": "ExpandablePlaceHolderView",
     "SwipePlaceHolderView": "SwipePlaceHolderView",
-    "DirectionalPlaceHolderView": "DirectionalPlaceHolderView"
+    "SwipeDirectionalView": "SwipeDirectionalView"
   },
   "pages-strings": {
     "Help Translate|recruit community translators for your project": "Help Translate",

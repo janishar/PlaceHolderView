@@ -47,12 +47,12 @@ Refresh the entire list.
 placeHolderView.refresh();
 ```
 
-Refresh a paticular item view with its reference.
+Refresh a particular item view with its reference.
 ```java
 placeHolderView.refreshView(itemView);
 ```
 
-Refresh a paticular item view with its position.
+Refresh a particular item view with its position.
 ```java
 placeHolderView.refreshView(2);
 ```

@@ -22,8 +22,14 @@
       "ephv-view-operations"
     ],
     "SwipePlaceHolderView": [
-      "sphv-intro"
+      "sphv-intro",
+      "sphv-view-definition",
+      "sphv-view-decor",
+      "sphv-view-builder",
+      "sphv-view-operations"
     ],
-    "DirectionalPlaceHolderView": []
+    "SwipeDirectionalView": [
+      "sdv-intro"
+    ]
   }
 }
