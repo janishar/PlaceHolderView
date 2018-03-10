@@ -21,6 +21,11 @@
 <url> <loc>http://janishar.com/docs/phv-view-definition.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/phv-view-definition.html" /> </url>
 <url> <loc>http://janishar.com/docs/phv-view-operations.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/phv-view-operations.html" /> </url>
 <url> <loc>http://janishar.com/docs/phv-view-sort.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/phv-view-sort.html" /> </url>
+<url> <loc>http://janishar.com/docs/sdv-intro.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/sdv-intro.html" /> </url>
 <url> <loc>http://janishar.com/docs/sphv-intro.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/sphv-intro.html" /> </url>
+<url> <loc>http://janishar.com/docs/sphv-view-builder.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/sphv-view-builder.html" /> </url>
+<url> <loc>http://janishar.com/docs/sphv-view-decor.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/sphv-view-decor.html" /> </url>
+<url> <loc>http://janishar.com/docs/sphv-view-definition.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/sphv-view-definition.html" /> </url>
+<url> <loc>http://janishar.com/docs/sphv-view-operations.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/sphv-view-operations.html" /> </url>
 <url> <loc>http://janishar.com/docs/terminology.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/terminology.html" /> </url>
 </urlset>
