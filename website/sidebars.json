@@ -16,7 +16,10 @@
       "iphv-intro"
     ],
     "ExpandablePlaceHolderView": [
-      "ephv-intro"
+      "ephv-intro",
+      "ephv-parent",
+      "ephv-child",
+      "ephv-view-operations"
     ],
     "SwipePlaceHolderView": [
       "sphv-intro"
