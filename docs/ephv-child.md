@@ -5,9 +5,9 @@ sidebar_label: Child View Definition
 ---
 
 ## View Definition
-An item view to be used as a child view we don't have to do anything different from that of ordinary PlaceHoldeView.
+An item view to be used as a child view we don't have to do anything different from that of ordinary PlaceHolderView.
 
-PlaceHoldeView docs can be found [here](terminology.md)
+PlaceHolderView docs can be found [here](terminology.md)
 
 Example:
 ```java
@@ -45,4 +45,4 @@ public class InfoView {
 ## Getting positions
 A child view can know its parent position using `@ParentPosition` and it's own relative postion using `@ChildPosition` annotations. 
 
-> `@Position` will give absolute position and its not meaningful in this context. 
+> `@Position` will give absolute position and its not meaningful in this context. `
