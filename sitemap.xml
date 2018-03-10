@@ -9,7 +9,10 @@
 <url> <loc>http://janishar.com/blog/2017/09/25/testing-rss.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>http://janishar.com/blog/2017/04/10/blog-post-two.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>http://janishar.com/blog/2016/03/11/blog-post.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
+<url> <loc>http://janishar.com/docs/ephv-child.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/ephv-child.html" /> </url>
 <url> <loc>http://janishar.com/docs/ephv-intro.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/ephv-intro.html" /> </url>
+<url> <loc>http://janishar.com/docs/ephv-parent.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/ephv-parent.html" /> </url>
+<url> <loc>http://janishar.com/docs/ephv-view-operations.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/ephv-view-operations.html" /> </url>
 <url> <loc>http://janishar.com/docs/introduction.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/introduction.html" /> </url>
 <url> <loc>http://janishar.com/docs/iphv-intro.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/iphv-intro.html" /> </url>
 <url> <loc>http://janishar.com/docs/migration.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/migration.html" /> </url>
