@@ -58,16 +58,17 @@ public final class Validator {
         }
     }
 
-    public static void validateClick(Element element, Click click) throws IllegalUseException {
-        validateNonPrivateModifier(element);
+    public static void validateClick(ExecutableElement element, Click click) throws IllegalUseException {
+        validateNoParameterMethod(element, "@Click");
         if (click != null && click.value() <= 0) {
             String msg = "@Click should have positive value passed";
             throw new IllegalUseException(msg);
         }
+
     }
 
-    public static void validateLongClick(Element element, LongClick longClick) throws IllegalUseException {
-        validateNonPrivateModifier(element);
+    public static void validateLongClick(ExecutableElement element, LongClick longClick) throws IllegalUseException {
+        validateNoParameterMethod(element, "@LongClick");
         if (longClick != null && longClick.value() <= 0) {
             String msg = "@LongClick should have positive value passed";
             throw new IllegalUseException(msg);
@@ -171,6 +172,14 @@ public final class Validator {
         validateNonPrivateModifier(element);
         if (element.getParameters().size() > 0) {
             String msg = "@LoadMore should have no parameters";
+            throw new IllegalUseException(msg);
+        }
+    }
+
+    public static void validateNoParameterMethod(ExecutableElement element, String annotationName) throws IllegalUseException {
+        validateNonPrivateModifier(element);
+        if (element.getParameters().size() > 0) {
+            String msg = annotationName + " should have no parameters";
             throw new IllegalUseException(msg);
         }
     }

@@ -2,6 +2,7 @@ package com.mindorks.placeholderview.compiler.structures;
 
 import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
 import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
+import com.mindorks.placeholderview.annotations.swipe.SwipeHead;
 import com.mindorks.placeholderview.annotations.swipe.SwipeIn;
 import com.mindorks.placeholderview.annotations.swipe.SwipeInState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOut;
@@ -131,7 +132,7 @@ public class SwipeViewBinderClassStructure extends ViewBinderClassStructure {
         for (ExecutableElement executableElement : getClassDetail().getExecutableElements()) {
             SwipeIn swipeIn = executableElement.getAnnotation(SwipeIn.class);
             if (swipeIn != null) {
-                Validator.validateNonPrivateModifier(executableElement);
+                Validator.validateNoParameterMethod(executableElement, "@SwipeIn");
                 bindSwipeInMethodBuilder.addStatement("$N.$N()",
                         NameStore.Variable.RESOLVER,
                         executableElement.getSimpleName());
@@ -152,7 +153,7 @@ public class SwipeViewBinderClassStructure extends ViewBinderClassStructure {
         for (ExecutableElement executableElement : getClassDetail().getExecutableElements()) {
             SwipeOut swipeOut = executableElement.getAnnotation(SwipeOut.class);
             if (swipeOut != null) {
-                Validator.validateNonPrivateModifier(executableElement);
+                Validator.validateNoParameterMethod(executableElement, "@SwipeOut");
                 bindSwipeOutMethodBuilder.addStatement("$N.$N()",
                         NameStore.Variable.RESOLVER,
                         executableElement.getSimpleName());
@@ -172,7 +173,7 @@ public class SwipeViewBinderClassStructure extends ViewBinderClassStructure {
         for (ExecutableElement executableElement : getClassDetail().getExecutableElements()) {
             SwipeInState swipeInState = executableElement.getAnnotation(SwipeInState.class);
             if (swipeInState != null) {
-                Validator.validateNonPrivateModifier(executableElement);
+                Validator.validateNoParameterMethod(executableElement, "@SwipeInState");
                 bindSwipeInStateMethodBuilder.addStatement("$N().$N()",
                         NameStore.Method.GET_RESOLVER,
                         executableElement.getSimpleName());
@@ -192,7 +193,7 @@ public class SwipeViewBinderClassStructure extends ViewBinderClassStructure {
         for (ExecutableElement executableElement : getClassDetail().getExecutableElements()) {
             SwipeOutState swipeOutState = executableElement.getAnnotation(SwipeOutState.class);
             if (swipeOutState != null) {
-                Validator.validateNonPrivateModifier(executableElement);
+                Validator.validateNoParameterMethod(executableElement, "@SwipeOutState");
                 bindSwipeOutStateMethodBuilder.addStatement("$N().$N()",
                         NameStore.Method.GET_RESOLVER,
                         executableElement.getSimpleName());
@@ -212,7 +213,7 @@ public class SwipeViewBinderClassStructure extends ViewBinderClassStructure {
         for (ExecutableElement executableElement : getClassDetail().getExecutableElements()) {
             SwipeCancelState swipeCancelState = executableElement.getAnnotation(SwipeCancelState.class);
             if (swipeCancelState != null) {
-                Validator.validateNonPrivateModifier(executableElement);
+                Validator.validateNoParameterMethod(executableElement, "@SwipeCancelState");
                 bindSwipeCancelStateMethodBuilder.addStatement("$N().$N()",
                         NameStore.Method.GET_RESOLVER,
                         executableElement.getSimpleName());
@@ -231,9 +232,9 @@ public class SwipeViewBinderClassStructure extends ViewBinderClassStructure {
                 .addParameter(getClassDetail().getClassName(), NameStore.Variable.RESOLVER);
 
         for (ExecutableElement executableElement : getClassDetail().getExecutableElements()) {
-            SwipeCancelState swipeCancelState = executableElement.getAnnotation(SwipeCancelState.class);
-            if (swipeCancelState != null) {
-                Validator.validateNonPrivateModifier(executableElement);
+            SwipeHead swipeHead = executableElement.getAnnotation(SwipeHead.class);
+            if (swipeHead != null) {
+                Validator.validateNoParameterMethod(executableElement, "@SwipeHead");
                 bindSwipeHeadStateMethodBuilder.addStatement("$N.$N()",
                         NameStore.Variable.RESOLVER,
                         executableElement.getSimpleName());
