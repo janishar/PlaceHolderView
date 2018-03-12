@@ -8,7 +8,7 @@ import java.lang.annotation.Target;
 /**
  * Created by janisharali on 18/08/16.
  */
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.METHOD)
 public @interface SwipeOutState {
 }

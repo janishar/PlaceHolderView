@@ -21,7 +21,7 @@ import java.lang.annotation.Target;
  * float xStart, float yStart, float xCurrent, float yCurrent){//something here}
  * This works only with SwipeDirectionalView
  */
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.METHOD)
 public @interface SwipeTouch {
 }

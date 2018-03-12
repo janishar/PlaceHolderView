@@ -14,7 +14,7 @@ import java.lang.annotation.Target;
  * Example : @SwipeHead private void onSwipeHead(){//something here}
  * It is called when the card comes on top of the stack
  */
-@Retention(RetentionPolicy.CLASS)
+@Retention(RetentionPolicy.SOURCE)
 @Target(ElementType.METHOD)
 public @interface SwipeHead {
 }
