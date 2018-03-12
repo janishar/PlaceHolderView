@@ -44,5 +44,5 @@ It is build on PlaceHolderView and creates ExpandableListView with parent-child 
 4. **SwipePlaceHolderView**<br/>
 It is not build on RecyclerView. It a ground up implementation. We can create a variety of card stack views using this class. It provides APIs that could easily build Tinder alike cards.
 
-5. **DirectionalPlaceHolderView**<br/>
+5. **SwipeDirectionalView**<br/>
 It is build on top of SwipePlaceHolderView. It provides call back for swipe directions and touch events.

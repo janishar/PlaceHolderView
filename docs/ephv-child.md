@@ -43,6 +43,6 @@ public class InfoView {
 ``` 
 
 ## Getting positions
-A child view can know its parent position using `@ParentPosition` and it's own relative postion using `@ChildPosition` annotations. 
+A child view can know its parent position using `@ParentPosition` and it's own relative position using `@ChildPosition` annotations. 
 
 > `@Position` will give absolute position and its not meaningful in this context. `

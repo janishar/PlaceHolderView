@@ -50,7 +50,7 @@ public class HeadingView {
     }
 }
 ```
-> Most of the annotations are same as in PlaceHoldeView's and their detail can be found in [terminology docs](terminology.md)
+> Most of the annotations are same as in PlaceHolderView's and their detail can be found in [terminology docs](terminology.md)
 
 ## Parent Definition
 1. A class is defined as a parent item view through `@Parent` class annotation.
@@ -62,7 +62,7 @@ A view act as a toggle view i.e. clicking on it will expand its parent. A view i
 
 ## Position
 A parent can find its position using `@ParentPosition` annotation. 
-> `@Position` as defined in PlaceHolderView will give the adapter position and it will also inclide other parents and their childrens positions. So, its not meaningful for this class.
+> `@Position` as defined in PlaceHolderView will give the adapter position and it will also include other parents and their children positions. So, its not meaningful for this class.
 
 ## Expand and collapse callback
-A parent gets callback when it is expanded or collapsed. It can be used to handle these states. For Example: change the indicator icon.
+A parent gets callback when it is expanded or collapsed through `@Expand` and `@Collapse` annotations respectively. They can be used to handle state changed. For Example: we can change the indicator icon.

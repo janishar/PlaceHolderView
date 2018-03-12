@@ -8,6 +8,6 @@ ExpandablePlaceHolderView is build on top of PlaceHolderView and is used to crea
 1. Parent item view
 2. Child item view
 
-The parent item view defines the header view and contains the child item views in expanded/collaped state.
+The parent item view defines the header view and contains the child item views in expanded/collapsed state.
 
-Child item views are associated with their repective parent item views.
+Child item views are associated with their respective parent item views.
