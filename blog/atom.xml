@@ -2,19 +2,22 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>http://janishar.com/PlaceHolderView/blog</id>
     <title>PlaceHolderView Blog</title>
-    <updated>2018-03-24T06:00:00Z</updated>
+    <updated>1970-01-01T00:00:00Z</updated>
     <generator>Feed for Node.js</generator>
     <link rel="alternate" href="http://janishar.com/PlaceHolderView/blog"/>
     <subtitle>The best place to stay up-to-date with the latest PlaceHolderView news and events.</subtitle>
     <logo>http://janishar.com/PlaceHolderView/img/logo.svg</logo>
     <rights>Copyright © 2016 Janishar Ali Anwar</rights>
     <entry>
-        <title type="html"><![CDATA[Gallery Example]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2018/03/24/placeholderview-gallery.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2018/03/24/placeholderview-gallery.html">
+        <title type="html"><![CDATA[New tinder swipe view Example]]></title>
+        <id>http://janishar.com/PlaceHolderView/blog/2018/3/12/tinder-swipe-v2.html</id>
+        <link href="http://janishar.com/PlaceHolderView/blog/2018/3/12/tinder-swipe-v2.html">
         </link>
-        <updated>2018-03-24T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>This example demonstrate creation of a list of images with animation using PlaceHolderView. For the sake of this example we will be placing our images in the drawable folder.</p>
+        <updated>1970-01-01T00:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Link: <a href="https://github.com/janishar/Tutorials/tree/master/tinder-swipe-v2">Example</a></p>
+<blockquote>
+<p>Newer Version: 2.x</p>
+</blockquote>
 ]]></summary>
         <author>
             <name>Janishar Ali</name>
@@ -22,70 +25,115 @@
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[New Version 1.0.0]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2017/10/24/new-version-1.0.0.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2017/10/24/new-version-1.0.0.html">
+        <title type="html"><![CDATA[New expandable news feed Example]]></title>
+        <id>http://janishar.com/PlaceHolderView/blog/2018/3/11/expandable-news-feed-v2.html</id>
+        <link href="http://janishar.com/PlaceHolderView/blog/2018/3/11/expandable-news-feed-v2.html">
         </link>
-        <updated>2017-10-24T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>This blog post will test file name parsing issues when periods are present.</p>
+        <updated>1970-01-01T00:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Link: <a href="https://github.com/janishar/Tutorials/tree/master/feed-expandable-v2">Example</a></p>
+<blockquote>
+<p>Newer Version: 2.x</p>
+</blockquote>
 ]]></summary>
         <author>
-            <name>Eric Nakagawa</name>
-            <uri>http://twitter.com/ericnakagawa</uri>
+            <name>Janishar Ali</name>
+            <uri>https://twitter.com/janisharali</uri>
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Adding RSS Support]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2017/09/26/adding-rss.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2017/09/26/adding-rss.html">
+        <title type="html"><![CDATA[Tinder swipe view tutorial]]></title>
+        <id>http://janishar.com/PlaceHolderView/blog/2016/12/29/tinder-swipe.html</id>
+        <link href="http://janishar.com/PlaceHolderView/blog/2016/12/29/tinder-swipe.html">
         </link>
-        <updated>2017-09-26T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>This is a test post.</p>
-<p>A whole bunch of other information.</p>
+        <updated>2016-12-29T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/android-tinder-swipe-view-example-3eca9b0d4794#.413dgor3o">Tutorial</a></p>
+<blockquote>
+<p>Older Version: 1.x</p>
+</blockquote>
 ]]></summary>
         <author>
-            <name>Eric Nakagawa</name>
-            <uri>http://twitter.com/ericnakagawa</uri>
+            <name>Janishar Ali</name>
+            <uri>https://twitter.com/janisharali</uri>
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Adding RSS Support - RSS Truncation Test]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2017/09/25/testing-rss.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2017/09/25/testing-rss.html">
+        <title type="html"><![CDATA[Infinite list with load more tutorial]]></title>
+        <id>http://janishar.com/PlaceHolderView/blog/2016/12/2/infinite-list.html</id>
+        <link href="http://janishar.com/PlaceHolderView/blog/2016/12/2/infinite-list.html">
         </link>
-        <updated>2017-09-25T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>1234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890123456789012345678901234567890</p>
-<p>This should be truncated.</p>
+        <updated>1970-01-01T00:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/android-infinite-list-with-load-more-example-3749ea7bc33#.e3juocg6s">Tutorial</a></p>
+<blockquote>
+<p>Older Version: 1.x</p>
+</blockquote>
 ]]></summary>
         <author>
-            <name>Eric Nakagawa</name>
-            <uri>http://twitter.com/ericnakagawa</uri>
+            <name>Janishar Ali</name>
+            <uri>https://twitter.com/janisharali</uri>
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[New Blog Post]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2017/04/10/blog-post-two.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2017/04/10/blog-post-two.html">
+        <title type="html"><![CDATA[Expandable news feed tutorial]]></title>
+        <id>http://janishar.com/PlaceHolderView/blog/2016/11/24/expandable-news-feed.html</id>
+        <link href="http://janishar.com/PlaceHolderView/blog/2016/11/24/expandable-news-feed.html">
         </link>
-        <updated>2017-04-10T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.</p>
+        <updated>2016-11-24T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/android-expandable-news-feed-example-4b4544e1fe7e#.3n9k18x2s">Tutorial</a></p>
+<blockquote>
+<p>Older Version: 1.x</p>
+</blockquote>
 ]]></summary>
         <author>
-            <name>Blog Author</name>
-            <uri>http://twitter.com/</uri>
+            <name>Janishar Ali</name>
+            <uri>https://twitter.com/janisharali</uri>
         </author>
     </entry>
     <entry>
-        <title type="html"><![CDATA[Blog Title]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2016/03/11/blog-post.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2016/03/11/blog-post.html">
+        <title type="html"><![CDATA[Advance image gallery tutorial]]></title>
+        <id>http://janishar.com/PlaceHolderView/blog/2016/10/20/advance-image-gallery.html</id>
+        <link href="http://janishar.com/PlaceHolderView/blog/2016/10/20/advance-image-gallery.html">
         </link>
-        <updated>2016-03-11T06:00:00Z</updated>
-        <summary type="html"><![CDATA[<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque elementum dignissim ultricies. Fusce rhoncus ipsum tempor eros aliquam consequat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus elementum massa eget nulla aliquet sagittis. Proin odio tortor, vulputate ut odio in, ultrices ultricies augue. Cras ornare ultrices lorem malesuada iaculis. Etiam sit amet libero tempor, pulvinar mauris sed, sollicitudin sapien.</p>
+        <updated>2016-10-20T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/android-advance-image-gallery-example-3ec6ddf85ed9#.6n8ouof9k">Tutorial</a></p>
+<blockquote>
+<p>Older Version: 1.x</p>
+</blockquote>
 ]]></summary>
         <author>
-            <name>Blog Author</name>
-            <uri>http://twitter.com/</uri>
+            <name>Janishar Ali</name>
+            <uri>https://twitter.com/janisharali</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Beginners image gallery tutorial]]></title>
+        <id>http://janishar.com/PlaceHolderView/blog/2016/10/14/beginner-image-gallery.html</id>
+        <link href="http://janishar.com/PlaceHolderView/blog/2016/10/14/beginner-image-gallery.html">
+        </link>
+        <updated>2016-10-14T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/android-beginner-image-gallery-example-da73a596f4d5#.p42z8w83o">Tutorial</a></p>
+<blockquote>
+<p>Older Version: 1.x</p>
+</blockquote>
+]]></summary>
+        <author>
+            <name>Janishar Ali</name>
+            <uri>https://twitter.com/janisharali</uri>
+        </author>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Android navigation drawer tutorial]]></title>
+        <id>http://janishar.com/PlaceHolderView/blog/2016/09/20/android-nav-drawer.html</id>
+        <link href="http://janishar.com/PlaceHolderView/blog/2016/09/20/android-nav-drawer.html">
+        </link>
+        <updated>2016-09-20T06:00:00Z</updated>
+        <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/navigation-drawer-android-example-8dfe38c66f59#.vmlw4zb00">Tutorial</a></p>
+<blockquote>
+<p>Older Version: 1.x</p>
+</blockquote>
+]]></summary>
+        <author>
+            <name>Janishar Ali</name>
+            <uri>https://twitter.com/janisharali</uri>
         </author>
     </entry>
 </feed>
