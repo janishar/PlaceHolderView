@@ -34,7 +34,7 @@ ext {
     libTargetSdkVersion = 25
     libBuildToolsVersion = "27.0.2"
     libSupportVersion = '25.4.0'
-    libPublishVersionCode = 20
-    libPublishVersionName = '1.0.0-beta1'
+    libPublishVersionCode = 21
+    libPublishVersionName = '1.0.0'
     libPublishGroupName = 'com.mindorks.android'
 }
