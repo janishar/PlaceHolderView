@@ -14,7 +14,7 @@ const siteConfig = {
   projectName: 'PlaceHolderView',
   headerLinks: [
     { href: 'https://github.com/janishar/PlaceHolderView', label: 'GitHub', external: true },
-    { doc: 'introduction', label: 'docs' },
+    { doc: 'introduction', label: 'Docs' },
     { blog: true, label: 'Examples' },
     { page: 'help', label: 'Help' },    
     { search: true },

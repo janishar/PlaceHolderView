@@ -29,7 +29,8 @@
       "sphv-view-operations"
     ],
     "SwipeDirectionalView": [
-      "sdv-intro"
+      "sdv-intro",
+      "sdv-view-definition"
     ]
   }
 }
