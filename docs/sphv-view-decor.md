@@ -117,3 +117,60 @@ Example: Swipe in layout R.layout.tinder_swipe_in_msg_view
         android:text="Accept"/>
 </LinearLayout>
 ```
+
+### Animate Scale
+We can disable the lower card scale and rise animation with respect to the top card when the top card is moving.
+```java
+new SwipeDecor().setAnimateScale(false)
+``` 
+
+### Set the gravity of the swipe in/out message layout.
+```java
+new SwipeDecor()
+    .setSwipeInMsgGravity(Gravity.LEFT)
+    .setSwipeOutMsgGravity(Gravity.RIGHT)
+``` 
+
+### Set distance to move for swipe in/out massage layout to show.
+We can configure the distance an item view should move w.r.t its original position for the swipe in/out layout to be shown.
+```java
+new SwipeDecor().setSwipeDistToDisplayMsg(100)
+``` 
+
+### Set swipe animation factor
+This defines the acceleration of the item view when it is animated while swiped in/out.
+```java
+new SwipeDecor().setSwipeAnimFactor(0.75f)
+``` 
+
+### Set swipe animation time
+This defines the time taken for the item view when it is animated while swiped in/out.
+```java
+new SwipeDecor().setSwipeAnimTime(500)
+```
+
+### Set rotation angle when the item view is moving.
+```java
+new SwipeDecor().setSwipeRotationAngle(10)
+```
+
+### Set the item view width and height programmatically.
+This will set the width and height of the item view according to the available space on the screen.
+
+If there is some view below the SwipePlaceHolderView and we want the item view to be able to slide on top of the bottom view while allowing the bottom view to be clickable, we can do the following:
+```java
+int bottomMargin = Utils.dpToPx(160); // if there is some view of size 160 dp
+Point windowSize = Utils.getDisplaySize(getWindowManager());
+swipeView.getBuilder().setSwipeDecor(
+    new SwipeDecor()
+            .setViewWidth(windowSize.x)
+            .setViewHeight(windowSize.y - bottomMargin)
+            .setViewGravity(Gravity.TOP) // set the gravity of the item view w.r.t SwipePlaceHolderView
+```
+
+### Set maximum change in angle between two successive item view moves.
+This property can help control the jerks that may appear while changing angles while the item view is moving.
+```java
+new SwipeDecor().setSwipeMaxChangeAngle(1f)
+```
+
