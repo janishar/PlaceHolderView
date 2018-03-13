@@ -9,45 +9,24 @@ public class SwipeDecor {
 
     public static final int PRIMITIVE_NULL = -1;
 
-    private int mViewWidth;
-    private int mViewHeight;
-    private int mViewGravity;
-    private int mPaddingTop;
-    private int mPaddingLeft;
-    private int mMarginTop;
-    private int mMarginLeft;
-    private float mRelativeScale;
-    private boolean mAnimateScale;
-    private int mSwipeInMsgLayoutId;
-    private int mSwipeOutMsgLayoutId;
-    private int mSwipeInMsgGravity;
-    private int mSwipeOutMsgGravity;
-    private int mSwipeDistToDisplayMsg;
-    private int mSwipeAnimTime;
-    private float mSwipeAnimFactor;
-    private int mSwipeRotationAngle;
-    private float mSwipeMaxChangeAngle;
-
-    public SwipeDecor() {
-        mViewWidth = 0;
-        mViewHeight = 0;
-        mPaddingTop = 0;
-        mPaddingLeft = 0;
-        mMarginTop = 0;
-        mMarginLeft = 0;
-        mRelativeScale = 0.05f;
-        mAnimateScale = true;
-        mSwipeInMsgLayoutId = PRIMITIVE_NULL;
-        mSwipeOutMsgLayoutId = PRIMITIVE_NULL;
-        mViewGravity = Gravity.CENTER ;
-        mSwipeInMsgGravity = Gravity.CENTER ;
-        mSwipeOutMsgGravity = Gravity.CENTER ;
-        mSwipeDistToDisplayMsg = 30;
-        mSwipeAnimTime = 200;
-        mSwipeAnimFactor = 0.75f;
-        mSwipeRotationAngle = 15;
-        mSwipeMaxChangeAngle = 2f;
-    }
+    private int mViewWidth = 0;
+    private int mViewHeight = 0;
+    private int mPaddingTop = 0;
+    private int mPaddingLeft = 0;
+    private int mMarginTop = 0;
+    private int mMarginLeft = 0;
+    private float mRelativeScale = 0.05f;
+    private boolean mAnimateScale = true;
+    private int mSwipeInMsgLayoutId = PRIMITIVE_NULL;
+    private int mSwipeOutMsgLayoutId = PRIMITIVE_NULL;
+    private int mViewGravity = Gravity.CENTER;
+    private int mSwipeInMsgGravity = Gravity.CENTER;
+    private int mSwipeOutMsgGravity = Gravity.CENTER;
+    private int mSwipeDistToDisplayMsg = 30;
+    private int mSwipeAnimTime = 200;
+    private float mSwipeAnimFactor = 0.75f;
+    private int mSwipeRotationAngle = 15;
+    private float mSwipeMaxChangeAngle = 2f;
 
     public int getPaddingTop() {
         return mPaddingTop;
