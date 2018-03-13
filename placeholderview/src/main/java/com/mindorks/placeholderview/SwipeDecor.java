@@ -49,11 +49,6 @@ public class SwipeDecor {
         mSwipeMaxChangeAngle = 2f;
     }
 
-    public SwipeDecor isAnimateScale(boolean animate) {
-        mAnimateScale = animate;
-        return this;
-    }
-
     public int getPaddingTop() {
         return mPaddingTop;
     }
@@ -106,6 +101,11 @@ public class SwipeDecor {
 
     public boolean isAnimateScale() {
         return mAnimateScale;
+    }
+
+    public SwipeDecor setAnimateScale(boolean animate) {
+        mAnimateScale = animate;
+        return this;
     }
 
     public int getSwipeInMsgLayoutId() {
