@@ -13,7 +13,7 @@ Provide the new instance of SwipeDecor with custom settings to the SwipeViewBuil
 swipePlaceHolderView.getBuilder()
         .setSwipeDecor(new SwipeDecor()
             .setPaddingTop(20)
-            .setSwipeMaxChangeAngle(2f)
+            .setSwipeMaxChangeAngle(2f);
             // other settings
 ```
 ## Settings and Configurations
@@ -29,8 +29,8 @@ swipePlaceHolderView.getBuilder()
  </div>
 
 ```java
-new SwipeDecor().setPaddingTop(20)// in dp
-new SwipeDecor().setPaddingTop(-20)// in dp
+new SwipeDecor().setPaddingTop(20);// in dp
+new SwipeDecor().setPaddingTop(-20);// in dp
 ```
 Positive value set item views arranged top to bottom and negative value set item views arranges bottom to top.
 
@@ -45,16 +45,16 @@ Positive value set item views arranged top to bottom and negative value set item
  </div>
  
 ```java
-new SwipeDecor().setPaddingLeft(20)
-new SwipeDecor().setPaddingLeft(-20)
+new SwipeDecor().setPaddingLeft(20);
+new SwipeDecor().setPaddingLeft(-20);
 ```
 
 Positive value set item views arranged left to right and negative value set item views arranges right to left.
 
 ### Margin
 ```java
-new SwipeDecor().setMarginTop(200) // Top margin
-new SwipeDecor().setMarginLeft(200) // Left margin
+new SwipeDecor().setMarginTop(200); // Top margin
+new SwipeDecor().setMarginLeft(200); // Left margin
 ```
 Set the margin of the item views with respect to the SwipePlaceHolderView display area.
 
@@ -71,11 +71,11 @@ Set the margin of the item views with respect to the SwipePlaceHolderView displa
 ```java
 new SwipeDecor()
     .setPaddingTop(100)
-    .setRelativeScale(0.1f) // higher scaling
+    .setRelativeScale(0.1f); // higher scaling
 // Versus
 new SwipeDecor()
     .setPaddingTop(100)
-    .setRelativeScale(0.01f) // lower scaling
+    .setRelativeScale(0.01f); // lower scaling
 ```
 
 Relative scaling defines the size of item views placed below with respect to item view place above.
@@ -95,7 +95,7 @@ We can provide layouts that shows up when an item view is in the state of either
 ```java
 new SwipeDecor()
     .setSwipeInMsgLayoutId(R.layout.tinder_swipe_in_msg_view)
-    .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view)
+    .setSwipeOutMsgLayoutId(R.layout.tinder_swipe_out_msg_view);
 ```
 
 Example: Swipe in layout R.layout.tinder_swipe_in_msg_view
@@ -121,37 +121,37 @@ Example: Swipe in layout R.layout.tinder_swipe_in_msg_view
 ### Animate Scale
 We can disable the lower card scale and rise animation with respect to the top card when the top card is moving.
 ```java
-new SwipeDecor().setAnimateScale(false)
+new SwipeDecor().setAnimateScale(false);
 ``` 
 
 ### Set the gravity of the swipe in/out message layout.
 ```java
 new SwipeDecor()
     .setSwipeInMsgGravity(Gravity.LEFT)
-    .setSwipeOutMsgGravity(Gravity.RIGHT)
+    .setSwipeOutMsgGravity(Gravity.RIGHT);
 ``` 
 
 ### Set distance to move for swipe in/out massage layout to show.
 We can configure the distance an item view should move w.r.t its original position for the swipe in/out layout to be shown.
 ```java
-new SwipeDecor().setSwipeDistToDisplayMsg(100)
+new SwipeDecor().setSwipeDistToDisplayMsg(100);
 ``` 
 
 ### Set swipe animation factor
 This defines the acceleration of the item view when it is animated while swiped in/out.
 ```java
-new SwipeDecor().setSwipeAnimFactor(0.75f)
+new SwipeDecor().setSwipeAnimFactor(0.75f);
 ``` 
 
 ### Set swipe animation time
 This defines the time taken for the item view when it is animated while swiped in/out.
 ```java
-new SwipeDecor().setSwipeAnimTime(500)
+new SwipeDecor().setSwipeAnimTime(500);
 ```
 
 ### Set rotation angle when the item view is moving.
 ```java
-new SwipeDecor().setSwipeRotationAngle(10)
+new SwipeDecor().setSwipeRotationAngle(10);
 ```
 
 ### Set the item view width and height programmatically.
@@ -165,12 +165,12 @@ swipeView.getBuilder().setSwipeDecor(
     new SwipeDecor()
             .setViewWidth(windowSize.x)
             .setViewHeight(windowSize.y - bottomMargin)
-            .setViewGravity(Gravity.TOP) // set the gravity of the item view w.r.t SwipePlaceHolderView
+            .setViewGravity(Gravity.TOP); // set the gravity of the item view w.r.t SwipePlaceHolderView
 ```
 
 ### Set maximum change in angle between two successive item view moves.
 This property can help control the jerks that may appear while changing angles while the item view is moving.
 ```java
-new SwipeDecor().setSwipeMaxChangeAngle(1f)
+new SwipeDecor().setSwipeMaxChangeAngle(1f);
 ```
 
