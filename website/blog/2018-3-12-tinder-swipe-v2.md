@@ -2,7 +2,7 @@
 author: Janishar Ali
 authorURL: https://twitter.com/janisharali
 authorFBID: 100001054239147
-title: New tinder swipe view Example 
+title: New tinder swipe view example 
 ---
 Link: [Example](https://github.com/janishar/Tutorials/tree/master/tinder-swipe-v2)
 

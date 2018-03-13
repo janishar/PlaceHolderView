@@ -2,7 +2,7 @@
 author: Janishar Ali
 authorURL: https://twitter.com/janisharali
 authorFBID: 100001054239147
-title: New expandable news feed Example 
+title: New expandable news feed example 
 ---
 Link: [Example](https://github.com/janishar/Tutorials/tree/master/feed-expandable-v2)
 
