@@ -49,28 +49,23 @@ public class SwipeDecor {
         mSwipeMaxChangeAngle = 2f;
     }
 
-
     public SwipeDecor isAnimateScale(boolean animate) {
         mAnimateScale = animate;
         return this;
     }
 
-
     public int getPaddingTop() {
         return mPaddingTop;
     }
-
 
     public SwipeDecor setPaddingTop(int padding){
         mPaddingTop = padding;
         return this;
     }
 
-
     public int getPaddingLeft() {
         return mPaddingLeft;
     }
-
 
     public SwipeDecor setPaddingLeft(int padding){
         mPaddingLeft = padding;
@@ -95,11 +90,9 @@ public class SwipeDecor {
         return this;
     }
 
-
     public float getRelativeScale() {
         return mRelativeScale;
     }
-
 
     public SwipeDecor setRelativeScale(float scale){
         if(scale > 1){
@@ -111,16 +104,13 @@ public class SwipeDecor {
         return this;
     }
 
-
     public boolean isAnimateScale() {
         return mAnimateScale;
     }
 
-
     public int getSwipeInMsgLayoutId() {
         return mSwipeInMsgLayoutId;
     }
-
 
     public SwipeDecor setSwipeInMsgLayoutId(int layoutId) {
         if (layoutId < 0) {
@@ -130,11 +120,9 @@ public class SwipeDecor {
         return this;
     }
 
-
     public int getSwipeOutMsgLayoutId() {
         return mSwipeOutMsgLayoutId;
     }
-
 
     public SwipeDecor setSwipeOutMsgLayoutId(int layoutId) {
         if (layoutId < 0) {
@@ -144,66 +132,54 @@ public class SwipeDecor {
         return this;
     }
 
-
     public int getSwipeInMsgGravity() {
         return mSwipeInMsgGravity;
     }
-
 
     public SwipeDecor setSwipeInMsgGravity(int gravity) {
         mSwipeInMsgGravity = gravity;
         return this;
     }
 
-
     public int getSwipeOutMsgGravity() {
         return mSwipeOutMsgGravity;
     }
-
 
     public SwipeDecor setSwipeOutMsgGravity(int gravity) {
         mSwipeOutMsgGravity = gravity;
         return this;
     }
 
-
     public int getSwipeDistToDisplayMsg() {
         return mSwipeDistToDisplayMsg;
     }
-
 
     public SwipeDecor setSwipeDistToDisplayMsg(int swipeDistToDisplayMsg) {
         mSwipeDistToDisplayMsg = swipeDistToDisplayMsg;
         return this;
     }
 
-
     public float getSwipeAnimFactor() {
         return mSwipeAnimFactor;
     }
-
 
     public SwipeDecor setSwipeAnimFactor(float factor) {
         mSwipeAnimFactor = factor;
         return this;
     }
 
-
     public int getSwipeAnimTime() {
         return mSwipeAnimTime;
     }
-
 
     public SwipeDecor setSwipeAnimTime(int millis) {
         mSwipeAnimTime = millis;
         return this;
     }
 
-
     public int getSwipeRotationAngle() {
         return mSwipeRotationAngle;
     }
-
 
     public SwipeDecor setSwipeRotationAngle(int degree) {
         mSwipeRotationAngle = degree;
