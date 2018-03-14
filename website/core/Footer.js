@@ -28,30 +28,30 @@ class Footer extends React.Component {
           </a>
           <div>
             <h5>Sections</h5>
-            <a href={this.docUrl('doc1.html', this.props.language)}>
+            <a href={this.docUrl('introduction.html')}>
               Getting Started
             </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
+            <a href={this.docUrl('terminology.html')}>
               PlaceHolderView
             </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
+            <a href={this.docUrl('iphv-intro.html')}>
               InfinitePlaceHolderView
             </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
+            <a href={this.docUrl('ephv-intro.html')}>
               ExpandablePlaceHolderView
             </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
+            <a href={this.docUrl('sphv-intro.html')}>
               SwipePlaceHolderView
             </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
-              DirectionalPlaceHolderView
+            <a href={this.docUrl('sdv-intro.html')}>
+              SwipeDirectionalView
             </a>
-            <a href={this.docUrl('doc2.html', this.props.language)}>
+            {/* <a href={this.docUrl('doc2.html', this.props.language)}>
               Compiler
             </a>
             <a href={this.docUrl('doc2.html', this.props.language)}>
               Contributing
-            </a>
+            </a> */}
           </div>
           <div>
             <h5>Connect with me</h5>
