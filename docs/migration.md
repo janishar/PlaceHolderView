@@ -24,7 +24,7 @@ dependencies {
 }
 ```
 
-* Annotation on pivate variable/method/class is not supported
+* Annotation on private variable/method/class is not supported
 
 1. ~~private~~
 2. public

@@ -9,7 +9,7 @@ sidebar_label: View Definition
 ```java
 /*
  * item_gallery_image is defined in the XML 
- * This class gets binded with the item_gallery_image.xml
+ * This class gets bind with the item_gallery_image.xml
  */
 @NonReusable
 @Animate(Animate.CARD_TOP_IN_DESC)
@@ -112,7 +112,7 @@ public class GalleryImage {
 ```java
 PlaceHolderView phvGallery = (PlaceHolderView)findViewById(R.id.phv_gallery);
 
-// (Optional): If customisation is Required then use Builder with the PlaceHolderView
+// (Optional): If customization is Required then use Builder with the PlaceHolderView
 phvGallery.getBuilder()
     .setHasFixedSize(false)
     .setItemViewCacheSize(10)

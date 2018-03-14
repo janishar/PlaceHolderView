@@ -8,7 +8,7 @@ sidebar_label: ViewAdapter
 
 **The layout associated with the item view defines the view holder type**
 
-> The library user never have to worry about this abstaction and all the APIs to interact with Adapter is provided throught the PlaceHolderView.
+> The library user never have to worry about this abstraction and all the APIs to interact with Adapter is provided through the PlaceHolderView instance.
 
 ## Get Adapter
 ```java
