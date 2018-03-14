@@ -13,7 +13,7 @@
 <h2><a class="anchor" aria-hidden="true" name="resolver"></a><a href="#resolver" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Resolver</h2>
 <p>In the PlaceHolderView a resolver implies the item view class object added to the list.</p>
 <h2><a class="anchor" aria-hidden="true" name="item-view-configuration"></a><a href="#item-view-configuration" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Item View Configuration</h2>
-<p>A class that serves as the item view defines the properties and actions on ballback. Some common annotations are provided for the view configuration.</p>
+<p>A class that serves as the item view, defines the properties and actions to take on callbacks. Some common annotations are provided for the view configuration.</p>
 <p>Example:</p>
 <pre><code class="hljs css java"><span class="hljs-meta">@NonReusable</span>
 <span class="hljs-meta">@Layout</span>(R.layout.gallery_item_big)
@@ -22,8 +22,8 @@
 }
 </code></pre>
 <p><strong><code>@NonReusable</code></strong>: Should be provided if we intend to remove all the references hold by the item view when it is removed. This will prevent accidental memory leaks.</p>
-<p><strong><code>@Layout</code></strong>: It takes a layout defined in xml file specified by <code>R.id.&lt;lalyout-id&gt;</code> and bind that layout with the annotated class. This item view is used to inflate the view.</p>
-<h2><a class="anchor" aria-hidden="true" name="refrencing-views-in-layout"></a><a href="#refrencing-views-in-layout" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Refrencing Views in Layout</h2>
+<p><strong><code>@Layout</code></strong>: It takes a layout defined in xml file specified by <code>R.id.&lt;layout-id&gt;</code> and bind that layout with the annotated class. This item view is used to inflate the view.</p>
+<h2><a class="anchor" aria-hidden="true" name="referencing-views-in-layout"></a><a href="#referencing-views-in-layout" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Referencing Views in Layout</h2>
 <p>The views defined in the layout provided by <code>@Layout</code> can be referenced in the item view class using <code>@View</code> annotations on the global variable.</p>
 <p>Example:</p>
 <pre><code class="hljs css java"><span class="hljs-meta">@Layout</span>(R.layout.gallery_item_big)
@@ -64,7 +64,7 @@
 ...
 }
 </code></pre>
-<h2><a class="anchor" aria-hidden="true" name="binding-long-click-listerner-to-a-view"></a><a href="#binding-long-click-listerner-to-a-view" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Binding long click listerner to a view</h2>
+<h2><a class="anchor" aria-hidden="true" name="binding-long-click-listener-to-a-view"></a><a href="#binding-long-click-listener-to-a-view" aria-hidden="true" class="hash-link" ><svg aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Binding long click listener to a view</h2>
 <p>Any view defined in the layout can be provided with <code>View.OnLongClickListener</code> using <code>@LongClick</code> annotation:</p>
 <p>Example:</p>
 <pre><code class="hljs css java"><span class="hljs-meta">@Layout</span>(R.layout.gallery_item_big)
