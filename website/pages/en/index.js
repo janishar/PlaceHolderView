@@ -129,7 +129,7 @@ const FeatureCallout = props => (
     style={{ textAlign: 'center' }}>
     <h2>Annotation Processing</h2>
     <p>
-      PlaceHolderView development has now moved to 2.x branch. Earlier versions used Java Reflections, which has been replaced with Annotaiton Processing. Read the Docs for further details.
+      PlaceHolderView development has now moved to 2.x branch. Earlier versions used Java reflection, which has been replaced with Annotation processing. Read the docs for further details.
     </p>
     <br />
   </div>
