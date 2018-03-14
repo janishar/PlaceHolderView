@@ -73,9 +73,9 @@ class HomeSplash extends React.Component {
         <div className="inner">
           <ProjectTitle />
           <PromoSection>
-            <Button href="https://github.com/janishar/PlaceHolderView" target='_blank'>GitHub</Button>
-            <Button href={docUrl('introduction.html', language)}>Getting Started</Button>
             <Button href={docUrl('phv-view-definition.html', language)}>Docs</Button>
+            <Button href={docUrl('introduction.html', language)}>Getting Started</Button>
+            <Button href="https://github.com/janishar/PlaceHolderView" target='_blank'>GitHub</Button>
           </PromoSection>
         </div>
       </SplashContainer>
@@ -97,7 +97,7 @@ const Features = props => (
     {[
       {
         content: 'A vide variety of stacked card views.',
-        image: 'https://janishar.github.io/gifs/vid_tinder.gif',
+        image: 'https://janishar.github.io/gifs/vid_tinder_v2.gif',
         imageAlign: 'top',
         title: 'SwipePlaceHolderView',
       },

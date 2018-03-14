@@ -13,10 +13,10 @@ const siteConfig = {
   baseUrl: '/PlaceHolderView/' /* base url for your project */,
   projectName: 'PlaceHolderView',
   headerLinks: [
-    { href: 'https://github.com/janishar/PlaceHolderView', label: 'GitHub', external: true },
     { doc: 'introduction', label: 'Docs' },
     { blog: true, label: 'Examples' },
-    { page: 'help', label: 'Help' },    
+    { page: 'help', label: 'Help' },   
+    { href: 'https://github.com/janishar/PlaceHolderView', label: 'GitHub', external: true }, 
     { search: true },
   ],
   users,
