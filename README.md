@@ -14,7 +14,7 @@
 ![](https://janishar.github.io/gifs/vid_tinder_v2.gif)  ![](https://janishar.github.io/gifs/vid_drawer.gif)  ![](https://janishar.github.io/gifs/infinite_vid.gif)    
 
 -----
-# Documentaion
+# Documentation
 You can find the PlaceHolderView documentation [here](http://janishar.com/PlaceHolderView/docs/introduction.html) which has extended usage instructions and other useful information. 
 
 <a href="http://janishar.com/PlaceHolderView" target="_blank"><img src="https://janishar.github.io/images/get-started-button.jpg" width="150" height="45"/></a>
