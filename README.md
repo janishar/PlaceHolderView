@@ -9,7 +9,7 @@
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # Some Implementations
-![](https://janishar.github.io/gifs/vid_tinder.gif)  ![](https://janishar.github.io/gifs/feed_vid.gif) ![](https://janishar.github.io/gifs/infinite_vid.gif)  ![](https://janishar.github.io/gifs/vid_tinder_v2.gif)  ![](https://janishar.github.io/gifs/vid_drawer.gif) 
+![](https://janishar.github.io/gifs/vid_tinder.gif)  ![](https://janishar.github.io/gifs/feed_vid.gif)  ![](https://janishar.github.io/gifs/vid_slides.gif)  ![](https://janishar.github.io/gifs/vid_tinder_v2.gif)  ![](https://janishar.github.io/gifs/vid_drawer.gif)  ![](https://janishar.github.io/gifs/infinite_vid.gif)    
 
 -----
 # Documentation
