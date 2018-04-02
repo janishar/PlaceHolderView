@@ -19,8 +19,8 @@ dependencies {
 ```groovy
 dependencies {
     ...
-    compile 'com.mindorks.android:placeholderview:1.0.0'
-    annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.0'
+    compile 'com.mindorks.android:placeholderview:1.0.1'
+    annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.1'
 }
 ```
 
