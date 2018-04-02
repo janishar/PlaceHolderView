@@ -60,12 +60,17 @@ public void onResolved() {
 * `Animation.<Type>` is replaced with `Animate.<Type>`<br/>
 Example: `Animation.ENTER_LEFT_DESC` -> `Animate.ENTER_LEFT_DESC`
 
-* Proguard rule is not required now.
-
 **Remove below proguard rule if added**
 ```groovy
   -keepattributes *Annotation*
   -keepclassmembers class ** {
     @com.mindorks.placeholderview.annotations.** <methods>;
+  }
+```
+**Replace with new proguard rule**
+Keep all the classes of the package in which itemviews are defined
+```groovy
+  -keep public class <item-view-package-name>.** {
+    public protected *;
   }
 ```
