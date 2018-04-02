@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 27
-    buildToolsVersion "27.0.2"
+    buildToolsVersion "27.0.3"
 
     defaultConfig {
         applicationId "com.mindorks.demo"
@@ -27,14 +27,14 @@ android {
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation 'com.android.support:design:27.0.2'
-    implementation 'com.android.support:cardview-v7:27.0.2'
+    implementation 'com.android.support:appcompat-v7:27.1.0'
+    implementation 'com.android.support:design:27.1.0'
+    implementation 'com.android.support:cardview-v7:27.1.0'
     implementation 'com.github.bumptech.glide:glide:3.7.0'
     implementation 'com.google.code.gson:gson:2.8.2'
     implementation 'com.mindorks:butterknifelite:0.0.4'
 
-    implementation 'com.android.support:recyclerview-v7:27.0.2'
+    implementation 'com.android.support:recyclerview-v7:27.1.0'
     implementation project(":placeholderview")
     annotationProcessor project(':placeholderview-compiler')
 

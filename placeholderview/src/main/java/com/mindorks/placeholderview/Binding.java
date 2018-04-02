@@ -41,10 +41,10 @@ public class Binding {
                 throw new RuntimeException("Unable to create instance.", cause);
             }
         } catch (ClassNotFoundException e) {
-            throw new RuntimeException("Unable to find Class for " + className + "\n" +
+            throw new RuntimeException("Unable to find Class for " + className + suffix + "\n" +
                     "PLEASE ADD >> annotationProcessor 'com.mindorks.android:placeholderview-compiler:<LATEST-VERSION>' << in build.gradle", e);
         } catch (NoSuchMethodException e) {
-            throw new RuntimeException("Unable to find constructor for " + className, e);
+            throw new RuntimeException("Unable to find constructor for " + className + suffix, e);
         }
     }
 
