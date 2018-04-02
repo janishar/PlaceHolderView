@@ -66,7 +66,7 @@ public class ViewBinderClassStructure extends ClassStructure {
         boolean nullable = nonReusable != null;
         getClassBuilder()
                 .addMethod(MethodSpec.constructorBuilder()
-                        .addModifiers(Modifier.PROTECTED)
+                        .addModifiers(Modifier.PUBLIC)
                         .addParameter(getClassDetail().getClassName(), NameStore.Variable.RESOLVER)
                         .addStatement("super($N, $T.$L, $L)",
                                 NameStore.Variable.RESOLVER,

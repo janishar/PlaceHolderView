@@ -60,7 +60,7 @@ public class LoadMoreViewBinderClassStructure extends ClassStructure {
 
     public LoadMoreViewBinderClassStructure addConstructor() {
         getClassBuilder().addMethod(MethodSpec.constructorBuilder()
-                .addModifiers(Modifier.PROTECTED)
+                .addModifiers(Modifier.PUBLIC)
                 .addParameter(getClassDetail().getClassName(), NameStore.Variable.RESOLVER)
                 .addStatement("super($N)", NameStore.Variable.RESOLVER)
                 .build());
