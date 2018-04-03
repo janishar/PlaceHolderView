@@ -19,8 +19,8 @@ dependencies {
 ```groovy
 dependencies {
     ...
-    compile 'com.mindorks.android:placeholderview:1.0.1'
-    annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.1'
+    compile 'com.mindorks.android:placeholderview:1.0.2'
+    annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.2'
 }
 ```
 
@@ -60,17 +60,10 @@ public void onResolved() {
 * `Animation.<Type>` is replaced with `Animate.<Type>`<br/>
 Example: `Animation.ENTER_LEFT_DESC` -> `Animate.ENTER_LEFT_DESC`
 
-**Remove below proguard rule if added**
+**Remove below proguard rules if added.**
 ```groovy
   -keepattributes *Annotation*
   -keepclassmembers class ** {
     @com.mindorks.placeholderview.annotations.** <methods>;
-  }
-```
-**Replace with new proguard rule**
-Keep all the classes of the package in which itemviews are defined
-```groovy
-  -keep public class <item-view-package-name>.** {
-    public protected *;
   }
 ```
