@@ -1,6 +1,7 @@
 package com.mindorks.placeholderview.compiler.structures;
 
 import com.mindorks.placeholderview.annotations.Click;
+import com.mindorks.placeholderview.annotations.Keep;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.LongClick;
 import com.mindorks.placeholderview.annotations.NonReusable;
@@ -57,7 +58,8 @@ public class ViewBinderClassStructure extends ClassStructure {
                         getClassDetail().getSuperClassName(),
                         TypeVariableName.get(getClassDetail().getTypeElement().asType()),
                         TypeVariableName.get(getClassDetail().getViewTypeParameterClassName().simpleName())))
-                .addModifiers(Modifier.PUBLIC);
+                .addModifiers(Modifier.PUBLIC)
+                .addAnnotation(Keep.class);
     }
 
     public ViewBinderClassStructure addConstructor() {

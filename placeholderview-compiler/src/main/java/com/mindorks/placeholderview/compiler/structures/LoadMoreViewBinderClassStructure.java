@@ -1,5 +1,6 @@
 package com.mindorks.placeholderview.compiler.structures;
 
+import com.mindorks.placeholderview.annotations.Keep;
 import com.mindorks.placeholderview.annotations.infinite.LoadMore;
 import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
 import com.mindorks.placeholderview.compiler.RClassBuilder;
@@ -55,7 +56,8 @@ public class LoadMoreViewBinderClassStructure extends ClassStructure {
                 .superclass(parentClassName)
                 .addSuperinterface(ParameterizedTypeName.get(loadMoreCallbackClassName,
                         TypeVariableName.get(getClassDetail().getTypeElement().asType())))
-                .addModifiers(Modifier.PUBLIC);
+                .addModifiers(Modifier.PUBLIC)
+                .addAnnotation(Keep.class);
     }
 
     public LoadMoreViewBinderClassStructure addConstructor() {

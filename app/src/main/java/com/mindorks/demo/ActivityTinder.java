@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Gravity;
 
 import com.mindorks.butterknifelite.ButterKnifeLite;
 import com.mindorks.butterknifelite.annotations.BindView;

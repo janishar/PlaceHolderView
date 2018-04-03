@@ -1,5 +1,6 @@
 package com.mindorks.placeholderview.compiler.structures;
 
+import com.mindorks.placeholderview.annotations.Keep;
 import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
 import com.mindorks.placeholderview.annotations.swipe.SwipeInDirectional;
 import com.mindorks.placeholderview.annotations.swipe.SwipeOutDirectional;
@@ -52,7 +53,8 @@ public class SwipeDirectionalViewBinderClassStructure extends SwipeViewBinderCla
                         getClassDetail().getFrameViewClassName(),
                         getClassDetail().getSwipeDirectionalOptionClassName(),
                         getClassDetail().getSwipeDecorClassName()))
-                .addModifiers(Modifier.PUBLIC);
+                .addModifiers(Modifier.PUBLIC)
+                .addAnnotation(Keep.class);
     }
 
     @Override

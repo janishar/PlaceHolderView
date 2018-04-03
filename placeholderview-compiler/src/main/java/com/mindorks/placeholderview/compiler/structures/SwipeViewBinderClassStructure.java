@@ -1,5 +1,6 @@
 package com.mindorks.placeholderview.compiler.structures;
 
+import com.mindorks.placeholderview.annotations.Keep;
 import com.mindorks.placeholderview.annotations.internal.BindingSuffix;
 import com.mindorks.placeholderview.annotations.swipe.SwipeCancelState;
 import com.mindorks.placeholderview.annotations.swipe.SwipeHead;
@@ -56,7 +57,8 @@ public class SwipeViewBinderClassStructure extends ViewBinderClassStructure {
                         getClassDetail().getFrameViewClassName(),
                         getClassDetail().getSwipeOptionClassName(),
                         getClassDetail().getSwipeDecorClassName()))
-                .addModifiers(Modifier.PUBLIC);
+                .addModifiers(Modifier.PUBLIC)
+                .addAnnotation(Keep.class);
     }
 
     @Override
