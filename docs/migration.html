@@ -16,8 +16,8 @@
 <p><strong>Now</strong></p>
 <pre><code class="hljs css groovy">dependencies {
     ...
-    compile <span class="hljs-string">'com.mindorks.android:placeholderview:1.0.1'</span>
-    annotationProcessor <span class="hljs-string">'com.mindorks.android:placeholderview-compiler:1.0.1'</span>
+    compile <span class="hljs-string">'com.mindorks.android:placeholderview:1.0.2'</span>
+    annotationProcessor <span class="hljs-string">'com.mindorks.android:placeholderview-compiler:1.0.2'</span>
 }
 </code></pre>
 <ul>
@@ -56,16 +56,10 @@ TextView headingTxt;
 <li><p><code>Animation.&lt;Type&gt;</code> is replaced with <code>Animate.&lt;Type&gt;</code><br/>
 Example: <code>Animation.ENTER_LEFT_DESC</code> -&gt; <code>Animate.ENTER_LEFT_DESC</code></p></li>
 </ul>
-<p><strong>Remove below proguard rule if added</strong></p>
+<p><strong>Remove below proguard rules if added.</strong></p>
 <pre><code class="hljs css groovy">  -keepattributes *Annotation*
   -keepclassmembers <span class="hljs-class"><span class="hljs-keyword">class</span> ** {</span>
     <span class="hljs-meta">@com</span>.mindorks.placeholderview.annotations.** &lt;methods&gt;;
-  }
-</code></pre>
-<p><strong>Replace with new proguard rule</strong>
-Keep all the classes of the package in which itemviews are defined</p>
-<pre><code class="hljs css groovy">  -keep <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">class</span> &lt;<span class="hljs-title">item</span>-<span class="hljs-title">view</span>-<span class="hljs-title">package</span>-<span class="hljs-title">name</span>&gt;.** {</span>
-    <span class="hljs-keyword">public</span> <span class="hljs-keyword">protected</span> *;
   }
 </code></pre>
 </span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="introduction.html">← Introduction</a><a class="docs-next button" href="terminology.html">Terminology →</a></div></div></div></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/PlaceHolderView/" class="nav-home"><img src="/PlaceHolderView/img/logo.svg" alt="PlaceHolderView" width="66" height="58"/></a><div><h5>Sections</h5><a href="/PlaceHolderView/docs/introduction.html">Getting Started</a><a href="/PlaceHolderView/docs/terminology.html">PlaceHolderView</a><a href="/PlaceHolderView/docs/iphv-intro.html">InfinitePlaceHolderView</a><a href="/PlaceHolderView/docs/ephv-intro.html">ExpandablePlaceHolderView</a><a href="/PlaceHolderView/docs/sphv-intro.html">SwipePlaceHolderView</a><a href="/PlaceHolderView/docs/sdv-intro.html">SwipeDirectionalView</a></div><div><h5>Connect with me</h5><a href="https://twitter.com/janisharali" target="_blank">Twitter</a><a href="https://github.com/janishar" target="_blank">GitHub</a><a href="https://www.linkedin.com/in/janishar-ali-8135a451/" target="_blank">LinkedIn</a><a href="https://www.facebook.com/janishar.ali" target="_blank">Facebook</a><a href="https://plus.google.com/+JanisharAli" target="_blank">Google Plus</a></div><div><h5>More</h5><a href="/PlaceHolderView/blog">Examples</a><a href="https://github.com/janishar/PlaceHolderView">GitHub Repo</a><a class="github-button" href="https://github.com/janishar/PlaceHolderView" data-icon="octicon-star" data-count-href="/facebook/docusaurus/stargazers" data-show-count="true" data-count-aria-label="# stargazers on GitHub" aria-label="Star this project on GitHub">Star</a><a href="https://mindorks.com/join-community">Join Community</a></div></section><section class="copyright">Copyright © 2016 Janishar Ali Anwar.</section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
