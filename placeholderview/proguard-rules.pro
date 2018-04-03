@@ -19,4 +19,3 @@
 -keep @com.mindorks.placeholderview.annotations.Keep public class *
 -keepclassmembers @com.mindorks.placeholderview.annotations.Layout class ** { *;}
 -keepclassmembers @com.mindorks.placeholderview.annotations.Keep class ** { *;}
-
