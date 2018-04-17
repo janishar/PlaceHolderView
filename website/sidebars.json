@@ -3,7 +3,8 @@
     "Getting Started": [
       "introduction",
       "migration",
-      "terminology"
+      "terminology",
+      "kotlin"
     ],
     "PlaceHolderView": [
       "phv-view-definition",

@@ -11,7 +11,9 @@ There are two versions available for use.
 1. Old version (branch 1.x): Uses Java reflection
 2. New version (branch 2.x): Uses Annotation Processing.
 
-**How To Use New Version(2.x) with annotation processing**:
+### How To Use New Version(2.x) with annotation processing:
+
+**Note: If you are using Kotlin then refer to [Kotlin doc](kotlin.md).**
 
 Gradle dependency:
 
