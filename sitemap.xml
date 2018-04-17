@@ -3,6 +3,7 @@
 <url> <loc>http://janishar.com/help.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/en/help.html" /> </url>
 <url> <loc>http://janishar.com/index.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/en/index.html" /> </url>
 <url> <loc>http://janishar.com/users.html</loc> <changefreq>weekly</changefreq> <priority>0.5</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/en/users.html" /> </url>
+<url> <loc>http://janishar.com/blog/2018/4/18/tinder-swipe-kotlin.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>http://janishar.com/blog/2018/3/12/tinder-swipe-v2.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>http://janishar.com/blog/2018/3/11/expandable-news-feed-v2.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
 <url> <loc>http://janishar.com/blog/2016/12/29/tinder-swipe.html</loc> <changefreq>weekly</changefreq> <priority>0.3</priority> </url>
@@ -17,6 +18,7 @@
 <url> <loc>http://janishar.com/docs/ephv-view-operations.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/ephv-view-operations.html" /> </url>
 <url> <loc>http://janishar.com/docs/introduction.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/introduction.html" /> </url>
 <url> <loc>http://janishar.com/docs/iphv-intro.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/iphv-intro.html" /> </url>
+<url> <loc>http://janishar.com/docs/kotlin.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/kotlin.html" /> </url>
 <url> <loc>http://janishar.com/docs/migration.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/migration.html" /> </url>
 <url> <loc>http://janishar.com/docs/phv-view-adapter.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/phv-view-adapter.html" /> </url>
 <url> <loc>http://janishar.com/docs/phv-view-builder.html</loc> <changefreq>hourly</changefreq> <priority>1.0</priority> <xhtml:link rel="alternate" hreflang="en" href="http://janishar.com/docs/phv-view-builder.html" /> </url>
