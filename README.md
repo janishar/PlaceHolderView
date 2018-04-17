@@ -47,7 +47,7 @@ It is build on top of SwipePlaceHolderView. It provides callbacks for swipe dire
 # How to use newer version (2.x branch) with annotation processing
 
 ## Gradle dependency:
-
+**Java**
 ```groovy
 dependencies {
     ...
@@ -60,6 +60,19 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:<current-version>' // example: 27.1.0
 }
 ```
+**Kotlin**
+```groovy
+dependencies {
+    ...
+    // RecyclerView dependency is added to override the
+    // default 25.4.1 RecyclerView dependency stated by placeholderview
+    // since we are using the 27.+ support libraries in the project
+    implementation 'com.android.support:recyclerview-v7:27.1.0'
+    implementation 'com.mindorks.android:placeholderview:1.0.2'
+    kapt 'com.mindorks.android:placeholderview-compiler:1.0.2'
+}
+```
+## For use with Kotlin refer to [Kotlin docs](http://janishar.com/PlaceHolderView/docs/kotlin.html).
 
 # Migration: 
 It is super easy to migrate to 2.x branch library version.
