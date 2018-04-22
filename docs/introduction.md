@@ -20,8 +20,8 @@ Gradle dependency:
 ```groovy
 dependencies {
     ...
-    compile 'com.mindorks.android:placeholderview:1.0.2'
-    annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.2'
+    compile 'com.mindorks.android:placeholderview:1.0.3'
+    annotationProcessor 'com.mindorks.android:placeholderview-compiler:1.0.3'
 
     // RecyclerView dependency is added to override the
     // default 25.4.1 RecyclerView dependency used by placeholderview.

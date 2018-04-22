@@ -23,8 +23,8 @@ dependencies {
     // default 25.4.1 RecyclerView dependency stated by placeholderview
     // since we are using the 27.+ support libraries in the project
     implementation 'com.android.support:recyclerview-v7:27.1.0'
-    implementation 'com.mindorks.android:placeholderview:1.0.2'
-    kapt 'com.mindorks.android:placeholderview-compiler:1.0.2'
+    implementation 'com.mindorks.android:placeholderview:1.0.3'
+    kapt 'com.mindorks.android:placeholderview-compiler:1.0.3'
 }
 ```
 
