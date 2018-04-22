@@ -15,6 +15,8 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+-keep class com.mindorks.placeholderview.annotations.Layout**
+-keep class com.mindorks.placeholderview.annotations.Keep**
 -keep @com.mindorks.placeholderview.annotations.Layout public class *
 -keep @com.mindorks.placeholderview.annotations.Keep public class *
 -keepclassmembers @com.mindorks.placeholderview.annotations.Layout class ** { *;}
