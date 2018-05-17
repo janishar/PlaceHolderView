@@ -34,6 +34,7 @@ public class DemoLoadMoreActivity extends AppCompatActivity {
 
         List<InfiniteFeedInfo> feedList = Utils.loadInfiniteFeeds(this.getApplicationContext());
         mLoadMoreView.setLoadMoreResolver(new LoadMoreView(mLoadMoreView, feedList));
+        mLoadMoreView.setPaginationMargin(5);
         Log.d("DEBUG", "LoadMoreView.LOAD_VIEW_SET_COUNT " + LoadMoreView.LOAD_VIEW_SET_COUNT);
         for(int i = 0; i < LoadMoreView.LOAD_VIEW_SET_COUNT; i++){
             mLoadMoreView.addView(new ItemView(this.getApplicationContext(), feedList.get(i)));
