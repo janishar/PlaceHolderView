@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>http://janishar.com/PlaceHolderView/blog</id>
+    <id>https://janishar.com/PlaceHolderView/blog</id>
     <title>PlaceHolderView Blog</title>
     <updated>1970-01-01T00:00:00Z</updated>
     <generator>Feed for Node.js</generator>
-    <link rel="alternate" href="http://janishar.com/PlaceHolderView/blog"/>
+    <link rel="alternate" href="https://janishar.com/PlaceHolderView/blog"/>
     <subtitle>The best place to stay up-to-date with the latest PlaceHolderView news and events.</subtitle>
-    <logo>http://janishar.com/PlaceHolderView/img/logo.svg</logo>
+    <logo>https://janishar.com/PlaceHolderView/img/logo.svg</logo>
     <rights>Copyright © 2016 Janishar Ali Anwar</rights>
     <entry>
         <title type="html"><![CDATA[Tinder Swipe Kotlin Example]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2018/4/18/tinder-swipe-kotlin.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2018/4/18/tinder-swipe-kotlin.html">
+        <id>https://janishar.com/PlaceHolderView/blog/2018/4/18/tinder-swipe-kotlin.html</id>
+        <link href="https://janishar.com/PlaceHolderView/blog/2018/4/18/tinder-swipe-kotlin.html">
         </link>
         <updated>1970-01-01T00:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Link: <a href="https://github.com/janishar/Tutorials/tree/master/tinder-swipe-kotlin">Example</a></p>
@@ -26,8 +26,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[New tinder swipe view example]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2018/3/12/tinder-swipe-v2.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2018/3/12/tinder-swipe-v2.html">
+        <id>https://janishar.com/PlaceHolderView/blog/2018/3/12/tinder-swipe-v2.html</id>
+        <link href="https://janishar.com/PlaceHolderView/blog/2018/3/12/tinder-swipe-v2.html">
         </link>
         <updated>1970-01-01T00:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Link: <a href="https://github.com/janishar/Tutorials/tree/master/tinder-swipe-v2">Example</a></p>
@@ -42,8 +42,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[New expandable news feed example]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2018/3/11/expandable-news-feed-v2.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2018/3/11/expandable-news-feed-v2.html">
+        <id>https://janishar.com/PlaceHolderView/blog/2018/3/11/expandable-news-feed-v2.html</id>
+        <link href="https://janishar.com/PlaceHolderView/blog/2018/3/11/expandable-news-feed-v2.html">
         </link>
         <updated>1970-01-01T00:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Link: <a href="https://github.com/janishar/Tutorials/tree/master/feed-expandable-v2">Example</a></p>
@@ -58,8 +58,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Tinder swipe view tutorial]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2016/12/29/tinder-swipe.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2016/12/29/tinder-swipe.html">
+        <id>https://janishar.com/PlaceHolderView/blog/2016/12/29/tinder-swipe.html</id>
+        <link href="https://janishar.com/PlaceHolderView/blog/2016/12/29/tinder-swipe.html">
         </link>
         <updated>2016-12-29T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/android-tinder-swipe-view-example-3eca9b0d4794#.413dgor3o">Tutorial</a></p>
@@ -74,8 +74,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Infinite list with load more tutorial]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2016/12/2/infinite-list.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2016/12/2/infinite-list.html">
+        <id>https://janishar.com/PlaceHolderView/blog/2016/12/2/infinite-list.html</id>
+        <link href="https://janishar.com/PlaceHolderView/blog/2016/12/2/infinite-list.html">
         </link>
         <updated>1970-01-01T00:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/android-infinite-list-with-load-more-example-3749ea7bc33#.e3juocg6s">Tutorial</a></p>
@@ -90,8 +90,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Expandable news feed tutorial]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2016/11/24/expandable-news-feed.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2016/11/24/expandable-news-feed.html">
+        <id>https://janishar.com/PlaceHolderView/blog/2016/11/24/expandable-news-feed.html</id>
+        <link href="https://janishar.com/PlaceHolderView/blog/2016/11/24/expandable-news-feed.html">
         </link>
         <updated>2016-11-24T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/android-expandable-news-feed-example-4b4544e1fe7e#.3n9k18x2s">Tutorial</a></p>
@@ -106,8 +106,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Advance image gallery tutorial]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2016/10/20/advance-image-gallery.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2016/10/20/advance-image-gallery.html">
+        <id>https://janishar.com/PlaceHolderView/blog/2016/10/20/advance-image-gallery.html</id>
+        <link href="https://janishar.com/PlaceHolderView/blog/2016/10/20/advance-image-gallery.html">
         </link>
         <updated>2016-10-20T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/android-advance-image-gallery-example-3ec6ddf85ed9#.6n8ouof9k">Tutorial</a></p>
@@ -122,8 +122,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Beginners image gallery tutorial]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2016/10/14/beginner-image-gallery.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2016/10/14/beginner-image-gallery.html">
+        <id>https://janishar.com/PlaceHolderView/blog/2016/10/14/beginner-image-gallery.html</id>
+        <link href="https://janishar.com/PlaceHolderView/blog/2016/10/14/beginner-image-gallery.html">
         </link>
         <updated>2016-10-14T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/android-beginner-image-gallery-example-da73a596f4d5#.p42z8w83o">Tutorial</a></p>
@@ -138,8 +138,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Android navigation drawer tutorial]]></title>
-        <id>http://janishar.com/PlaceHolderView/blog/2016/09/20/android-nav-drawer.html</id>
-        <link href="http://janishar.com/PlaceHolderView/blog/2016/09/20/android-nav-drawer.html">
+        <id>https://janishar.com/PlaceHolderView/blog/2016/09/20/android-nav-drawer.html</id>
+        <link href="https://janishar.com/PlaceHolderView/blog/2016/09/20/android-nav-drawer.html">
         </link>
         <updated>2016-09-20T06:00:00Z</updated>
         <summary type="html"><![CDATA[<p>Link: <a href="https://medium.com/@janishar.ali/navigation-drawer-android-example-8dfe38c66f59#.vmlw4zb00">Tutorial</a></p>
