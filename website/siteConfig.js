@@ -9,7 +9,7 @@ const users = [
 const siteConfig = {
   title: 'PlaceHolderView' /* title for your website */,
   tagline: 'Advanced List and Stack Views',
-  url: 'http://janishar.com' /* your website url */,
+  url: 'https://janishar.com' /* your website url */,
   baseUrl: '/PlaceHolderView/' /* base url for your project */,
   projectName: 'PlaceHolderView',
   headerLinks: [
