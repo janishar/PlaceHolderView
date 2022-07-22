@@ -13,9 +13,9 @@
 
 -----
 # Documentation
-You can find the PlaceHolderView documentation [here](http://janishar.com/PlaceHolderView/docs/introduction.html) which has extended usage instructions and other useful information. 
+You can find the PlaceHolderView documentation [here](https://janishar.github.io/PlaceHolderView/docs/introduction.html) which has extended usage instructions and other useful information. 
 
-<a href="http://janishar.com/PlaceHolderView" target="_blank"><img src="https://janishar.github.io/images/get-started-button.jpg" width="150" height="45"/></a>
+<a href="https://janishar.github.io/PlaceHolderView" target="_blank"><img src="https://janishar.github.io/images/get-started-button.jpg" width="150" height="45"/></a>
 
 -----
 # About PlaceHolderView
