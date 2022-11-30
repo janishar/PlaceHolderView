@@ -4,8 +4,6 @@
 </div>
 
 [![Download 2.x](https://api.bintray.com/packages/janishar/mindorks/placeholderview-2/images/download.svg) ](https://bintray.com/janishar/mindorks/placeholderview-2/_latestVersion)
-[![Mindorks](https://img.shields.io/badge/mindorks-opensource-blue.svg)](https://mindorks.com/open-source-projects)
-[![Mindorks Community](https://img.shields.io/badge/join-community-blue.svg)](https://mindorks.com/join-community)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 
 # Some Implementations
