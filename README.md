@@ -19,6 +19,12 @@ You can find the PlaceHolderView documentation [here](https://janishar.github.io
 # About PlaceHolderView
 Some of the views in PlaceHolderView library is build on top of RecyclerView and rest are written in its own.
 
+# About The Author
+You can connect with me here:
+* [Janishar Ali](https://janisharali.com)
+* [Twitter](https://twitter.com/janisharali)
+* [YouTube Channel](https://www.youtube.com/@unusualcode)
+
 **All the annotations are processed during build time to generate the binding classes**
 
 There are two versions available for use.
@@ -114,7 +120,7 @@ If you are using proguard, then add this rule in proguard-project.txt
 # License
 
 ```
-   Copyright (C) 2016 Janishar Ali Anwar
+   Copyright (C) 2023 Janishar Ali Anwar
 
    Licensed under the Apache License, Version 2.0 (the "License");
    you may not use this file except in compliance with the License.
