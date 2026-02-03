@@ -21,9 +21,9 @@ Some of the views in PlaceHolderView library is build on top of RecyclerView and
 
 # About The Author
 You can connect with me here:
-* [Janishar Ali](https://janisharali.com)
+* [Janishar Ali](https://afteracademy.com/founder/ali)
 * [Twitter](https://twitter.com/janisharali)
-* [YouTube Channel](https://www.youtube.com/@unusualcode)
+* [YouTube Channel](https://www.youtube.com/@afteracad)
 
 **All the annotations are processed during build time to generate the binding classes**
 
