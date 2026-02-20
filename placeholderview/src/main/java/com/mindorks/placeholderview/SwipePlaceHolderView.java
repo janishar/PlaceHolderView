@@ -784,11 +784,13 @@ public class SwipePlaceHolderView extends FrameLayout implements
                 case MotionEvent.ACTION_DOWN: {
                     mLastMotionY = (int) ev.getRawY();
                     mLastMotionX = (int) ev.getRawX();
+                    getParent().requestDisallowInterceptTouchEvent(true);
                     break;
                 }
 
                 case MotionEvent.ACTION_CANCEL:
                 case MotionEvent.ACTION_UP:
+                    getParent().requestDisallowInterceptTouchEvent(false);
                     mIsBeingDragged = false;
                     break;
             }
