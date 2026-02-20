@@ -371,6 +371,12 @@ public class SwipePlaceHolderView extends FrameLayout implements
             }.start();
         }
     }
+    public Object getTopResolver(){
+        if (mSwipeViewBinderList.size() > 0) {
+            return mSwipeViewBinderList.get(0).getResolver();
+        }
+        return null;
+    }
 
     public void lockViews(){
         mSwipeOption.setIsViewLocked(true);
